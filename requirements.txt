@@ -3,6 +3,8 @@ autoenv==1.0.0
 clint==0.4.1
 httplib2==0.9
 pep8==1.5.7
+py==1.4.26
+pytest==2.6.4
 slugify==0.0.1
 sunlight==1.2.8
 wsgiref==0.1.2

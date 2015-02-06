@@ -13,5 +13,3 @@ if __name__ == '__main__':
     directory = os.path.dirname(os.path.realpath(__file__))
     if not os.path.isdir('%s/output' % directory):
         os.mkdir('%s/output' % directory)
-
-

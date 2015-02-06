@@ -5,6 +5,8 @@ Let's publish Colorado State bills.
 - List of Senate bills: http://www.leg.state.co.us/CLICS/CLICS2015A/csl.nsf/BillFoldersSenate?openFrameset
 - How they present PDFs: http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont3/BED55652BAA579B987257D9000780984?Open&file=SB002_00.pdf
 
+# How to use this
+legquery.py expects an environment variable named `NAME_OF_VAR` set with your sunlight foundation API key in it. You can get a key at http://sunlightfoundation.com/api/accounts/register/
 
 # License
 Copyright © 2015 The Denver Post
