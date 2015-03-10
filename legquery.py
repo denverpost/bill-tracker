@@ -5,11 +5,11 @@ import os
 
 class Sunlight:
 	def __init__(self):
-		self.alert='hey'
+        self.alert='hey'
 	def get_bill_list(self):
-		pass
+        pass
 	def get_bill_detail(self):
-		pass
+        pass
 
 def main():
     co_bill = sunlight.openstates.bills(state='co')
