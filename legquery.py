@@ -2,6 +2,7 @@
 import sunlight
 import json
 import os
+import string
 
 class Sunlight:
     def __init__(self):
@@ -17,9 +18,11 @@ def main():
     #fh = open('co-bills.json', 'wb')
     fh = open('co-bills.json', 'rb')
     co_bill = json.load(fh)
-    print co_bill[0]
-    bill_details = sunlight.openstates.bill_detail('co', co_bill[0]['session'], co_bill[0]['bill_id'])
-    print bill_details 
+    for item in co_bill:
+        bill_details = sunlight.openstates.bill_detail('co', item['session'], item['bill_id'])
+        print bill_details 
+        details_fh = open('output/%s.json' % string.replace(item['bill_id'], ' ', '_'), 'wb') 
+        json.dump(item, details_fh)
     #json.dump(co_bill, fh)
     # We'll need to store the files we're writing somewhere, eventually.
     directory = os.path.dirname(os.path.realpath(__file__))
