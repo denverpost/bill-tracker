@@ -9,9 +9,10 @@ class Sunlight:
 	def get_bill_list(self):
 		pass
 	def get_bill_detail(self):
-		pass		
+		pass
+
 def main():
-	co_bill = sunlight.openstates.bills(state='co')
+    co_bill = sunlight.openstates.bills(state='co')
     # print json.dumps(co_bill)
     fh = open('co-bills.json', 'wb')
     json.dump(co_bill, fh)
