@@ -4,11 +4,11 @@ import json
 import os
 
 class Sunlight:
-	def __init__(self):
+    def __init__(self):
         self.alert='hey'
-	def get_bill_list(self):
+    def get_bill_list(self):
         pass
-	def get_bill_detail(self):
+    def get_bill_detail(self):
         pass
 
 def main():
