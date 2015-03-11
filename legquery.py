@@ -9,11 +9,16 @@ class Sunlight:
         self.alert='hey'
     def get_bill_list(self):
         """ Get list of bills. """
-        co_bill = sunlight.openstates.bills(state='co')
+        self.co_bill = sunlight.openstates.bills(state='co')
+        self.session = self.co_bill[0]['session']
         fh = open('co-bills.json', 'wb')
-        json.dump(co_bill, fh)
+        json.dump(self.co_bill, fh)
         return True
 
+    def filter_bills_recent(self, limit = 10):
+        """ Filter recent bills """
+        return self.co_bill[:limit]
+ 
     def get_bill_detail(self, bill_id):
         """ Get bill details for a single bill. """
         bill_details = sunlight.openstates.bill_detail('co', self.session, bill_id)
@@ -24,6 +29,7 @@ class Sunlight:
 
 def main():
     s = Sunlight()
+    s.get_bill_list()
     #fh = open('co-bills.json', 'rb')
     #co_bill = json.load(fh)
     #for item in co_bill:
