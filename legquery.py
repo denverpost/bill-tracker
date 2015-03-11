@@ -8,21 +8,25 @@ class Sunlight:
     def __init__(self):
         self.alert='hey'
     def get_bill_list(self):
-        pass
-    def get_bill_detail(self):
-        pass
+        """ Get list of bills. """
+        co_bill = sunlight.openstates.bills(state='co')
+        fh = open('co-bills.json', 'wb')
+        json.dump(co_bill, fh)
+        return True
+
+    def get_bill_detail(self, bill_id):
+        """ Get bill details for a single bill. """
+        bill_details = sunlight.openstates.bill_detail('co', self.session, bill_id)
+        print bill_details 
+        details_fh = open('output/%s.json' % string.replace(bill_id, ' ', '_'), 'wb') 
+        json.dump(item, details_fh)
+        return True
 
 def main():
-    #co_bill = sunlight.openstates.bills(state='co')
-    #print json.dumps(co_bill)
-    #fh = open('co-bills.json', 'wb')
-    fh = open('co-bills.json', 'rb')
-    co_bill = json.load(fh)
-    for item in co_bill:
-        bill_details = sunlight.openstates.bill_detail('co', item['session'], item['bill_id'])
-        print bill_details 
-        details_fh = open('output/%s.json' % string.replace(item['bill_id'], ' ', '_'), 'wb') 
-        json.dump(item, details_fh)
+    s = Sunlight()
+    #fh = open('co-bills.json', 'rb')
+    #co_bill = json.load(fh)
+    #for item in co_bill:
     #json.dump(co_bill, fh)
     # We'll need to store the files we're writing somewhere, eventually.
     directory = os.path.dirname(os.path.realpath(__file__))
