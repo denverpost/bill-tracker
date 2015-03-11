@@ -27,6 +27,12 @@ class Sunlight:
         json.dump(bill_details, fh)
         return bill_details 
 
+    def load_template(self, template_type):
+        pass
+
+    def write_template(self):
+        pass
+
 def main():
     s = Sunlight()
     s.get_bill_list()
