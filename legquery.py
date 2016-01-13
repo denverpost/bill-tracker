@@ -22,6 +22,11 @@ class Sunlight:
         json.dump(self.bills, fh)
         return True
 
+    def get_session(self):
+        """ Return the current session.
+            """
+        return self.session
+
     def filter_bills_recent(self, limit = 10):
         """ Filter recent bills.
             """
@@ -37,6 +42,12 @@ class Sunlight:
 
 
 class BillTemplate(Template):
+
+    def set_session(self, value):
+        """ Set the object session value.
+            """
+        self.session = value
+        return value
 
     def write_template(self):
         """ The search-and-replaces specific to the legislative bill templates.
@@ -69,21 +80,41 @@ class BillTemplate(Template):
             """
         pass
 
+    def write_file(self):
+        """ Write the parsed contents of a template to a file.
+            """
+        self.slug = self.slug.replace('+', '_')
+        self.slug = self.slug.replace(' ', '_')
+        path = 'www/output/%s-%s.html' % ( self.data_type, self.slug )
+        if self.session && self.session != '':
+            path = 'www/output/%s/%s-%s.html' % ( self.session, self.data_type, self.slug )
+        f = open(path, 'wb')
+        f.write(self.output)
+        f.close()
+        return "Successfully written to %s" % path
+
 def main():
     s = Sunlight()
     s.get_bill_list()
+
+    # We'll need to store the files we're writing somewhere, eventually.
+    directory = os.path.dirname(os.path.realpath(__file__))
+    if not os.path.isdir('%s/www/output' % directory):
+        os.mkdir('%s/www/output' % directory)
+    session = s.get_session()
+    if not os.path.isdir('%s/www/output/%s' % (directory, session)):
+        os.mkdir('%s/www/output/%s' % (directory, session))
+
     bills = s.filter_bills_recent(1)
     for item in bills:
         details = s.get_bill_detail(item['bill_id'])
         t = BillTemplate(details, 'bill_detail')
         t.set_slug(item['bill_id'])
+        t.set_session(session)
         t.write_template()
         t.write_file()
         
-    # We'll need to store the files we're writing somewhere, eventually.
-    directory = os.path.dirname(os.path.realpath(__file__))
-    if not os.path.isdir('%s/output' % directory):
-        os.mkdir('%s/output' % directory)
+
 
 if __name__ == '__main__':
 	main()
