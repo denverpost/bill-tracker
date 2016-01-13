@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sunlight
 import json
-import os
+import os, sys
 import string
 
 class Sunlight:
@@ -9,13 +9,13 @@ class Sunlight:
     def __init__(self):
         """ Initialize the object.
             """
-        self.alert='hey'
+        self.state='co'
 
     def get_bill_list(self):
         """ Get list of bills.
             """
-        self.co_bill = sunlight.openstates.bills(state='co')
-        self.session = self.co_bill[0]['session']
+        self.bills = sunlight.openstates.bills(state=self.state)
+        self.session = self.bills[0]['session']
         fh = open('co-bills.json', 'wb')
         json.dump(self.co_bill, fh)
         return True
@@ -23,12 +23,12 @@ class Sunlight:
     def filter_bills_recent(self, limit = 10):
         """ Filter recent bills.
             """
-        return self.co_bill[:limit]
+        return self.bills[:limit]
  
     def get_bill_detail(self, bill_id):
         """ Get bill details for a single bill.
             """
-        bill_details = sunlight.openstates.bill_detail('co', self.session, bill_id)
+        bill_details = sunlight.openstates.bill_detail(self.state, self.session, bill_id)
         print bill_details 
         fh = open('output/%s.json' % string.replace(bill_id, ' ', '_'), 'wb') 
         json.dump(bill_details, fh)
