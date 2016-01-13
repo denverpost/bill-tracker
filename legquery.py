@@ -11,13 +11,13 @@ class Sunlight:
         """ Initialize the object.
             """
         self.state='co'
-        return True
 
     def get_bill_list(self):
         """ Get list of bills.
             """
         self.bills = sunlight.openstates.bills(state=self.state)
         self.session = self.bills[0]['session']
+        print "Session: %s" % self.session
         fh = open('%s-bills.json' % self.state, 'wb')
         json.dump(self.bills, fh)
         return True
@@ -31,7 +31,6 @@ class Sunlight:
         """ Get bill details for a single bill.
             """
         bill_details = sunlight.openstates.bill_detail(self.state, self.session, bill_id)
-        print bill_details 
         fh = open('output/%s.json' % string.replace(bill_id, ' ', '_'), 'wb') 
         json.dump(bill_details, fh)
         return bill_details 
@@ -40,7 +39,8 @@ class Sunlight:
 class BillTemplate(Template):
 
     def write_template(self):
-        """ Doco
+        """ The search-and-replaces specific to the legislative bill templates.
+            Inherits basic class methods from template.py.
             """
         # The template is loaded in the init method.
         if self.template == '':
@@ -72,9 +72,14 @@ class BillTemplate(Template):
 def main():
     s = Sunlight()
     s.get_bill_list()
-    bills = s.filter_bills_recent()
+    bills = s.filter_bills_recent(1)
     for item in bills:
         details = s.get_bill_detail(item['bill_id'])
+        t = BillTemplate(details, 'bill_detail')
+        t.set_slug(item['bill_id'])
+        t.write_template()
+        t.write_file()
+        
     # We'll need to store the files we're writing somewhere, eventually.
     directory = os.path.dirname(os.path.realpath(__file__))
     if not os.path.isdir('%s/output' % directory):

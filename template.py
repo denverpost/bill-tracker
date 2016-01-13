@@ -20,6 +20,24 @@ class Template:
             self.data_type = data_type
             self.load_template()
 
+    def set_slug(self, value):
+        """ Set the object slug value.
+            """
+        self.slug = value
+        return value
+
+    def set_data(self, value):
+        """ Set the object data value.
+            """
+        self.data = value
+        return value
+
+    def set_data_type(self, value):
+        """ Set the object data_type value.
+            """
+        self.data_type = value
+        return value
+
     def load_template(self, data_type=None):
         """ Populates template var, the template depends on the data_type.
             """
@@ -60,6 +78,7 @@ class Template:
         """ Write the parsed contents of a template to a file.
             """
         self.slug = self.slug.replace('+', '_')
+        self.slug = self.slug.replace(' ', '_')
         path = 'www/output/%s-%s.html' % ( self.data_type, self.slug )
         f = open(path, 'wb')
         f.write(self.output)
