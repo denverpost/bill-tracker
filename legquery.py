@@ -60,22 +60,34 @@ class BillTemplate(Template):
 
         if self.data_type == 'index':
             output = self.write_index(output)
-        elif self.data_type == 'detail':
-            output = self.write_detail(output)
+        elif self.data_type == 'bill_detail':
+            output = self.write_bill_detail(output)
 
         # These replacements hold true for all templates
         #output = string.replace(output, '{{location}}', string.replace(self.location, '+', ' '))
         #output = string.replace(output, '{{slug}}', self.slug)
 
-        self.output = output
-        return output
+        page = self.read_file('html/base.html')
+        template = string.replace(page, '{{content}}', output)
+        template = string.replace(template, '{{url}}', string.replace(self.metadata['url'], '+', '_'))
+        template = string.replace(template, '{{title}}', self.metadata['title'])
+        template = string.replace(template, '{{description}}', self.metadata['description'])
+        template = string.replace(template, '{{year}}', self.metadata['year'])
+        template = string.replace(template, '{{month}}', self.metadata['month'].title())
+        template = string.replace(template, '{{s}}', self.metadata['s'])
+        template = string.replace(template, '{{breadcrumb_one}}', self.metadata['breadcrumb_one'])
+        template = string.replace(template, '{{breadcrumb_two}}', self.metadata['breadcrumb_two'])
+        template = string.replace(template, '{{breadcrumb_three}}', self.metadata['breadcrumb_three'])
+
+        self.output = template
+        return template
 
     def write_index(self, output):
         """ Handle writing the index page.
             """
         pass
 
-    def write_detail(self, output):
+    def write_bill_detail(self, output):
         """ Handle writing the bill detail page.
             """
         pass
@@ -109,6 +121,21 @@ def main():
     for item in bills:
         details = s.get_bill_detail(item['bill_id'])
         t = BillTemplate(details, 'bill_detail')
+        metadata = {
+            's': '',
+            'year': '',
+            'months': '',
+            'month': '',
+            'days': '',
+            'location': '',
+            'url': 'http://extras.denverpost.com/app/bill-tracker/',
+            'title': '',
+            'breadcrumb_one': '',
+            'breadcrumb_two': '',
+            'breadcrumb_three': '',
+            'description': ''
+        }
+        t.set_metadata(metadata)
         t.set_slug(item['bill_id'])
         t.set_session(session)
         t.write_template()

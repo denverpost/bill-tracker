@@ -26,6 +26,12 @@ class Template:
         self.slug = value
         return value
 
+    def set_metadata(self, value):
+        """ Set the object metadata dict.
+            """
+        self.metadata = value
+        return value
+
     def set_data(self, value):
         """ Set the object data value.
             """
@@ -37,6 +43,14 @@ class Template:
             """
         self.data_type = value
         return value
+
+    def read_file(self, fn):
+        """ Read the contents of a file.
+            """
+        f = open(fn, 'rb')
+        content = f.read()
+        f.close()
+        return content
 
     def load_template(self, data_type=None):
         """ Populates template var, the template depends on the data_type.
