@@ -11,14 +11,15 @@ class Sunlight:
         """ Initialize the object.
             """
         self.state='co'
+        return True
 
     def get_bill_list(self):
         """ Get list of bills.
             """
         self.bills = sunlight.openstates.bills(state=self.state)
         self.session = self.bills[0]['session']
-        fh = open('co-bills.json', 'wb')
-        json.dump(self.co_bill, fh)
+        fh = open('%s-bills.json' % self.state, 'wb')
+        json.dump(self.bills, fh)
         return True
 
     def filter_bills_recent(self, limit = 10):
