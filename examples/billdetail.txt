@@ -1,0 +1,277 @@
+{
+    u 'votes': [{
+        u 'other_count': 1, u 'other_votes': [{
+            u 'leg_id': None, u 'name': u 'Buckner'
+        }], u 'yes_count': 62, u 'yes_votes': [{
+            u 'leg_id': u 'COL000188', u 'name': u 'Ransom'
+        }, {
+            u 'leg_id': u 'COL000091', u 'name': u 'DelGrosso'
+        }, {
+            u 'leg_id': u 'COL000116', u 'name': u 'Wilson'
+        }, {
+            u 'leg_id': u 'COL000193', u 'name': u 'Windholz'
+        }, {
+            u 'leg_id': u 'COL000198', u 'name': u 'Sias'
+        }, {
+            u 'leg_id': u 'COL000169', u 'name': u 'Winter'
+        }, {
+            u 'leg_id': u 'COL000118', u 'name': u 'Saine'
+        }, {
+            u 'leg_id': u 'COL000165', u 'name': u 'Tate'
+        }, {
+            u 'leg_id': u 'COL000124', u 'name': u 'Landgraf'
+        }, {
+            u 'leg_id': u 'COL000166', u 'name': u 'Keyser'
+        }, {
+            u 'leg_id': u 'COL000100', u 'name': u 'Young'
+        }, {
+            u 'leg_id': u 'COL000130', u 'name': u 'Rosenthal'
+        }, {
+            u 'leg_id': None, u 'name': u 'Bush'
+        }, {
+            u 'leg_id': u 'COL000054', u 'name': u 'Tyler'
+        }, {
+            u 'leg_id': None, u 'name': u 'Speaker'
+        }, {
+            u 'leg_id': u 'COL000133', u 'name': u 'Lebsock'
+        }, {
+            u 'leg_id': u 'COL000065', u 'name': u 'Kagan'
+        }, {
+            u 'leg_id': u 'COL000070', u 'name': u 'Court'
+        }, {
+            u 'leg_id': u 'COL000189', u 'name': u 'Lundeen'
+        }, {
+            u 'leg_id': None, u 'name': u 'Winkle'
+        }, {
+            u 'leg_id': u 'COL000069', u 'name': u 'Williams'
+        }, {
+            u 'leg_id': u 'COL000077', u 'name': u 'Brown'
+        }, {
+            u 'leg_id': u 'COL000143', u 'name': u 'Ginal'
+        }, {
+            u 'leg_id': u 'COL000171', u 'name': u 'Becker J.'
+        }, {
+            u 'leg_id': u 'COL000132', u 'name': u 'Lawrence'
+        }, {
+            u 'leg_id': u 'COL000125', u 'name': u 'Everett'
+        }, {
+            u 'leg_id': u 'COL000090', u 'name': u 'Hamner'
+        }, {
+            u 'leg_id': u 'COL000119', u 'name': u 'Dore'
+        }, {
+            u 'leg_id': u 'COL000175', u 'name': u 'Neville P.'
+        }, {
+            u 'leg_id': u 'COL000072', u 'name': u 'McCann'
+        }, {
+            u 'leg_id': u 'COL000114', u 'name': u 'Pettersen'
+        }, {
+            u 'leg_id': u 'COL000042', u 'name': u 'Vigil'
+        }, {
+            u 'leg_id': u 'COL000036', u 'name': u 'Priola'
+        }, {
+            u 'leg_id': u 'COL000163', u 'name': u 'Lontine'
+        }, {
+            u 'leg_id': u 'COL000068', u 'name': u 'Pabon'
+        }, {
+            u 'leg_id': u 'COL000131', u 'name': u 'Buck'
+        }, {
+            u 'leg_id': u 'COL000135', u 'name': u 'Singer'
+        }, {
+            u 'leg_id': u 'COL000183', u 'name': u 'Danielson'
+        }, {
+            u 'leg_id': u 'COL000168', u 'name': u 'Arndt'
+        }, {
+            u 'leg_id': u 'COL000059', u 'name': u 'Fields'
+        }, {
+            u 'leg_id': u 'COL000078', u 'name': u 'Coram'
+        }, {
+            u 'leg_id': u 'COL000076', u 'name': u 'Conti'
+        }, {
+            u 'leg_id': u 'COL000187', u 'name': u 'Thurlow'
+        }, {
+            u 'leg_id': u 'COL000127', u 'name': u 'Navarro'
+        }, {
+            u 'leg_id': u 'COL000092', u 'name': u 'Ryden'
+        }, {
+            u 'leg_id': u 'COL000120', u 'name': u 'Moreno'
+        }, {
+            u 'leg_id': u 'COL000179', u 'name': u 'Willett'
+        }, {
+            u 'leg_id': u 'COL000141', u 'name': u 'Salazar'
+        }, {
+            u 'leg_id': u 'COL000146', u 'name': u 'Humphrey'
+        }, {
+            u 'leg_id': None, u 'name': u 'Tharp'
+        }, {
+            u 'leg_id': u 'COL000088', u 'name': u 'Lee'
+        }, {
+            u 'leg_id': u 'COL000167', u 'name': u 'Becker K.'
+        }, {
+            u 'leg_id': u 'COL000184', u 'name': u 'Carver'
+        }, {
+            u 'leg_id': u 'COL000137', u 'name': u 'Nordberg'
+        }, {
+            u 'leg_id': u 'COL000180', u 'name': u 'Klingenschmitt'
+        }, {
+            u 'leg_id': u 'COL000191', u 'name': u 'Esgar'
+        }, {
+            u 'leg_id': u 'COL000084', u 'name': u 'Joshi'
+        }, {
+            u 'leg_id': u 'COL000170', u 'name': u 'Roupe'
+        }, {
+            u 'leg_id': u 'COL000136', u 'name': u 'Foote'
+        }, {
+            u 'leg_id': u 'COL000129', u 'name': u 'Melton'
+        }, {
+            u 'leg_id': u 'COL000164', u 'name': u 'Garnett'
+        }, {
+            u 'leg_id': u 'COL000067', u 'name': u 'Duran'
+        }], u 'bill_chamber': u 'lower', u 'no_count': 2, u 'motion': u 'The question being "Shall the bill pass?". A roll call vote was taken. As shown by the following recorded vote, a majority of those elected to the House voted in the affirmative and the bill was declared passed.', u 'chamber': u 'lower', u 'state': u 'co', u 'session': u '2015A', u 'sources': [{
+            u 'url': u 'http://www.leg.state.co.us/CLICS/CLICS2015A/csljournals.nsf/(jouhse)/3F654331138F4A6A87257E34005974A8/$FILE/Ap27.pdf'
+        }, {
+            u 'url': u 'http://www.leg.state.co.us/CLICS/CLICS2015A/csljournals.nsf/jouNav?Openform&House'
+        }], u 'passed': True, u 'date': u '2015-04-27 00:00:00', u 'vote_id': u 'COV00011736', u 'type': u 'other', u 'id': u 'COV00011736', u 'bill_id': u 'COB00003478', u 'no_votes': [{
+            u 'leg_id': u 'COL000147', u 'name': u 'Rankin'
+        }, {
+            u 'leg_id': u 'COL000144', u 'name': u 'Primavera'
+        }]
+    }, {
+        u 'other_count': 0, u 'other_votes': [], u 'yes_count': 35, u 'yes_votes': [{
+            u 'leg_id': u 'COL000002', u 'name': u 'Hodge'
+        }, {
+            u 'leg_id': None, u 'name': u 'Humenik'
+        }, {
+            u 'leg_id': u 'COL000107', u 'name': u 'Hill'
+        }, {
+            u 'leg_id': u 'COL000094', u 'name': u 'Kefalas'
+        }, {
+            u 'leg_id': u 'COL000013', u 'name': u 'Grantham'
+        }, {
+            u 'leg_id': u 'COL000018', u 'name': u 'Lambert'
+        }, {
+            u 'leg_id': u 'COL000192', u 'name': u 'Merrifield'
+        }, {
+            u 'leg_id': u 'COL000003', u 'name': u 'Newell'
+        }, {
+            u 'leg_id': u 'COL000194', u 'name': u 'Neville T.'
+        }, {
+            u 'leg_id': None, u 'name': u 'President'
+        }, {
+            u 'leg_id': u 'COL000015', u 'name': u 'Scheffel'
+        }, {
+            u 'leg_id': u 'COL000082', u 'name': u 'Jones'
+        }, {
+            u 'leg_id': u 'COL000024', u 'name': u 'Lundberg'
+        }, {
+            u 'leg_id': u 'COL000035', u 'name': u 'Aguilar'
+        }, {
+            u 'leg_id': u 'COL000148', u 'name': u 'Kerr'
+        }, {
+            u 'leg_id': u 'COL000029', u 'name': u 'Heath'
+        }, {
+            u 'leg_id': u 'COL000017', u 'name': u 'Roberts'
+        }, {
+            u 'leg_id': u 'COL000111', u 'name': u 'Crowder'
+        }, {
+            u 'leg_id': u 'COL000186', u 'name': u 'Donovan'
+        }, {
+            u 'leg_id': u 'COL000185', u 'name': u 'Cooke'
+        }, {
+            u 'leg_id': u 'COL000030', u 'name': u 'Steadman'
+        }, {
+            u 'leg_id': u 'COL000034', u 'name': u 'Johnston'
+        }, {
+            u 'leg_id': u 'COL000104', u 'name': u 'Marble'
+        }, {
+            u 'leg_id': u 'COL000045', u 'name': u 'Sonnenberg'
+        }, {
+            u 'leg_id': u 'COL000102', u 'name': u 'Ulibarri'
+        }, {
+            u 'leg_id': u 'COL000182', u 'name': u 'Garcia'
+        }, {
+            u 'leg_id': u 'COL000010', u 'name': u 'Carroll'
+        }, {
+            u 'leg_id': u 'COL000033', u 'name': u 'Guzman'
+        }, {
+            u 'leg_id': u 'COL000074', u 'name': u 'Balmer'
+        }, {
+            u 'leg_id': u 'COL000190', u 'name': u 'Woods'
+        }, {
+            u 'leg_id': u 'COL000037', u 'name': u 'Scott'
+        }, {
+            u 'leg_id': u 'COL000099', u 'name': u 'Baumgardner'
+        }, {
+            u 'leg_id': u 'COL000062', u 'name': u 'Todd'
+        }, {
+            u 'leg_id': u 'COL000057', u 'name': u 'Holbert'
+        }, {
+            u 'leg_id': u 'COL000005', u 'name': u 'Jahn'
+        }], u 'bill_chamber': u 'lower', u 'no_count': 0, u 'motion': u 'The question being "Shall the bill pass?", the roll call was taken with the following result:', u 'chamber': u 'upper', u 'state': u 'co', u 'session': u '2015A', u 'sources': [{
+            u 'url': u 'http://www.leg.state.co.us/CLICS/CLICS2015A/csljournals.nsf/(jousen)/D1B1D096D203244D87257E3B004BEC6E/$FILE/jour_118.pdf'
+        }], u 'passed': True, u 'date': u '2015-05-04 00:00:00', u 'vote_id': u 'COV00012847', u 'type': u 'other', u 'id': u 'COV00012847', u 'bill_id': u 'COB00003478', u 'no_votes': []
+    }], u 'documents': [], u 'title': u 'Low-speed Electric Three-wheel Motorcycle', u 'alternate_titles': [], u 'created_at': u '2015-04-10 20:20:50', u 'companions': [], u 'all_ids': [u 'COB00003478'], u 'actions': [{
+        u 'date': u '2015-04-09 00:00:00', u 'action': u 'Introduced In House - Assigned to Transportation & Energy', u 'type': [u 'bill:introduced'], u 'related_entities': [{
+            u 'type': u 'committee', u 'name': u 'Transportation & Energy', u 'id': u 'COC000123'
+        }], u 'actor': u 'lower'
+    }, {
+        u 'date': u '2015-04-22 00:00:00', u 'action': u 'House Committee on Transportation & Energy Refer Unamended to House Committee of the Whole', u 'type': [u 'committee:referred'], u 'related_entities': [{
+            u 'type': u 'committee', u 'name': u 'House Committee of the Whole', u 'id': None
+        }, {
+            u 'type': u 'committee', u 'name': u 'Transportation & Energy', u 'id': u 'COC000123'
+        }], u 'actor': u 'lower'
+    }, {
+        u 'date': u '2015-04-23 00:00:00', u 'action': u 'House Second Reading Special Order - Passed - No Amendments', u 'type': [u 'other'], u 'related_entities': [], u 'actor': u 'lower'
+    }, {
+        u 'date': u '2015-04-24 00:00:00', u 'action': u 'House Third Reading Laid Over to 04/27/2015 - No Amendments', u 'type': [u 'other'], u 'related_entities': [], u 'actor': u 'lower'
+    }, {
+        u 'related_entities': [], u 'actor': u 'lower', u 'action': u 'House Third Reading Passed - No Amendments', u 'date': u '2015-04-27 00:00:00', u 'type': [u 'bill:passed', u 'bill:reading:3'], u 'related_votes': [u 'COV00011736']
+    }, {
+        u 'date': u '2015-04-27 00:00:00', u 'action': u 'Introduced In Senate - Assigned to Transportation', u 'type': [u 'bill:introduced'], u 'related_entities': [{
+            u 'type': u 'committee', u 'name': u 'Transportation', u 'id': None
+        }], u 'actor': u 'lower'
+    }, {
+        u 'date': u '2015-04-30 00:00:00', u 'action': u 'Senate Committee on Transportation Refer Unamended - Consent Calendar to Senate Committee of the Whole', u 'type': [u 'other'], u 'related_entities': [{
+            u 'type': u 'committee', u 'name': u 'Transportation', u 'id': u 'COC000136'
+        }], u 'actor': u 'upper'
+    }, {
+        u 'date': u '2015-05-01 00:00:00', u 'action': u 'Senate Second Reading Special Order - Passed - No Amendments', u 'type': [u 'other'], u 'related_entities': [], u 'actor': u 'upper'
+    }, {
+        u 'related_entities': [], u 'actor': u 'upper', u 'action': u 'Senate Third Reading Passed - No Amendments', u 'date': u '2015-05-04 00:00:00', u 'type': [u 'bill:passed', u 'bill:reading:3'], u 'related_votes': [u 'COV00012847']
+    }, {
+        u 'date': u '2015-05-14 00:00:00', u 'action': u 'Signed by the Speaker of the House', u 'type': [u 'other'], u 'related_entities': [], u 'actor': u 'lower'
+    }, {
+        u 'date': u '2015-05-18 00:00:00', u 'action': u 'Signed by the President of the Senate', u 'type': [u 'other'], u 'related_entities': [], u 'actor': u 'lower'
+    }, {
+        u 'date': u '2015-05-18 00:00:00', u 'action': u 'Sent to the Governor', u 'type': [u 'governor:received'], u 'related_entities': [], u 'actor': u 'lower'
+    }, {
+        u 'date': u '2015-06-05 00:00:00', u 'action': u 'Governor Signed', u 'type': [u 'governor:signed'], u 'related_entities': [], u 'actor': u 'governor'
+    }], u 'sponsors': [{
+        u 'leg_id': u 'COL000130', u 'type': u 'primary', u 'name': u 'ROSENTHAL'
+    }, {
+        u 'leg_id': u 'COL000194', u 'type': u 'primary', u 'name': u 'NEVILLE T.'
+    }], u 'updated_at': u '2015-08-01 01:14:49', u 'sources': [{
+        u 'url': u 'http://www.leg.state.co.us/CLICS/CLICS2015A/csl.nsf/(bf-3)?OpenView&Count=20000000'
+    }, {
+        u 'url': u 'http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont/D87021CCAD9A252687257E050052BA69?Open&target=/clics/clics2015a/csl.nsf/billsummary/0FFBE59D54FCD72C87257E0400767750?opendocument'
+    }], u 'state': u 'co', u 'session': u '2015A', u 'action_dates': {
+        u 'passed_upper': u '2015-05-04 00:00:00', u 'passed_lower': u '2015-04-27 00:00:00', u 'last': u '2015-06-05 00:00:00', u 'signed': u '2015-06-05 00:00:00', u 'first': u '2015-04-09 00:00:00'
+    }, u 'chamber': u 'lower', u 'versions': [{
+        u 'mimetype': u 'application/pdf', u 'url': u 'http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont2/d87021ccad9a252687257e050052ba69?OpenDocument&Click=87257CD0007022B3.8975551e51fa01d087256dd30080e1d5/$Body/0.371C', u 'doc_id': u 'COD00023998', u 'name': u 'Current PDF Document'
+    }, {
+        u 'mimetype': u 'application/pdf', u 'url': u 'http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont2/d87021ccad9a252687257e050052ba69?OpenDocument&Click=87257CD0007022B3.8975551e51fa01d087256dd30080e1d5/$Body/0.40C4', u 'doc_id': u 'COD00023999', u 'name': u '1345_01.pdf'
+    }, {
+        u 'mimetype': u 'application/pdf', u 'url': u 'http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont2/d87021ccad9a252687257e050052ba69?OpenDocument&Click=87257CD0007022B3.8975551e51fa01d087256dd30080e1d5/$Body/0.4A4A', u 'doc_id': u 'COD00024828', u 'name': u '1345_eng.pdf'
+    }, {
+        u 'mimetype': u 'application/pdf', u 'url': u 'http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont2/d87021ccad9a252687257e050052ba69?OpenDocument&Click=87257CD0007022B3.8975551e51fa01d087256dd30080e1d5/$Body/0.655C', u 'doc_id': u 'COD00024829', u 'name': u '1345_ren.pdf'
+    }, {
+        u 'mimetype': u 'application/pdf', u 'url': u 'http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont2/d87021ccad9a252687257e050052ba69?OpenDocument&Click=87257CD0007022B3.8975551e51fa01d087256dd30080e1d5/$Body/0.8170', u 'doc_id': u 'COD00024830', u 'name': u '1345_upd.pdf'
+    }, {
+        u 'mimetype': u 'application/pdf', u 'url': u 'http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont2/d87021ccad9a252687257e050052ba69?OpenDocument&Click=87257CD0007022B3.8975551e51fa01d087256dd30080e1d5/$Body/0.8B96', u 'doc_id': u 'COD00025249', u 'name': u '1345_rev.pdf'
+    }, {
+        u 'mimetype': u 'application/pdf', u 'url': u 'http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont2/d87021ccad9a252687257e050052ba69?OpenDocument&Click=87257CD0007022B3.8975551e51fa01d087256dd30080e1d5/$Body/0.A6C4', u 'doc_id': u 'COD00025409', u 'name': u '1345_rer.pdf'
+    }, {
+        u 'mimetype': u 'application/pdf', u 'url': u 'http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont2/d87021ccad9a252687257e050052ba69?OpenDocument&Click=87257CD0007022B3.8975551e51fa01d087256dd30080e1d5/$Body/1.13D8', u 'doc_id': u 'COD00025821', u 'name': u '1345_enr.pdf'
+    }, {
+        u 'mimetype': u 'application/pdf', u 'url': u 'http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont2/d87021ccad9a252687257e050052ba69?OpenDocument&Click=87257CD0007022B3.8975551e51fa01d087256dd30080e1d5/$Body/1.1DAA', u 'doc_id': u 'COD00025822', u 'name': u '1345_enr.pdf'
+    }], u 'subjects': [], u 'type': [u 'bill'], u 'id': u 'COB00003478', u 'bill_id': u 'HB 15-1345'
+}

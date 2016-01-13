@@ -10,6 +10,7 @@ class Sunlight:
         """ Initialize the object.
             """
         self.alert='hey'
+
     def get_bill_list(self):
         """ Get list of bills.
             """
