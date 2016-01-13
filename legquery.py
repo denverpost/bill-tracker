@@ -3,6 +3,7 @@ import sunlight
 import json
 import os, sys
 import string
+from template import Template
 
 class Sunlight:
 
@@ -35,20 +36,10 @@ class Sunlight:
         return bill_details 
 
 
-class Template:
-
-    def __init__(self):
-        """ Initialize the object.
-            """
-        pass
-
-    def load_template(self, template_type):
-        """ 
-            """
-        pass
+class BillTemplate(Template):
 
     def write_template(self):
-        """ 
+        """ Doco
             """
         pass
 
