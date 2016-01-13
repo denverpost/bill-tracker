@@ -8,6 +8,8 @@ import argparse
 from datetime import date, timedelta
 
 class Template:
+    """ A vanilla class for sticking data into markup.
+        """
 
     def __init__(self, data, data_type=None):
         """ Initialize the object.

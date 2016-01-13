@@ -41,6 +41,31 @@ class BillTemplate(Template):
     def write_template(self):
         """ Doco
             """
+        # The template is loaded in the init method.
+        if self.template == '':
+            raise ValueError("template var must exist and be something.")
+        output = self.template
+
+        if self.data_type == 'index':
+            output = self.write_index(output)
+        elif self.data_type == 'detail':
+            output = self.write_detail(output)
+
+        # These replacements hold true for all templates
+        #output = string.replace(output, '{{location}}', string.replace(self.location, '+', ' '))
+        #output = string.replace(output, '{{slug}}', self.slug)
+
+        self.output = output
+        return output
+
+    def write_index(self, output):
+        """ Handle writing the index page.
+            """
+        pass
+
+    def write_detail(self, output):
+        """ Handle writing the bill detail page.
+            """
         pass
 
 def main():
