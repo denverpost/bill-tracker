@@ -5,10 +5,14 @@ import os
 import string
 
 class Sunlight:
+
     def __init__(self):
+        """ Initialize the object.
+            """
         self.alert='hey'
     def get_bill_list(self):
-        """ Get list of bills. """
+        """ Get list of bills.
+            """
         self.co_bill = sunlight.openstates.bills(state='co')
         self.session = self.co_bill[0]['session']
         fh = open('co-bills.json', 'wb')
@@ -16,21 +20,35 @@ class Sunlight:
         return True
 
     def filter_bills_recent(self, limit = 10):
-        """ Filter recent bills """
+        """ Filter recent bills.
+            """
         return self.co_bill[:limit]
  
     def get_bill_detail(self, bill_id):
-        """ Get bill details for a single bill. """
+        """ Get bill details for a single bill.
+            """
         bill_details = sunlight.openstates.bill_detail('co', self.session, bill_id)
         print bill_details 
         fh = open('output/%s.json' % string.replace(bill_id, ' ', '_'), 'wb') 
         json.dump(bill_details, fh)
         return bill_details 
 
+
+class Template:
+
+    def __init__(self):
+        """ Initialize the object.
+            """
+        pass
+
     def load_template(self, template_type):
+        """ 
+            """
         pass
 
     def write_template(self):
+        """ 
+            """
         pass
 
 def main():
