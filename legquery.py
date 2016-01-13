@@ -86,7 +86,7 @@ class BillTemplate(Template):
         self.slug = self.slug.replace('+', '_')
         self.slug = self.slug.replace(' ', '_')
         path = 'www/output/%s-%s.html' % ( self.data_type, self.slug )
-        if self.session && self.session != '':
+        if self.session and self.session != '':
             path = 'www/output/%s/%s-%s.html' % ( self.session, self.data_type, self.slug )
         f = open(path, 'wb')
         f.write(self.output)
