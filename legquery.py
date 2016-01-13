@@ -85,12 +85,14 @@ class BillTemplate(Template):
     def write_index(self, output):
         """ Handle writing the index page.
             """
-        pass
+        return ''
 
     def write_bill_detail(self, output):
         """ Handle writing the bill detail page.
             """
-        pass
+        print self.data
+        output = string.replace(output, '{{title}}', self.data['title'])
+        return output
 
     def write_file(self):
         """ Write the parsed contents of a template to a file.
