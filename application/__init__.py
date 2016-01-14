@@ -7,6 +7,8 @@ from flask_flatpages import FlatPages
 app = Flask(__name__)
 app.debug = True
 
+# This dict is called on every .html document.
+# We initialize it here in case all the fields aren't defined by the view method.
 page = {
     'title': '',
     'url': '',
@@ -16,7 +18,7 @@ page = {
 pages = FlatPages(app)
 with app.app_context():
     app.page = page
-    app.sessions = ['2015A']
+    app.sessions = ['2015A'] #***HC
 
 import application.flatpage
 import application.bills

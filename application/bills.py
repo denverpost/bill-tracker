@@ -40,10 +40,17 @@ def session_index():
     return render_template('session_index.html', response=response)
 
 @app.route('/bills/<session>/')
-def session_detail():
-    app.page['title'] = ''
+def session_detail(session):
+    if session not in app.sessions:
+        abort(404)
+    app.page['title'] = 'Session: %s' % session
     app.page['description'] = ''
+    data = {
+        'bills': json.load(json_check('_input/co-bills-%s.json' % session))
+    }
     response = {
         'app': app,
+        'session': session,
+        'data': data
     }
     return render_template('session_detail.html', response=response)
