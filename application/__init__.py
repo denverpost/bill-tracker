@@ -16,6 +16,7 @@ page = {
 pages = FlatPages(app)
 with app.app_context():
     app.page = page
+    app.sessions = ['2015A']
 
 import application.flatpage
 import application.bills

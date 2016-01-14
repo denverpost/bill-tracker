@@ -23,19 +23,18 @@ def json_check(fn):
 
 @app.route('/')
 def index():
-    data = {}
     app.page['title'] = 'Bill Tracker'
     app.page['description'] = 'Tracking legislation in Colorado\'s state house.'
     response = {
-        'page': app.page,
         'app': app,
-        'data': data
     }
     return render_template('home.html', response=response)
 
-@app.route('/neighborhood/')
+@app.route('/bills/')
 def bills_index():
+    app.page['title'] = 'Bill Tracker'
+    app.page['description'] = 'An index of Colorado legislative sessions we have bills for.'
     response = {
-        #'dicts': app.dicts
+        'app': app,
     }
-    return render_template('bills_index.html', response=response)
+    return render_template('bill_index.html', response=response)
