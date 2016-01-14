@@ -31,10 +31,19 @@ def index():
     return render_template('home.html', response=response)
 
 @app.route('/bills/')
-def bills_index():
-    app.page['title'] = 'Bill Tracker'
+def session_index():
+    app.page['title'] = 'Sessions'
     app.page['description'] = 'An index of Colorado legislative sessions we have bills for.'
     response = {
         'app': app,
     }
-    return render_template('bill_index.html', response=response)
+    return render_template('session_index.html', response=response)
+
+@app.route('/bills/<session>/')
+def session_detail():
+    app.page['title'] = ''
+    app.page['description'] = ''
+    response = {
+        'app': app,
+    }
+    return render_template('session_detail.html', response=response)
