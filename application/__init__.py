@@ -12,3 +12,4 @@ with app.app_context():
     app.var = 'aha'
 
 import application.flatpage
+import application.bills
