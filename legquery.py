@@ -3,7 +3,6 @@ import sunlight
 import json
 import os, sys
 import string
-from template import Template
 
 class Sunlight:
 
