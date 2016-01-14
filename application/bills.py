@@ -60,7 +60,7 @@ def bill_detail(session, bill_id):
     if session not in app.sessions:
         abort(404)
     data = {
-        'bill': json.load(json_check('_input/%s.json' % bill_id.upper()))
+        'bill': json.load(json_check('_input/%s/%s.json' % (session, bill_id.upper())))
     }
     if 'title' not in data['bill']:
         abort(404)

@@ -18,7 +18,7 @@ page = {
 pages = FlatPages(app)
 with app.app_context():
     app.page = page
-    app.sessions = ['2015A'] #***HC
+    app.sessions = ['2015a'] #***HC
 
 import application.flatpage
 import application.bills
