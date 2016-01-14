@@ -8,6 +8,8 @@ Let's publish Colorado State bills.
 # How to use this
 legquery.py expects an environment variable named `NAME_OF_VAR` set with your sunlight foundation API key in it. You can get a key at http://sunlightfoundation.com/api/accounts/register/
 
+About the Sunlight API: https://sunlightlabs.github.io/openstates-api/bills.html
+
 # License
 Copyright © 2015-2016 The Denver Post
 

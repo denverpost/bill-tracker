@@ -10,6 +10,7 @@ class Sunlight:
         """ Initialize the object.
             """
         self.state='co'
+        self.directory = os.path.dirname(os.path.realpath(__file__))
 
     def get_bill_list(self):
         """ Get list of bills.
@@ -34,6 +35,8 @@ class Sunlight:
     def get_bill_detail(self, bill_id):
         """ Get bill details for a single bill.
             """
+        if not os.path.isdir('%s/_input/%s' % (self.directory, self.session)):
+            os.mkdir('%s/_input/%s' % (self.directory, self.session))
         bill_details = sunlight.openstates.bill_detail(self.state, self.session.upper(), bill_id)
         fh = open('_input/%s/%s.json' % (self.session, string.replace(bill_id.lower(), ' ', '_')), 'wb')
         json.dump(bill_details, fh)
@@ -48,13 +51,18 @@ def main():
     directory = os.path.dirname(os.path.realpath(__file__))
     if not os.path.isdir('%s/_input' % directory):
         os.mkdir('%s/_input' % directory)
-    session = s.get_session()
-    if not os.path.isdir('%s/_input/%s' % (directory, session)):
-        os.mkdir('%s/_input/%s' % (directory, session))
 
-    bills = s.filter_bills_recent(1000)
+    bills = s.filter_bills_recent(10)
+    i = 0
     for item in bills:
-        details = s.get_bill_detail(item['bill_id'])
+        i += 1
+        print i, item['bill_id']
+        try:
+            details = s.get_bill_detail(item['bill_id'])
+        except:
+            print item['session']
+            s.session = item['session'].lower()
+            details = s.get_bill_detail(item['bill_id'])
 
 
 if __name__ == '__main__':
