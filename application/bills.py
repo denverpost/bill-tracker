@@ -54,3 +54,21 @@ def session_detail(session):
         'data': data
     }
     return render_template('session_detail.html', response=response)
+
+@app.route('/bills/<session>/<bill_id>/')
+def bill_detail(session, bill_id):
+    if session not in app.sessions:
+        abort(404)
+    data = {
+        'bill': json.load(json_check('_input/%s.json' % bill_id.upper()))
+    }
+    if 'title' not in data['bill']:
+        abort(404)
+    app.page['title'] = data['bill']['title']
+    app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )
+    response = {
+        'app': app,
+        'session': session,
+        'data': data
+    }
+    return render_template('bill_detail.html', response=response)

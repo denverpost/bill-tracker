@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block style %}{% endblock style %}
-{% block breadcrumbs %}{{ super() }}{% endblock breadcrumbs %}
+{% block breadcrumbs %}{{ super() }}
+&rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
+&rsaquo; <a href="../../">Sessions</a>
+&rsaquo; <a href="../">{{response.session}}</a>{% endblock breadcrumbs %}
 {% block content %}
-Hello world.
-<h2>{{title}}</h2>
-<h3>{{created_at}}</h3>
-<h3>{{updated_at}}</h3>
-<h3>{{chamber}}</h3>
 
 {% endblock content %}
