@@ -7,9 +7,15 @@ from flask_flatpages import FlatPages
 app = Flask(__name__)
 app.debug = True
 
+page = {
+    'title': '',
+    'url': '',
+    'description': ''
+}
+
 pages = FlatPages(app)
 with app.app_context():
-    app.var = 'aha'
+    app.page = page
 
 import application.flatpage
 import application.bills

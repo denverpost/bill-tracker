@@ -4,24 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>{{title}}</title>
+    <title>{{response.page.title}}</title>
 
-    <link rel="canonical" href="{{url}}" />
+    <link rel="canonical" href="{{response.page.url}}" />
     <link rel="shortcut icon" href="http://extras.mnginteractive.com/live/media/favIcon/dpo/favicon.ico" type="image/x-icon" />
 
     <meta name="distribution" content="global" />
     <meta name="robots" content="index" />
-    <meta name="title" content="{{title}}" />
+    <meta name="title" content="{{response.page.title}}" />
     <meta name="language" content="en, sv" />
     <meta name="Copyright" content="Copyright &copy; The Denver Post." />
 
-    <meta name="description" content="{{description}}">
-    <meta name="news_keywords" content="{{location}}, Colorado, Weather, Historical">
+    <meta name="description" content="{{response.page.description}}">
+    <meta name="news_keywords" content="">
 
     <meta name="twitter:card" value="summary" />
-    <meta name="twitter:url" value="{{url}}" />
-    <meta name="twitter:title" value="{{title}}" />
-    <meta name="twitter:description" value="{{description}}" />
+    <meta name="twitter:url" value="{{response.page.url}}" />
+    <meta name="twitter:title" value="{{response.page.title}}" />
+    <meta name="twitter:description" value="{{response.page.description}}" />
     <meta name="twitter:image" value="http://local.denverpost.com/common/dfm/assets/logos/1200x627/denverpost.png" />
     <meta name="twitter:site" value="@denverpost" />
     <meta name="twitter:domain" value="denverpost.com" />
@@ -34,20 +34,16 @@
     <meta name="twitter:app:id:googleplay" value="com.ap.denverpost" />
 
     <meta property="fb:app_id" content="105517551922"/>
-    <meta property="og:title" content="{{title}}" />
+    <meta property="og:title" content="{{response.page.title}}" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{url}}" />
+    <meta property="og:url" content="{{response.page.url}}" />
     <meta property="og:image" content="http://local.denverpost.com/common/dfm/assets/logos/1200x627/denverpost.png" />
     <meta property="og:site_name" content="The Denver Post" />
-    <meta property="og:description" content="{{description}}" />
+    <meta property="og:description" content="{{response.page.description}}" />
     <meta property="article:publisher" content="https://www.facebook.com/denverpost" />
 
     <meta name="google-site-verification" content="2bKNvyyGh6DUlOvH1PYsmKN4KRlb-0ZI7TvFtuKLeAc" />
 
-<!--
-    <link href="http://extras.denverpost.com/app/mapgame/normalize.css" type="text/css" rel="stylesheet">
-    <link href="http://extras.denverpost.com/weather/style.css" type="text/css" rel="stylesheet">
--->
     <link rel="stylesheet" type="text/css" href="http://extras.mnginteractive.com/live/css/site67/bartertown.css">
     <style type="text/css">
         @media only screen and (max-width:650px) {
@@ -146,13 +142,15 @@
     <div id="wrapper">
 
         <div id="breadcrumbs">
+            {% block breadcrumbs %}
             <a href="http://www.denverpost.com/">Home</a>
             &rsaquo; <a href="http://www.denverpost.com/politics">Politics</a>
             &rsaquo; <a href="http://www.denverpost.com/legislature">Legislature</a>
-            {{breadcrumb_one}} {{breadcrumb_two}} {{breadcrumb_three}}
+            {% endblock breadcrumbs %}
         </div>
-    <h1>{{title}}</h1>
-    {{content}}
+    <h1>{{response.page.title}}</h1>
+{% block content %}
+{% endblock content %}
 
         <div class="rightRail" id="rightRail" style="float:right;width:300px;margin-left:20px;">
 

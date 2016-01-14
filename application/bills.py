@@ -24,7 +24,10 @@ def json_check(fn):
 @app.route('/')
 def index():
     data = {}
+    app.page['title'] = 'Bill Tracker'
+    app.page['description'] = 'Tracking legislation in Colorado\'s state house.'
     response = {
+        'page': app.page,
         'app': app,
         'data': data
     }
