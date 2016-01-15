@@ -8,10 +8,7 @@
 source /usr/local/bin/virtualenvwrapper.sh
 workon BILL
 
-# Write the flat files
-python spreadsheet.py City="$CITY"
-
 # FTP the data files
-./ftp.bash --dir $REMOTE_DIR/output --host $REMOTE_HOST
+#./ftp.bash --dir $REMOTE_DIR/_input --host $REMOTE_HOST
 # FTP the static files (should only update them when necessary.)
-./ftp.bash --dir $REMOTE_DIR --source_dir www --host $REMOTE_HOST
+./ftp.bash --dir $REMOTE_DIR --source_dir application/build --host $REMOTE_HOST
