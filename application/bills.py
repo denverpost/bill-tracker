@@ -27,10 +27,10 @@ class BillQuery:
     def __init__(self):
         """
             """
-        self.bills = json.load(json_check('_input/co-bills.json' % session))
+        self.bills = json.load(json_check('_input/co-bills.json'))
         self.session = app.session.upper()
 
-    def query_session(self, session):
+    def query_session(self, *session):
         """ Take a session, and, if valid, return the bills form that session.
             """
         # If we don't pass it a session it defaults to the current session.
@@ -61,8 +61,10 @@ def json_check(fn):
 def index():
     app.page['title'] = 'Bill Tracker'
     app.page['description'] = 'Tracking legislation in Colorado\'s state house.'
+    q = BillQuery()
     response = {
         'app': app,
+        'bills': q.query_session()
     }
     return render_template('home.html', response=response)
 
@@ -82,7 +84,7 @@ def session_detail(session):
     app.page['title'] = 'Session: %s' % session
     app.page['description'] = ''
     data = {
-        'bills': json.load(json_check('_input/co-bills-%s.json' % session))
+        'bills': json.load(json_check('_input/co-bills.json'))
     }
     response = {
         'app': app,
