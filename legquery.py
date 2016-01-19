@@ -53,7 +53,7 @@ def main(args):
     if not os.path.isdir('%s/_input' % directory):
         os.mkdir('%s/_input' % directory)
 
-    bills = s.filter_bills_recent(10)
+    bills = s.filter_bills_recent(args.limit)
     i = 0
     for item in bills:
         i += 1
@@ -75,9 +75,10 @@ def build_parser():
                                      epilog='')
     parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
     parser.add_argument("-c", "--cache", dest="cache", default=False, action="store_true")
+    parser.add_argument("-l", "--limit", dest="limit", default=10)
     return parser
 
 if __name__ == '__main__':
     parser = build_parser()
     args = parser.parse_args()
-	main(args)
+    main(args)
