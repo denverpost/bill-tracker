@@ -7,6 +7,42 @@ import inspect
 import os
 from application import app
 
+class BillQuery:
+    """ A means of querying the list of bills.
+        A bill record looks something like this:
+        {
+            "title": "Sentencing For Certain 2nd Degree Assaults",
+            "created_at": "2015-03-24 21:28:11",
+            "updated_at": "2015-10-07 12:07:47",
+            "chamber": "lower",
+            "state": "co",
+            "session": "2015A",
+            "subjects": [],
+            "type": ["bill"],
+            "id": "COB00003396",
+            "bill_id": "HB 15-1303"
+        }
+        """
+
+    def __init__(self):
+        """
+            """
+        self.bills = json.load(json_check('_input/co-bills.json' % session))
+        self.session = app.session.upper()
+
+    def query_session(self, session):
+        """ Take a session, and, if valid, return the bills form that session.
+            """
+        # If we don't pass it a session it defaults to the current session.
+        if not session:
+            session = self.session
+        filtered = []
+
+        for item in self.bills:
+            if item['session'] == self.session:
+                filtered.append(item)
+        return filtered
+
 def json_check(fn):
     """ Look to see if a JSON file exists. If it does, return it.
         If not, create the file and return an empty JSON-friendly string.

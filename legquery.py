@@ -19,7 +19,7 @@ class Sunlight:
         self.bills = sunlight.openstates.bills(state=self.state)
         self.session = self.bills[0]['session'].lower()
         print "Session: %s" % self.session
-        fh = open('%s-bills-%s.json' % (self.state, self.session), 'wb')
+        fh = open('%s-bills.json' % (self.state), 'wb')
         json.dump(self.bills, fh)
         return True
 
