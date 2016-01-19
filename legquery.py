@@ -3,6 +3,7 @@ import sunlight
 import json
 import os, sys
 import string
+import argparse
 
 class Sunlight:
 
@@ -43,7 +44,7 @@ class Sunlight:
         return bill_details 
 
 
-def main():
+def main(args):
     s = Sunlight()
     s.get_bill_list()
 
@@ -65,5 +66,18 @@ def main():
             details = s.get_bill_detail(item['bill_id'])
 
 
+
+def build_parser():
+    """ This method allows us to test.
+        """
+    parser = argparse.ArgumentParser(usage='$ python legquery.py',
+                                     description='Download data from Sunlight and update bill indexes.',
+                                     epilog='')
+    parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
+    parser.add_argument("-c", "--cache", dest="cache", default=False, action="store_true")
+    return parser
+
 if __name__ == '__main__':
-	main()
+    parser = build_parser()
+    args = parser.parse_args()
+	main(args)
