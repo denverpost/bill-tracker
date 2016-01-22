@@ -5,8 +5,38 @@
 &rsaquo; <a href="../../">Sessions</a>
 &rsaquo; <a href="../">{{response.session}}</a>{% endblock breadcrumbs %}
 {% block content %}
-<p>This {{response.data.bill.type.0}} was created at {{response.data.bill.created_at}}</p>
-<h2>Bill Timeline</h2>
+{% set type = response.data.bill.type.0 %}
+<p>This {{type}} was created at {{response.data.bill.created_at}} and last updated at {{response.data.bill.updated_at}}</p>
+{{response.data.bill.action_dates}}
+<h2>{{type|title}} Timeline</h2>
+<ol>
+{% for item in response.data.bill.actions %}
+    <li>{{item}}</li>
+{% endfor %}
+</ol>
+
+<h2>{{type|title}} Sponsors</h2>
+<ol>
+{% for item in response.data.bill.sponsors %}
+    <li>{{item}}</li>
+{% endfor %}
+</ol>
+
+<h2>{{type|title}} Sources</h2>
+<ol>
+{% for item in response.data.bill.sources %}
+    <li>{{item}}</li>
+{% endfor %}
+</ol>
+
+<h2>{{type|title}} Revision History</h2>
+<ol>
+{% for item in response.data.bill.versions %}
+    <li>{{item}}</li>
+{% endfor %}
+</ol>
+
+
 
 <h2>Votes</h2>
 {% if response.data.bill.votes %}
