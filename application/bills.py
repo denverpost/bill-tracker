@@ -111,3 +111,21 @@ def bill_detail(session, bill_id):
         'data': data
     }
     return render_template('bill_detail.html', response=response)
+
+@app.route('/legislators/')
+def legislator_index():
+    app.page['title'] = 'Legislators'
+    app.page['description'] = 'An index of Colorado statehouse legislators and which bills they sponsored.'
+    response = {
+        'app': app,
+    }
+
+@app.route('/legislators/<legislator>/')
+def legislator_detail():
+    app.page['title'] = 'Legislator'
+    app.page['description'] = ''
+    response = {
+        'app': app,
+    }
+    return render_template('session_index.html', response=response)
+
