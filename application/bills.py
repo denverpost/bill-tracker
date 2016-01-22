@@ -119,6 +119,7 @@ def legislator_index():
     response = {
         'app': app,
     }
+    return render_template('legislator_index.html', response=response)
 
 @app.route('/legislators/<legislator>/')
 def legislator_detail():
@@ -127,5 +128,5 @@ def legislator_detail():
     response = {
         'app': app,
     }
-    return render_template('session_index.html', response=response)
+    return render_template('legislator_detail.html', response=response)
 
