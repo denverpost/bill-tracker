@@ -74,7 +74,7 @@
 u'bill_chamber': u'lower', u'id': u'COV00013095', u'motion': u'On motion of Majority Leader Scheffel, the resolution was adopted by the following rollcall vote:call vote:', u'chamber': u'upper', u'state': u'co', u'session': u'2015A', u'sources': [{u'url': u'http://www.leg.state.co.us/CLICS/CLICS2015A/csljournals.nsf/(jousen)/846CA59657C151EA87257DC7005207A6/$FILE/jour_002.pdf'}], u'passed': True, u'date': u'2015-01-08 00:00:00', u'vote_id': u'COV00013095', u'type': u'other', u'no_count': 0, u'bill_id': u'COB00002830', u'no_votes': []}]
 -->
 {% else %}
-<p>No votes recorded on the {{response.data.bill.title}}.</p>
+<p>No votes recorded on the {{response.data.bill.title}} {{type}}.</p>
 {% endif %}
 
 <h2>{{type|title}} Documents</h2>
@@ -83,7 +83,7 @@ u'bill_chamber': u'lower', u'id': u'COV00013095', u'motion': u'On motion of Majo
 <li>{{item}}</li>
 {% endfor %}
 {% else %}
-<p>No documents associated with the {{response.data.bill.title}}.</p>
+<p>No documents associated with the {{response.data.bill.title}} {{type}}.</p>
 {% endif %}
 
 <hr>
