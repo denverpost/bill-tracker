@@ -30,7 +30,7 @@ class BillQuery:
         self.bills = json.load(json_check('_input/co-bills.json'))
         self.session = app.session.upper()
 
-    def query_session(self, *session):
+    def query_session(self, session=None):
         """ Take a session, and, if valid, return the bills form that session.
             """
         # If we don't pass it a session it defaults to the current session.
@@ -39,7 +39,7 @@ class BillQuery:
         filtered = []
 
         for item in self.bills:
-            if item['session'] == self.session:
+            if item['session'] == session:
                 filtered.append(item)
         return filtered
 
@@ -83,8 +83,9 @@ def session_detail(session):
         abort(404)
     app.page['title'] = 'Session: %s' % session
     app.page['description'] = ''
+    q = BillQuery()
     data = {
-        'bills': json.load(json_check('_input/co-bills.json'))
+        'bills': q.query_session(session.upper())
     }
     response = {
         'app': app,
