@@ -53,7 +53,7 @@ def main(args):
     if not os.path.isdir('%s/_input' % directory):
         os.mkdir('%s/_input' % directory)
 
-    bills = s.filter_bills_recent(args.limit)
+    bills = s.filter_bills_recent(int(args.limit))
     i = 0
     for item in bills:
         i += 1
