@@ -14,7 +14,7 @@ export environ=$ENVIRON
 python freeze.py
 #mv application/build application/public
 #scp -r application/public $DEST
-./ftp.bash --dir $REMOTE_DIR --source_dir application/build --host $REMOTE_HOST
+./ftp.bash --dir $REMOTE_DIR --source_dir "application/build" --host $REMOTE_HOST
 #mv application/public application/build
 export environ='DEV'
 

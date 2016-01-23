@@ -20,6 +20,9 @@ while [ "$1" != "" ]; do
         -d | --dir ) shift
             DIR=$1
             ;;
+        -s | --source_dir ) shift
+            SOURCE_DIR=$1
+            ;;
         -h | --host ) shift
             HOST=$1
             ;;
@@ -33,6 +36,7 @@ while [ "$1" != "" ]; do
     shift
 done
 
+echo $SOURCE_DIR
 cd $SOURCE_DIR
 ftp -v -n $HOST << EOF
 user $FTP_USER $FTP_PASS
