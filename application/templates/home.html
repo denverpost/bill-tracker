@@ -3,8 +3,7 @@
 {% block breadcrumbs %}{{ super() }}{% endblock breadcrumbs %}
 {% block content %}
 <h2>Current Legislation</h2>
-{{response.days_back}}
-<h3>Updated Today</h3>
+<h3>Updated {% if response.days_back == 0 %}Today{% else %}{{response.back_date}}{% endif %}</h3>
 <ul>
 {% for item in response.bills %}
     <li><span>{{item.bill_id}}</span>: <a href="/bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a></li>

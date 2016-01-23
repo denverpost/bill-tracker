@@ -96,7 +96,8 @@ def index():
     response = {
         'app': app,
         'bills': bills,
-        'days_back': days_back
+        'days_back': days_back,
+        'back_date': date.today() - timedelta(days_back)
     }
     return render_template('home.html', response=response)
 
