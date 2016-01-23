@@ -30,7 +30,7 @@ class BillQuery:
         self.bills = json.load(json_check('_input/co-bills.json'))
         self.session = app.session.upper()
 
-    def query_session(self, session=None):
+    def filter_session(self, session=None):
         """ Take a session, and, if valid, return the bills form that session.
             """
         # If we don't pass it a session it defaults to the current session.
@@ -41,6 +41,18 @@ class BillQuery:
         for item in self.bills:
             if item['session'] == session:
                 filtered.append(item)
+        self.bills = filtered
+        return filtered
+
+    def filter_updated(self, day=0):
+        """ Return bills that have been updated within the last X days.
+            """
+        from datetime import datetime, timedelta
+        filtered = []
+        for item in self.bills:
+            if item['updated_date'] > 0:
+                filtered.append(item)
+        self.bills = filtered
         return filtered
 
 def json_check(fn):
@@ -62,9 +74,11 @@ def index():
     app.page['title'] = 'Bill Tracker'
     app.page['description'] = 'Tracking legislation in Colorado\'s state house.'
     q = BillQuery()
+    bills = q.filter_session()
+    
     response = {
         'app': app,
-        'bills': q.query_session()
+        'bills': bills
     }
     return render_template('home.html', response=response)
 
@@ -85,7 +99,7 @@ def session_detail(session):
     app.page['description'] = ''
     q = BillQuery()
     data = {
-        'bills': q.query_session(session.upper())
+        'bills': q.filter_session(session.upper())
     }
     response = {
         'app': app,
