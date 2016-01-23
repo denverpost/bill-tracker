@@ -114,6 +114,8 @@ def bill_detail(session, bill_id):
 
 @app.route('/bills/<session>/legislators/')
 def legislator_index(session):
+    if session not in app.sessions:
+        abort(404)
     app.page['title'] = 'Legislators'
     app.page['description'] = 'An index of Colorado statehouse legislators and which bills they sponsored.'
     response = {
@@ -123,6 +125,8 @@ def legislator_index(session):
 
 @app.route('/bills/<session>/legislators/<legislator>/')
 def legislator_detail(session, legislator):
+    if session not in app.sessions:
+        abort(404)
     app.page['title'] = 'Legislator'
     app.page['description'] = ''
     response = {
