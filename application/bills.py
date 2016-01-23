@@ -81,12 +81,22 @@ def index():
     app.page['title'] = 'Bill Tracker'
     app.page['description'] = 'Tracking legislation in Colorado\'s state house.'
     q = BillQuery()
-    bills = q.filter_session()
-    bills = q.filter_updated_at(0)
+    q.filter_session()
+
+    days_back = 0
+    bills = []
+    while True:
+        bills = q.filter_updated_at(days_back)
+        if len(bills) > 0:
+            break
+        days_back += 1
+
+    print len(bills)
     
     response = {
         'app': app,
-        'bills': bills
+        'bills': bills,
+        'days_back': days_back
     }
     return render_template('home.html', response=response)
 

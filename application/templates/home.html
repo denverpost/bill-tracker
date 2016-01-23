@@ -3,6 +3,7 @@
 {% block breadcrumbs %}{{ super() }}{% endblock breadcrumbs %}
 {% block content %}
 <h2>Current Legislation</h2>
+{{response.days_back}}
 <h3>Updated Today</h3>
 <ul>
 {% for item in response.bills %}
