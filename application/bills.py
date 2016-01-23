@@ -7,6 +7,8 @@ import inspect
 import os
 from application import app
 
+datetimeformat = '%Y-%m-%d %H:%M:%S'
+
 class BillQuery:
     """ A means of querying the list of bills.
         A bill record looks something like this:
@@ -28,6 +30,7 @@ class BillQuery:
         """
             """
         self.bills = json.load(json_check('_input/co-bills.json'))
+        self.unfiltered = self.bills
         self.session = app.session.upper()
 
     def filter_session(self, session=None):
@@ -44,13 +47,17 @@ class BillQuery:
         self.bills = filtered
         return filtered
 
-    def filter_updated(self, day=0):
+    def filter_updated_at(self, day=0):
         """ Return bills that have been updated within the last X days.
             """
-        from datetime import datetime, timedelta
+        from datetime import date, datetime, timedelta
         filtered = []
+        delta = timedelta(day)
+        d = date.today()
+        today = datetime.combine(d, datetime.min.time())
         for item in self.bills:
-            if item['updated_date'] > 0:
+            if datetime.strptime(item['updated_at'], datetimeformat) > today - delta:
+                print datetime.strptime(item['updated_at'], datetimeformat)
                 filtered.append(item)
         self.bills = filtered
         return filtered
@@ -75,6 +82,7 @@ def index():
     app.page['description'] = 'Tracking legislation in Colorado\'s state house.'
     q = BillQuery()
     bills = q.filter_session()
+    bills = q.filter_updated_at(0)
     
     response = {
         'app': app,
