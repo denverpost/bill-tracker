@@ -5,6 +5,7 @@ from collections import OrderedDict
 import json
 import inspect
 import os
+import string
 from application import app
 
 datetimeformat = '%Y-%m-%d %H:%M:%S'
@@ -33,6 +34,11 @@ class BillQuery:
         self.unfiltered = self.bills
         self.session = app.session.upper()
 
+    def get_bill_detail(self, session, bill_id):
+        """ For when we need to query a field in the bill details.
+            """
+        return json.load(json_check('_input/%s/%s.json' % (session.lower(), string.replace(bill_id.lower(), ' ', '_'))))
+
     def filter_session(self, session=None):
         """ Take a session, and, if valid, return the bills form that session.
             """
@@ -45,6 +51,24 @@ class BillQuery:
             if item['session'] == session:
                 filtered.append(item)
         self.bills = filtered
+        return filtered
+
+    def filter_action_dates(self, action_date=None, value=None):
+        """ Return bills that have been signed.
+            """
+        if action_date not in ['passed_upper', 'passed_lower', 'last', 'first', 'signed']:
+            return false
+
+        filtered = []
+        for item in self.bills:
+            detail = self.get_bill_detail(self.session, item['bill_id'])
+            if detail:
+                print detail['action_dates']
+                if value:
+                    if detail['action_dates'][action_date] == value:
+                        filtered.append(item)
+                elif detail['action_dates'][action_date]:
+                    filtered.append(item)
         return filtered
 
     def filter_updated_at(self, day=0):
@@ -61,7 +85,6 @@ class BillQuery:
                 filtered.append(item)
             else:
                 print len(self.bills), datetime.strptime(item['updated_at'], datetimeformat), ( today - delta )
-        self.bills = filtered
         return filtered
 
 def json_check(fn):
@@ -97,6 +120,7 @@ def index():
         days_back += 1
 
     print len(bills)
+    bills = q.filter_action_dates('signed')
     
     response = {
         'app': app,

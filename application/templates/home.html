@@ -3,6 +3,10 @@
 {% block breadcrumbs %}{{ super() }}{% endblock breadcrumbs %}
 {% block content %}
 <h2>Current Legislation (<a href="./bills/{{response.app.session}}/">Session {{response.app.session|upper}}</a>)</h2>
+<h3 id="signed">Recently signed</h3>
+<h3 id="introduced">Recently introduced</h3>
+<h3 id="passed-house">Passed Colorado State House</h3>
+<h3 id="passed-senate">Passed Colorado State Senate</h3>
 <h3>Updated {% if response.days_back == 0 %}Today{% else %}{{response.back_date}}{% endif %}</h3>
 <ul>
 {% for item in response.bills %}
@@ -14,10 +18,6 @@
 
 <p><a href="./bills/{{response.app.session}}/">See all of the current session's bills</a>.</p>
 
-<h3 id="signed">Recently signed</h3>
-<h3 id="introduced">Recently introduced</h3>
-<h3 id="passed-house">Passed Colorado State House</h3>
-<h3 id="passed-senate">Passed Colorado State Senate</h3>
 {# {u'title': u'Sentencing For Certain 2nd Degree Assaults', u'created_at': u'2015-03-24 21:28:11', u'updated_at': u'2015-10-07 12:07:47', u'id': u'COB00003396', u'chamber': u'lower', u'state': u'co', u'session': u'2015A', u'type': [u'bill'], u'subjects': [], u'bill_id': u'HB 15-1303'} #}
 <!--
 <h2>Previous Legislation</h2>

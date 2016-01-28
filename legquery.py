@@ -74,7 +74,7 @@ def main(args):
 
 
 def build_parser():
-    """ This method allows us to test.
+    """ This method allows us to test the args.
         """
     parser = argparse.ArgumentParser(usage='$ python legquery.py',
                                      description='Download data from Sunlight and update bill indexes.',

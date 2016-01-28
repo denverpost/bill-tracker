@@ -8,7 +8,8 @@
 ENVIRON='PROD'
 
 source /usr/local/bin/virtualenvwrapper.sh
-workon BILL
+#source source.bash
+#source .source.bash
 
 export environ=$ENVIRON
 python freeze.py
