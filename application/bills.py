@@ -56,9 +56,11 @@ class BillQuery:
         d = date.today()
         today = datetime.combine(d, datetime.min.time())
         for item in self.bills:
-            if datetime.strptime(item['updated_at'], datetimeformat) > today - delta:
+            if datetime.strptime(item['updated_at'], datetimeformat) > ( today - delta ):
                 print datetime.strptime(item['updated_at'], datetimeformat)
                 filtered.append(item)
+            else:
+                print len(self.bills), datetime.strptime(item['updated_at'], datetimeformat), ( today - delta )
         self.bills = filtered
         return filtered
 
@@ -89,6 +91,9 @@ def index():
         bills = q.filter_updated_at(days_back)
         if len(bills) > 0:
             break
+        if days_back > 300:
+            break
+        print days_back,
         days_back += 1
 
     print len(bills)

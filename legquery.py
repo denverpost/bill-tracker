@@ -13,13 +13,19 @@ class Sunlight:
         self.state='co'
         self.directory = os.path.dirname(os.path.realpath(__file__))
 
-    def get_bill_list(self):
-        """ Get list of bills.
+    def get_bill_list(self, session=None):
+        """ Get list of bills, sometimes from a particular session.
             """
-        self.bills = sunlight.openstates.bills(state=self.state)
+        if session:
+            self.bills = sunlight.openstates.bills(state=self.state, session=session.upper())
+            filename = '_input/%s-bills-%s.json' % (self.state, session.lower())
+        else:
+            self.bills = sunlight.openstates.bills(state=self.state)
+            filename = '_input/%s-bills.json' % (self.state)
+
         self.session = self.bills[0]['session'].lower()
         print "Session: %s" % self.session
-        fh = open('%s-bills.json' % (self.state), 'wb')
+        fh = open(filename, 'wb')
         json.dump(self.bills, fh)
         return True
 
@@ -46,7 +52,7 @@ class Sunlight:
 
 def main(args):
     s = Sunlight()
-    s.get_bill_list()
+    s.get_bill_list(args.session)
 
     # We'll need to store the files we're writing somewhere, eventually.
     directory = os.path.dirname(os.path.realpath(__file__))
@@ -75,6 +81,7 @@ def build_parser():
                                      epilog='')
     parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
     parser.add_argument("-c", "--cache", dest="cache", default=False, action="store_true")
+    parser.add_argument("-s", "--session", dest="session")
     parser.add_argument("-l", "--limit", dest="limit", default=10)
     return parser
 

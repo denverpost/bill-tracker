@@ -10,6 +10,8 @@ legquery.py expects an environment variable named `NAME_OF_VAR` set with your su
 
 About the Sunlight API: https://sunlightlabs.github.io/openstates-api/bills.html
 
+About the python bindings for the Sunlight API: http://python-sunlight.readthedocs.org/en/latest/services/openstates.html
+
 ## Setting up a dev environment
 Here's the first draft of instructions:
 
