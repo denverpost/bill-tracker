@@ -120,11 +120,13 @@ def index():
         days_back += 1
 
     print len(bills)
-    bills = q.filter_action_dates('signed')
     
     response = {
         'app': app,
         'bills': bills,
+        'signed': q.filter_action_dates('signed'),
+        'passed_upper': q.filter_action_dates('passed_upper'),
+        'passed_lower': q.filter_action_dates('passed_lower'),
         'days_back': days_back,
         'back_date': date.today() - timedelta(days_back)
     }
