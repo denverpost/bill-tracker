@@ -14,7 +14,8 @@ DIR=''
 HOST=''
 if [ -z "$FTP_USER" ]; then FTP_USER=''; fi
 if [ -z "$FTP_PASS" ]; then FTP_PASS=`cat ~/.ftp_pass`; fi
-FILES='*'
+FILES='*.html'
+SESSION='2016a'
 while [ "$1" != "" ]; do
     case $1 in
         -d | --dir ) shift
@@ -32,11 +33,14 @@ while [ "$1" != "" ]; do
         -f | --files ) shift
             FILES=$1
             ;;
+        --session ) shift
+            SESSION=$1
+            ;;
     esac
     shift
 done
 
-#echo $SOURCE_DIR $FTP_USER $FTP_PASS `pwd`
+echo $SOURCE_DIR $FTP_USER $FTP_PASS `pwd`
 cd $SOURCE_DIR
 ftp -v -n $HOST << EOF
 user $FTP_USER $FTP_PASS
@@ -44,6 +48,13 @@ cd $DIR
 bin
 passive
 prompt
+put $FILES
+cd bills
+lcd bills
+mput $FILES
+mkdir $SESSION
+cd $SESSION
+lcd $SESSION
 mput $FILES
 bye                                                                                                                                                                          
 EOF
