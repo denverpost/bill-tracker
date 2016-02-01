@@ -17,6 +17,7 @@ class Sunlight:
 
     def get_bill_list(self, session=None):
         """ Get list of bills, sometimes from a particular session.
+            >>> s = Sunlight()
             """
         if session:
             self.bills = sunlight.openstates.bills(state=self.state, session=session.upper())
@@ -33,11 +34,13 @@ class Sunlight:
 
     def filter_bills_recent(self, limit = 10):
         """ Filter recent bills.
+            >>> s = Sunlight()
             """
         return self.bills[:limit]
  
     def get_bill_detail(self, bill_id):
         """ Get bill details for a single bill.
+            >>> s = Sunlight()
             """
         if not os.path.isdir('%s/_input/%s' % (self.directory, self.session)):
             os.mkdir('%s/_input/%s' % (self.directory, self.session))
