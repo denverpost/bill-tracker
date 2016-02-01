@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sunlight
 import json
+import doctest
 import os, sys
 import string
 import argparse
@@ -9,6 +10,7 @@ class Sunlight:
 
     def __init__(self):
         """ Initialize the object.
+            >>> s = Sunlight()
             """
         self.state='co'
         self.directory = os.path.dirname(os.path.realpath(__file__))
@@ -83,4 +85,7 @@ def build_parser():
 if __name__ == '__main__':
     parser = build_parser()
     args = parser.parse_args()
+
+    if args.verbose == True:
+        doctest.testmod(verbose=args.verbose)
     main(args)
