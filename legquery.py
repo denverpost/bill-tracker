@@ -29,11 +29,6 @@ class Sunlight:
         json.dump(self.bills, fh)
         return True
 
-    def get_session(self):
-        """ Return the current session.
-            """
-        return self.session
-
     def filter_bills_recent(self, limit = 10):
         """ Filter recent bills.
             """
