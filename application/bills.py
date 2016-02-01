@@ -63,7 +63,7 @@ class BillQuery:
         for item in self.bills:
             detail = self.get_bill_detail(self.session, item['bill_id'])
             if detail:
-                print detail['action_dates']
+                #print detail['action_dates']
                 if value:
                     if detail['action_dates'][action_date] == value:
                         filtered.append(item)
@@ -81,10 +81,8 @@ class BillQuery:
         today = datetime.combine(d, datetime.min.time())
         for item in self.bills:
             if datetime.strptime(item['updated_at'], datetimeformat) > ( today - delta ):
-                print datetime.strptime(item['updated_at'], datetimeformat)
+                #print datetime.strptime(item['updated_at'], datetimeformat)
                 filtered.append(item)
-            else:
-                print len(self.bills), datetime.strptime(item['updated_at'], datetimeformat), ( today - delta )
         return filtered
 
 def json_check(fn):
@@ -116,10 +114,10 @@ def index():
             break
         if days_back > 300:
             break
-        print days_back,
+        #print days_back,
         days_back += 1
 
-    print len(bills)
+    #print len(bills)
     
     response = {
         'app': app,

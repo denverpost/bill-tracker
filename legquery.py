@@ -73,8 +73,10 @@ def main(args):
 
 
 
-def build_parser():
+def build_parser(args):
     """ This method allows us to test the args.
+        >>> parser = build_parser(['-l', '-s'])
+        >>> print args
         """
     parser = argparse.ArgumentParser(usage='$ python legquery.py',
                                      description='Download data from Sunlight and update bill indexes.',
@@ -83,11 +85,11 @@ def build_parser():
     parser.add_argument("-c", "--cache", dest="cache", default=False, action="store_true")
     parser.add_argument("-s", "--session", dest="session")
     parser.add_argument("-l", "--limit", dest="limit", default=10)
-    return parser
+    args = parser.parse_args(args)
+    return args
 
 if __name__ == '__main__':
-    parser = build_parser()
-    args = parser.parse_args()
+    args = build_parser(sys.argv[1:])
 
     if args.verbose == True:
         doctest.testmod(verbose=args.verbose)
