@@ -32,6 +32,7 @@ class FtpWrapper():
     def connect(self):
         """ Connect to a server.
             """
+        print self.config['host'], self.config['user'], self.password
         self.ftp = FTP(self.config['host'], self.config['user'], self.password)
         return True
 
