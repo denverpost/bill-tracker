@@ -8,17 +8,8 @@
 ENVIRON='PROD'
 
 source /usr/local/bin/virtualenvwrapper.sh
-#source source.bash
-#source .source.bash
 
 export environ=$ENVIRON
 python freeze.py
-#mv application/build application/public
-#scp -r application/public $DEST
 ./ftp.bash --dir $REMOTE_DIR --source_dir "application/build" --host $REMOTE_HOST
-#mv application/public application/build
 export environ='DEV'
-
-# FTP the data files
-#./ftp.bash --dir $REMOTE_DIR/_input --host $REMOTE_HOST
-# FTP the static files (should only update them when necessary.)
