@@ -14,7 +14,7 @@
 <h2 id="timeline">{{type|title}} Timeline</h2>
 <ol>
 {% for item in response.data.bill.actions %}
-    <li>{{item.date}} {{item.action}}<span class="dev" style="display:none;">{{item}}</span></li>
+    <li>{{item.date|datetime_raw|datetime_filter}}: {{item.action}}<span class="dev" style="display:none;">{{item}}</span></li>
 {% endfor %}
 </ol>
 

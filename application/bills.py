@@ -7,6 +7,7 @@ import inspect
 import os
 import string
 from application import app
+import filters
 
 datetimeformat = '%Y-%m-%d %H:%M:%S'
 
