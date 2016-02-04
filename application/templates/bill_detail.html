@@ -6,7 +6,7 @@
 &rsaquo; <a href="../">{{response.session}}</a>{% endblock breadcrumbs %}
 {% block content %}
 {% set type = response.data.bill.type.0 %}
-<p>This {{type}} was created at {{response.data.bill.created_at}} and last updated at {{response.data.bill.updated_at}}</p>
+<p>This {{type}} was created {{response.data.bill.action_dates.first|datetime_raw|datetime_filter}} and last updated {{response.data.bill.updated_at|datetime_raw|datetime_filter}}.</p>
 
 
 {{response.data.bill.action_dates}}
