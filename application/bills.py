@@ -165,7 +165,7 @@ def bill_detail(session, bill_id):
     }
     if 'title' not in data['bill']:
         abort(404)
-    app.page['title'] = data['bill']['title']
+    app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
     app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )
     response = {
         'app': app,

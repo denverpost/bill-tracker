@@ -7,38 +7,41 @@
 {% block content %}
 {% set type = response.data.bill.type.0 %}
 <p>This {{type}} was created at {{response.data.bill.created_at}} and last updated at {{response.data.bill.updated_at}}</p>
+
+
 {{response.data.bill.action_dates}}
-<h2>{{type|title}} Timeline</h2>
+
+<h2 id="timeline">{{type|title}} Timeline</h2>
 <ol>
 {% for item in response.data.bill.actions %}
-    <li>{{item}}</li>
+    <li>{{item.date}} {{item.action}}<span class="dev" style="display:none;">{{item}}</span></li>
 {% endfor %}
 </ol>
 
-<h2>{{type|title}} Sponsors</h2>
+<h2 id="sponsors">{{type|title}} Sponsors</h2>
 <ol>
 {% for item in response.data.bill.sponsors %}
-    <li>{{item}}</li>
+    <li>{{item.name|title}}'s a {{item.type}} sponsor <span class="dev" style="display:none;">{{item.leg_id}}</span></li>
 {% endfor %}
 </ol>
 
-<h2>{{type|title}} Sources</h2>
+<h2 id="sources">{{type|title}} Sources</h2>
 <ol>
 {% for item in response.data.bill.sources %}
-    <li>{{item}}</li>
+    <li><a href="{{item.url}}">{{item.url}}</a></li>
 {% endfor %}
 </ol>
 
-<h2>{{type|title}} Revision History</h2>
+<h2 id="revisions">{{type|title}} Revision History</h2>
 <ol>
 {% for item in response.data.bill.versions %}
-    <li>{{item}}</li>
+    <li><a href="{{item.url}}">{{item.doc_id}}: {{item.name}}</a></li>
 {% endfor %}
 </ol>
 
 
 
-<h2>{{type|title}} Votes</h2>
+<h2 id="votes">{{type|title}} Votes</h2>
 {% if response.data.bill.votes %}
 <p>{{response.data.bill.votes.0.motion}}</p>
 <dl>
@@ -52,7 +55,7 @@
 {% if response.data.bill.votes.0.yes_count > 0 %}
 <ol>
 {% for item in response.data.bill.votes.0.yes_votes %}
-    <li>{{item}}</li>
+    <li>{{item.name}}<span class="dev" style="display:none;">{{item}}</span></li>
 {% endfor %}
 </ol>
 {% else %}
@@ -63,7 +66,7 @@
 {% if response.data.bill.votes.0.no_count > 0 %}
 <ol>
 {% for item in response.data.bill.votes.0.no_votes %}
-    <li>{{item}}</li>
+    <li>{{item.name}}</li>
 {% endfor %}
 </ol>
 {% else %}
@@ -77,18 +80,19 @@ u'bill_chamber': u'lower', u'id': u'COV00013095', u'motion': u'On motion of Majo
 <p>No votes recorded on the {{response.data.bill.title}} {{type}}.</p>
 {% endif %}
 
-<h2>{{type|title}} Documents</h2>
+<h2 id="documents">{{type|title}} Documents</h2>
 {% if response.data.bill.documents %}
 {% for item in response.data.documents %}
-<li>{{item}}</li>
+<li><a href="{{item.url}}">{{item.url}}</li>
 {% endfor %}
 {% else %}
 <p>No documents associated with the {{response.data.bill.title}} {{type}}.</p>
 {% endif %}
 
 <hr>
+<span class="dev" style="display:none;">
 {{response.data.bill}}
-<hr>
+</span>
 <!-- ADD COMMENTING WIDGET -->
 
 {% endblock content %}

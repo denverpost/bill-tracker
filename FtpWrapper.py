@@ -57,6 +57,7 @@ class FtpWrapper():
             except:
                 self.ftp.mkd('./%s' % item)
                 self.ftp.cwd('./%s' % item)
+        self.ftp.cwd(self.config['upload_dir'])
         return True
 
     def send_file(self, fp):
