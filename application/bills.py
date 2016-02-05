@@ -124,6 +124,7 @@ def index():
         'app': app,
         'bills': bills,
         'signed': q.filter_action_dates('signed'),
+        'introduced': q.filter_action_dates('first'),
         'passed_upper': q.filter_action_dates('passed_upper'),
         'passed_lower': q.filter_action_dates('passed_lower'),
         'days_back': days_back,
