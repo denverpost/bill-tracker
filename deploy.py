@@ -12,9 +12,12 @@ def main(args):
     """ Turn every URL into flatfile, ftp it to prod.
         >>> args = build_parser(['--verbose'])
         >>> main(args)
+        False
         """
     if args.do_freeze:
         freeze.freezer.freeze()
+    if not args.do_ftp:
+        return False
 
     basedir = 'application/build/'
     os.chdir(basedir)
@@ -27,6 +30,7 @@ def main(args):
     }
     if args.verbose:
         print ftp_config
+
     ftp = FtpWrapper(**ftp_config)
 
     for dirname, dirnames, filenames in os.walk('.'):
@@ -65,7 +69,8 @@ def build_parser(args):
                                      description='Deploy billtracker to production',
                                      epilog='')
     parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
-    parser.add_argument("-f", "--freeze", dest="do_freeze", default=False, action="store_true")
+    parser.add_argument("--freeze", dest="do_freeze", default=False, action="store_true")
+    parser.add_argument("--ftp", dest="do_ftp", default=False, action="store_true")
     parser.add_argument("-s", "--session", dest="session", default=False)
     args = parser.parse_args(args)
     return args
