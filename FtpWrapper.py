@@ -25,8 +25,6 @@ class FtpWrapper():
 
     def ftp_callback(self, data):
         print
-        print
-        print
         print ''
  
     def connect(self):

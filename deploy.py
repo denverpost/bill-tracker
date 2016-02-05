@@ -10,6 +10,8 @@ import freeze
 
 def main(args):
     """ Turn every URL into flatfile, ftp it to prod.
+        >>> args = build_parser(['--verbose'])
+        >>> main(args)
         """
     if args.do_freeze:
         freeze.freezer.freeze()
@@ -23,15 +25,31 @@ def main(args):
         'port': os.environ.get('FTP_PORT'),
         'upload_dir': ftp_path
     }
+    if args.verbose:
+        print ftp_config
     ftp = FtpWrapper(**ftp_config)
 
     for dirname, dirnames, filenames in os.walk('.'):
+
+        # Sometimes we only want to upload files for a particular session.
+        # The dirname, dirnames in this loop looks like:
+        # . ['bills'] <-- on the top level, "." is dirname and the list is the dirnames.
+        # ./bills ['2011a', '2012a', '2012b', '2013a', '2014a', '2015a', '2016a'] <-- the next level down
+        # ./bills/2011a ['hb_11-1001', 'hb_11-1002'... <-- the next down from that
+        if args.session:
+            if 'bills/' in dirname:
+                if args.session not in dirname:
+                    continue
+
         for subdirname in dirnames:
+            if args.verbose:
+                print dirname, subdirname
             ftp.mkdir(os.path.join(dirname, subdirname))
 
         # print path to all filenames.
         for filename in filenames:
-            print(os.path.join(dirname, filename))
+            if args.verbose:
+                print(os.path.join(dirname, filename))
             ftp.send_file(os.path.join(dirname, filename))
 
     ftp.disconnect()
@@ -39,14 +57,16 @@ def main(args):
 
 def build_parser(args):
     """ This method allows us to test the args.
-        >>> parser = build_parser()
-        >>> print args
+        >>> args = build_parser(['--verbose'])
+        >>> print args.verbose
+        True
         """
     parser = argparse.ArgumentParser(usage='$ python deploy.py',
                                      description='Deploy billtracker to production',
                                      epilog='')
     parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
     parser.add_argument("-f", "--freeze", dest="do_freeze", default=False, action="store_true")
+    parser.add_argument("-s", "--session", dest="session", default=False)
     args = parser.parse_args(args)
     return args
 
