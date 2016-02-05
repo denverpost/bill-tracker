@@ -66,8 +66,8 @@ def build_parser(args):
         True
         """
     parser = argparse.ArgumentParser(usage='$ python deploy.py',
-                                     description='Deploy billtracker to production',
-                                     epilog='')
+                                     description='Deploy billtracker to production.',
+                                     epilog='Examply use: python deploy.py --ftp --freeze --session 2016a')
     parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
     parser.add_argument("--freeze", dest="do_freeze", default=False, action="store_true")
     parser.add_argument("--ftp", dest="do_ftp", default=False, action="store_true")
