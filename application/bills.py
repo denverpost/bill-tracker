@@ -165,6 +165,39 @@ def session_detail(session):
     }
     return render_template('session_detail.html', response=response)
 
+@app.route('/bills/<session>/passed/')
+def session_passed_index(session):
+    if session not in app.sessions:
+        abort(404)
+    app.page['title'] = 'Bills that passed in the %s session' % session
+    app.page['description'] = ''
+    response = {
+        'app': app,
+        'session': session,
+    }
+    return render_template('session_passed_index.html', response=response)
+
+@app.route('/bills/<session>/passed/<chamber>/')
+def session_passed_detail(session, chamber):
+    if session not in app.sessions:
+        abort(404)
+    app.page['title'] = 'Bills that passed the %s chamber in the %s session' % (chamber, session)
+    app.page['description'] = ''
+    q = BillQuery()
+    q.session = session.upper()
+    q.filter_session()
+    data = {
+        'passed_upper': q.filter_action_dates('passed_upper'),
+        'passed_lower': q.filter_action_dates('passed_lower'),
+    }
+    response = {
+        'app': app,
+        'session': session,
+        'chamber': chamber,
+        'data': data
+    }
+    return render_template('session_passed.html', response=response)
+
 @app.route('/bills/<session>/<bill_id>/')
 def bill_detail(session, bill_id):
     if session not in app.sessions:
