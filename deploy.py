@@ -45,6 +45,10 @@ def main(args):
                 if args.session not in dirname:
                     continue
 
+        if args.no_session:
+            if '201' in dirname:
+                continue
+
         for subdirname in dirnames:
             if args.verbose:
                 print dirname, subdirname
@@ -69,8 +73,12 @@ def build_parser(args):
                                      description='Deploy billtracker to production.',
                                      epilog='Examply use: python deploy.py --ftp --freeze --session 2016a')
     parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
-    parser.add_argument("--freeze", dest="do_freeze", default=False, action="store_true")
-    parser.add_argument("--ftp", dest="do_ftp", default=False, action="store_true")
+    parser.add_argument("--freeze", dest="do_freeze", default=False, action="store_true",
+                        help="Take a snaphot of the site before uploading.")
+    parser.add_argument("--ftp", dest="do_ftp", default=False, action="store_true",
+                        help="FTP the site to the production server.")
+    parser.add_argument("--nosession", dest="no_session", default=False, action="store_true",
+                        help="Only upload basic indexes & homepage.")
     parser.add_argument("-s", "--session", dest="session", default=False)
     args = parser.parse_args(args)
     return args
