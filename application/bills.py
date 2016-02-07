@@ -66,13 +66,14 @@ class BillQuery:
             if detail:
                 # Append the action dates to the item so we don't have
                 # to look them up again later.
-                item['action_dates'] = detail['action_dates']
-                if detail['votes'] != []:
+                if 'action_dates' in detail:
+                    item['action_dates'] = detail['action_dates']
+                if 'votes' in detail and detail['votes'] != []:
                     item['votes'] = detail['votes']
                 if value:
                     if detail['action_dates'][action_date] == value:
                         filtered.append(item)
-                elif detail['action_dates'][action_date]:
+                elif 'action_dates' in detail and detail['action_dates'][action_date]:
                     filtered.append(item)
 
         # NOW, WE SORT.
