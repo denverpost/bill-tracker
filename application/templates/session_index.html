@@ -5,7 +5,7 @@
 {% block content %}
 <p>We're tracking bills for these sessions:</p>
 <ul>
-{% for item in response.app.sessions %}
+{% for item in response.app.sessions|reverse %}
 <li><a href="{{item}}/">{{item}}</a></li>
 {% endfor %}
 </ul>
