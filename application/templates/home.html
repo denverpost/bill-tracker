@@ -19,9 +19,9 @@
 <h3 id="introduced">Recently introduced</h3>
 {% if response.introduced %}
 <ul>
-{% for item in response.introduced[:10] %}
+{% for item in response.introduced[:20] %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
-        {{item.action_dates.first}}
+        ({{item.action_dates.first|datetime_raw|datetime_filter}})
 {# 
         {% with detail = item|bill_details(response.app.session) %}
         {{detail.action_dates.first}}
@@ -39,7 +39,7 @@
 <ul>
 {% for item in response.passed_lower %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
-        {{item.updated_at}}
+        ({{item.action_dates.passed_lower|datetime_raw|datetime_filter}})
     </li>
 {% endfor %}
 </ul>
@@ -52,7 +52,7 @@
 <ul>
 {% for item in response.passed_upper %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
-        {{item.updated_at}}
+        ({{item.action_dates.passed_upper|datetime_raw|datetime_filter}})
     </li>
 {% endfor %}
 </ul>
@@ -65,6 +65,7 @@
 {% for item in response.bills %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
         {{item.updated_at}}
+        ({{item.action_dates.last|datetime_raw|datetime_filter}})
     </li>
 {% endfor %}
 </ul>
