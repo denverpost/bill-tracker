@@ -64,13 +64,18 @@ class BillQuery:
         for item in self.bills:
             detail = self.get_bill_detail(self.session, item['bill_id'])
             if detail:
-                #print detail['action_dates']
+                # Append the action dates to the item so we don't have
+                # to look them up again later.
+                item['action_dates'] = detail['action_dates']
                 if value:
                     if detail['action_dates'][action_date] == value:
                         filtered.append(item)
                 elif detail['action_dates'][action_date]:
                     filtered.append(item)
-        return filtered
+
+        # NOW, WE SORT.
+        sorts = sorted(filtered, key=lambda x:x['action_dates'][action_date], reverse=True)
+        return sorts
 
     def filter_updated_at(self, day=0):
         """ Return bills that have been updated within the last X days.

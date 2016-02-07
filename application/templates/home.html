@@ -21,10 +21,12 @@
 <ul>
 {% for item in response.introduced[:10] %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
-{# action_dates.first #}
+        {{item.action_dates.first}}
+{# 
         {% with detail = item|bill_details(response.app.session) %}
         {{detail.action_dates.first}}
         {% endwith %}
+#}
     </li>
 {% endfor %}
 </ul>
