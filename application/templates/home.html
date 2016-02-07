@@ -37,7 +37,7 @@
 <h3 id="passed-house">Passed Colorado State House</h3>
 {% if response.passed_lower %}
 <ul>
-{% for item in response.passed_lower %}
+{% for item in response.passed_lower[:10] %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
@@ -46,6 +46,7 @@
     </li>
 {% endfor %}
 </ul>
+<p><a href="./bills/{{response.app.session}}/passed/lower/">See a list of all the bills that passed the Colorado State House in session {{response.app.session|upper}}</a></p>
 {% else %}
 <p>No bills passed the Colorado State House yet this session.</p>
 {% endif %}
@@ -53,7 +54,7 @@
 <h3 id="passed-senate">Passed Colorado State Senate</h3>
 {% if response.passed_upper %}
 <ul>
-{% for item in response.passed_upper %}
+{% for item in response.passed_upper[:10] %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
@@ -62,6 +63,7 @@
     </li>
 {% endfor %}
 </ul>
+<p><a href="./bills/{{response.app.session}}/passed/upper/">See a list of all the bills that passed the Colorado State Senate in session {{response.app.session|upper}}</a></p>
 {% else %}
 <p>No bills passed the Colorado State Senate yet this session.</p>
 {% endif %}
