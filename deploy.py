@@ -54,7 +54,7 @@ def main(args):
         for filename in filenames:
             if args.verbose:
                 print(os.path.join(dirname, filename))
-            ftp.send_file(os.path.join(dirname, filename))
+            ftp.send_file(os.path.join(dirname, filename), dirname)
 
     ftp.disconnect()
     return True

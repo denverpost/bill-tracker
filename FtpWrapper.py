@@ -56,22 +56,30 @@ class FtpWrapper():
         self.ftp.cwd(self.config['upload_dir'])
         return True
 
-    def send_file(self, fp):
+    def send_file(self, fp, dirpath=''):
         """ Open a connection, read a file, upload that file.
             Requires the filename.
             """
         if self.ftp is None:
             self.connect()
 
+        if dirpath == '':
+            self.ftp.cwd(self.config['upload_dir'])
+        else:
+            self.ftp.cwd(dirpath)
+
         file_h = open(fp, 'r')
         #blocksize = len(file_h.read())
         blocksize = 4096
         fn = fp.split('/')[-1]
 
-        self.ftp.cwd(self.config['upload_dir'])
         try:
             self.ftp.storbinary('STOR %s' % fn, file_h, blocksize, self.ftp_callback)
             print 'SUCCESS: FTP\'d %s to %s' % (fn, self.config['host'])
         except:
             print 'ERROR: Could not FTP-->STOR %s' % fn
+
+        if dirpath != '':
+            self.ftp.cwd(dirpath)
+
         file_h.close
