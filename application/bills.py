@@ -155,8 +155,9 @@ def session_detail(session):
     app.page['title'] = 'Session: %s' % session
     app.page['description'] = ''
     q = BillQuery()
+    q.filter_session(session.upper())
     data = {
-        'bills': q.filter_session(session.upper())
+        'bills': q.filter_action_dates('first')
     }
     response = {
         'app': app,
