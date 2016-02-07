@@ -15,7 +15,7 @@
 {% endif %}
 <ol>
 {% for item in bills %}
-    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
+    <li><span>{{item.bill_id}}</span>: <a href="../../../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {% endif %}

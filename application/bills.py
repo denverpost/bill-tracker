@@ -79,14 +79,32 @@ class BillQuery:
         sorts = sorted(filtered, key=lambda x:x['action_dates'][action_date], reverse=True)
         return sorts
 
+    def filter_close_vote(self, chamber):
+        """ Return bills that have passed a chamber with a slim margin.
+            """
+        threshold = 5
+        if chamber == 'upper':
+            threshold = 3
+
+        filtered = []
+        for item in self.bills:
+            detail = self.get_bill_detail(self.session, item['bill_id'])
+            if not detail['action_dates']['passed_%s' % chamber]:
+                continue
+            if detail:
+                if abs(detail['votes'][0]['yes_count'] - detail['votes'][0]['no_count']) < threshold:
+                    filtered.append(item)
+
+        sorts = sorted(filtered, key=lambda x:x['action_dates']['passed_%s' % chamber], reverse=True)
+        return sorts
+
     def filter_updated_at(self, day=0):
         """ Return bills that have been updated within the last X days.
             """
         from datetime import date, datetime, timedelta
         filtered = []
         delta = timedelta(day)
-        d = date.today()
-        today = datetime.combine(d, datetime.min.time())
+        today = datetime.combine(date.today(), datetime.min.time())
         for item in self.bills:
             if datetime.strptime(item['updated_at'], datetimeformat) > ( today - delta ):
                 #print datetime.strptime(item['updated_at'], datetimeformat)
@@ -216,6 +234,8 @@ def bill_detail(session, bill_id):
         'data': data
     }
     return render_template('bill_detail.html', response=response)
+
+# === NOT DEPLOYED YET === #
 
 @app.route('/bills/<session>/legislators/')
 def legislator_index(session):
