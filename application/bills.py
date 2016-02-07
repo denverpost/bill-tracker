@@ -67,6 +67,8 @@ class BillQuery:
                 # Append the action dates to the item so we don't have
                 # to look them up again later.
                 item['action_dates'] = detail['action_dates']
+                if detail['votes'] != []:
+                    item['votes'] = detail['votes']
                 if value:
                     if detail['action_dates'][action_date] == value:
                         filtered.append(item)

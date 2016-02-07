@@ -39,7 +39,10 @@
 <ul>
 {% for item in response.passed_lower %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
-        ({{item.action_dates.passed_lower|datetime_raw|datetime_filter}})
+        {% if item.votes %}
+        passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
+        {% endif %}
+        on {{item.action_dates.passed_lower|datetime_raw|datetime_filter}}
     </li>
 {% endfor %}
 </ul>
@@ -52,7 +55,10 @@
 <ul>
 {% for item in response.passed_upper %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
-        ({{item.action_dates.passed_upper|datetime_raw|datetime_filter}})
+        {% if item.votes %}
+        passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
+        {% endif %}
+        on {{item.action_dates.passed_upper|datetime_raw|datetime_filter}}
     </li>
 {% endfor %}
 </ul>
