@@ -16,7 +16,7 @@
     <meta name="Copyright" content="Copyright &copy; The Denver Post." />
 
     <meta name="description" content="{{response.app.page.description}}">
-    <meta name="news_keywords" content="">
+    <meta name="news_keywords" content="politics,colorado,legislature">
 
     <meta name="twitter:card" value="summary" />
     <meta name="twitter:url" value="{{response.app.page.url}}" />
@@ -69,6 +69,7 @@
 
     <script type="text/javascript">
         var iframe = '', kiosk = '';
+        if ( document.location.hash === '#iframe' ) { iframe = 1 }
         if ( window.top !== window.self ) { iframe = 1; }
         if ( iframe === '' ) {
         //Chartbeat startup
@@ -203,7 +204,7 @@
         //Chartbeat stuff
         _sf_async_config.uid = 2671;
         _sf_async_config.domain = 'denverpost.com';
-        _sf_async_config.sections = 'legislature,data';
+        _sf_async_config.sections = 'politics,legislature,data';
         _sf_async_config.useCanonical = true;
         (function(){
             function loadChartbeat() {
@@ -226,5 +227,13 @@
         &bull; <a href="http://www.denverpost.com/arcade/ci_26520665/daily-crossword">Daily Crossword</a>
     </p>
     </footer>
+    <script>
+    if ( iframe === 1 )
+    {
+        // *** Loop through all the relative links and add target="_parent"
+        // as well as the host domain, http://extras.denverpost.com/app/bill-tracker/
+        // to each href.
+    }
+    </script>
 </body
 </html>

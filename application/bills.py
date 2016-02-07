@@ -76,7 +76,6 @@ class BillQuery:
                 elif 'action_dates' in detail and detail['action_dates'][action_date]:
                     filtered.append(item)
 
-        # NOW, WE SORT.
         sorts = sorted(filtered, key=lambda x:x['action_dates'][action_date], reverse=True)
         return sorts
 
