@@ -196,7 +196,7 @@ def session_passed_detail(session, chamber):
         'chamber': chamber,
         'data': data
     }
-    return render_template('session_passed.html', response=response)
+    return render_template('session_passed_detail.html', response=response)
 
 @app.route('/bills/<session>/<bill_id>/')
 def bill_detail(session, bill_id):
