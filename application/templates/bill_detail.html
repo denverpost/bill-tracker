@@ -11,7 +11,14 @@
     and last touched {{response.data.bill.action_dates.last|datetime_raw|datetime_filter}}.
 </p>
 
-
+    {% if response.data.bill.action_dates.passed_lower > response.data.bill.action_dates.passed_upper %}
+hi {{response.data.bill.action_dates.passed_lower}} < {{response.data.bill.action_dates.passed_upper}}
+{% else %}
+bye {{response.data.bill.action_dates.passed_lower}} < {{response.data.bill.action_dates.passed_upper}}
+{% endif %}
+<dl>
+    <dt></dt>
+</dl>
 {{response.data.bill.action_dates}}
 
 <h2 id="timeline">{{type|title}} Timeline</h2>

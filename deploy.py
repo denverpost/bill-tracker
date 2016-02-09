@@ -5,6 +5,7 @@ import argparse
 import string
 import os, sys
 import doctest
+import httplib2
 from FtpWrapper import FtpWrapper
 import freeze
 
@@ -54,11 +55,17 @@ def main(args):
                 print dirname, subdirname
             ftp.mkdir(os.path.join(dirname, subdirname))
 
-        # print path to all filenames.
         for filename in filenames:
             if args.verbose:
                 print(os.path.join(dirname, filename))
             ftp.send_file(os.path.join(dirname, filename), dirname)
+
+            # Bust the cache on extras
+            h = httplib2.Http('')
+            url = string.replace(dirname, '.', 'http://extras.denverpost.com/app/bill-tracker', 1)
+            if args.verbose:
+                print url
+            response, content = h.request('%/' % url, 'PURGE', headers={}, body='')
 
     ftp.disconnect()
     return True

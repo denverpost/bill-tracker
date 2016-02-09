@@ -217,6 +217,8 @@ def session_passed_detail(session, chamber):
     }
     return render_template('session_passed_detail.html', response=response)
 
+# *** FIGURE OUT WHICH BILLS HAVE FAILED
+
 @app.route('/bills/<session>/<bill_id>/')
 def bill_detail(session, bill_id):
     if session not in app.sessions:
