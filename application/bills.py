@@ -142,7 +142,7 @@ def json_check(fn):
 
 @app.route('/')
 def index():
-    app.page['title'] = 'Bill Tracker'
+    app.page['title'] = 'Colorado Bill Tracker'
     app.page['description'] = 'Tracking legislation in Colorado\'s state house.'
     q = BillQuery()
     q.filter_session()
@@ -155,11 +155,8 @@ def index():
             break
         if days_back > 300:
             break
-        #print days_back,
         days_back += 1
 
-    #print len(bills)
-    
     response = {
         'app': app,
         'bills': bills,
