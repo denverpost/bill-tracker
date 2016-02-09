@@ -8,13 +8,14 @@ import argparse
 
 class Sunlight:
 
-    def __init__(self):
+    def __init__(self, args={}):
         """ Initialize the object.
             >>> s = Sunlight()
             """
         self.state='co'
         self.directory = os.path.dirname(os.path.realpath(__file__))
         self.bills = []
+        self.args = args
 
     def get_bill_list(self, session=None):
         """ Get list of bills, sometimes from a particular session.
@@ -63,7 +64,14 @@ class Sunlight:
 
 
 def main(args):
-    s = Sunlight()
+    """ Example usage:
+        This  update this session's bill details with the latest data,
+        and then builds the full index of all sessions / bills.
+        $ python legquery.py --session 2016a --details
+        $ python legquery.py
+        """
+
+    s = Sunlight(args)
     s.get_bill_list(args.session)
 
     # We'll need to store the files we're writing somewhere, eventually.
@@ -76,16 +84,19 @@ def main(args):
     else:
         bills = s.filter_bills_recent(int(args.limit))
 
-    i = 0
-    for item in bills:
-        i += 1
-        print i, item['bill_id']
-        try:
-            details = s.get_bill_detail(item['bill_id'])
-        except:
-            print item['session']
-            s.session = item['session'].lower()
-            details = s.get_bill_detail(item['bill_id'])
+    if args.details:
+        i = 0
+        for item in bills:
+            i += 1
+            if args.verbose:
+                print i, item['bill_id']
+            try:
+                details = s.get_bill_detail(item['bill_id'])
+            except:
+                if args.verbose:
+                    print item['session']
+                s.session = item['session'].lower()
+                details = s.get_bill_detail(item['bill_id'])
 
 
 
@@ -97,10 +108,16 @@ def build_parser(args):
     parser = argparse.ArgumentParser(usage='$ python legquery.py',
                                      description='Download data from Sunlight and update bill indexes.',
                                      epilog='')
-    parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true")
-    parser.add_argument("-c", "--cache", dest="cache", default=False, action="store_true")
-    parser.add_argument("-s", "--session", dest="session")
-    parser.add_argument("-l", "--limit", dest="limit", default=10)
+    parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true",
+                        help="Run doctests, display more info.")
+    parser.add_argument("-c", "--cache", dest="cache", default=False, action="store_true",
+                        help="Not implemented yet.")
+    parser.add_argument("-d", "--details", dest="details", default=False, action="store_true",
+                        help="Also query and download the details for each bill.")
+    parser.add_argument("-s", "--session", dest="session",
+                        help="Query only one session, i.e. 2016a, 2015a, 2014a etc.")
+    parser.add_argument("-l", "--limit", dest="limit", default=10,
+                        help="Truncate the number of bills we handle.")
     args = parser.parse_args(args)
     return args
 

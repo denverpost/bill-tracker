@@ -170,7 +170,7 @@ def session_index():
 def session_detail(session):
     if session not in app.sessions:
         abort(404)
-    app.page['title'] = 'Session: %s' % session
+    app.page['title'] = 'Session %s' % session
     app.page['description'] = ''
     q = BillQuery()
     q.filter_session(session.upper())
