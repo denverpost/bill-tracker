@@ -58,7 +58,11 @@ def main(args):
         for filename in filenames:
             if args.verbose:
                 print(os.path.join(dirname, filename))
-            ftp.send_file(os.path.join(dirname, filename), dirname)
+            try:
+                ftp.send_file(os.path.join(dirname, filename), dirname)
+            except:
+                print "ERROR: Could not upload", 
+                print(os.path.join(dirname, filename))
 
             # Bust the cache on extras
             h = httplib2.Http('')

@@ -6,24 +6,26 @@
 &rsaquo; <a href="../../">{{response.session}}</a>
 {% endblock breadcrumbs %}
 {% block content %}
-<p>Bills that passed the {{response.chamber}} in the {{response.session}} Colorado legislative session.</p>
-<h2>Passed Bills</h2>
+<p>Bills that {{response.passfail}} the {{response.chamber}} chamber in the {{response.session}} Colorado legislative session.</p>
+<h2>{{response.passfail|capitalize}} Bills</h2>
 {% if response.chamber == 'lower' %}
-   {% set bills = response.data.passed_lower %}
+   {% set bills = response.data.lower %}
 {% else %}
-   {% set bills = response.data.passed_upper %}
+   {% set bills = response.data.upper %}
 {% endif %}
 <ol>
 {% for item in bills %}
     <li><span>{{item.bill_id}}</span>: <a href="../../../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
         {% if item.votes %}
-        passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
+        {{response.passfail}} {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {% endif %}
+        {% if response.passfail == 'passed' %}
         on 
         {% if response.chamber == 'lower' %}
            {{item.action_dates.passed_lower|datetime_raw|datetime_filter}}
         {% else %}
            {{item.action_dates.passed_upper|datetime_raw|datetime_filter}}
+        {% endif %}
         {% endif %}
     </li>
 {% endfor %}

@@ -79,6 +79,21 @@ class BillQuery:
         sorts = sorted(filtered, key=lambda x:x['action_dates'][action_date], reverse=True)
         return sorts
 
+    def filter_failed(self):
+        """ Return bills that have failed in the house and / or senate.
+            """
+        filtered = []
+        for item in self.bills:
+            detail = self.get_bill_detail(self.session, item['bill_id'])
+            if detail:
+                if len(detail['votes']) == 0:
+                    continue
+                if detail['votes'][0]['yes_count'] < detail['votes'][0]['no_count']:
+                    filtered.append(item)
+
+        sorts = sorted(filtered, key=lambda x:x['action_dates']['first'], reverse=True)
+        return sorts
+
     def filter_close_vote(self, chamber):
         """ Return bills that have passed a chamber with a slim margin.
             """
@@ -184,34 +199,41 @@ def session_detail(session):
     }
     return render_template('session_detail.html', response=response)
 
-@app.route('/bills/<session>/passed/')
-def session_passed_index(session):
+@app.route('/bills/<session>/<passfail>/')
+def session_passed_index(session, passfail):
     if session not in app.sessions:
         abort(404)
-    app.page['title'] = 'Bills that passed in the %s session' % session
+    app.page['title'] = 'Bills that %s in the %s session' % (passfail, session)
     app.page['description'] = ''
     response = {
         'app': app,
         'session': session,
+        'passfail': passfail,
     }
     return render_template('session_passed_index.html', response=response)
 
-@app.route('/bills/<session>/passed/<chamber>/')
-def session_passed_detail(session, chamber):
+@app.route('/bills/<session>/<passfail>/<chamber>/')
+def session_passed_detail(session, passfail, chamber):
     if session not in app.sessions:
         abort(404)
-    app.page['title'] = 'Bills that passed the %s chamber in the %s session' % (chamber, session)
+    app.page['title'] = 'Bills that %s the %s chamber in the %s session' % (passfail, chamber, session)
     app.page['description'] = ''
     q = BillQuery()
     q.session = session.upper()
     q.filter_session()
     data = {
-        'passed_upper': q.filter_action_dates('passed_upper'),
-        'passed_lower': q.filter_action_dates('passed_lower'),
+        'upper': q.filter_action_dates('passed_upper'),
+        'lower': q.filter_action_dates('passed_lower'),
     }
+    if passfail == 'failed':
+        data = {
+            'upper': q.filter_failed(),
+            'lower': q.filter_failed(),
+        }
     response = {
         'app': app,
         'session': session,
+        'passfail': passfail,
         'chamber': chamber,
         'data': data
     }
