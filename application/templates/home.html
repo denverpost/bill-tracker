@@ -30,7 +30,9 @@
     </li>
 {% endfor %}
 </ul>
-<p><a href="./bills/{{response.app.session}}/">See all the bills that have been introduced this session</a></p>
+<p><strong>
+    <a href="./bills/{{response.app.session}}/">See all the bills that have been introduced this session</a></p>
+</strong></p>
 {% else %}
 <p>No bills introduced yet this session.</p>
 {% endif %}
@@ -47,7 +49,9 @@
     </li>
 {% endfor %}
 </ul>
-<p><a href="./bills/{{response.app.session}}/passed/lower/">See a list of all the bills that passed the Colorado State House in session {{response.app.session|upper}}</a></p>
+<p><strong>
+    <a href="./bills/{{response.app.session}}/passed/lower/">See a list of all the bills that passed the Colorado State House in session {{response.app.session|upper}}</a>
+</strong></p>
 {% else %}
 <p>No bills passed the Colorado State House yet this session.</p>
 {% endif %}
@@ -64,7 +68,9 @@
     </li>
 {% endfor %}
 </ul>
-<p><a href="./bills/{{response.app.session}}/passed/upper/">See a list of all the bills that passed the Colorado State Senate in session {{response.app.session|upper}}</a></p>
+<p><strong>
+    <a href="./bills/{{response.app.session}}/passed/upper/">See a list of all the bills that passed the Colorado State Senate in session {{response.app.session|upper}}</a></p>
+</strong></p>
 {% else %}
 <p>No bills passed the Colorado State Senate yet this session.</p>
 {% endif %}
@@ -79,7 +85,9 @@
 {% endfor %}
 </ul>
 
-<p><a href="./bills/{{response.app.session}}/">See all of the current session's bills</a>.</p>
+<p><strong>
+    <a href="./bills/{{response.app.session}}/">See all of the current session's bills</a>.</p>
+</strong></p>
 
 {# {u'title': u'Sentencing For Certain 2nd Degree Assaults', u'created_at': u'2015-03-24 21:28:11', u'updated_at': u'2015-10-07 12:07:47', u'id': u'COB00003396', u'chamber': u'lower', u'state': u'co', u'session': u'2015A', u'type': [u'bill'], u'subjects': [], u'bill_id': u'HB 15-1303'} #}
 <!--
