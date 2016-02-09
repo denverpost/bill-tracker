@@ -65,7 +65,7 @@ def main(args):
             url = string.replace(dirname, '.', 'http://extras.denverpost.com/app/bill-tracker', 1)
             if args.verbose:
                 print url
-            response, content = h.request('%/' % url, 'PURGE', headers={}, body='')
+            response, content = h.request('%s/' % url, 'PURGE', headers={}, body='')
 
     ftp.disconnect()
     return True

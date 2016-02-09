@@ -27,7 +27,7 @@ class Sunlight:
             # Because querying Sunight's API like that ^ returns all bills,
             # not just the ones from the specified session.
             for item in bills:
-                if item.session == session.upper():
+                if item['session'] == session.upper():
                     self.bills.append(item)
             filename = '_input/%s-bills-%s.json' % (self.state, session.lower())
         else:
