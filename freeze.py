@@ -46,13 +46,18 @@ def session_detail():
 @freezer.register_generator
 def session_passed_index():
     for item in app.sessions:
-        yield { 'session': item }
+        for passfail in ['passed', 'failed']:
+            yield { 'session': item, 'passfail': passfail }
 
 @freezer.register_generator
 def session_passed_detail():
     for item in app.sessions:
         for chamber in ['lower', 'upper']:
-            yield { 'session': item, 'chamber': chamber }
+            for passfail in ['passed', 'failed']:
+                yield { 'session': item,
+                        'chamber': chamber,
+                        'passfail': passfail
+                      }
 
 @freezer.register_generator
 def bill_detail():
