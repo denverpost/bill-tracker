@@ -61,6 +61,10 @@
         footer { clear: both; }
         footer p, #content-footer p { text-align: center; }
         h3 { margin-top: 15px; }
+        hr {
+            width: 80%;
+            margin: 8px auto;
+        }
     </style>
 
     
@@ -157,8 +161,6 @@
             {% endblock breadcrumbs %}
         </div>
     <h1>{{response.app.page.title}}</h1>
-{% block content %}
-{% endblock content %}
 
         <div class="rightRail" id="rightRail" style="float:right;width:300px;margin-left:20px;">
 
@@ -169,7 +171,7 @@
             <!-- Begin DFP Premium ad uniqueId: dfp-20 -->
             <div id='dfp-20' style="margin-bottom:10px;">
                 <script type='text/javascript'>
-                    googletag.defineSlot('/8013/denverpost.com/News',[[300,250],[300,600],[160,600],[300,1050]], 'dfp-20').addService(googletag.pubads()).setTargeting('pos',['Cube1_RRail_ATF']).setTargeting('kv','weather');                                          
+                    googletag.defineSlot('/8013/denverpost.com/News',[[300,250],[300,600],[160,600],[300,1050]], 'dfp-20').addService(googletag.pubads()).setTargeting('pos',['Cube1_RRail_ATF']).setTargeting('kv','politics');                                          
                     googletag.pubads().enableSyncRendering();
                     googletag.enableServices();                                         
                     googletag.display('dfp-20');
@@ -180,7 +182,7 @@
             <!-- Begin DFP Premium ad uniqueId: dfp-21 -->
             <div id='dfp-21' style="margin-bottom:10px;">
                 <script type='text/javascript'>
-                    googletag.defineSlot('/8013/denverpost.com/News',[[300,250]], 'dfp-21').addService(googletag.pubads()).setTargeting('pos',['Cube2_RRail_mid']).setTargeting('kv','weather');
+                    googletag.defineSlot('/8013/denverpost.com/News',[[300,250]], 'dfp-21').addService(googletag.pubads()).setTargeting('pos',['Cube2_RRail_mid']).setTargeting('kv','politics');
                     googletag.pubads().enableSyncRendering();
                     googletag.enableServices();                                         
                     googletag.display('dfp-21');
@@ -191,7 +193,7 @@
             <!-- Begin DFP Premium ad uniqueId: dfp-22 -->
             <div id='dfp-22' style="margin-bottom:10px;">
                 <script type='text/javascript'>
-                    googletag.defineSlot('/8013/denverpost.com/News',[[300,250]], 'dfp-22').addService(googletag.pubads()).setTargeting('pos',['Cube3_RRail_lower']).setTargeting('kv','weather');
+                    googletag.defineSlot('/8013/denverpost.com/News',[[300,250]], 'dfp-22').addService(googletag.pubads()).setTargeting('pos',['Cube3_RRail_lower']).setTargeting('kv','politics');
                     googletag.pubads().enableSyncRendering();
                     googletag.enableServices();                                         
                     googletag.display('dfp-22');
@@ -201,11 +203,14 @@
 
         </div><!-- END rightRail -->
 
+    {% block content %}{% endblock content %}
+
         <div class="clear" style="height:0;width:100%;clear:both;"></div>
 
     </div><!-- END wrapper -->
 
     <section id="content-footer">
+        <hr noshade>
         <p>The latest in <a href="http://www.denverpost.com/legislature">Colorado state legislature news</a>: <script src="http://extras.denverpost.com/cache/politics_legislature_1.js"></script></p>
     </section>
 
