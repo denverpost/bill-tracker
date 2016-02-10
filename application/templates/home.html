@@ -75,7 +75,8 @@
 <p>No bills passed the Colorado State Senate yet this session.</p>
 {% endif %}
 
-<h3>Updated {% if response.days_back == 0 %}Today{% else %}{{response.back_date}}{% endif %}</h3>
+<h3>Legislation updated {% if response.days_back == 0 %}Today{% else %}{{response.back_date|datetime_filter}}{% endif %}</h3>
+<p>This is the most-recent date we've had any updates from the Colorado state legislature.</p>
 <ul>
 {% for item in response.bills %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
