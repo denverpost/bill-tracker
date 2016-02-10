@@ -3,11 +3,11 @@
 {% block breadcrumbs %}{{ super() }}
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>{% endblock breadcrumbs %}
 {% block content %}
-<p>We're tracking bills for these sessions:</p>
+<p>We're tracking bills in the Colorado state legislature for these sessions:</p>
 <ul>
 {% for item in response.app.sessions|reverse %}
-<li><a href="{{item}}/">{{item}}</a></li>
-{% endfor %}
+    <li><a href="{{item}}/">{{item}}</a></li>
+{%- endfor %}
 </ul>
 
 {% endblock content %}

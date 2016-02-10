@@ -3,18 +3,6 @@
 {% block breadcrumbs %}{{ super() }}{% endblock breadcrumbs %}
 {% block content %}
 <h2>Current Legislation (<a href="./bills/{{response.app.session}}/">Session {{response.app.session|upper}}</a>)</h2>
-<h3 id="signed">Recently signed</h3>
-{% if response.signed %}
-<ul>
-{% for item in response.signed %}
-    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
-        {{item.updated_at}}
-    </li>
-{% endfor %}
-</ul>
-{% else %}
-<p>No bills signed yet this session.</p>
-{% endif %}
 
 <h3 id="introduced">Recently introduced</h3>
 {% if response.introduced %}
@@ -35,6 +23,19 @@
 </strong></p>
 {% else %}
 <p>No bills introduced yet this session.</p>
+{% endif %}
+
+<h3 id="signed">Recently signed</h3>
+{% if response.signed %}
+<ul>
+{% for item in response.signed %}
+    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
+        {{item.updated_at}}
+    </li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No bills signed yet this session.</p>
 {% endif %}
 
 <h3 id="passed-house">Passed Colorado State House</h3>
