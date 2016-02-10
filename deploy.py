@@ -9,6 +9,8 @@ import httplib2
 from FtpWrapper import FtpWrapper
 import freeze
 
+current_session = '2016a' #HARD-CODED HC
+
 def main(args):
     """ Turn every URL into flatfile, ftp it to prod.
         >>> args = build_parser(['--verbose'])
@@ -53,6 +55,10 @@ def main(args):
         for subdirname in dirnames:
             if args.verbose:
                 print dirname, subdirname
+
+            # Skip the endless directory creation on previous years.
+            if current_session not in dirname:
+                continue
             ftp.mkdir(os.path.join(dirname, subdirname))
 
         for filename in filenames:
@@ -69,7 +75,10 @@ def main(args):
             url = string.replace(dirname, '.', 'http://extras.denverpost.com/app/bill-tracker', 1)
             if args.verbose:
                 print url
-            response, content = h.request('%s/' % url, 'PURGE', headers={}, body='')
+            try:
+                response, content = h.request('%s/' % url, 'PURGE', headers={}, body='')
+            except:
+                print "ERROR: Could not bust cache on %s" % url
 
     ftp.disconnect()
     return True
