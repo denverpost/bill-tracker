@@ -66,7 +66,6 @@ class FtpWrapper():
         if dirpath == '':
             self.ftp.cwd(self.config['upload_dir'])
         else:
-            #print 'DIRPATH', dirpath, self.config['upload_dir']
             self.ftp.cwd(dirpath)
 
         file_h = open(fp, 'r')
@@ -78,7 +77,7 @@ class FtpWrapper():
             self.ftp.storbinary('STOR %s' % fn, file_h, blocksize, self.ftp_callback)
             print 'SUCCESS: FTP\'d %s to %s' % (fn, self.config['host'])
         except:
-            print 'ERROR: Could not FTP-->STOR %s' % fn
+            print 'ERROR: Could not FTP-->STOR %s%s' % (dirpath, fn)
 
         if dirpath != '':
             self.ftp.cwd(self.config['upload_dir'])

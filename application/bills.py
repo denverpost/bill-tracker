@@ -196,6 +196,24 @@ def session_detail(session):
     }
     return render_template('session_detail.html', response=response)
 
+@app.route('/bills/<session>/<bill_id>/')
+def bill_detail(session, bill_id):
+    if session not in app.sessions:
+        abort(404)
+    data = {
+        'bill': json.load(json_check('_input/%s/%s.json' % (session, bill_id.upper())))
+    }
+    if 'title' not in data['bill']:
+        abort(404)
+    app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
+    app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )
+    response = {
+        'app': app,
+        'session': session,
+        'data': data
+    }
+    return render_template('bill_detail.html', response=response)
+
 @app.route('/bills/<session>/<passfail>/')
 def session_passed_index(session, passfail):
     if session not in app.sessions:
@@ -235,26 +253,6 @@ def session_passed_detail(session, passfail, chamber):
         'data': data
     }
     return render_template('session_passed_detail.html', response=response)
-
-# *** FIGURE OUT WHICH BILLS HAVE FAILED
-
-@app.route('/bills/<session>/<bill_id>/')
-def bill_detail(session, bill_id):
-    if session not in app.sessions:
-        abort(404)
-    data = {
-        'bill': json.load(json_check('_input/%s/%s.json' % (session, bill_id.upper())))
-    }
-    if 'title' not in data['bill']:
-        abort(404)
-    app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
-    app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )
-    response = {
-        'app': app,
-        'session': session,
-        'data': data
-    }
-    return render_template('bill_detail.html', response=response)
 
 # === NOT DEPLOYED YET === #
 
