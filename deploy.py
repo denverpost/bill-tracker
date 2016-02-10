@@ -36,6 +36,9 @@ def main(args):
 
     ftp = FtpWrapper(**ftp_config)
 
+    # Always FTP the homepage.
+    ftp.send_file('index.html', '.')
+
     for dirname, dirnames, filenames in os.walk('.'):
 
         # Sometimes we only want to upload files for a particular session.
@@ -51,6 +54,8 @@ def main(args):
         if args.no_session:
             if '201' in dirname:
                 continue
+            else:
+                print dirname, dirnames
 
         for subdirname in dirnames:
             if args.verbose:
@@ -58,6 +63,8 @@ def main(args):
 
             # Skip the endless directory creation on previous years.
             if current_session not in dirname:
+                if args.verbose:
+                    print "SKIPPING mkdir on %s" % subdirname
                 continue
             ftp.mkdir(os.path.join(dirname, subdirname))
 
