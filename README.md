@@ -25,6 +25,15 @@ Here's the first draft of instructions:
 5. Open a new terminal window, cd to the project, activate the virtualenv
 6. `python runserver.py`, then open up http://localhost:5000/
 
+### Deploying
+
+Note: `--freeze` takes a snapshot of the current templates. If you haven't made any template- or data-level changes since the last time you froze, you don't need to `--freeze`.
+
+* Deploy everything: `python deploy.py --freeze --ftp`
+* Deploy the homepage `python deploy.py --nosession --freeze --ftp`
+* Deploy the current session's files `python deploy.py --session 2016a --freeze --ftp`
+* Deploy a previous session's files `python deploy.py --session 2012a --freeze --ftp`
+
 # License
 Copyright © 2015-2016 The Denver Post
 
