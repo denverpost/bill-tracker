@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from flask import g, render_template, url_for, redirect, abort
+from flask import g, render_template, url_for, redirect, abort, request
 from datetime import datetime, date, timedelta
 from collections import OrderedDict
 import json
@@ -214,10 +214,14 @@ def bill_detail(session, bill_id):
     }
     return render_template('bill_detail.html', response=response)
 
-@app.route('/bills/<session>/<passfail>/')
-def session_passed_index(session, passfail):
+@app.route('/bills/<session>/passed/')
+@app.route('/bills/<session>/failed/')
+def session_passed_index(session):
     if session not in app.sessions:
         abort(404)
+    passfail = 'passed'
+    if 'failed' in request.path:
+        passfail = 'failed'
     app.page['title'] = 'Bills that %s in the %s session' % (passfail, session)
     app.page['description'] = ''
     response = {
