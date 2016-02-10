@@ -38,7 +38,8 @@ class BillQuery:
     def get_bill_detail(self, session, bill_id):
         """ For when we need to query a field in the bill details.
             """
-        return json.load(json_check('_input/%s/%s.json' % (session.lower(), string.replace(bill_id.lower(), ' ', '_'))))
+        fn = '_input/%s/%s.json' % (session.lower(), string.replace(bill_id.lower(), ' ', '_'))
+        return json.load(json_check(fn))
 
     def filter_session(self, session=None):
         """ Take a session, and, if valid, return the bills form that session.
@@ -62,7 +63,7 @@ class BillQuery:
 
         filtered = []
         for item in self.bills:
-            detail = self.get_bill_detail(self.session, item['bill_id'])
+            detail = self.get_bill_detail(item['session'], item['bill_id'])
             if detail:
                 # Append the action dates to the item so we don't have
                 # to look them up again later.
