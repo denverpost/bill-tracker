@@ -81,7 +81,6 @@
 <ul>
 {% for item in response.bills %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
-        {{item.updated_at}}
         ({{item.action_dates.last|datetime_raw|datetime_filter}})
     </li>
 {% endfor %}

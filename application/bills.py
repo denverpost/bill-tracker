@@ -127,6 +127,23 @@ class BillQuery:
                 filtered.append(item)
         return filtered
 
+    def filter_last_date(self, day=0):
+        """ Return bills that have a last-date within the last X days.
+            This is more accurate than the filter_updated_at because this date
+            is the date there was any action on the bill and updated_at is just
+            the timestamp when the Sunlight Foundation last modified it.
+            """
+        from datetime import date, datetime, timedelta
+        filtered = []
+        delta = timedelta(day)
+        today = datetime.combine(date.today(), datetime.min.time())
+        for item in self.bills:
+            detail = self.get_bill_detail(item['session'], item['bill_id'])
+            if datetime.strptime(detail['action_dates']['last'], datetimeformat) > ( today - delta ):
+                #print datetime.strptime(item['updated_at'], datetimeformat)
+                filtered.append(item)
+        return filtered
+
 def json_check(fn):
     """ Look to see if a JSON file exists. If it does, return it.
         If not, create the file and return an empty JSON-friendly string.
@@ -151,12 +168,13 @@ def index():
     days_back = 0
     bills = []
     while True:
-        bills = q.filter_updated_at(days_back)
+        bills = q.filter_last_date(days_back)
         if len(bills) > 0:
             break
         if days_back > 300:
             break
         days_back += 1
+    days_back -= 1
 
     response = {
         'app': app,
