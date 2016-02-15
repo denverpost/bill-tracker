@@ -3,6 +3,15 @@
 {% block breadcrumbs %}{{ super() }}
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
 &rsaquo; <a href="../">Sessions</a>{% endblock breadcrumbs %}
+{% block head %}
+<!-- DATATABLES STYLES -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/zf-5.5.2/jqc-1.11.3,dt-1.10.8/datatables.min.css"/>
+<link href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css"/>
+<!-- DATATABLES SCRIPTS -->
+<script type="text/javascript" src="https://cdn.datatables.net/r/zf-5.5.2/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.0.1/js/dataTables.responsive.js"></script>
+<script src="http://extras.denverpost.com/summercamps/2016/ColumnFilterWidgets.js"></script>
+{% endblock head %}
 {% block content %}
 <p>Bills from the {{response.session}} Colorado legislative session.</p>
 <ul class="subnav">
@@ -12,8 +21,108 @@
 
 <h2>Bills</h2>
 <h3>Table</h3>
+<div class="row">
+    <div class="large-12 columns">
+        <table id="bill-table" class="table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+					<th class="all">Title</th>
+					<th class="desktop">Created</th>
+					<th class="desktop">Updated</th>
+					<th class="never">ID</th>
+					<th class="all">Chamber</th>
+					<th class="never">State</th>
+					<th class="never">Session</th>
+					<th class="none">Passed upper</th>
+					<th class="none">Passed lower</th>
+					<th class="never">Last</th>
+					<th class="never">Signed</th>
+					<th class="never">First</th>
+					<th class="desktop">Type</th>
+					<th class="never">Subject</th>
+					<th class="desktop">Bill ID</th>
+				</tr>
+            </thead>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
 <script>
 data = {{response.json|safe}}
+/* data = [{
+	"title": "Ban Law Enforcement Use Of Chokehold",
+	"created_at": "2016-02-13 08:50:00",
+	"updated_at": "2016-02-13 08:50:00",
+	"id": "COB00003987",
+	"chamber": "lower",
+	"state": "co",
+	"session": "2016A",
+	"action_dates": {
+		"passed_upper": null,
+		"passed_lower": null,
+		"last": "2016-02-12 00:00:00",
+		"signed": null,
+		"first": "2016-02-12 00:00:00"
+	},
+	"type": ["bill"],
+	"subjects": [],
+	"bill_id": "HB 16-1264"
+}
+] */
+
+// DataTables
+$('#bill-table').dataTable( { 
+    data: data,
+    //order: [ 5, "asc" ],
+    paging: true,
+    pagingType: 'numbers',
+    pageLength: 5,
+    responsive: true,
+    columns: [ 
+        {
+            "className": 'details-control',
+            "orderable": false,
+            "data": null,
+            "defaultContent": ''
+            
+        },
+        { "data": "title" },
+        { "data": "created_at" },
+        { "data": "updated_at" },
+        { "data": "id" },
+        { "data": "chamber" },
+        { "data": "state" },
+        { "data": "session" },
+        { "data": "action_dates.passed_upper" },
+        { "data": "action_dates.passed_lower" },
+        { "data": "action_dates.last" },
+        { "data": "action_dates.signed" },
+        { "data": "action_dates.first" },
+        { "data": "type" },
+        { "data": "subjects" },
+        { "data": "bill_id" }
+	],
+    autoWidth: false,
+    //deferRender: true,
+    //dom: 'Wftip',
+    dom: '<"row"<"small-6 columns">W>' + 
+    'ftip',
+    // https://github.com/cyberhobo/ColumnFilterWidgets
+    oColumnFilterWidgets: {
+        aiExclude: [ 0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16 ],
+        // sSeparator: ',  ',
+        bGroupTerms: false,
+        aoColumnDefs: [
+            //{ bSort: false, sSeparator: ' / ', aiTargets: [ 5, 13 ] },
+            { bSort: false, aiTargets: [ 5, 13 ] },
+            { fnSort: function( a, b ) { return a-b; }, aiTargets: [ 5, 13 ] }
+        ]
+    }
+} );
+
 </script>
 
 <h3>List of bills</h3>
