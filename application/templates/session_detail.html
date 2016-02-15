@@ -11,6 +11,12 @@
 </ul>
 
 <h2>Bills</h2>
+<h3>Table</h3>
+<script>
+data = {{response.json|safe}}
+</script>
+
+<h3>List of bills</h3>
 <ol>
 {% for item in response.data.bills %}
     <li><span>{{item.bill_id}}</span>: <a href="{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>

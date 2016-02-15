@@ -211,6 +211,7 @@ def session_detail(session):
     response = {
         'app': app,
         'session': session,
+        'json': json.dumps(data['bills']),
         'data': data
     }
     return render_template('session_detail.html', response=response)
