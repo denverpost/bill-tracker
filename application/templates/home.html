@@ -8,7 +8,7 @@
 {% if response.introduced %}
 <ul>
 {% for item in response.introduced[:20] %}
-    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
+    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         ({{item.action_dates.first|datetime_raw|datetime_filter}})
 {# 
         {% with detail = item|bill_details(response.app.session) %}
@@ -29,7 +29,7 @@
 {% if response.signed %}
 <ul>
 {% for item in response.signed %}
-    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
+    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {{item.updated_at}}
     </li>
 {% endfor %}
@@ -42,7 +42,7 @@
 {% if response.passed_lower %}
 <ul>
 {% for item in response.passed_lower[:10] %}
-    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
+    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {% endif %}
@@ -61,7 +61,7 @@
 {% if response.passed_upper %}
 <ul>
 {% for item in response.passed_upper[:10] %}
-    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
+    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {% endif %}
@@ -80,7 +80,7 @@
 <p>This is the most-recent date we've had any updates from the Colorado state legislature.</p>
 <ul>
 {% for item in response.bills %}
-    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}">{{item.title}}</a>
+    <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {{item.updated_at}}
         ({{item.action_dates.last|datetime_raw|datetime_filter}})
     </li>
