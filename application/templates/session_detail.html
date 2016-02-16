@@ -27,9 +27,11 @@
             <thead>
                 <tr>
                     <th></th>
+                    <th class="desktop">Yes votes</th>
+                    <th class="desktop">No votes</th>
+                    <th class="desktop">Other votes</th>
+                    <th class="none">Link</th>
 					<th class="all">Title</th>
-					<th class="desktop">Created</th>
-					<th class="desktop">Updated</th>
 					<th class="never">ID</th>
 					<th class="all">Chamber</th>
 					<th class="never">State</th>
@@ -51,27 +53,78 @@
 </div>
 
 <script>
-data = {{response.json|safe}}
-/* data = [{
-	"title": "Ban Law Enforcement Use Of Chokehold",
-	"created_at": "2016-02-13 08:50:00",
-	"updated_at": "2016-02-13 08:50:00",
-	"id": "COB00003987",
-	"chamber": "lower",
-	"state": "co",
-	"session": "2016A",
-	"action_dates": {
-		"passed_upper": null,
-		"passed_lower": null,
-		"last": "2016-02-12 00:00:00",
-		"signed": null,
-		"first": "2016-02-12 00:00:00"
-	},
-	"type": ["bill"],
-	"subjects": [],
-	"bill_id": "HB 16-1264"
+//data = {{response.json|safe}}
+data = [{
+    "votes": [{
+        "other_count": 1,
+        "other_votes": [{
+            "leg_id": "COL000170",
+            "name": "Roupe"
+        }],
+        "yes_count": 64,
+        "yes_votes": [{
+            "leg_id": "COL000188",
+            "name": "Ransom"
+        }],
+        "bill_chamber": "lower",
+        "id": "COV00013283",
+        "motion": "The question being \"Shall the bill pass?\". A roll call vote was taken. As shown by the following recorded vote, a majority of those elected to the House voted in the affirmative and the bill was declared passed.",
+        "chamber": "lower",
+        "state": "co",
+        "session": "2016A",
+        "sources": [{
+            "url": "http://www.leg.state.co.us/CLICS/CLICS2016A/csljournals.nsf/(jouhse)/F9A7F8F7D50F323887257F5600596ACD/$FILE/Fb11.pdf"
+        }, {
+            "url": "http://www.leg.state.co.us/CLICS/CLICS2016A/csljournals.nsf/jouNav?Openform&House"
+        }],
+        "passed": true,
+        "date": "2016-02-11 00:00:00",
+        "vote_id": "COV00013283",
+        "type": "other",
+        "no_count": 0,
+        "bill_id": "COB00003967",
+        "no_votes": []
+    }],
+    "title": "P.O.S.T. Board Training Persons With Disabilities",
+    "created_at": "2016-02-09 08:20:32",
+    "updated_at": "2016-02-15 08:35:02",
+    "id": "COB00003967",
+    "chamber": "lower",
+    "state": "co",
+    "session": "2016A",
+    "action_dates": {
+        "passed_upper": null,
+        "passed_lower": "2016-02-11 00:00:00",
+        "last": "2016-02-12 00:00:00",
+        "signed": null,
+        "first": "2016-02-08 00:00:00"
+    },
+    "type": ["bill"],
+    "subjects": [],
+    "bill_id": "HB 16-1254"
 }
-] */
+/* TABLE BREAKS WHEN JSON DOESN'T HAVE VOTES ARRAY
+,
+{
+    "title": "PERA Investments In Renewable Energy Companies",
+    "created_at": "2016-02-05 08:06:09",
+    "updated_at": "2016-02-05 08:06:09",
+    "id": "COB00003927",
+    "chamber": "lower",
+    "state": "co",
+    "session": "2016A",
+    "action_dates": {
+        "passed_upper": null,
+        "passed_lower": null,
+        "last": "2016-02-04 00:00:00",
+        "signed": null,
+        "first": "2016-02-04 00:00:00"
+    },
+    "type": ["bill"],
+    "subjects": [],
+    "bill_id": "HB 16-1207"
+} */
+] 
 
 // DataTables
 $('#bill-table').dataTable( { 
@@ -87,11 +140,12 @@ $('#bill-table').dataTable( {
             "orderable": false,
             "data": null,
             "defaultContent": ''
-            
         },
+        { "data": "votes[1].yes_count" },
+        { "data": "votes[2].no_count" },
+        { "data": "votes[0].other_count" },
+        { "data": "votes[0].sources[0].url" },
         { "data": "title" },
-        { "data": "created_at" },
-        { "data": "updated_at" },
         { "data": "id" },
         { "data": "chamber" },
         { "data": "state" },
