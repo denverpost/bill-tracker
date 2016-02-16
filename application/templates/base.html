@@ -46,18 +46,34 @@
 
     <link rel="stylesheet" type="text/css" href="http://extras.mnginteractive.com/live/css/site67/bartertown.css">
     <style type="text/css">
-        @media only screen and (max-width:650px) {
-        }
         body { margin:0; }
         #wrapper { width:1008px; margin:0 auto; margin-top:10px; margin-bottom:10px; }
         #dfmEndFooterLinks ul li { list-style-type:none; margin-left:15px!important; }
-        @media only screen and (max-width:650px) {
-            #dfmHeader div.foot, #dfmHeader div.sub-navigation, #dfmHeader #dfmMasthead #dfmPageTitle, #dfmHeader #dfmMasthead #dfmSearch, #dfmHeader #dfmMasthead #weatherBoxReal, #dfmHeader #dfmLeaderboardAd { display:none; }
-            #dfmHeader #dfmMasthead h3 { margin-left:.5em; }
-            #dfmHeader div.page-head div.body { background:none; border:none; }
-            #dfmHeader div.page-head div.body div.margin { width:100%; }
-            #wrapper { width:100%; overflow:hidden; }
-        }
+@media only screen and (max-width: 768px) {
+    /* Kill the nav */
+    #dfmHeader div.foot, #dfmHeader div.sub-navigation, #dfmHeader #dfmMasthead #dfmPageTitle, #dfmHeader #dfmMasthead #dfmSearch, #dfmHeader #dfmMasthead #weatherBoxReal, #dfmHeader #leaderboardAd { display:none; }
+    #dfmHeader #dfmMasthead h3 { margin-left:.5em; }
+    #dfmHeader div.page-head div.body { background:none; border:none; }
+    #dfmHeader div.page-head div.body div.margin { width:100%; }
+    #wrapper { width:100%; overflow:hidden; margin: .5em; }
+    #top_leaderboard_wrap { display: none; }
+
+    /* Adjust the layout */
+    .adElement { width: 100%!important; }
+    .row .maincol, #wrapper .row .sidebarcol { float: none!important; width: 100%!important; }
+    body h3 { font-size: 1em; }
+    body h1, body h2, body h3, body h4, body h5, body h6 { line-height: 1; }
+    body h1 { 
+        width: 100%!important; 
+        font-size: 2em!important;
+    }
+
+    /* Tweaks to align rows and make things clickable */
+    div.body { height: 30px; }
+    body dl dt { margin-bottom: 0.75rem; }
+    #skiquicklinks { display: none; }
+    .maincol, .sidebarcol { clear: both; }
+}
         footer { clear: both; }
         footer p, #content-footer p { text-align: center; }
         h3 { margin-top: 15px; }
