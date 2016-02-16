@@ -82,6 +82,7 @@ def main(args):
     if not os.path.isdir('%s/_input' % directory):
         os.mkdir('%s/_input' % directory)
 
+    # Get all the bills if we're doing by session
     if args.session:
         bills = s.bills
     else:
@@ -120,8 +121,8 @@ def build_parser(args):
                         help="Also query and download the details for each bill.")
     parser.add_argument("-s", "--session", dest="session",
                         help="Query only one session, i.e. 2016a, 2015a, 2014a etc.")
-    parser.add_argument("-l", "--limit", dest="limit", default=10,
-                        help="Truncate the number of bills we handle.")
+    parser.add_argument("-l", "--limit", dest="limit", default=0,
+                        help="Truncate the number of bills we handle. Ignored if a session param is passed.")
     args = parser.parse_args(args)
     return args
 
