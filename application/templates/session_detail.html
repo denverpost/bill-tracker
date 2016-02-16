@@ -53,8 +53,8 @@
 </div>
 
 <script>
-//data = {{response.json|safe}}
-data = [{
+var data = {{response.json|safe}}
+var testdata = [{
     "votes": [{
         "other_count": 1,
         "other_votes": [{
@@ -142,7 +142,7 @@ $('#bill-table').dataTable( {
         { "data": "votes[0].yes_count" },
         { "data": "votes[0].no_count" },
         { "data": "votes[0].other_count" },
-        { "data": "votes[0].sources[0].url" },
+        { "data": "sources[0].url" },
         { "data": "title" },
         { "data": "id" },
         { "data": "chamber" },

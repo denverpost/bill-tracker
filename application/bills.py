@@ -208,10 +208,22 @@ def session_detail(session):
     data = {
         'bills': q.filter_action_dates('first')
     }
+
+    # Clean up the json for delivering to datatables.
+    # Datatables requires all fields be present in all items,
+    # which means we need to add vote fields for the bills that haven't
+    # been voted on yet.
+    bills = []
+    for item in data['bills']:
+        if 'votes' not in item:
+            item['votes'] = []
+        if 'sources' not in item:
+            item['sources'] = []
+        bills.append(item)
     response = {
         'app': app,
         'session': session,
-        'json': json.dumps(data['bills']),
+        'json': json.dumps(bills),
         'data': data
     }
     return render_template('session_detail.html', response=response)
