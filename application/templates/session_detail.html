@@ -23,27 +23,23 @@
 <h3>Table</h3>
 <div class="row">
     <div class="large-12 columns">
-        <table id="bill-table" class="table-striped table-bordered">
+        <table id="bill-table" class="stripe table-bordered">
             <thead>
                 <tr>
                     <th></th>
-                    <th class="desktop">Yes votes</th>
-                    <th class="desktop">No votes</th>
-                    <th class="desktop">Other votes</th>
-                    <th class="none">Link</th>
 					<th class="all">Title</th>
+                    <th class="all">Chamber</th>
+                    <th class="desktop">Type</th>
+                    <th class="desktop">Bill ID</th>
 					<th class="never">ID</th>
-					<th class="all">Chamber</th>
 					<th class="never">State</th>
 					<th class="never">Session</th>
-					<th class="none">Passed upper</th>
-					<th class="none">Passed lower</th>
-					<th class="never">Last</th>
+                    <th class="none">Passed House</th>
+					<th class="none">Passed Senate</th>
+                    <th class="desktop">Introduced</th>
+					<th class="desktop">Last Action</th>
 					<th class="never">Signed</th>
-					<th class="never">First</th>
-					<th class="desktop">Type</th>
 					<th class="never">Subject</th>
-					<th class="desktop">Bill ID</th>
 				</tr>
             </thead>
             <tfoot>
@@ -54,7 +50,7 @@
 
 <script>
 var data = {{response.json|safe}}
-var testdata = [{
+/* var testdata = [{
     "votes": [{
         "other_count": 1,
         "other_votes": [{
@@ -122,15 +118,15 @@ var testdata = [{
     "subjects": [],
     "bill_id": "HB 16-1207"
 }
-] 
+] */
 
 // DataTables
 $('#bill-table').dataTable( { 
     data: data,
-    //order: [ 5, "asc" ],
+    order: [ 11, "des" ],
     paging: true,
     pagingType: 'numbers',
-    pageLength: 5,
+    pageLength: 20,
     responsive: true,
     columns: [ 
         {
@@ -139,39 +135,33 @@ $('#bill-table').dataTable( {
             "data": null,
             "defaultContent": ''
         },
-        { "data": "votes[0].yes_count" },
-        { "data": "votes[0].no_count" },
-        { "data": "votes[0].other_count" },
-        { "data": "sources[0].url" },
         { "data": "title" },
-        { "data": "id" },
         { "data": "chamber" },
+        { "data": "type" },
+        { "data": "bill_id" },
+        { "data": "id" },
         { "data": "state" },
         { "data": "session" },
-        { "data": "action_dates.passed_upper" },
         { "data": "action_dates.passed_lower" },
+        { "data": "action_dates.passed_upper" },
+        { "data": "action_dates.first" },
         { "data": "action_dates.last" },
         { "data": "action_dates.signed" },
-        { "data": "action_dates.first" },
-        { "data": "type" },
-        { "data": "subjects" },
-        { "data": "bill_id" }
+        { "data": "subjects" }
 	],
     autoWidth: false,
     //deferRender: true,
-    //dom: 'Wftip',
-    dom: '<"row"<"small-6 columns">W>' + 
-    'ftip',
+    dom: 'Wftip',
     // https://github.com/cyberhobo/ColumnFilterWidgets
     oColumnFilterWidgets: {
-        aiExclude: [ 0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16 ],
+        aiExclude: [ 0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
         // sSeparator: ',  ',
         bGroupTerms: false,
-        aoColumnDefs: [
+        /* aoColumnDefs: [
             //{ bSort: false, sSeparator: ' / ', aiTargets: [ 5, 13 ] },
             { bSort: false, aiTargets: [ 5, 13 ] },
             { fnSort: function( a, b ) { return a-b; }, aiTargets: [ 5, 13 ] }
-        ]
+        ] */
     }
 } );
 
