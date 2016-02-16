@@ -22,6 +22,7 @@ class Sunlight:
             >>> s = Sunlight()
             >>> s.get_bill_list('2016a')
             Session: 2016a
+            True
             """
         if session:
             bills = sunlight.openstates.bills(state=self.state, session=session.upper())
@@ -46,6 +47,7 @@ class Sunlight:
             >>> s = Sunlight()
             >>> s.get_bill_list('2016a')
             Session: 2016a
+            True
             """
         return self.bills[:limit]
  
@@ -54,6 +56,7 @@ class Sunlight:
             >>> s = Sunlight()
             >>> s.get_bill_list('2016a')
             Session: 2016a
+            True
             """
         if not os.path.isdir('%s/_input/%s' % (self.directory, self.session)):
             os.mkdir('%s/_input/%s' % (self.directory, self.session))
@@ -102,8 +105,9 @@ def main(args):
 
 def build_parser(args):
     """ This method allows us to test the args.
-        >>> parser = build_parser(['-v', '-s'])
-        >>> print args
+        >>> parser = build_parser(['-v'])
+        >>> print args.verbose
+        True
         """
     parser = argparse.ArgumentParser(usage='$ python legquery.py',
                                      description='Download data from Sunlight and update bill indexes.',
