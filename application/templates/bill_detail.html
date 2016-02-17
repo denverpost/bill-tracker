@@ -11,37 +11,35 @@
     and last touched {{response.data.bill.action_dates.last|datetime_raw|datetime_filter}}.
 </p>
 
-{#
-    {% if response.data.bill.action_dates.passed_lower > response.data.bill.action_dates.passed_upper %}
-hi {{response.data.bill.action_dates.passed_lower}} < {{response.data.bill.action_dates.passed_upper}}
-{% else %}
-bye {{response.data.bill.action_dates.passed_lower}} < {{response.data.bill.action_dates.passed_upper}}
-{% endif %}
-{{response.data.bill}}
 <dl>
-    <dt></dt>
+    <dt>Introduced</dt>
+        <dd>{{response.data.bill.action_dates.first|datetime_raw|datetime_filter}}</dd>
+{% if response.data.bill.chamber == 'lower' %}
+    <dt>Passed House</dt>
+        <dd>{{response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter}}</dd>
+    <dt>Passed Senate</dt>
+        <dd>{{response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter}}</dd>
+{% else %}
+    <dt>Passed Senate</dt>
+        <dd>{{response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter}}</dd>
+    <dt>Passed House</dt>
+        <dd>{{response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter}}</dd>
+{% endif %}
+    <dt>Signed</dt>
+        <dd>{{response.data.bill.action_dates.signed|datetime_raw|datetime_filter}}</dd>
 </dl>
-{{response.data.bill.action_dates}}
-#}
 
 <h2 id="timeline">{{type|title}} Timeline</h2>
-<ol>
+<ul>
 {% for item in response.data.bill.actions %}
     <li>{{item.date|datetime_raw|datetime_filter}}: {{item.action}}<span class="dev" style="display:none;">{{item}}</span></li>
 {% endfor %}
-</ol>
+</ul>
 
 <h2 id="sponsors">{{type|title}} Sponsors</h2>
 <ol>
 {% for item in response.data.bill.sponsors %}
     <li>{{item.name|title}}'s a {{item.type}} sponsor <span class="dev" style="display:none;">{{item.leg_id}}</span></li>
-{% endfor %}
-</ol>
-
-<h2 id="sources">{{type|title}} Sources</h2>
-<ol>
-{% for item in response.data.bill.sources %}
-    <li><a href="{{item.url}}">{{item.url|truncate(80, True)}}</a></li>
 {% endfor %}
 </ol>
 
@@ -51,8 +49,6 @@ bye {{response.data.bill.action_dates.passed_lower}} < {{response.data.bill.acti
     <li><a href="{{item.url}}">{{item.doc_id}}: {{item.name}}</a></li>
 {% endfor %}
 </ol>
-
-
 
 <h2 id="votes">{{type|title}} Votes</h2>
 {% if response.data.bill.votes %}
@@ -92,6 +88,13 @@ u'bill_chamber': u'lower', u'id': u'COV00013095', u'motion': u'On motion of Majo
 {% else %}
 <p>No votes recorded on the {{response.data.bill.title}} {{type}}.</p>
 {% endif %}
+
+<h2 id="sources">{{type|title}} Sources</h2>
+<ol>
+{% for item in response.data.bill.sources %}
+    <li><a href="{{item.url}}">{{item.url|truncate(80, True)}}</a></li>
+{% endfor %}
+</ol>
 
 <h2 id="documents">{{type|title}} Documents</h2>
 {% if response.data.bill.documents %}

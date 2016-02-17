@@ -43,6 +43,8 @@ app.add_template_filter(ordinal_filter)
 
 @app.template_filter(name='datetime_raw')
 def datetime_raw_filter(value):
+    if not value:
+        return None
     return datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
 app.add_template_filter(datetime_raw_filter)
 
