@@ -50,11 +50,15 @@ app.add_template_filter(datetime_raw_filter)
 
 @app.template_filter(name='date_raw')
 def date_raw_filter(value):
+    if not value:
+        return None
     return datetime.strptime(value, '%Y-%m-%d')
 app.add_template_filter(datetime_raw_filter)
 
 @app.template_filter(name='datetimeformat')
 def datetimeformat(value, format='%A %b. %d'):
+    if not value:
+        return None
     return value.strftime(format)
 
 @app.template_filter(name='datetime')
