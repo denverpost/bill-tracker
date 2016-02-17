@@ -5,6 +5,8 @@ import doctest
 import os, sys
 import string
 import argparse
+import httplib2
+import types
 
 class Sunlight:
 
@@ -59,12 +61,30 @@ class Sunlight:
             Session: 2016a
             True
             """
+        bill_slug = string.replace(bill_id.lower(), ' ', '_')
         if not os.path.isdir('%s/_input/%s' % (self.directory, self.session)):
             os.mkdir('%s/_input/%s' % (self.directory, self.session))
         bill_details = sunlight.openstates.bill_detail(self.state, self.session.upper(), bill_id)
-        fh = open('_input/%s/%s.json' % (self.session, string.replace(bill_id.lower(), ' ', '_')), 'wb')
+        fh = open('_input/%s/%s.json' % (self.session, bill_slug), 'wb')
         json.dump(bill_details, fh)
+
+        #self.get_bill_pdf(bill_slug, bill_details)
         return bill_details 
+
+    def get_bill_pdf(self, bill_slug, details):
+        """ Request and save the current version of the bill's PDF.
+            """
+        h = httplib2.Http('')
+        #print details['versions'][0]['url']
+        #print details['versions']
+        response, content = h.request(details['versions'][0]['url'], 'GET', headers={}, body='')
+        if response.status > 299:
+            print 'ERROR: HTTP response %s' % response.status
+            return False
+        fn = open('_input/%s/%s.pdf' % (self.session, bill_slug), 'wb')
+        fn.write(content)
+        fn.close
+        return True
 
 
 def main(args):
@@ -123,7 +143,7 @@ def build_parser(args):
     parser.add_argument("-u", "--updated", dest="updated", default=False, action="store_true",
                         help="Returns nothing but the last-updated timestamp from the latest bill.")
     parser.add_argument("-d", "--details", dest="details", default=False, action="store_true",
-                        help="Also query and download the details for each bill.")
+                        help="Also query and download the details for each bill. This includes PDFs.")
     parser.add_argument("-s", "--session", dest="session",
                         help="Query only one session, i.e. 2016a, 2015a, 2014a etc.")
     parser.add_argument("-l", "--limit", dest="limit", default=0,
