@@ -35,10 +35,9 @@ class FlatPageView(View):
 #app.add_url_rule('/about/notifications/unsubscribe/', view_func=FlatPageView.as_view('unsubscribe', page_name='unsubscribe'))
 #app.add_url_rule('', view_func=FlatPageView.as_view('', page_name=''))
 
-"""
-@app.route('/about/notifications/feeds/recent.atom')
+@app.route('/feeds/recent.atom')
 def recent_feed():
-    feed = AtomFeed('Denver Crime Data Updates',
+    feed = AtomFeed('Colorado Bill Tracker: Recent',
                     feed_url=request.url, url=request.url_root)
     feed.add('Crime Data updated', '',
              content_type='html',
@@ -47,6 +46,7 @@ def recent_feed():
              published=datetime.today())
     return feed.get_response()
 
+"""
 @app.route('/site-map/')
 def sitemap():
     response = {

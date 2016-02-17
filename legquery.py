@@ -37,7 +37,8 @@ class Sunlight:
             filename = '_input/%s-bills.json' % (self.state)
 
         self.session = self.bills[0]['session'].lower()
-        print "Session: %s" % self.session
+        if not self.args.updated:
+            print "Session: %s" % self.session
         fh = open(filename, 'wb')
         json.dump(self.bills, fh)
         return True
@@ -77,6 +78,10 @@ def main(args):
     s = Sunlight(args)
     s.get_bill_list(args.session)
 
+    if args.updated:
+        print s.bills[0]['updated_at']
+        return False
+
     # We'll need to store the files we're writing somewhere, eventually.
     directory = os.path.dirname(os.path.realpath(__file__))
     if not os.path.isdir('%s/_input' % directory):
@@ -115,8 +120,8 @@ def build_parser(args):
                                      epilog='')
     parser.add_argument("-v", "--verbose", dest="verbose", default=False, action="store_true",
                         help="Run doctests, display more info.")
-    parser.add_argument("-c", "--cache", dest="cache", default=False, action="store_true",
-                        help="Not implemented yet.")
+    parser.add_argument("-u", "--updated", dest="updated", default=False, action="store_true",
+                        help="Returns nothing but the last-updated timestamp from the latest bill.")
     parser.add_argument("-d", "--details", dest="details", default=False, action="store_true",
                         help="Also query and download the details for each bill.")
     parser.add_argument("-s", "--session", dest="session",
