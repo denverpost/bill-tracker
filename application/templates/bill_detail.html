@@ -29,6 +29,9 @@
         <dd>{{response.data.bill.action_dates.signed|datetime_raw|datetime_filter}}</dd>
 </dl>
 
+<h2>The {{type|title}}</h2>
+<iframe src="{{response.data.bill.versions.0.url}}" seamless style="width:100%; height:400px; max-width:650px;"></iframe>
+
 <h2 id="timeline">{{type|title}} Timeline</h2>
 <ul>
 {% for item in response.data.bill.actions %}
