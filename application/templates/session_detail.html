@@ -11,6 +11,17 @@
 <script type="text/javascript" src="https://cdn.datatables.net/r/zf-5.5.2/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.0.1/js/dataTables.responsive.js"></script>
 <script src="http://extras.denverpost.com/summercamps/2016/ColumnFilterWidgets.js"></script>
+<style>
+.widget-2 {
+    width: 30%;
+    float: left;
+    margin-right: 20px;
+}
+.widget-3 {
+    width: 30%;
+    float: clear;
+}
+</style>
 {% endblock head %}
 {% block content %}
 <p>Bills from the {{response.session}} Colorado legislative session.</p>
@@ -28,16 +39,16 @@
                 <tr>
                     <th></th>
 					<th class="all">Title</th>
-                    <th class="all">Chamber</th>
-                    <th class="desktop">Type</th>
-                    <th class="desktop">Bill ID</th>
+                    <th class="min-tablet">Chamber</th>
+                    <th class="min-tablet">Type</th>
+                    <th class="all">Bill ID</th>
 					<th class="never">ID</th>
 					<th class="never">State</th>
 					<th class="never">Session</th>
                     <th class="none">Passed House</th>
 					<th class="none">Passed Senate</th>
                     <th class="desktop">Introduced</th>
-					<th class="desktop">Last Action</th>
+					<th class="min-tablet">Last Action</th>
 					<th class="never">Signed</th>
 					<th class="never">Subject</th>
 				</tr>
@@ -138,7 +149,11 @@ $('#bill-table').dataTable( {
         { "data": "title" },
         { "data": "chamber" },
         { "data": "type" },
-        { "data": "bill_id" },
+        { "data": "bill_id",
+          "render": function(data, type, full) {
+              return "<a href='" + data.replace(' ', '_').toLowerCase() + "/'>" + data + "</a>";
+          }
+        },
         { "data": "id" },
         { "data": "state" },
         { "data": "session" },
@@ -151,7 +166,7 @@ $('#bill-table').dataTable( {
 	],
     autoWidth: false,
     //deferRender: true,
-    dom: 'Wftip',
+    dom: '<"top">Wf<"clear">tip',
     // https://github.com/cyberhobo/ColumnFilterWidgets
     oColumnFilterWidgets: {
         aiExclude: [ 0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
