@@ -52,6 +52,8 @@ class Sunlight:
             Session: 2016a
             True
             """
+        if limit == 0:
+            return self.bills
         return self.bills[:limit]
  
     def get_bill_detail(self, bill_id):
