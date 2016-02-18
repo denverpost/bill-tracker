@@ -162,7 +162,7 @@ def json_check(fn):
 @app.route('/')
 def index():
     app.page['title'] = 'Colorado Bill Tracker'
-    app.page['description'] = 'Tracking legislation in Colorado\'s state house.'
+    app.page['description'] = 'Tracking legislation in Colorado\'s state senate and house.'
     q = BillQuery()
     q.filter_session()
 
@@ -191,7 +191,7 @@ def index():
 
 @app.route('/bills/')
 def session_index():
-    app.page['title'] = 'Sessions'
+    app.page['title'] = 'Legislative Sessions'
     app.page['description'] = 'An index of Colorado legislative sessions we have bills for.'
     response = {
         'app': app,
@@ -255,7 +255,7 @@ def session_passed_index(session):
     passfail = 'passed'
     if 'failed' in request.path:
         passfail = 'failed'
-    app.page['title'] = 'Bills that %s in the %s session' % (passfail, session)
+    app.page['title'] = 'Legislation that %s in the %s session' % (passfail, session)
     app.page['description'] = ''
     response = {
         'app': app,
@@ -268,7 +268,7 @@ def session_passed_index(session):
 def session_passed_detail(session, passfail, chamber):
     if session not in app.sessions:
         abort(404)
-    app.page['title'] = 'Bills that %s the %s chamber in the %s session' % (passfail, chamber, session)
+    app.page['title'] = 'Legislation that %s the %s chamber in the %s session' % (passfail, chamber, session)
     app.page['description'] = ''
     q = BillQuery()
     q.session = session.upper()

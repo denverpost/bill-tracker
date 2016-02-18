@@ -6,8 +6,8 @@
 &rsaquo; <a href="../../">{{response.session}}</a>
 {% endblock breadcrumbs %}
 {% block content %}
-<p>Bills that {{response.passfail}} the {{response.chamber}} chamber in the {{response.session}} Colorado legislative session.</p>
-<h2>{{response.passfail|capitalize}} Bills</h2>
+<p>Legislation that {{response.passfail}} the {{response.chamber}} chamber in the {{response.session}} Colorado legislative session.</p>
+<h2>{{response.passfail|capitalize}} Legislation</h2>
 {% if response.chamber == 'lower' %}
    {% set bills = response.data.lower %}
 {% else %}

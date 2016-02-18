@@ -5,7 +5,7 @@
 &rsaquo; <a href="../">Sessions</a>{% endblock breadcrumbs %}
 {% block head %}
 <!-- DATATABLES STYLES -->
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/datatables.css') }}"/>
+<link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/app/bill-tracker/static/css/datatables.css"/>
 <link href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css"/>
 <!-- DATATABLES SCRIPTS -->
 <script type="text/javascript" src="https://cdn.datatables.net/r/zf-5.5.2/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
@@ -181,7 +181,7 @@ $('#bill-table').dataTable( {
 
 </script>
 
-<h3>All bills</h3>
+<h3>All legislation</h3>
 <ol>
 {% for item in response.data.bills %}
     <li><span>{{item.bill_id}}</span>: <a href="{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
