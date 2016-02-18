@@ -48,7 +48,7 @@ class Sunlight:
     def filter_bills_recent(self, limit = 10):
         """ Filter recent bills.
             >>> s = Sunlight()
-            >>> s.get_bill_list('2016a')
+            >>> s.get_bill_list()
             Session: 2016a
             True
             """
@@ -59,8 +59,8 @@ class Sunlight:
     def get_bill_detail(self, bill_id):
         """ Get bill details for a single bill.
             >>> s = Sunlight()
-            >>> s.get_bill_list('2016a')
-            Session: 2016a
+            >>> s.get_bill_list('2011a')
+            Session: 2011a
             True
             """
         bill_slug = string.replace(bill_id.lower(), ' ', '_')
