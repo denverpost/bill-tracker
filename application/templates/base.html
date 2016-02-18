@@ -44,6 +44,19 @@
 
     <meta name="google-site-verification" content="2bKNvyyGh6DUlOvH1PYsmKN4KRlb-0ZI7TvFtuKLeAc" />
 
+<script>
+// Only load foundation.css on handheld devices
+if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
+{
+    var link = document.createElement( "link" );
+    link.href = "http://cdn.foundation5.zurb.com/foundation.css";
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.media = "screen,print";
+    document.getElementsByTagName("head")[0].appendChild(link);
+}
+</script>
+
     <link rel="stylesheet" type="text/css" href="http://extras.mnginteractive.com/live/css/site67/bartertown.css">
     <style type="text/css">
         body { margin:0; }
@@ -51,7 +64,8 @@
         #dfmEndFooterLinks ul li { list-style-type:none; margin-left:15px!important; }
 @media only screen and (max-width: 768px) {
     /* Kill the nav */
-    #dfmHeader div.foot, #dfmHeader div.sub-navigation, #dfmHeader #dfmMasthead #dfmPageTitle, #dfmHeader #dfmMasthead #dfmSearch, #dfmHeader #dfmMasthead #weatherBoxReal, #dfmHeader #leaderboardAd { display:none; }
+    #dfmHeader div.foot, #dfmHeader div.sub-navigation, #dfmHeader #dfmMasthead #dfmPageTitle, #dfmHeader #dfmMasthead #dfmSearch, #dfmHeader #dfmMasthead #weatherBoxReal, #dfmHeader iframe, #leaderBoardAd { display:none!important; }
+    #dfmMasthead { height:40px!important; }
     #dfmHeader #dfmMasthead h3 { margin-left:.5em; }
     #dfmHeader div.page-head div.body { background:none; border:none; }
     #dfmHeader div.page-head div.body div.margin { width:100%; }
@@ -71,7 +85,6 @@
     /* Tweaks to align rows and make things clickable */
     div.body { height: 30px; }
     body dl dt { margin-bottom: 0.75rem; }
-    #skiquicklinks { display: none; }
     .maincol, .sidebarcol { clear: both; }
 }
         footer { clear: both; }
