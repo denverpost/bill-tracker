@@ -24,7 +24,7 @@ Here's the third draft of instructions:
 5. Download the bill details for the current session, `python legquery.py --session 2016a --details`
 6. Open a new terminal window, cd to the project, activate the virtualenv
 7. `python runserver.py`, then open up http://localhost:5000/
-8. To get previous legislative sessions to work, you'll need the bill details for the prior sessions. `for s in "2015a" "2014a" "2013a" "2012a" "2011a"; do python legquery.py --session $s --details --verbose; done` should do that for you.
+8. To get previous legislative sessions to work, you'll need the bill details for the prior sessions. `for s in "2015a" "2014a" "2013a" "2012b" "2012a" "2011a"; do python legquery.py --session $s --details --verbose; done` should do that for you.
 
 ### Deploying
 

@@ -7,7 +7,14 @@ LATEST=`cat log_timestamp`
 # The current timestamp of Sunlight data is gathered here:
 CURRENT=`python legquery.py --updated`
 
-if [ "$LATEST" -eq "$CURRENT" ]; then exit 0; fi
+if [ "$LATEST" = "$CURRENT" ]; then exit 0; fi
 
 echo $CURRENT > log_timestamp
 echo $CURRENT >> log_update
+
+# Update the data
+python legquery.py --session 2016a --details
+python legquery.py
+
+# Update the site and FTP it.
+python deploy.py --freeze --ftp --session 2016a

@@ -100,7 +100,7 @@ def main(args):
     s = Sunlight(args)
     s.get_bill_list(args.session)
 
-    if 'updatd' in args:
+    if 'updated' in args:
         print s.bills[0]['updated_at']
         return False
 
