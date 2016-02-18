@@ -15,15 +15,16 @@ About the python bindings for the Sunlight API: http://python-sunlight.readthedo
 See how the Sunlight foundation publishes this data: http://openstates.org/co/
 
 ## Setting up a dev environment
-Here's the first draft of instructions:
+Here's the third draft of instructions:
 
 1. Check out / update the repo.
 2. Create a virtual environtment.
 3. Download the project requirements, `pip install -r requirements.txt`
-4. Download all the bills, `python legquery.py`
-5. Download the bill details for the current session, `python legquery.py --session 2016a`
-5. Open a new terminal window, cd to the project, activate the virtualenv
-6. `python runserver.py`, then open up http://localhost:5000/
+4. Download all the bills, `python legquery.py --verbose`
+5. Download the bill details for the current session, `python legquery.py --session 2016a --details`
+6. Open a new terminal window, cd to the project, activate the virtualenv
+7. `python runserver.py`, then open up http://localhost:5000/
+8. To get previous legislative sessions to work, you'll need the bill details for the prior sessions. `for s in "2015a" "2014a" "2013a" "2012a" "2011a"; do python legquery.py --session $s --details --verbose; done` should do that for you.
 
 ### Deploying
 
