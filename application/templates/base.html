@@ -74,7 +74,9 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
 
     /* Adjust the layout */
     .adElement { width: 100%!important; }
+    /*
     .row .maincol, #wrapper .row .sidebarcol { float: none!important; width: 100%!important; }
+    */
     body h3 { font-size: 1em; }
     body h1, body h2, body h3, body h4, body h5, body h6 { line-height: 1; }
     body h1 { 
@@ -95,6 +97,19 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
             margin: 8px auto;
         }
         .ad { margin-bottom: 10px; }
+        .row { margin-left: 0; }
+
+    @media only screen and (min-width: 769px) {
+        .maincol {
+            width: 650px;
+            float: left;
+        }
+        .sidebarcol {
+            width: 300px;
+            float: right;
+            margin-left: 15px;
+        }
+    }
     </style>
 
     
@@ -218,11 +233,11 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
             <h1>{{response.app.page.title}}</h1>
 
 
-            <div class="maincol small-12 large-9 columns" style="float: left; width: 650px;">
+            <div class="maincol small-12 large-9 columns">
             {% block content %}{% endblock content %}
             </div>
 
-            <div class="rightRail sidebarcol small-12 large-3 columns" id="rightRail" style="float:right;width:300px;margin-right:15px;">
+            <div class="rightRail sidebarcol small-12 large-3 columns" id="rightRail">
 
                 <h3>Colorado legislature news</h3>
                 <script src="http://extras.denverpost.com/cache/politics_legislature.js"></script>
