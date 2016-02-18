@@ -5,7 +5,7 @@
 &rsaquo; <a href="../">Sessions</a>{% endblock breadcrumbs %}
 {% block head %}
 <!-- DATATABLES STYLES -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/zf-5.5.2/jqc-1.11.3,dt-1.10.8/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/datatables.css') }}"/>
 <link href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css"/>
 <!-- DATATABLES SCRIPTS -->
 <script type="text/javascript" src="https://cdn.datatables.net/r/zf-5.5.2/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
@@ -26,12 +26,11 @@
 {% block content %}
 <p>Bills from the {{response.session}} Colorado legislative session.</p>
 <ul class="subnav">
-    <li><a href="passed/">Passed bills</a></li>
-    <li><a href="failed/">Failed bills</a></li>
+    <li><a href="passed/">Passed legislation</a></li>
+    <li><a href="failed/">Failed legislation</a></li>
 </ul>
 
-<h2>Bills</h2>
-<h3>Table</h3>
+<h2>Legislation</h2>
 <div class="row">
     <div class="large-12 columns">
         <table id="bill-table" class="stripe table-bordered">
@@ -182,7 +181,7 @@ $('#bill-table').dataTable( {
 
 </script>
 
-<h3>List of bills</h3>
+<h3>All bills</h3>
 <ol>
 {% for item in response.data.bills %}
     <li><span>{{item.bill_id}}</span>: <a href="{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
@@ -190,9 +189,4 @@ $('#bill-table').dataTable( {
     </li>
 {% endfor %}
 </ol>
-{#
-<!--
-{u'title': u'Sentencing For Certain 2nd Degree Assaults', u'created_at': u'2015-03-24 21:28:11', u'updated_at': u'2015-10-07 12:07:47', u'id': u'COB00003396', u'chamber': u'lower', u'state': u'co', u'session': u'2015A', u'type': [u'bill'], u'subjects': [], u'bill_id': u'HB 15-1303'}
--->
-#}
 {% endblock content %}

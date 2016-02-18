@@ -9,6 +9,7 @@ import string
 from application import app
 import filters
 
+
 datetimeformat = '%Y-%m-%d %H:%M:%S'
 
 class BillQuery:
@@ -314,3 +315,4 @@ def legislator_detail(session, legislator):
     }
     return render_template('legislator_detail.html', response=response)
 
+#url_for('static', filename='css/datatables.css')

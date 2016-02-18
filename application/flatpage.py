@@ -35,6 +35,7 @@ class FlatPageView(View):
 #app.add_url_rule('/about/notifications/unsubscribe/', view_func=FlatPageView.as_view('unsubscribe', page_name='unsubscribe'))
 #app.add_url_rule('', view_func=FlatPageView.as_view('', page_name=''))
 
+"""
 @app.route('/feeds/recent.atom')
 def recent_feed():
     feed = AtomFeed('Colorado Bill Tracker: Recent',
@@ -46,7 +47,6 @@ def recent_feed():
              published=datetime.today())
     return feed.get_response()
 
-"""
 @app.route('/site-map/')
 def sitemap():
     response = {
