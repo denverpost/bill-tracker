@@ -39,7 +39,7 @@ class Sunlight:
             filename = '_input/%s-bills.json' % (self.state)
 
         self.session = self.bills[0]['session'].lower()
-        if not self.args.updated:
+        if 'updated' not in self.args:
             print "Session: %s" % self.session
         fh = open(filename, 'wb')
         json.dump(self.bills, fh)
@@ -98,7 +98,7 @@ def main(args):
     s = Sunlight(args)
     s.get_bill_list(args.session)
 
-    if args.updated:
+    if 'updatd' in args:
         print s.bills[0]['updated_at']
         return False
 
