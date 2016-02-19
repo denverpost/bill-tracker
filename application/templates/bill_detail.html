@@ -41,21 +41,14 @@
 {% endfor %}
 </ul>
 
-<h2 id="sponsors">{{type|title}} Sponsors</h2>
+<h2 id="sponsors">Sponsors</h2>
 <ol>
 {% for item in response.data.bill.sponsors %}
     <li>{{item.name|title}}'s a {{item.type}} sponsor <span class="dev" style="display:none;">{{item.leg_id}}</span></li>
 {% endfor %}
 </ol>
 
-<h2 id="revisions">{{type|title}} Revision History</h2>
-<ol>
-{% for item in response.data.bill.versions %}
-    <li><a href="{{item.url}}">{{item.doc_id}}: {{item.name}}</a></li>
-{% endfor %}
-</ol>
-
-<h2 id="votes">{{type|title}} Votes</h2>
+<h2 id="votes">Votes</h2>
 {% if response.data.bill.votes %}
 <p>{{response.data.bill.votes.0.motion}}</p>
 <dl>
@@ -94,14 +87,21 @@ u'bill_chamber': u'lower', u'id': u'COV00013095', u'motion': u'On motion of Majo
 <p>No votes recorded on the {{response.data.bill.title}} {{type}}.</p>
 {% endif %}
 
-<h2 id="sources">{{type|title}} Sources</h2>
+<h2 id="revisions">Revision History</h2>
+<ol>
+{% for item in response.data.bill.versions %}
+    <li><a href="{{item.url}}">{{item.doc_id}}: {{item.name}}</a></li>
+{% endfor %}
+</ol>
+
+<h2 id="sources">Sources</h2>
 <ol>
 {% for item in response.data.bill.sources %}
     <li><a href="{{item.url}}">{{item.url|truncate(80, True)}}</a></li>
 {% endfor %}
 </ol>
 
-<h2 id="documents">{{type|title}} Documents</h2>
+<h2 id="documents">Documents</h2>
 {% if response.data.bill.documents %}
 {% for item in response.data.documents %}
 <li><a href="{{item.url}}">{{item.url}}</li>
@@ -110,7 +110,6 @@ u'bill_chamber': u'lower', u'id': u'COV00013095', u'motion': u'On motion of Majo
 <p>No documents associated with the {{response.data.bill.title}} {{type}}.</p>
 {% endif %}
 
-<hr>
 <span class="dev" style="display:none;">
 {{response.data.bill}}
 </span>
