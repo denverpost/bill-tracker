@@ -19,10 +19,10 @@
 {% endfor %}
 </ul>
 <p><strong>
-    <a href="./bills/{{response.app.session}}/">See all the bills that have been introduced this session</a></p>
+    <a href="./bills/{{response.app.session}}/">See all the legislation that have been introduced this session</a></p>
 </strong></p>
 {% else %}
-<p>No bills introduced yet this session.</p>
+<p>No legislation introduced yet this session.</p>
 {% endif %}
 
 <h3 id="signed">Recently signed into law</h3>
@@ -35,7 +35,7 @@
 {% endfor %}
 </ul>
 {% else %}
-<p>No bills signed yet this session.</p>
+<p>No legislation signed yet this session.</p>
 {% endif %}
 
 <h3 id="passed-house">Passed Colorado State House</h3>
@@ -51,10 +51,10 @@
 {% endfor %}
 </ul>
 <p><strong>
-    <a href="./bills/{{response.app.session}}/passed/lower/">See a list of all the bills that passed the Colorado State House in session {{response.app.session|upper}}</a>
+    <a href="./bills/{{response.app.session}}/passed/lower/">See a list of all the legislation that passed the Colorado State House in session {{response.app.session|upper}}</a>
 </strong></p>
 {% else %}
-<p>No bills passed the Colorado State House yet this session.</p>
+<p>No legislation passed the Colorado State House yet this session.</p>
 {% endif %}
 
 <h3 id="passed-senate">Passed Colorado State Senate</h3>
@@ -70,10 +70,10 @@
 {% endfor %}
 </ul>
 <p><strong>
-    <a href="./bills/{{response.app.session}}/passed/upper/">See a list of all the bills that passed the Colorado State Senate in session {{response.app.session|upper}}</a></p>
+    <a href="./bills/{{response.app.session}}/passed/upper/">See a list of all the legislation that passed the Colorado State Senate in session {{response.app.session|upper}}</a></p>
 </strong></p>
 {% else %}
-<p>No bills passed the Colorado State Senate yet this session.</p>
+<p>No legislation passed the Colorado State Senate yet this session.</p>
 {% endif %}
 
 <h3>Legislation updated {% if response.days_back == 0 %}Today{% else %}{{response.back_date|datetime_filter}}{% endif %}</h3>
