@@ -3,37 +3,34 @@
 <head>
     <title>Widget page</title>
     <meta charset="utf-8">
-
+    <link rel="stylesheet" type="text/css" href="http://extras.mnginteractive.com/live/css/site67/bartertown.css"><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://extras.mnginteractive.com/live/css/site67/bartertown-article.css" />
+    
 </head>
 <body>
 
 <!-- WIDGET START -->
+<!--
 <link href="http://extras.denverpost.com/app/weather/style.css" type="text/css" rel="stylesheet" />
 <script src="http://extras.denverpost.com/app/weather/js/typeahead.bundle.min.js"></script>
+-->
 <div id="tracker_widget" class="tracker_widget">
     <h2><a href="http://www.denverpost.com/bill-tracker" title="Colorado Bill Tracker">Bill Tracker</a></h2>
 
-<p style="font-size:11px!important;">
-<a href="/weather#aurora" onClick="load_weather.load_all('Aurora', '5day'); return false;">Aurora Weather</a>
-&bull;
-<a href="/weather#littleton" onClick="load_weather.load_all('Littleton', '5day'); return false;">Littleton</a>
-&bull;
-<a href="/weather#englewood" onClick="load_weather.load_all('Englewood', '5day'); return false;">Englewood</a>
-&bull;
-<a href="/weather#boulder" onClick="load_weather.load_all('Boulder', '5day'); return false;">Boulder</a>
-&bull;
-<a href="/weather#arvada" onClick="load_weather.load_all('Arvada', '5day'); return false;">Arvada</a>
+<p>
+<a href="/bill-tracker">Get details on Colorado state legislation</a>.
 </p>
 
+<!--
     <div id="colorado_cities">
         <input id="city_input" class="typeahead" type="text" placeholder="Type your city / town here" size="30">
     </div>
 
     <div id="weather_current"></div>
     <div id="weather_forecast"></div>
-    <p style="clear:both;">&raquo; <a href="http://www.denverpost.com/weather" id="weather_link" "Colorado Weather Forecasts"><span></span> 10-day forecast</a></p>
-    <p>&raquo; <a href="http://www.denverpost.com/weathernews" title="Colorado Weather News">Colorado Weather News</a></p>
-    <p>&raquo; <a href="http://www.denverpost.com/skireport" title="Colorado Ski Area Snow Totals">Colorado Ski Area Snow Totals</a></p>
+    <p style="clear:both;">&raquo; <a href="http://www.denverpost.com/weather" id="weather_link"><span></span> 10-day forecast</a></p>
+    <p>&raquo; <a href="http://www.denverpost.com/weathernews">Colorado Weather News</a></p>
+-->
 </div>
 
 <script type="text/javascript">
@@ -91,16 +88,14 @@ var load_weather = {
         $('#weather_link span').text('The ' + city);
     }
 };
-// Default to Denver
-load_weather.load_all('Denver', '5day');
-
+/*
 $('.typeahead').on('typeahead:autocompleted', function(evt, item) {
     load_weather.load_all(item.value, '5day');
 })
 $('.typeahead').on('typeahead:closed', function() {
     load_weather.load_all($('#city_input').val(), '5day');
 })
-
+*/
 // Typeahead code from http://twitter.github.io/typeahead.js/examples/
 var substringMatcher = function(strs) {
   return function findMatches(q, cb) {
@@ -128,6 +123,7 @@ var substringMatcher = function(strs) {
 
 var cities = ['Aguilar', 'Akron', 'Alamosa', 'Alma', 'Antonito', 'Arriba', 'Arvada', 'Aspen', 'Ault', 'Aurora', 'Avon', 'Basalt', 'Bayfield', 'Bennett', 'Berthoud', 'Bethune', 'Black Hawk', 'Blanca', 'Blue River', 'Bonanza', 'Boone', 'Boulder', 'Bow Mar', 'Branson', 'Breckenridge', 'Brighton', 'Brookside', 'Broomfield', 'Brush', 'Buena Vista', 'Burlington', 'Calhan', 'Campo', 'Cañon City', 'Carbondale', 'Castle Pines', 'Castle Rock', 'Cedaredge', 'Centennial', 'Center', 'Central City', 'Cheraw', 'Cherry Hills Village', 'Cheyenne Wells', 'Coal Creek', 'Cokedale', 'Collbran', 'Colorado Springs', 'Columbine Valley', 'Commerce City', 'Cortez', 'Craig', 'Crawford', 'Creede', 'Crested Butte', 'Crestone', 'Cripple Creek', 'Crook', 'Crowley', 'Dacono', 'De Beque', 'Deer Trail', 'Del Norte', 'Delta', 'Denver', 'Dillon', 'Dinosaur', 'Dolores', 'Dove Creek', 'Durango', 'Eads', 'Eagle', 'Eaton', 'Eckley', 'Edgewater', 'Elizabeth', 'Empire', 'Englewood', 'Erie', 'Estes Park', 'Evans', 'Fairplay', 'Federal Heights', 'Firestone', 'Flagler', 'Fleming', 'Florence', 'Fort Collins', 'Fort Lupton', 'Fort Morgan', 'Fountain', 'Fowler', 'Foxfield', 'Fraser', 'Frederick', 'Frisco', 'Fruita', 'Garden City', 'Genoa', 'Georgetown', 'Gilcrest', 'Glendale', 'Glenwood Springs', 'Golden', 'Granada', 'Granby', 'Grand Junction', 'Grand Lake', 'Greeley', 'Green Mountain Falls', 'Greenwood Village', 'Grover', 'Gunnison', 'Gypsum', 'Hartman', 'Haswell', 'Haxtun', 'Hayden', 'Hillrose', 'Holly', 'Holyoke', 'Hooper', 'Hot Sulphur Springs', 'Hotchkiss', 'Hudson', 'Hugo', 'Idaho Springs', 'Ignacio', 'Iliff', 'Jamestown', 'Johnstown', 'Julesburg', 'Keenesburg', 'Kersey', 'Kim', 'Kiowa', 'Kit Carson', 'Kremmling', 'La Jara', 'La Junta', 'La Veta', 'Lafayette', 'Lake City', 'Lakeside', 'Lakewood', 'Lamar', 'Larkspur', 'Las Animas', 'LaSalle', 'Leadville', 'Limon', 'Littleton', 'Lochbuie', 'Log Lane Village', 'Lone Tree', 'Longmont', 'Louisville', 'Loveland', 'Lyons', 'Manassa', 'Mancos', 'Manitou Springs', 'Manzanola', 'Marble', 'Mead', 'Meeker', 'Merino', 'Milliken', 'Minturn', 'Moffat', 'Monte Vista', 'Montezuma', 'Montrose', 'Monument', 'Morrison', 'Mount Crested Butte', 'Mountain View', 'Mountain Village', 'Naturita', 'Nederland', 'New Castle', 'Northglenn', 'Norwood', 'Nucla', 'Nunn', 'Oak Creek', 'Olathe', 'Olney Springs', 'Ophir', 'Orchard City', 'Ordway', 'Otis', 'Ouray', 'Ovid', 'Pagosa Springs', 'Palisade', 'Palmer Lake', 'Paoli', 'Paonia', 'Parachute', 'Parker', 'Peetz', 'Pierce', 'Pitkin', 'Platteville', 'Poncha Springs', 'Pritchett', 'Pueblo', 'Ramah', 'Rangely', 'Raymer', 'Red Cliff', 'Rico', 'Ridgway', 'Rifle', 'Rockvale', 'Rocky Ford', 'Romeo', 'Rye', 'Saguache', 'Salida', 'San Luis', 'Sanford', 'Sawpit', 'Sedgwick', 'Seibert', 'Severance', 'Sheridan', 'Sheridan Lake', 'Silt', 'Silver Cliff', 'Silver Plume', 'Silverthorne', 'Silverton', 'Simla', 'Snowmass Village', 'South Fork', 'Springfield', 'Starkville', 'Steamboat Springs', 'Sterling', 'Stratton', 'Sugar City', 'Superior', 'Swink', 'Telluride', 'Thornton', 'Timnath', 'Trinidad', 'Two Buttes', 'Vail', 'Victor', 'Vilas', 'Vona', 'Walden', 'Walsenburg', 'Walsh', 'Ward', 'Wellington', 'Westcliffe', 'Westminster', 'Wheat Ridge', 'Wiggins', 'Wiley', 'Williamsburg', 'Windsor', 'Winter Park', 'Woodland Park', 'Wray', 'Yampa', 'Yuma'];
 
+/*
 $('#colorado_cities .typeahead').typeahead({
     hint: true,
     highlight: true,
@@ -138,6 +134,7 @@ $('#colorado_cities .typeahead').typeahead({
     displayKey: 'value',
     source: substringMatcher(cities)
 });
+*/
 </script>
 
 <!-- WIDGET END -->
