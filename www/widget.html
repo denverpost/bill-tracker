@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Widget page</title>
+    <meta charset="utf-8">
+
+</head>
+<body>
+
+<!-- WIDGET START -->
+<link href="http://extras.denverpost.com/app/weather/style.css" type="text/css" rel="stylesheet" />
+<script src="http://extras.denverpost.com/app/weather/js/typeahead.bundle.min.js"></script>
+<div id="tracker_widget" class="tracker_widget">
+    <h2><a href="http://www.denverpost.com/bill-tracker" title="Colorado Bill Tracker">Bill Tracker</a></h2>
+
+<p style="font-size:11px!important;">
+<a href="/weather#aurora" onClick="load_weather.load_all('Aurora', '5day'); return false;">Aurora Weather</a>
+&bull;
+<a href="/weather#littleton" onClick="load_weather.load_all('Littleton', '5day'); return false;">Littleton</a>
+&bull;
+<a href="/weather#englewood" onClick="load_weather.load_all('Englewood', '5day'); return false;">Englewood</a>
+&bull;
+<a href="/weather#boulder" onClick="load_weather.load_all('Boulder', '5day'); return false;">Boulder</a>
+&bull;
+<a href="/weather#arvada" onClick="load_weather.load_all('Arvada', '5day'); return false;">Arvada</a>
+</p>
+
+    <div id="colorado_cities">
+        <input id="city_input" class="typeahead" type="text" placeholder="Type your city / town here" size="30">
+    </div>
+
+    <div id="weather_current"></div>
+    <div id="weather_forecast"></div>
+    <p style="clear:both;">&raquo; <a href="http://www.denverpost.com/weather" id="weather_link" "Colorado Weather Forecasts"><span></span> 10-day forecast</a></p>
+    <p>&raquo; <a href="http://www.denverpost.com/weathernews" title="Colorado Weather News">Colorado Weather News</a></p>
+    <p>&raquo; <a href="http://www.denverpost.com/skireport" title="Colorado Ski Area Snow Totals">Colorado Ski Area Snow Totals</a></p>
+</div>
+
+<script type="text/javascript">
+var load_weather = {
+    slugify: function(str)
+    {
+        // Cribbed from https://github.com/andrefarzat/slugify/blob/master/slugify.js
+        var from = 'àáäãâèéëêìíïîòóöôõùúüûñç·/_,:;',
+        to = 'aaaaaeeeeiiiiooooouuuunc------';
+
+        var i = 0,
+            len = from.length;
+
+        str = str.toLowerCase();
+
+        for( ; i < len; i++ ){
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+        }
+
+        return str.replace(/^\s+|\s+$/g, '') //trim
+            .replace(/[^-a-zA-Z0-9\s]+/ig, '')
+            .replace(/\s/gi, "_");
+    },
+    clean_data: function(data)
+    {
+        // The markup we're ingesting is specific to standalone presentations, not widgets.
+        // We need to clean it up a little.
+        // Strip the city name because it's repetitive
+
+        // Lower the headers
+        data = data.replace('h2', 'h3');
+        return data;
+    },
+    load_all: function(city, type)
+    {
+        $('#weather_city').text(city);
+
+        if ( typeof type === 'undefined' ) var type = '5day';
+        var slug = this.slugify(city);
+
+        var data = $.get("http://denverpostplus.com/app/weather/www/output/currentconditions-" + slug + ".html",
+            function (data)
+            {
+                data = window.load_weather.clean_data(data);
+                $( "#weather_current" ).html(data);
+            });
+        var data = $.get("http://denverpostplus.com/app/weather/www/output/" + type + "-" + slug + ".html",
+            function (data)
+            {
+                data = window.load_weather.clean_data(data);
+                $( "#weather_forecast" ).html(data);
+            });
+
+        $('#weather_link').attr('href', 'http://www.denverpost.com/weather#' + slug);
+        $('#weather_link span').text('The ' + city);
+    }
+};
+// Default to Denver
+load_weather.load_all('Denver', '5day');
+
+$('.typeahead').on('typeahead:autocompleted', function(evt, item) {
+    load_weather.load_all(item.value, '5day');
+})
+$('.typeahead').on('typeahead:closed', function() {
+    load_weather.load_all($('#city_input').val(), '5day');
+})
+
+// Typeahead code from http://twitter.github.io/typeahead.js/examples/
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substrRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        // the typeahead jQuery plugin expects suggestions to a
+        // JavaScript object, refer to typeahead docs for more info
+        matches.push({ value: str });
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+var cities = ['Aguilar', 'Akron', 'Alamosa', 'Alma', 'Antonito', 'Arriba', 'Arvada', 'Aspen', 'Ault', 'Aurora', 'Avon', 'Basalt', 'Bayfield', 'Bennett', 'Berthoud', 'Bethune', 'Black Hawk', 'Blanca', 'Blue River', 'Bonanza', 'Boone', 'Boulder', 'Bow Mar', 'Branson', 'Breckenridge', 'Brighton', 'Brookside', 'Broomfield', 'Brush', 'Buena Vista', 'Burlington', 'Calhan', 'Campo', 'Cañon City', 'Carbondale', 'Castle Pines', 'Castle Rock', 'Cedaredge', 'Centennial', 'Center', 'Central City', 'Cheraw', 'Cherry Hills Village', 'Cheyenne Wells', 'Coal Creek', 'Cokedale', 'Collbran', 'Colorado Springs', 'Columbine Valley', 'Commerce City', 'Cortez', 'Craig', 'Crawford', 'Creede', 'Crested Butte', 'Crestone', 'Cripple Creek', 'Crook', 'Crowley', 'Dacono', 'De Beque', 'Deer Trail', 'Del Norte', 'Delta', 'Denver', 'Dillon', 'Dinosaur', 'Dolores', 'Dove Creek', 'Durango', 'Eads', 'Eagle', 'Eaton', 'Eckley', 'Edgewater', 'Elizabeth', 'Empire', 'Englewood', 'Erie', 'Estes Park', 'Evans', 'Fairplay', 'Federal Heights', 'Firestone', 'Flagler', 'Fleming', 'Florence', 'Fort Collins', 'Fort Lupton', 'Fort Morgan', 'Fountain', 'Fowler', 'Foxfield', 'Fraser', 'Frederick', 'Frisco', 'Fruita', 'Garden City', 'Genoa', 'Georgetown', 'Gilcrest', 'Glendale', 'Glenwood Springs', 'Golden', 'Granada', 'Granby', 'Grand Junction', 'Grand Lake', 'Greeley', 'Green Mountain Falls', 'Greenwood Village', 'Grover', 'Gunnison', 'Gypsum', 'Hartman', 'Haswell', 'Haxtun', 'Hayden', 'Hillrose', 'Holly', 'Holyoke', 'Hooper', 'Hot Sulphur Springs', 'Hotchkiss', 'Hudson', 'Hugo', 'Idaho Springs', 'Ignacio', 'Iliff', 'Jamestown', 'Johnstown', 'Julesburg', 'Keenesburg', 'Kersey', 'Kim', 'Kiowa', 'Kit Carson', 'Kremmling', 'La Jara', 'La Junta', 'La Veta', 'Lafayette', 'Lake City', 'Lakeside', 'Lakewood', 'Lamar', 'Larkspur', 'Las Animas', 'LaSalle', 'Leadville', 'Limon', 'Littleton', 'Lochbuie', 'Log Lane Village', 'Lone Tree', 'Longmont', 'Louisville', 'Loveland', 'Lyons', 'Manassa', 'Mancos', 'Manitou Springs', 'Manzanola', 'Marble', 'Mead', 'Meeker', 'Merino', 'Milliken', 'Minturn', 'Moffat', 'Monte Vista', 'Montezuma', 'Montrose', 'Monument', 'Morrison', 'Mount Crested Butte', 'Mountain View', 'Mountain Village', 'Naturita', 'Nederland', 'New Castle', 'Northglenn', 'Norwood', 'Nucla', 'Nunn', 'Oak Creek', 'Olathe', 'Olney Springs', 'Ophir', 'Orchard City', 'Ordway', 'Otis', 'Ouray', 'Ovid', 'Pagosa Springs', 'Palisade', 'Palmer Lake', 'Paoli', 'Paonia', 'Parachute', 'Parker', 'Peetz', 'Pierce', 'Pitkin', 'Platteville', 'Poncha Springs', 'Pritchett', 'Pueblo', 'Ramah', 'Rangely', 'Raymer', 'Red Cliff', 'Rico', 'Ridgway', 'Rifle', 'Rockvale', 'Rocky Ford', 'Romeo', 'Rye', 'Saguache', 'Salida', 'San Luis', 'Sanford', 'Sawpit', 'Sedgwick', 'Seibert', 'Severance', 'Sheridan', 'Sheridan Lake', 'Silt', 'Silver Cliff', 'Silver Plume', 'Silverthorne', 'Silverton', 'Simla', 'Snowmass Village', 'South Fork', 'Springfield', 'Starkville', 'Steamboat Springs', 'Sterling', 'Stratton', 'Sugar City', 'Superior', 'Swink', 'Telluride', 'Thornton', 'Timnath', 'Trinidad', 'Two Buttes', 'Vail', 'Victor', 'Vilas', 'Vona', 'Walden', 'Walsenburg', 'Walsh', 'Ward', 'Wellington', 'Westcliffe', 'Westminster', 'Wheat Ridge', 'Wiggins', 'Wiley', 'Williamsburg', 'Windsor', 'Winter Park', 'Woodland Park', 'Wray', 'Yampa', 'Yuma'];
+
+$('#colorado_cities .typeahead').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1
+},
+{
+    name: 'cities',
+    displayKey: 'value',
+    source: substringMatcher(cities)
+});
+</script>
+
+<!-- WIDGET END -->
+
+</body>
+</html>
