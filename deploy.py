@@ -79,9 +79,11 @@ def main(args):
 
             # Bust the cache on extras
             h = httplib2.Http('')
-            url = string.replace(dirname, '.', 'http://extras.denverpost.com/app/bill-tracker', 1)
+            url = '%s/' % dirname
+            url = string.replace(url, '//', '/')
+            url = string.replace(url, '.', 'http://extras.denverpost.com/app/bill-tracker', 1)
             if args.verbose:
-                print url
+                print "PURGE:", url
             try:
                 response, content = h.request('%s/' % url, 'PURGE', headers={}, body='')
             except:
