@@ -51,6 +51,8 @@ class Sunlight:
             >>> s.get_bill_list()
             Session: 2016a
             True
+            >>> print len(s.filter_bills_recent(1))
+            1
             """
         if limit == 0:
             return self.bills
@@ -62,6 +64,9 @@ class Sunlight:
             >>> s.get_bill_list('2011a')
             Session: 2011a
             True
+            >>> bill_detail = s.get_bill_detail(s.bills[0]['bill_id'])
+            >>> print bill_detail['bill_id']
+            SB 11-173
             """
         bill_slug = string.replace(bill_id.lower(), ' ', '_')
         if not os.path.isdir('%s/_input/%s' % (self.directory, self.session)):
@@ -100,7 +105,7 @@ def main(args):
     s = Sunlight(args)
     s.get_bill_list(args.session)
 
-    if 'updated' in args:
+    if 'updated' in args and args.updated:
         print s.bills[0]['updated_at']
         return False
 
@@ -117,6 +122,8 @@ def main(args):
 
     if args.details:
         i = 0
+        if args.verbose:
+            print "Downloading bill details for %d bills" % len(bills)
         for item in bills:
             i += 1
             if args.verbose:

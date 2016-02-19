@@ -25,12 +25,12 @@
 <p>No bills introduced yet this session.</p>
 {% endif %}
 
-<h3 id="signed">Recently signed</h3>
+<h3 id="signed">Recently signed into law</h3>
 {% if response.signed %}
 <ul>
 {% for item in response.signed %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
-        {{item.updated_at}}
+        signed {{item.action_dates.signed|datetime_raw|datetime_filter}}
     </li>
 {% endfor %}
 </ul>
