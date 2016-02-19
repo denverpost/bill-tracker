@@ -124,7 +124,6 @@ class BillQuery:
         today = datetime.combine(date.today(), datetime.min.time())
         for item in self.bills:
             if datetime.strptime(item['updated_at'], datetimeformat) > ( today - delta ):
-                #print datetime.strptime(item['updated_at'], datetimeformat)
                 filtered.append(item)
         return filtered
 
@@ -140,9 +139,7 @@ class BillQuery:
         today = datetime.combine(date.today(), datetime.min.time())
         for item in self.bills:
             detail = self.get_bill_detail(item['session'], item['bill_id'])
-            print detail
             if datetime.strptime(detail['action_dates']['last'], datetimeformat) > ( today - delta ):
-                #print datetime.strptime(item['updated_at'], datetimeformat)
                 filtered.append(item)
         return filtered
 
