@@ -127,7 +127,7 @@ class BillQuery:
                 filtered.append(item)
         return filtered
 
-    def filter_last_date(self, day=0):
+    def filter_by_date(self, day=0, field='last'):
         """ Return bills that have a last-date within the last X days.
             This is more accurate than the filter_updated_at because this date
             is the date there was any action on the bill and updated_at is just
@@ -139,7 +139,7 @@ class BillQuery:
         today = datetime.combine(date.today(), datetime.min.time())
         for item in self.bills:
             detail = self.get_bill_detail(item['session'], item['bill_id'])
-            if datetime.strptime(detail['action_dates']['last'], datetimeformat) > ( today - delta ):
+            if datetime.strptime(detail['action_dates'][field], datetimeformat) > ( today - delta ):
                 filtered.append(item)
         return filtered
 
@@ -167,7 +167,7 @@ def index():
     days_back = 0
     bills = []
     while True:
-        bills = q.filter_last_date(days_back)
+        bills = q.filter_by_date(days_back, 'last')
         if len(bills) > 0:
             break
         if days_back > 300:
