@@ -6,6 +6,12 @@ li span.date { color: #999; }
 {% block content %}
 <h2></h2>
 
+{% if response.news %}
+<h3 id="news">The legislature in the news</h3>
+<ul>
+</ul>
+{% endif %}
+
 <h3 id="signed">Signed into law</h3>
 {% if response.signed %}
 <ul>
