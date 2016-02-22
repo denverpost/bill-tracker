@@ -193,8 +193,14 @@ def index():
 def week_index():
     app.page['title'] = 'The Week in the Colorado legislature'
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
+    q = BillQuery()
+    q.filter_session()
     response = {
         'app': app,
+        'signed': q.filter_action_dates('signed'),
+        'introduced': q.filter_action_dates('first'),
+        'passed_upper': q.filter_action_dates('passed_upper'),
+        'passed_lower': q.filter_action_dates('passed_lower'),
     }
     return render_template('week_index.html', response=response)
 
