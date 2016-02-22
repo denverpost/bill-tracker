@@ -197,7 +197,7 @@ def week_index():
 
     # Get the recent legislative news
     rss = 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml'
-    rf = RecentFeed([])
+    rf = RecentFeed()
     rf.get(rss)
     rf.parse()
     rf.days = 8

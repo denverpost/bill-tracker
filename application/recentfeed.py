@@ -13,17 +13,17 @@ from time import mktime
 
 class RecentFeed:
     """ Methods for ingesting and publishing RSS feeds.
-        >>> rf = RecentFeed([])
+        >>> rf = RecentFeed()
         >>> rf.get('http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/213601.xml')
         True
         >>> rf.parse()
         """
 
-    def __init__(self, args):
+    def __init__(self, args={}):
         self.args = args
         if 'days' not in self.args:
-            self.args.days = 0
-        self.days = self.args.days
+            self.args['days'] = 0
+        self.days = self.args['days']
 
     def get(self, url):
         """ Wrapper for API requests. Take a URL, return a json array.
@@ -63,7 +63,7 @@ class RecentFeed:
             if delta.days > self.days:
                 continue
             items.append(item)
-            if self.args.verbose:
+            if 'verbose' in self.args and self.args['verbose']:
                 print delta.days, dt
         self.items = items
         return items

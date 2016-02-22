@@ -9,6 +9,9 @@ li span.date { color: #999; }
 {% if response.news %}
 <h3 id="news">The legislature in the news</h3>
 <ul>
+{% for item in response.news -%}
+    <li><a href="{{item.links[0].href}}">{{item.title}}</a></li>
+{%- endfor %}
 </ul>
 {% endif %}
 
