@@ -11,6 +11,11 @@ import freeze
 
 current_session = '2016a' #HARD-CODED HC
 
+def get_news():
+    """ Download and cache items from the RSS feeds we track.
+        """
+    pass
+
 def main(args):
     """ Turn every URL into flatfile, ftp it to prod.
         >>> args = build_parser(['--verbose'])
@@ -19,6 +24,8 @@ def main(args):
         """
     if args.do_freeze:
         freeze.freezer.freeze()
+    if args.get_news:
+        get_news()
     if not args.do_ftp:
         return False
 
@@ -108,6 +115,8 @@ def build_parser(args):
                         help="FTP the site to the production server.")
     parser.add_argument("--nosession", dest="no_session", default=False, action="store_true",
                         help="Only upload basic indexes & homepage.")
+    parser.add_argument("--news", dest="get_news", default=False, action="store_true",
+                        help="Download and cache the recent legislative news.")
     parser.add_argument("-s", "--session", dest="session", default=False)
     args = parser.parse_args(args)
     return args
