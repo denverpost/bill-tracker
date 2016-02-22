@@ -204,7 +204,7 @@ def week_index():
     weeks = []
     while current_issue < today:
         weeks.append(current_issue)
-        current_issue = current_date + timedelta(7)
+        current_issue = current_issue + timedelta(7)
 
     print weeks
     response = {
@@ -213,11 +213,27 @@ def week_index():
     }
     return render_template('week_index.html', response=response)
 
-@app.route('/the-week/<date>/')
-def week_detail():
+@app.route('/the-week/<issue_date>/')
+def week_detail(issue_date):
     from recentfeed import RecentFeed
     app.page['title'] = 'The Previous Week in the Colorado legislature'
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
+
+    # Make sure it's a valid week
+    current_issue = app.theweek[app.session]
+    today = date.today()
+    weeks = []
+    while current_issue < today:
+        weeks.append(current_issue.__str__())
+        current_issue = current_issue + timedelta(7)
+
+    # Turn the date into a range
+    the_date = datetime.strptime(issue_date, '%Y-%m-%d')
+    start, finish = the_date - timedelta(7), the_date
+    print start, finish
+
+    if issue_date not in weeks:
+        abort(404)
 
     # Get the recent legislative news
     rss = 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml'
@@ -227,7 +243,6 @@ def week_detail():
     rf.days = 8
     news = rf.recently()
 
-    week_start = app.theweek[app.session]
     q = BillQuery()
     q.filter_session()
     response = {
