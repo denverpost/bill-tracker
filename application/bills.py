@@ -127,7 +127,7 @@ class BillQuery:
                 filtered.append(item)
         return filtered
 
-    def filter_by_date(self, day=0, field='last'):
+    def filter_by_date(self, day=0, field='last', bills=[]):
         """ Return bills that have a last-date within the last X days.
             This is more accurate than the filter_updated_at because this date
             is the date there was any action on the bill and updated_at is just
@@ -136,10 +136,13 @@ class BillQuery:
             Available fields:
             'passed_upper', 'passed_lower', 'last', 'signed', 'first'
             """
+        if len(bills) == 0:
+            bills = self.bills
+
         filtered = []
         delta = timedelta(day)
         today = datetime.combine(date.today(), datetime.min.time())
-        for item in self.bills:
+        for item in bills:
             detail = self.get_bill_detail(item['session'], item['bill_id'])
             if datetime.strptime(detail['action_dates'][field], datetimeformat) > ( today - delta ):
                 filtered.append(item)
@@ -209,9 +212,9 @@ def week_index():
         'app': app,
         'news': news,
         'signed': q.filter_action_dates('signed'),
-        'introduced': q.filter_action_dates('first'),
-        'passed_upper': q.filter_action_dates('passed_upper'),
-        'passed_lower': q.filter_action_dates('passed_lower'),
+        'introduced': q.filter_by_date(8, 'first', q.filter_action_dates('first')),
+        'passed_upper': q.filter_by_date(8, 'passed_upper', q.filter_action_dates('passed_upper')),
+        'passed_lower': q.filter_by_date(8, 'passed_lower', q.filter_action_dates('passed_lower')),
     }
     return render_template('week_index.html', response=response)
 
