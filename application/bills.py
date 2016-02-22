@@ -242,11 +242,16 @@ def session_detail(session):
 def bill_detail(session, bill_id):
     if session not in app.sessions:
         abort(404)
-    data = {
-        'bill': json.load(json_check('_input/%s/%s.json' % (session, bill_id.upper())))
-    }
-    if 'title' not in data['bill']:
+    try:
+        billdata = json.load(open('_input/%s/%s.json' % (session, bill_id.lower())))
+    except:
+        billdata = json.load(open('_input/%s/%s.json' % (session, bill_id.upper())))
+    finally:
+        print "ERROR: No json file %s/%s.json" % (session, bill_id.upper)
         abort(404)
+    data = {
+        'bill': billdata
+    }
     app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
     app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )
     response = {
