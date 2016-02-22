@@ -1,10 +1,12 @@
 {% extends "base.html" %}
-{% block style %}{% endblock style %}
+{% block style %}
+li span.date { color: #999; }
+{% endblock style %}
 {% block breadcrumbs %}{{ super() }}{% endblock breadcrumbs %}
 {% block content %}
-<h2>Current Legislation (<a href="./bills/{{response.app.session}}/">Session {{response.app.session|upper}}</a>)</h2>
+<h2></h2>
 
-<h3 id="signed">Recently signed into law</h3>
+<h3 id="signed">Signed into law</h3>
 {% if response.signed %}
 <ul>
 {% for item in response.signed %}
@@ -20,12 +22,12 @@
 <h3 id="passed-house">Passed Colorado State House</h3>
 {% if response.passed_lower %}
 <ul>
-{% for item in response.passed_lower[:10] %}
+{% for item in response.passed_lower %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {% endif %}
-        on {{item.action_dates.passed_lower|datetime_raw|datetime_filter}}
+        <span class="date">on {{item.action_dates.passed_lower|datetime_raw|datetime_filter}}</span>
     </li>
 {% endfor %}
 </ul>
@@ -39,12 +41,12 @@
 <h3 id="passed-senate">Passed Colorado State Senate</h3>
 {% if response.passed_upper %}
 <ul>
-{% for item in response.passed_upper[:10] %}
+{% for item in response.passed_upper %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {% endif %}
-        on {{item.action_dates.passed_upper|datetime_raw|datetime_filter}}
+        <span class="date">on {{item.action_dates.passed_upper|datetime_raw|datetime_filter}}</span>
     </li>
 {% endfor %}
 </ul>
@@ -58,9 +60,9 @@
 <h3 id="introduced">Introduced this week</h3>
 {% if response.introduced %}
 <ul>
-{% for item in response.introduced[:10] %}
+{% for item in response.introduced %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
-        ({{item.action_dates.first|datetime_raw|datetime_filter}})
+        <span class="date">({{item.action_dates.first|datetime_raw|datetime_filter}})</span>
     </li>
 {% endfor %}
 </ul>
