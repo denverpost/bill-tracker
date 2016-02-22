@@ -190,7 +190,7 @@ def index():
     return render_template('home.html', response=response)
 
 @app.route('/the-week/')
-def session_index():
+def week_index():
     app.page['title'] = 'The Week in the Colorado legislature'
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
     response = {
