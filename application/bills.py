@@ -195,7 +195,7 @@ def index():
 @app.route('/the-week/')
 def week_index():
     from recentfeed import RecentFeed
-    app.page['title'] = 'The Last Week in the Colorado legislature'
+    app.page['title'] = 'The Previous Week in the Colorado legislature'
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
 
     # Get the recent legislative news
