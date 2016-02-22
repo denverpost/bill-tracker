@@ -59,7 +59,7 @@
 </div>
 
 <script>
-var data = {{response.json|safe}}
+var data = {{response.json|safe}};
 /* var testdata = [{
     "votes": [{
         "other_count": 1,
@@ -130,6 +130,16 @@ var data = {{response.json|safe}}
 }
 ] */
 
+var changeDate = function(data) {
+    if (data == null) {
+        return "n/a"
+    } else {
+        var readableDate = new Date(data);
+        readableDate = (readableDate.getMonth() + 1) + "/" + readableDate.getDate() + "/" + readableDate.getFullYear();
+        return readableDate;
+    }
+};
+
 // DataTables
 $('#bill-table').dataTable( { 
     data: data,
@@ -156,7 +166,18 @@ $('#bill-table').dataTable( {
         { "data": "id" },
         { "data": "state" },
         { "data": "session" },
-        { "data": "action_dates.passed_lower" },
+        { "data": "action_dates.passed_lower",
+            "render": function(data, type, full) {
+                changeDate(data) }
+                /* if (data == null) {
+                    return "n/a" 
+                } else {
+                    var readableDate = new Date(data);
+                    readableDate = (readableDate.getMonth() + 1) + "/" + readableDate.getDate() + "/" + readableDate.getFullYear();
+                    return readableDate;
+                }
+            } */
+        },
         { "data": "action_dates.passed_upper" },
         { "data": "action_dates.first" },
         { "data": "action_dates.last" },
