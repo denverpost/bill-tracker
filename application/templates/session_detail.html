@@ -130,7 +130,7 @@ var data = {{response.json|safe}};
 }
 ] */
 
-var changeDate = function(data) {
+function changeDate(data) {
     if (data == null) {
         return "n/a"
     } else {
@@ -168,21 +168,29 @@ $('#bill-table').dataTable( {
         { "data": "session" },
         { "data": "action_dates.passed_lower",
             "render": function(data, type, full) {
-                console.log(data, changeDate(data));
-                return changeDate(data); }
-                /* if (data == null) {
-                    return "n/a" 
-                } else {
-                    var readableDate = new Date(data);
-                    readableDate = (readableDate.getMonth() + 1) + "/" + readableDate.getDate() + "/" + readableDate.getFullYear();
-                    return readableDate;
-                }
-            } */
+                return changeDate(data);
+            }
         },
-        { "data": "action_dates.passed_upper" },
-        { "data": "action_dates.first" },
-        { "data": "action_dates.last" },
-        { "data": "action_dates.signed" },
+        { "data": "action_dates.passed_upper",
+            "render": function(data, type, full) {
+                return changeDate(data);
+            }
+        },
+        { "data": "action_dates.first",
+            "render": function(data, type, full) {
+                return changeDate(data);
+            }
+        },
+        { "data": "action_dates.last",
+            "render": function(data, type, full) {
+                return changeDate(data);
+            }
+        },
+        { "data": "action_dates.signed",
+            "render": function(data, type, full) {
+                return changeDate(data);
+            }
+        },
         { "data": "subjects" }
 	],
     autoWidth: false,
