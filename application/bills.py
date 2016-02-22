@@ -8,6 +8,7 @@ import os
 import string
 from application import app
 import filters
+from datetime import date, datetime, timedelta
 
 
 datetimeformat = '%Y-%m-%d %H:%M:%S'
@@ -118,7 +119,6 @@ class BillQuery:
     def filter_updated_at(self, day=0):
         """ Return bills that have been updated within the last X days.
             """
-        from datetime import date, datetime, timedelta
         filtered = []
         delta = timedelta(day)
         today = datetime.combine(date.today(), datetime.min.time())
@@ -132,8 +132,10 @@ class BillQuery:
             This is more accurate than the filter_updated_at because this date
             is the date there was any action on the bill and updated_at is just
             the timestamp when the Sunlight Foundation last modified it.
+
+            Available fields:
+            'passed_upper', 'passed_lower', 'last', 'signed', 'first'
             """
-        from datetime import date, datetime, timedelta
         filtered = []
         delta = timedelta(day)
         today = datetime.combine(date.today(), datetime.min.time())
@@ -186,6 +188,15 @@ def index():
         'back_date': date.today() - timedelta(days_back)
     }
     return render_template('home.html', response=response)
+
+@app.route('/the-week/')
+def session_index():
+    app.page['title'] = 'The Week in the Colorado legislature'
+    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
+    response = {
+        'app': app,
+    }
+    return render_template('week_index.html', response=response)
 
 @app.route('/bills/')
 def session_index():
