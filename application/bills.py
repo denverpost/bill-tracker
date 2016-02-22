@@ -199,8 +199,18 @@ def week_index():
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
 
     # Get the weeks we have the weeks for
+    week_start = app.theweek['2016a']
+    current_date = app.theweek['2016a']
+    today = date.today()
+    weeks = []
+    while current_date < today:
+        weeks.append(current_date)
+        current_date = current_date + timedelta(7)
+
+    print weeks
     response = {
         'app': app,
+        'weeks': weeks
     }
     return render_template('week_index.html', response=response)
 
