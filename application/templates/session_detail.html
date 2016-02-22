@@ -168,7 +168,8 @@ $('#bill-table').dataTable( {
         { "data": "session" },
         { "data": "action_dates.passed_lower",
             "render": function(data, type, full) {
-                changeDate(data) }
+                console.log(data, changeDate(data));
+                return changeDate(data); }
                 /* if (data == null) {
                     return "n/a" 
                 } else {
