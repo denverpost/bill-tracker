@@ -195,6 +195,18 @@ def index():
 @app.route('/the-week/')
 def week_index():
     from recentfeed import RecentFeed
+    app.page['title'] = 'The Week in Colorado state legislature'
+    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
+
+    # Get the weeks we have the weeks for
+    response = {
+        'app': app,
+    }
+    return render_template('week_index.html', response=response)
+
+@app.route('/the-week/<date>/')
+def week_detail():
+    from recentfeed import RecentFeed
     app.page['title'] = 'The Previous Week in the Colorado legislature'
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
 
@@ -216,7 +228,7 @@ def week_index():
         'passed_upper': q.filter_by_date(8, 'passed_upper', q.filter_action_dates('passed_upper')),
         'passed_lower': q.filter_by_date(8, 'passed_lower', q.filter_action_dates('passed_lower')),
     }
-    return render_template('week_index.html', response=response)
+    return render_template('week_detail.html', response=response)
 
 @app.route('/bills/')
 def session_index():
