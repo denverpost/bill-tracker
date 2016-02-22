@@ -191,12 +191,23 @@ def index():
 
 @app.route('/the-week/')
 def week_index():
+    from recentfeed import RecentFeed
     app.page['title'] = 'The Week in the Colorado legislature'
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
+
+    # Get the recent legislative news
+    rss = 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml'
+    rf = RecentFeed([])
+    rf.get(rss)
+    rf.parse()
+    rf.days = 8
+    news = rf.recently()
+
     q = BillQuery()
     q.filter_session()
     response = {
         'app': app,
+        'news': news,
         'signed': q.filter_action_dates('signed'),
         'introduced': q.filter_action_dates('first'),
         'passed_upper': q.filter_action_dates('passed_upper'),

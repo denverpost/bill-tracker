@@ -74,6 +74,7 @@ class Sunlight:
         bill_details = sunlight.openstates.bill_detail(self.state, self.session.upper(), bill_id)
         fh = open('_input/%s/%s.json' % (self.session, bill_slug), 'wb')
         json.dump(bill_details, fh)
+        fh.close()
 
         #self.get_bill_pdf(bill_slug, bill_details)
         return bill_details 
