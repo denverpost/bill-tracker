@@ -199,7 +199,7 @@ def week_index():
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
 
     # Get the weeks we have the weeks for
-    current_issue = app.theweek['2016a']
+    current_issue = app.theweek[app.session]
     today = date.today()
     weeks = []
     while current_issue < today:
@@ -227,7 +227,7 @@ def week_detail():
     rf.days = 8
     news = rf.recently()
 
-    week_start = app.theweek['2016a']
+    week_start = app.theweek[app.session]
     q = BillQuery()
     q.filter_session()
     response = {
