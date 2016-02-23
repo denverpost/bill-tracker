@@ -96,6 +96,10 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
         }
         .ad { margin-bottom: 10px; }
         .row { margin-left: 0; }
+        .stamp {
+            font-style: italic;
+            color: #aaa;
+        }
 
     @media only screen and (min-width: 769px) {
         .maincol {
@@ -227,7 +231,7 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
             &rsaquo; <a href="http://www.denverpost.com/legislature">Legislature</a>
             {% endblock breadcrumbs %}
         </div>
-        <p id="timestamp">Last Updated Monday Feb. 22</p>
+        <p id="datestamp" class="stamp">Last Updated {{''|next_update('this')}}</p>
 
         <div class="row">
 
@@ -304,7 +308,7 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
         &bull; <a href="http://www.denverpost.com/headlines">Today's News</a>
         &bull; <a href="http://www.denverpost.com/arcade/ci_26520665/daily-crossword">Daily Crossword</a>
     </p>
-    <noscript><p id="timestamp">Page generated at {{''|timestamp}}</p></noscript>
+    <noscript><p id="timestamp" class="stamp">Page generated at {{''|timestamp}}</p></noscript>
     </footer>
     <script>
     if ( iframe === 1 )
