@@ -14,7 +14,7 @@ import json
 
 current_session = '2016a' #HARD-CODED HC
 
-def get_news(slug, url):
+def get_news(slug, url, days=7):
     """ Download and cache items from the RSS feeds we track.
         """
     if not os.path.isdir('_input/news'):
@@ -22,13 +22,18 @@ def get_news(slug, url):
     rf = RecentFeed()
     rf.get(url)
     rf.parse()
-    rf.days = 8
-    news = rf.recently()
+    rf.days = days
+    items = []
+    for item in rf.recently():
+        items.append(dict(published=item['published'],
+                    title=item['title'],
+                    summary=item['summary'],
+                    link=item['link'],
+                    links=item['links']))
     today = date.today()
-    print news
-    filename = '_input/news/%s_%s.json' % (slug, today.__str__())
+    filename = '_input/news/%s_%s_%d.json' % (slug, today.__str__(), days)
     fh = open(filename, 'wb')
-    json.dump(news, fh)
+    json.dump(items, fh)
     return True
 
 def main(args):
@@ -41,7 +46,9 @@ def main(args):
         freeze.freezer.freeze()
     if args.get_news:
         get_news('articles', 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml')
-        #get_news('the-spot', '')
+        get_news('articles', 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml', 1)
+        get_news('the-spot', 'http://blogs.denverpost.com/thespot/category/colorado-legislature-2/feed/')
+        get_news('the-spot', 'http://blogs.denverpost.com/thespot/category/colorado-legislature-2/feed/', 1)
     if not args.do_ftp:
         return False
 
