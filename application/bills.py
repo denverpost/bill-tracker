@@ -215,7 +215,6 @@ def week_index():
 
 @app.route('/the-week/<issue_date>/')
 def week_detail(issue_date):
-    from recentfeed import RecentFeed
     app.page['title'] = 'The Previous Week in the Colorado legislature'
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
 
@@ -235,13 +234,7 @@ def week_detail(issue_date):
     if issue_date not in weeks:
         abort(404)
 
-    # Get the recent legislative news
-    rss = 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml'
-    rf = RecentFeed()
-    rf.get(rss)
-    rf.parse()
-    rf.days = 8
-    news = rf.recently()
+    # Get a json file of the recent legislative news
 
     q = BillQuery()
     q.filter_session()

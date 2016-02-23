@@ -8,13 +8,28 @@ import doctest
 import httplib2
 from FtpWrapper import FtpWrapper
 import freeze
+from application.recentfeed import RecentFeed
+from datetime import date
+import json
 
 current_session = '2016a' #HARD-CODED HC
 
-def get_news():
+def get_news(slug, url):
     """ Download and cache items from the RSS feeds we track.
         """
-    pass
+    if not os.path.isdir('_input/news'):
+        os.mkdir('_input/news')
+    rf = RecentFeed()
+    rf.get(url)
+    rf.parse()
+    rf.days = 8
+    news = rf.recently()
+    today = date.today()
+    print news
+    filename = '_input/news/%s_%s.json' % (slug, today.__str__())
+    fh = open(filename, 'wb')
+    json.dump(news, fh)
+    return True
 
 def main(args):
     """ Turn every URL into flatfile, ftp it to prod.
@@ -25,7 +40,8 @@ def main(args):
     if args.do_freeze:
         freeze.freezer.freeze()
     if args.get_news:
-        get_news()
+        get_news('articles', 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml')
+        #get_news('the-spot', '')
     if not args.do_ftp:
         return False
 
