@@ -39,7 +39,7 @@ class RecentFeed:
         h = httplib2.Http('.tmp')
         (response, xml) = h.request(url, "GET")
         if response['status'] != '200':
-            if self.args.verbose:
+            if 'verbose' in self.args and self.args.verbose:
                 print "URL: %s" % url
             raise ValueError("URL %s response: %s" % (url, response.status))
         self.xml = xml
