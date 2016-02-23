@@ -35,6 +35,22 @@ def index():
     yield {}
 
 @freezer.register_generator
+def week_index():
+    yield {}
+
+@freezer.register_generator
+def week_detail():
+    # Get the weeks we have the weeks for
+    current_issue = app.theweek[app.session]
+    today = date.today()
+    weeks = []
+    while current_issue < today:
+        weeks.append(current_issue.__str__())
+        current_issue = current_issue + timedelta(7)
+    for item in weeks:
+        yield { 'issue_date': item }
+
+@freezer.register_generator
 def session_index():
     yield {}
 
