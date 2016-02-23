@@ -83,3 +83,30 @@ def bill_details_filter(value, session):
     bill = json.load(bills.json_check('_input/%s/%s.json' % (session, bill_id)))
     return bill
 app.add_template_filter(bill_details_filter)
+
+@app.template_filter(name='next_update')
+def next_update(blank, value, delta=0):
+    """ When is this / the next Tuesday, Wednesday, Thursday, Friday or Saturday?
+        Returns a formatted date object, ala "Friday Feb. 20"
+        Legit values for var value: "this" and "next"
+        """
+    today = date.today() + timedelta(delta)
+    i = 1
+    if value == 'this':
+        i = 0 
+    while i < 7:
+        new_day = today + timedelta(i)
+        if value == 'this':
+            new_day = today + timedelta(i - 1)
+        wd = new_day.weekday()
+        if wd in [0,2,4]:
+            return new_day.strftime('%A %b. %d')
+        i += 1
+    pass
+
+@app.template_filter(name='timestamp')
+def timestamp(blank):
+    """ What's the current date and time?
+        """
+    today = datetime.today()
+    return today.strftime("%A %b. %d, %-I:%M %p")

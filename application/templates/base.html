@@ -227,6 +227,8 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
             &rsaquo; <a href="http://www.denverpost.com/legislature">Legislature</a>
             {% endblock breadcrumbs %}
         </div>
+        <p id="timestamp">Last Updated Monday Feb. 22</p>
+
         <div class="row">
 
             <h1>{{response.app.page.title}}</h1>
@@ -302,6 +304,7 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
         &bull; <a href="http://www.denverpost.com/headlines">Today's News</a>
         &bull; <a href="http://www.denverpost.com/arcade/ci_26520665/daily-crossword">Daily Crossword</a>
     </p>
+    <noscript><p id="timestamp">Page generated at {{''|timestamp}}</p></noscript>
     </footer>
     <script>
     if ( iframe === 1 )
