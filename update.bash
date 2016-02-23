@@ -17,4 +17,5 @@ python legquery.py --session 2016a --details
 python legquery.py
 
 # Update the site and FTP it.
+python deploy.py --news
 python deploy.py --freeze --ftp --session 2016a
