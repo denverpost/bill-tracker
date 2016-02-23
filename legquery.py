@@ -18,6 +18,8 @@ class Sunlight:
         self.directory = os.path.dirname(os.path.realpath(__file__))
         self.bills = []
         self.args = args
+        if not os.path.isdir('%s/_input' % self.directory):
+            os.mkdir('%s/_input' % self.directory)
 
     def get_bill_list(self, session=None):
         """ Get list of bills, sometimes from a particular session.

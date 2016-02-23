@@ -1,0 +1,38 @@
+{
+    'summary_detail': {
+        'base': u '',
+        'type': u 'text/html',
+        'value': u 'For the second year in a row, a legislative storm is brewing in Colorado over who legally owns drops of rain.',
+        'language': None
+    },
+    'published_parsed': time.struct_time(tm_year = 2016, tm_mon = 2, tm_mday = 23, tm_hour = 0, tm_min = 9, tm_sec = 48, tm_wday = 1, tm_yday = 54, tm_isdst = 0),
+    'links': [{
+        'href': u 'http://www.denverpost.com/news/ci_29548106/colorado-rain-barrel-bill-passes-house-committee-monday?source=rss',
+        'type': u 'text/html',
+        'rel': u 'alternate'
+    }, {
+        'length': u '89485',
+        'href': u 'http://extras.mnginteractive.com/live/media/site36/2016/0222/20160222__4716428~p1.jpg',
+        'type': u 'image/pjpeg',
+        'rel': u 'enclosure'
+    }],
+    'title': u 'Colorado rain-barrel bill passes House committee Monday',
+    'author': u '<b>By Joey Bunch</b><br><i>The Denver Post</i>',
+    'summary': u 'For the second year in a row, a legislative storm is brewing in Colorado over who legally owns drops of rain.',
+    'guidislink': False,
+    'title_detail': {
+        'base': u '',
+        'type': u 'text/plain',
+        'value': u 'Colorado rain-barrel bill passes House committee Monday',
+        'language': None
+    },
+    'link': u 'http://www.denverpost.com/news/ci_29548106/colorado-rain-barrel-bill-passes-house-committee-monday?source=rss',
+    'authors': [{
+        'name': u '<b>By Joey Bunch</b><br><i>The Denver Post</i>'
+    }],
+    'author_detail': {
+        'name': u '<b>By Joey Bunch</b><br><i>The Denver Post</i>'
+    },
+    'id': u 'http://www.denverpost.com/news/ci_29548106/colorado-rain-barrel-bill-passes-house-committee-monday?source=rss',
+    'published': u 'Mon, 22 Feb 2016 17:09:48 MST'
+}

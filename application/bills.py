@@ -127,8 +127,8 @@ class BillQuery:
                 filtered.append(item)
         return filtered
 
-    def filter_by_date(self, day=0, field='last', bills=[]):
-        """ Return bills that have a last-date within the last X days.
+    def filter_by_date(self, date_range, field='last', bills=[]):
+        """ Return bills that have an action date within the date_range.
             This is more accurate than the filter_updated_at because this date
             is the date there was any action on the bill and updated_at is just
             the timestamp when the Sunlight Foundation last modified it.
@@ -140,11 +140,10 @@ class BillQuery:
             bills = self.bills
 
         filtered = []
-        delta = timedelta(day)
-        today = datetime.combine(date.today(), datetime.min.time())
         for item in bills:
             detail = self.get_bill_detail(item['session'], item['bill_id'])
-            if datetime.strptime(detail['action_dates'][field], datetimeformat) > ( today - delta ):
+            dt = datetime.strptime(detail['action_dates'][field], datetimeformat)
+            if date_range[0] <= dt.date() <= date_range[1]:
                 filtered.append(item)
         return filtered
 
@@ -171,14 +170,16 @@ def index():
 
     days_back = 0
     bills = []
+    finish = date.today()
+    start = finish - timedelta(days_back)
     while True:
-        bills = q.filter_by_date(days_back, 'last')
+        bills = q.filter_by_date([start, finish], 'last')
         if len(bills) > 0:
             break
         if days_back > 300:
             break
         days_back += 1
-    days_back -= 1
+        start = finish - timedelta(days_back)
 
     response = {
         'app': app,
@@ -195,28 +196,64 @@ def index():
 @app.route('/the-week/')
 def week_index():
     from recentfeed import RecentFeed
+    app.page['title'] = 'The Week in Colorado state legislature'
+    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
+
+    # Get the weeks we have the weeks for
+    current_issue = app.theweek[app.session]
+    today = date.today()
+    weeks = []
+    while current_issue < today:
+        weeks.append(current_issue)
+        current_issue = current_issue + timedelta(7)
+
+    print weeks
+    response = {
+        'app': app,
+        'weeks': weeks
+    }
+    return render_template('week_index.html', response=response)
+
+@app.route('/the-week/<issue_date>/')
+def week_detail(issue_date):
     app.page['title'] = 'The Previous Week in the Colorado legislature'
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
 
-    # Get the recent legislative news
-    rss = 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml'
-    rf = RecentFeed()
-    rf.get(rss)
-    rf.parse()
-    rf.days = 8
-    news = rf.recently()
+    # Make sure it's a valid week
+    current_issue = app.theweek[app.session]
+    today = date.today()
+    weeks = []
+    while current_issue < today:
+        weeks.append(current_issue.__str__())
+        current_issue = current_issue + timedelta(7)
+
+    # Turn the date into a range
+    the_date = datetime.strptime(issue_date, '%Y-%m-%d')
+    start, finish = the_date - timedelta(7), the_date
+    date_range = [start.date(), finish.date()]
+    print start, finish
+
+    if issue_date not in weeks:
+        abort(404)
+
+    # Get a json file of the recent legislative news
+    try:
+        news = json.load(open('_input/news/articles_%s_8.json' % issue_date))
+    except:
+        news = []
 
     q = BillQuery()
     q.filter_session()
     response = {
         'app': app,
+        'issue_date': issue_date,
         'news': news,
         'signed': q.filter_action_dates('signed'),
-        'introduced': q.filter_by_date(8, 'first', q.filter_action_dates('first')),
-        'passed_upper': q.filter_by_date(8, 'passed_upper', q.filter_action_dates('passed_upper')),
-        'passed_lower': q.filter_by_date(8, 'passed_lower', q.filter_action_dates('passed_lower')),
+        'introduced': q.filter_by_date(date_range, 'first', q.filter_action_dates('first')),
+        'passed_upper': q.filter_by_date(date_range, 'passed_upper', q.filter_action_dates('passed_upper')),
+        'passed_lower': q.filter_by_date(date_range, 'passed_lower', q.filter_action_dates('passed_lower')),
     }
-    return render_template('week_index.html', response=response)
+    return render_template('week_detail.html', response=response)
 
 @app.route('/bills/')
 def session_index():

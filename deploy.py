@@ -8,8 +8,33 @@ import doctest
 import httplib2
 from FtpWrapper import FtpWrapper
 import freeze
+from application.recentfeed import RecentFeed
+from datetime import date
+import json
 
 current_session = '2016a' #HARD-CODED HC
+
+def get_news(slug, url, days=7):
+    """ Download and cache items from the RSS feeds we track.
+        """
+    if not os.path.isdir('_input/news'):
+        os.mkdir('_input/news')
+    rf = RecentFeed()
+    rf.get(url)
+    rf.parse()
+    rf.days = days
+    items = []
+    for item in rf.recently():
+        items.append(dict(published=item['published'],
+                    title=item['title'],
+                    summary=item['summary'],
+                    link=item['link'],
+                    links=item['links']))
+    today = date.today()
+    filename = '_input/news/%s_%s_%d.json' % (slug, today.__str__(), days)
+    fh = open(filename, 'wb')
+    json.dump(items, fh)
+    return True
 
 def main(args):
     """ Turn every URL into flatfile, ftp it to prod.
@@ -19,6 +44,11 @@ def main(args):
         """
     if args.do_freeze:
         freeze.freezer.freeze()
+    if args.get_news:
+        get_news('articles', 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml')
+        get_news('articles', 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml', 1)
+        get_news('the-spot', 'http://blogs.denverpost.com/thespot/category/colorado-legislature-2/feed/')
+        get_news('the-spot', 'http://blogs.denverpost.com/thespot/category/colorado-legislature-2/feed/', 1)
     if not args.do_ftp:
         return False
 
@@ -108,6 +138,8 @@ def build_parser(args):
                         help="FTP the site to the production server.")
     parser.add_argument("--nosession", dest="no_session", default=False, action="store_true",
                         help="Only upload basic indexes & homepage.")
+    parser.add_argument("--news", dest="get_news", default=False, action="store_true",
+                        help="Download and cache the recent legislative news.")
     parser.add_argument("-s", "--session", dest="session", default=False)
     args = parser.parse_args(args)
     return args
