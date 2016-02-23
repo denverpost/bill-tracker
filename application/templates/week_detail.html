@@ -6,7 +6,7 @@ li span.date { color: #999; }
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
 &rsaquo; <a href="../">The Week In Legislature</a>{% endblock breadcrumbs %}
 {% block content %}
-<h2>The Week, ending {{response.date|datetime_filter}}</h2>
+<h2>for the week ending {{response.current_issue|datetime_filter}}</h2>
 <p>A round-up of what happened to which legislation in Colorado's state legislature.</p>
 
 {% if response.news %}

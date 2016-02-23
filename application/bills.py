@@ -235,11 +235,16 @@ def week_detail(issue_date):
         abort(404)
 
     # Get a json file of the recent legislative news
+    try:
+        news = json.load(open('_input/news/articles_%s_8.json' % issue_date))
+    except:
+        news = []
 
     q = BillQuery()
     q.filter_session()
     response = {
         'app': app,
+        'current_issue': current_issue,
         'news': news,
         'signed': q.filter_action_dates('signed'),
         'introduced': q.filter_by_date(8, 'first', q.filter_action_dates('first')),
