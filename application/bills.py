@@ -244,7 +244,7 @@ def week_detail(issue_date):
     q.filter_session()
     response = {
         'app': app,
-        'current_issue': current_issue,
+        'issue_date': issue_date,
         'news': news,
         'signed': q.filter_action_dates('signed'),
         'introduced': q.filter_by_date(8, 'first', q.filter_action_dates('first')),
