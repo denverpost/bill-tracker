@@ -78,7 +78,8 @@ def main(args):
         # ./bills/2011a ['hb_11-1001', 'hb_11-1002'... <-- the next down from that
         if args.session:
             if 'bills/' in dirname:
-                if args.session not in dirname:
+                # We don't care about the a/b part of the session -- the final character.
+                if args.session[:-1] not in dirname:
                     continue
 
         if args.no_session:
