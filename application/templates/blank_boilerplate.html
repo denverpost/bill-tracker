@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block style %}{% endblock style %}
+{% block breadcrumbs %}{{ super() }}
+&rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>{% endblock breadcrumbs %}
+{% block content %}
+<h2></h2>
+<p></p>
+
+<ul>
+{% for item in response.app -%}
+    <li><a href="{{item}}/">{{item|datetime_filter}}</a></li>
+{% endfor %}
+</ul>
+{% endblock content %}
