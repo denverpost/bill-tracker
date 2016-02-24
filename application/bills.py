@@ -369,7 +369,7 @@ def chamber_index():
     response = {
         'app': app,
     }
-    return render_template('chambe_index.html', response=response)
+    return render_template('chamber_index.html', response=response)
 
 @app.route('/senate/<district>/')
 @app.route('/house/<district>/')
@@ -383,4 +383,20 @@ def district_detail(district):
         'app': app,
     }
     return render_template('district_detail.html', response=response)
+
+@app.route('/senate/<district>/<last_name>/')
+@app.route('/house/<district>/<last_name>/')
+def legislator_detail(district, last_name):
+    chamber = 'senate'
+    if 'house' in request.path[:10]
+        chamber = 'house'
+    # Get the legislator data
+    leg = {}
+    app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
+    app.page['description'] = ''
+    response = {
+        'app': app,
+        'legislator': leg
+    }
+    return render_template('legislator_detail.html', response=response)
 
