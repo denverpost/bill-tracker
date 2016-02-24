@@ -143,9 +143,10 @@ class BillQuery:
         filtered = []
         for item in bills:
             detail = self.get_bill_detail(item['session'], item['bill_id'])
-            dt = datetime.strptime(detail['action_dates'][field], datetimeformat)
-            if date_range[0] <= dt.date() <= date_range[1]:
-                filtered.append(item)
+            if 'action_dates' in detail:
+                dt = datetime.strptime(detail['action_dates'][field], datetimeformat)
+                if date_range[0] <= dt.date() <= date_range[1]:
+                    filtered.append(item)
         return filtered
 
 def json_check(fn):
