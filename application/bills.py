@@ -388,7 +388,7 @@ def district_detail(district):
 @app.route('/house/<district>/<last_name>/')
 def legislator_detail(district, last_name):
     chamber = 'senate'
-    if 'house' in request.path[:10]
+    if 'house' in request.path[:10]:
         chamber = 'house'
     # Get the legislator data
     leg = {}
