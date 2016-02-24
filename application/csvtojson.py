@@ -34,6 +34,10 @@ def main(args):
                 continue
             the_row = dict(zip(keys, row))
 
+            # Trim fields we know need trimming
+            the_row['name_first'] = the_row['name_first'].strip()
+            the_row['name_last'] = the_row['name_last'].strip()
+
             # Separate committees into concomant parts
             committees_list = []
             comm = [the_row['committees']]
