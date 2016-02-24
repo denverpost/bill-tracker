@@ -1,1151 +1,26 @@
-[
-    {
-        "chamber": "House", 
+{
+    "Aguilar": {
+        "chamber": "Senate", 
         "committees": [
             {
-                "committee": "State, Veterans, & Military Affairs", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Health, Insurance, & Environment", 
-                "role": "Member"
-            }
-        ], 
-        "counties": [
-            "Denver", 
-            "Jefferson"
-        ], 
-        "district": "1", 
-        "email": "susan.lontine.house@state.co.us", 
-        "name_first": " Susan", 
-        "name_last": "Lontine", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2966", 
-        "photo": "l-1-lontine.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "the House", 
-                "role": "Speaker"
-            }, 
-            {
-                "committee": "Executive Committee of the Legislative Council", 
-                "role": "Chair"
-            }, 
-            {
-                "role": "Legislative Council"
-            }
-        ], 
-        "counties": "Boulder", 
-        "district": "10", 
-        "email": "dl.hullinghorst.house@state.co.us", 
-        "name_first": " Dickey Lee", 
-        "name_last": "Hullinghorst", 
-        "occupation": "Retired Gov. Affairs", 
-        "party": "D", 
-        "phone": "303-866-2346", 
-        "photo": "l-10-hullinghorst.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Public Health Care & Human Services", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Local Government"
-            }
-        ], 
-        "counties": "Boulder", 
-        "district": "11", 
-        "email": "jonathan.singer.house@state.co.us", 
-        "name_first": " Jonathan", 
-        "name_last": "Singer", 
-        "occupation": "Social Worker", 
-        "party": "D", 
-        "phone": "303-866-2780", 
-        "photo": "l-11-singer.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Legal Services", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Finance", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Judiciary", 
-                "role": "Member"
-            }, 
-            {
-                "role": "State, Veterans, & Military Affairs"
-            }
-        ], 
-        "counties": "Boulder", 
-        "district": "12", 
-        "email": "mike.foote.house@state.co.us", 
-        "name_first": " Mike", 
-        "name_last": "Foote", 
-        "occupation": "Attorney", 
-        "party": "D", 
-        "phone": "303-866-2920", 
-        "photo": "l-12-foote.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Capital Development", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Finance"
-            }
-        ], 
-        "counties": [
-            "Boulder", 
-            "Clear Creek", 
-            "Gilpin", 
-            "Grand", 
-            "Jackson"
-        ], 
-        "district": "13", 
-        "email": "kcbecker.house@state.co.us", 
-        "name_first": " KC", 
-        "name_last": "Becker K.", 
-        "occupation": "Attorney", 
-        "party": "D", 
-        "phone": "303-866-2578", 
-        "photo": "l-13-becker.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Legislative Audit", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Business Affairs and Labor", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Transportation & Energy"
-            }
-        ], 
-        "counties": "El Paso", 
-        "district": "14", 
-        "email": "dan.nordberg.house@state.co.us", 
-        "name_first": " Dan", 
-        "name_last": "Nordberg", 
-        "occupation": "Legislator", 
-        "party": "R", 
-        "phone": "303-866-2965", 
-        "photo": "l-14-nordberg.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Health, Insurance, & Environment", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Local Government"
-            }
-        ], 
-        "counties": "El Paso", 
-        "district": "15", 
-        "email": "klingenschmitt.house@state.co.us", 
-        "name_first": " Gordon Ph.D.", 
-        "name_last": "Klingenschmitt", 
-        "occupation": "Legislator", 
-        "party": "R", 
-        "phone": "303-866-5525", 
-        "photo": "l-15-klingenschmitt.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Health, Insurance, & Environment"
-            }, 
-            {
-                "role": "Public Health Care & Human Services"
-            }
-        ], 
-        "counties": "El Paso", 
-        "district": "16", 
-        "email": "janak.joshi.house@state.co.us", 
-        "name_first": " Janak", 
-        "name_last": "Joshi", 
-        "occupation": "Physician, Retired", 
-        "party": "R", 
-        "phone": "303-866-2937", 
-        "photo": "l-16-joshi.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Business Affairs and Labor", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Finance"
-            }
-        ], 
-        "counties": "El Paso", 
-        "district": "17", 
-        "email": "catherineroupe@yahoo.com", 
-        "name_first": " Catherine \"Kit\"", 
-        "name_last": "Roupe", 
-        "occupation": "Small business, land use planner", 
-        "party": "R", 
-        "phone": "303-866-3069", 
-        "photo": "l-17-roupe.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Education", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "role": "Judiciary"
-            }
-        ], 
-        "counties": "El Paso", 
-        "district": "18", 
-        "email": "pete.lee.house@state.co.us", 
-        "name_first": " Pete", 
-        "name_last": "Lee", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2932", 
-        "photo": "l-18-lee.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Education", 
+                "committee": "Health & Human Services", 
                 "role": "Member"
             }, 
             {
                 "role": "Judiciary"
-            }
-        ], 
-        "counties": "El Paso", 
-        "district": "19", 
-        "email": "paul.lundeen.house@state.co.us", 
-        "name_first": " Paul", 
-        "name_last": "Lundeen", 
-        "occupation": "Entreprenuer", 
-        "party": "R", 
-        "phone": "303-866-2924", 
-        "photo": "l-19-lundeen.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Business Affairs and Labor", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Education"
-            }, 
-            {
-                "role": "Finance"
             }
         ], 
         "counties": "Denver", 
-        "district": "2", 
-        "email": "alec.garnett.house@state.co.us", 
-        "name_first": " Alec", 
-        "name_last": "Garnett", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2911", 
-        "photo": "l-2-garnett.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Judiciary", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Transportation & Energy"
-            }
-        ], 
-        "counties": "El Paso", 
-        "district": "20", 
-        "email": "terri.carver.house@state.co.us", 
-        "name_first": " Terri", 
-        "name_last": "Carver", 
-        "occupation": "Legislator", 
-        "party": "R", 
-        "phone": "303-866-2191", 
-        "photo": "l-20-carver.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "role": "Minority Caucus Chair"
-            }, 
-            {
-                "committee": "Health, Insurance, & Environment", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Council"
-            }, 
-            {
-                "role": "Public Health Care & Human Services"
-            }
-        ], 
-        "counties": "El Paso", 
-        "district": "21", 
-        "email": "lois.landgraf.house@state.co.us", 
-        "name_first": " Lois", 
-        "name_last": "Landgraf", 
-        "occupation": "Legislator", 
-        "party": "R", 
-        "phone": "303-866-2946", 
-        "photo": "l-21-landgraf.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Education"
-            }, 
-            {
-                "role": "Public Health Care & Human Services"
-            }
-        ], 
-        "counties": "Jefferson", 
-        "district": "22", 
-        "email": "justin.everett.house@state.co.us", 
-        "name_first": " Justin", 
-        "name_last": "Everett", 
-        "occupation": "Mediator/Arbitrator", 
-        "party": "R", 
-        "phone": "303-866-2927", 
-        "photo": "l-22-everett.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Transportation & Energy", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Public Health Care & Human Services", 
-                "role": "Member"
-            }, 
-            {
-                "role": "State, Veterans, & Military Affairs"
-            }
-        ], 
-        "counties": "Jefferson", 
-        "district": "23", 
-        "email": "max@maxtyler.us", 
-        "name_first": " Max", 
-        "name_last": "Tyler", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2951", 
-        "photo": "l-23-tyler.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Local Government"
-            }, 
-            {
-                "role": "Public Health Care & Human Services"
-            }
-        ], 
-        "counties": "Jefferson", 
-        "district": "24", 
-        "email": "jessie.danielson.house@state.co.us", 
-        "name_first": " Jessie", 
-        "name_last": "Danielson", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-5522", 
-        "photo": "l-24-danielson.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Public Health Care & Human Services", 
-                "role": "Member"
-            }, 
-            {
-                "role": "State, Veterans, & Military Affairs"
-            }
-        ], 
-        "counties": "Jefferson", 
-        "district": "25", 
-        "email": "tim.leonard.house@state.co.us", 
-        "name_first": " Timothy", 
-        "name_last": "Leonard", 
-        "occupation": "Commercial Real Estate Business Owner", 
-        "party": "R", 
-        "phone": "303-866-2582", 
-        "photo": "l-25-leonard.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Transportation & Energy", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Member"
-            }
-        ], 
-        "counties": [
-            "Eagle", 
-            "Routt"
-        ], 
-        "district": "26", 
-        "email": "diane.mitschbush.house@state.co.us", 
-        "name_first": " Diane", 
-        "name_last": "Mitsch Bush", 
-        "occupation": "Retired College Professor", 
-        "party": "D", 
-        "phone": "303-866-2923", 
-        "photo": "l-26-mitschbush.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Business Affairs and Labor", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Jefferson", 
-        "district": "27", 
-        "email": "lang.sias.house@state.co.us", 
-        "name_first": " Lang", 
-        "name_last": "Sias", 
-        "occupation": "Commercial Pilot", 
-        "party": "R", 
-        "phone": "303-866-2962", 
-        "photo": "l-27-sias.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "role": "Majority Deputy Whip"
-            }, 
-            {
-                "committee": "Education", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Public Health Care & Human Services"
-            }
-        ], 
-        "counties": "Jefferson", 
-        "district": "28", 
-        "email": "brittany.pettersen.house@state.co.us", 
-        "name_first": " Brittany", 
-        "name_last": "Pettersen", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2939", 
-        "photo": "l-28-pettersen.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Business Affairs and Labor", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Transportation & Energy", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Jefferson", 
-        "district": "29", 
-        "email": "reptracy29@gmail.com", 
-        "name_first": " Tracy", 
-        "name_last": "Kraft-Tharp", 
-        "occupation": "Small Business Owner", 
-        "party": "D", 
-        "phone": "303-866-2950", 
-        "photo": "l-29-kraft-tharp.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Judiciary", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Finance", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legal Services"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "3", 
-        "email": "repkagan@gmail.com", 
-        "name_first": " Daniel", 
-        "name_last": "Kagan", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2921", 
-        "photo": "l-3-kagan.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Education", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Public Health Care & Human Services"
-            }
-        ], 
-        "counties": "Adams", 
-        "district": "30", 
-        "email": "joann.windholz.house@state.co.us", 
-        "name_first": " JoAnn", 
-        "name_last": "Windholz", 
-        "occupation": "Business Owner", 
-        "party": "R", 
-        "phone": "303-866-2945", 
-        "photo": "l-30-windholz.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Judiciary", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Adams", 
-        "district": "31", 
-        "email": "joseph.salazar.house@state.co.us", 
-        "name_first": " Joseph A", 
-        "name_last": "Salazar", 
-        "occupation": "Civil Rights Attorney / Professor", 
-        "party": "D", 
-        "phone": "303-866-2918", 
-        "photo": "l-31-salazar.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "role": "Assistant Majority Leader"
-            }, 
-            {
-                "committee": "House Services", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Education", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Public Health Care & Human Services"
-            }, 
-            {
-                "role": "Transportation & Energy"
-            }
-        ], 
-        "counties": "Adams", 
         "district": "32", 
-        "email": "dominick.moreno.house@state.co.us", 
-        "name_first": " Dominick", 
-        "name_last": "Moreno", 
-        "occupation": "Legislator", 
+        "email": " irene.aguilar.senate@state.co.us", 
+        "name_first": " Irene", 
+        "name_last": "Aguilar", 
+        "occupation": "Physician", 
         "party": "D", 
-        "phone": "303-866-2964", 
-        "photo": "l-32-moreno.jpg"
+        "phone": " 303-866-4852", 
+        "photo": "u-32-aguilar.jpg"
     }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Public Health Care & Human Services", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Health, Insurance, & Environment", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Audit"
-            }, 
-            {
-                "role": "State, Veterans, & Military Affairs"
-            }
-        ], 
-        "counties": [
-            "Boulder", 
-            "Broomfield"
-        ], 
-        "district": "33", 
-        "email": "dianne.primavera.house@state.co.us", 
-        "name_first": " Dianne", 
-        "name_last": "Primavera", 
-        "occupation": "Retired", 
-        "party": "D", 
-        "phone": "303-866-4667", 
-        "photo": "l-33-primavera.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Local Government", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Adams", 
-        "district": "34", 
-        "email": "steve.lebsock.house@state.co.us", 
-        "name_first": " Steve", 
-        "name_last": "Lebsock", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2931", 
-        "photo": "l-34-lebsock.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Business Affairs and Labor"
-            }, 
-            {
-                "role": "Transportation & Energy"
-            }
-        ], 
-        "counties": "Adams", 
-        "district": "35", 
-        "email": "faith.winter.house@state.co.us", 
-        "name_first": " Faith", 
-        "name_last": "Winter", 
-        "occupation": "Non-profit Director", 
-        "party": "D", 
-        "phone": "303-866-2843", 
-        "photo": "l-35-winter.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "role": "Majority Whip"
-            }, 
-            {
-                "committee": "State, Veterans, & Military Affairs", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Legislative Audit", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Health, Insurance, & Environment", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "36", 
-        "email": "su.ryden.house@state.co.us", 
-        "name_first": " Su", 
-        "name_last": "Ryden", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2942", 
-        "photo": "l-36-ryden.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Business Affairs and Labor", 
-                "role": "Member"
-            }, 
-            {
-                "role": "State, Veterans, & Military Affairs"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "37", 
-        "email": "cole.wist.house@state.co.us", 
-        "name_first": " Cole", 
-        "name_last": "Wist", 
-        "occupation": "Attorney", 
-        "party": "R", 
-        "phone": "303-866-5510", 
-        "photo": "l-37-wist.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Finance", 
-                "role": "Member"
-            }, 
-            {
-                "role": "House Services"
-            }, 
-            {
-                "role": "Public Health Care & Human Services"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "38", 
-        "email": "kathleen.conti.house@state.co.us", 
-        "name_first": " Kathleen", 
-        "name_last": "Conti", 
-        "occupation": "Legislator", 
-        "party": "R", 
-        "phone": "303-866-2953", 
-        "photo": "l-38-conti.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "role": "Assistant Minority Leader"
-            }, 
-            {
-                "committee": "Judiciary", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Council"
-            }
-        ], 
-        "counties": [
-            "Douglas", 
-            "Teller"
-        ], 
-        "district": "39", 
-        "email": "polly.lawrence.house@state.co.us", 
-        "name_first": " Polly", 
-        "name_last": "Lawrence", 
-        "occupation": "Construction", 
-        "party": "R", 
-        "phone": "303-866-2935", 
-        "photo": "l-39-lawrence.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "role": "Speaker Pro Tempore"
-            }, 
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Business Affairs and Labor"
-            }, 
-            {
-                "role": "Finance"
-            }
-        ], 
-        "counties": "Denver", 
-        "district": "4", 
-        "email": "dan.pabon.house@state.co.us", 
-        "name_first": " Dan", 
-        "name_last": "Pabon", 
-        "occupation": "Engineer", 
-        "party": "D", 
-        "phone": "303-866-2954", 
-        "photo": "l-4-pabon.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Education", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Health, Insurance, & Environment"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "40", 
-        "email": "janet.buckner.house@state.co.us", 
-        "name_first": " Janet P", 
-        "name_last": "Buckner", 
-        "occupation": "Retired Sales Executive", 
-        "party": "D", 
-        "phone": "303-866-2944", 
-        "photo": "l-40-buckner.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Judiciary", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Council"
-            }, 
-            {
-                "role": "Transportation & Energy"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "41", 
-        "email": "jovan.melton.house@state.co.us", 
-        "name_first": " Jovan", 
-        "name_last": "Melton", 
-        "occupation": "Consultant", 
-        "party": "D", 
-        "phone": "303-866-2919", 
-        "photo": "l-41-melton.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Local Government", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Education", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "42", 
-        "email": "rhonda.fields.house@state.co.us", 
-        "name_first": " Rhonda", 
-        "name_last": "Fields", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-3911", 
-        "photo": "l-42-fields.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Finance", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Douglas", 
-        "district": "43", 
-        "email": "kevin.vanwinkle.house@state.co.us", 
-        "name_first": " Kevin", 
-        "name_last": "Van Winkle", 
-        "occupation": "Small Business Owner", 
-        "party": "R", 
-        "phone": "303-866-2936", 
-        "photo": "l-43-vanwinkle.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Health, Insurance, & Environment", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Local Government"
-            }
-        ], 
-        "counties": "Douglas", 
-        "district": "44", 
-        "email": "kim.ransom.house@state.co.us", 
-        "name_first": " Kim", 
-        "name_last": "Ransom", 
-        "occupation": "Legislator", 
-        "party": "R", 
-        "phone": "303-866-2933", 
-        "photo": "l-44-ransom.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "State, Veterans, & Military Affairs", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Transportation & Energy"
-            }
-        ], 
-        "counties": "Douglas", 
-        "district": "45", 
-        "email": "patrick.neville.house@state.co.us", 
-        "name_first": " Patrick", 
-        "name_last": "Neville P.", 
-        "occupation": "Business Owner", 
-        "party": "R", 
-        "phone": "303-866-2948", 
-        "photo": "l-45-neville.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Health, Insurance, & Environment", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Transportation & Energy"
-            }
-        ], 
-        "counties": "Pueblo", 
-        "district": "46", 
-        "email": "daneya.esgar.house@state.co.us", 
-        "name_first": " Daneya", 
-        "name_last": "Esgar", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2968", 
-        "photo": "l-46-esgar.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Business Affairs and Labor", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Local Government"
-            }
-        ], 
-        "counties": [
-            "Fremont", 
-            "Otero", 
-            "Pueblo"
-        ], 
-        "district": "47", 
-        "email": "clarice.navarro.house@state.co.us", 
-        "name_first": " Clarice", 
-        "name_last": "Navarro", 
-        "occupation": "Small Business Owner", 
-        "party": "R", 
-        "phone": "303-866-2905", 
-        "photo": "l-47-navarro.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Health, Insurance, & Environment", 
-                "role": "Member"
-            }, 
-            {
-                "role": "State, Veterans, & Military Affairs"
-            }
-        ], 
-        "counties": "Weld", 
-        "district": "48", 
-        "email": "rephumphrey48@yahoo.com", 
-        "name_first": " Stephen", 
-        "name_last": "Humphrey", 
-        "occupation": "Therapist and Marriage Counselor", 
-        "party": "R", 
-        "phone": "303-866-2943", 
-        "photo": "l-48-humphrey.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "role": "Minority Whip"
-            }, 
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Council"
-            }, 
-            {
-                "role": "Transportation & Energy"
-            }
-        ], 
-        "counties": [
-            "Larimer", 
-            "Weld"
-        ], 
-        "district": "49", 
-        "email": "perrybuck49@gmail.com", 
-        "name_first": " Perry", 
-        "name_last": "Buck", 
-        "occupation": "Event Planning", 
-        "party": "R", 
-        "phone": "303-866-2907", 
-        "photo": "l-49-buck.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "role": "Majority Leader"
-            }, 
-            {
-                "committee": "Executive Committee of the Legislative Council", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Council"
-            }
-        ], 
-        "counties": "Denver", 
-        "district": "5", 
-        "email": "crisanta.duran.house@state.co.us", 
-        "name_first": " Crisanta", 
-        "name_last": "Duran", 
-        "occupation": "Attorney", 
-        "party": "D", 
-        "phone": "303-866-2348", 
-        "photo": "l-5-duran.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Appropriations", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Joint Budget Committee", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Weld", 
-        "district": "50", 
-        "email": "dave.young.house@state.co.us", 
-        "name_first": " Dave", 
-        "name_last": "Young", 
-        "occupation": "College Instructor", 
-        "party": "D", 
-        "phone": "303-866-2929", 
-        "photo": "l-50-young.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "role": "Minority Leader"
-            }, 
-            {
-                "committee": "Executive Committee of the Legislative Council", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Council"
-            }
-        ], 
-        "counties": "Larimer", 
-        "district": "51", 
-        "email": "brian@bdelgrosso.com", 
-        "name_first": " Brian", 
-        "name_last": "DelGrosso", 
-        "occupation": "Small Business Owner", 
-        "party": "R", 
-        "phone": "303-866-5523", 
-        "photo": "l-51-delgrosso.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Health, Insurance, & Environment", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Public Health Care & Human Services"
-            }
-        ], 
-        "counties": "Larimer", 
-        "district": "52", 
-        "email": "joann.ginal.house@state.co.us", 
-        "name_first": " Joann", 
-        "name_last": "Ginal", 
-        "occupation": "Reproductive Endocrinologist, Ph.D.", 
-        "party": "D", 
-        "phone": "303-866-4569", 
-        "photo": "l-52-ginal.jpg"
-    }, 
-    {
+    "Arndt": {
         "chamber": "House", 
         "committees": [
             {
@@ -1169,338 +44,46 @@
         "phone": "303-866-2917", 
         "photo": "l-53-arndt.jpg"
     }, 
-    {
-        "chamber": "House", 
+    "Baumgardner": {
+        "chamber": "Senate", 
         "committees": [
             {
-                "committee": "Judiciary", 
+                "role": "Majority Whip"
+            }, 
+            {
+                "committee": "Capital Development", 
+                "role": "Chair"
+            }, 
+            {
+                "role": "Transportation"
+            }, 
+            {
+                "committee": "Agriculture, Natural Resources, & Energy", 
                 "role": "Member"
             }, 
             {
-                "role": "Legal Services"
-            }
-        ], 
-        "counties": [
-            "Delta", 
-            "Mesa"
-        ], 
-        "district": "54", 
-        "email": "yeulin.willett.house@state.co.us", 
-        "name_first": " Yeulin", 
-        "name_last": "Willett", 
-        "occupation": "Attorney", 
-        "party": "R", 
-        "phone": "303-866-2583", 
-        "photo": "l-54-willett.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Business Affairs and Labor", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Local Government"
-            }
-        ], 
-        "counties": "Mesa", 
-        "district": "55", 
-        "email": "danthurlow55@gmail.com", 
-        "name_first": " Dan", 
-        "name_last": "Thurlow", 
-        "occupation": "Business Owner", 
-        "party": "R", 
-        "phone": "303-866-3068", 
-        "photo": "l-55-thurlow.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Education", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Finance"
-            }
-        ], 
-        "counties": [
-            "Adams", 
-            "Arapahoe"
-        ], 
-        "district": "56", 
-        "email": "kpriola@gmail.com", 
-        "name_first": " Kevin", 
-        "name_last": "Priola", 
-        "occupation": "Small Business Owner", 
-        "party": "R", 
-        "phone": "303-866-2912", 
-        "photo": "l-56-priola.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Joint Budget Committee"
+                "role": "Business, Labor, & Technology"
             }
         ], 
         "counties": [
             "Garfield", 
+            "Grand", 
+            "Jackson", 
             "Moffat", 
-            "Rio Blanco"
-        ], 
-        "district": "57", 
-        "email": "bob.rankin.house@state.co.us", 
-        "name_first": " Bob", 
-        "name_last": "Rankin", 
-        "occupation": "Legislator", 
-        "party": "R", 
-        "phone": "303-866-2949", 
-        "photo": "l-57-rankin.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Member"
-            }, 
-            {
-                "role": "House Services"
-            }, 
-            {
-                "role": "Transportation & Energy"
-            }
-        ], 
-        "counties": [
-            "Dolores", 
-            "Montezuma", 
-            "Montrose", 
-            "San Miguel"
-        ], 
-        "district": "58", 
-        "email": "don.coram.house@state.co.us", 
-        "name_first": " Don", 
-        "name_last": "Coram", 
-        "occupation": "Rancher/Mining", 
-        "party": "R", 
-        "phone": "303-866-2955", 
-        "photo": "l-58-coram.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Capital Development"
-            }, 
-            {
-                "role": "Health, Insurance, & Environment"
-            }
-        ], 
-        "counties": [
-            "Archuleta", 
-            "Gunnison", 
-            "Hinsdale", 
-            "La Plata", 
-            "Ouray", 
-            "San Juan"
-        ], 
-        "district": "59", 
-        "email": "jpaul.brown.house@state.co.us", 
-        "name_first": " J. Paul", 
-        "name_last": "Brown", 
-        "occupation": "Rancher", 
-        "party": "R", 
-        "phone": "303-866-2914", 
-        "photo": "l-59-brown.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Finance", 
-                "role": "Chair"
-            }, 
-            {
-                "role": "House Services"
-            }, 
-            {
-                "committee": "Judiciary", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Council"
-            }
-        ], 
-        "counties": "Denver", 
-        "district": "6", 
-        "email": "lois.court.house@state.co.us", 
-        "name_first": " Lois", 
-        "name_last": "Court", 
-        "occupation": "Community College Instructor/Legislator", 
-        "party": "D", 
-        "phone": "303-866-2967", 
-        "photo": "l-6-court.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Education"
-            }, 
-            {
-                "role": "Finance"
-            }
-        ], 
-        "counties": [
-            "Chaffee", 
-            "Custer", 
-            "Fremont", 
-            "Park"
-        ], 
-        "district": "60", 
-        "email": "james.wilson.house@state.co.us", 
-        "name_first": " James D \"Jim\"", 
-        "name_last": "Wilson", 
-        "occupation": "Retired", 
-        "party": "R", 
-        "phone": "303-866-2747", 
-        "photo": "l-60-wilson.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Joint Budget Committee", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Appropriations", 
-                "role": "Vice-Chair"
-            }
-        ], 
-        "counties": [
-            "Delta", 
-            "Gunnison", 
-            "Lake", 
-            "Pitkin", 
+            "Rio Blanco", 
+            "Routt", 
             "Summit"
         ], 
-        "district": "61", 
-        "email": "rephamner@gmail.com", 
-        "name_first": " Millie", 
-        "name_last": "Hamner", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2952", 
-        "photo": "l-61-hamner.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Capital Development", 
-                "role": "Vice-Chair"
-            }
-        ], 
-        "counties": [
-            "Alamosa", 
-            "Conejos", 
-            "Costilla", 
-            "Huerfano", 
-            "Mineral", 
-            "Pueblo", 
-            "Rio Grande", 
-            "Saguache"
-        ], 
-        "district": "62", 
-        "email": "edvigil1@gmail.com", 
-        "name_first": " Edward", 
-        "name_last": "Vigil", 
-        "occupation": "Small Business Owner", 
-        "party": "D", 
-        "phone": "303-866-2916", 
-        "photo": "l-62-vigil.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Audit"
-            }, 
-            {
-                "role": "Local Government"
-            }
-        ], 
-        "counties": "Weld", 
-        "district": "63", 
-        "email": "lori.saine.house@state.co.us", 
-        "name_first": " Lori", 
-        "name_last": "Saine", 
-        "occupation": "Sales Director", 
+        "district": "8", 
+        "email": " randy.baumgardner.senate@state.co.us", 
+        "name_first": " Randy L.", 
+        "name_last": "Baumgardner", 
+        "occupation": "Rancher/Citizen Legislator", 
         "party": "R", 
-        "phone": "303-866-2906", 
-        "photo": "l-63-saine.jpg"
+        "phone": " 303-866-5292", 
+        "photo": "u-8-baumgardner.jpg"
     }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Agriculture, Livestock, & Natural Resources", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Appropriations"
-            }, 
-            {
-                "role": "Judiciary"
-            }, 
-            {
-                "role": "Legal Services"
-            }
-        ], 
-        "counties": [
-            "Baca", 
-            "Bent", 
-            "Crowley", 
-            "Elbert", 
-            "Kiowa", 
-            "Las Animas", 
-            "Lincoln", 
-            "Prowers", 
-            "Washington"
-        ], 
-        "district": "64", 
-        "email": "tim.dore.house@state.co.us", 
-        "name_first": " Timothy", 
-        "name_last": "Dore", 
-        "occupation": "Legislator", 
-        "party": "R", 
-        "phone": "303-866-2398", 
-        "photo": "l-64-dore.jpg"
-    }, 
-    {
+    "Becker J.": {
         "chamber": "House", 
         "committees": [
             {
@@ -1532,169 +115,120 @@
         "phone": "303-866-3706", 
         "photo": "l-65-becker.jpg"
     }, 
-    {
+    "Becker K.": {
         "chamber": "House", 
         "committees": [
             {
-                "role": "Majority Caucus Chair"
-            }, 
-            {
-                "committee": "Business Affairs and Labor", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Legislative Council", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Denver", 
-        "district": "7", 
-        "email": "angela.williams.house@state.co.us", 
-        "name_first": " Angela", 
-        "name_last": "Williams", 
-        "occupation": "Self-Employed", 
-        "party": "D", 
-        "phone": "303-866-2909", 
-        "photo": "l-7-williams.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Health, Insurance, & Environment", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legal Services"
-            }
-        ], 
-        "counties": "Denver", 
-        "district": "8", 
-        "email": "beth.mccann.house@state.co.us", 
-        "name_first": " Elizabeth \"Beth\"", 
-        "name_last": "McCann", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": "303-866-2959", 
-        "photo": "l-8-mccann.jpg"
-    }, 
-    {
-        "chamber": "House", 
-        "committees": [
-            {
-                "committee": "Business Affairs and Labor", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Local Government"
-            }
-        ], 
-        "counties": [
-            "Arapahoe", 
-            "Denver"
-        ], 
-        "district": "9", 
-        "email": "paulrosenthal5280@gmail.com", 
-        "name_first": " Paul", 
-        "name_last": "Rosenthal", 
-        "occupation": "Teacher", 
-        "party": "D", 
-        "phone": "303-866-2910", 
-        "photo": "l-9-rosenthal.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Agriculture, Natural Resources, & Energy", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "State, Veterans, & Military Affairs", 
+                "committee": "Agriculture, Livestock, & Natural Resources", 
                 "role": "Vice-Chair"
             }, 
             {
-                "committee": "Appropriations", 
+                "committee": "Capital Development", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Finance"
+            }
+        ], 
+        "counties": [
+            "Boulder", 
+            "Clear Creek", 
+            "Gilpin", 
+            "Grand", 
+            "Jackson"
+        ], 
+        "district": "13", 
+        "email": "kcbecker.house@state.co.us", 
+        "name_first": " KC", 
+        "name_last": "Becker K.", 
+        "occupation": "Attorney", 
+        "party": "D", 
+        "phone": "303-866-2578", 
+        "photo": "l-13-becker.jpg"
+    }, 
+    "Brown": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Agriculture, Livestock, & Natural Resources", 
                 "role": "Member"
             }, 
             {
                 "role": "Capital Development"
+            }, 
+            {
+                "role": "Health, Insurance, & Environment"
             }
         ], 
         "counties": [
-            "Cheyenne", 
-            "Elbert", 
-            "Kit Carson", 
-            "Lincoln", 
-            "Logan", 
-            "Morgan", 
-            "Phillips", 
-            "Sedgwick", 
-            "Washington", 
-            "Weld", 
-            "Yuma"
+            "Archuleta", 
+            "Gunnison", 
+            "Hinsdale", 
+            "La Plata", 
+            "Ouray", 
+            "San Juan"
         ], 
-        "district": "1", 
-        "email": " senatorsonnenberg@gmail.com", 
-        "name_first": " Jerry", 
-        "name_last": "Sonnenberg", 
-        "occupation": "Farmer/Rancher", 
+        "district": "59", 
+        "email": "jpaul.brown.house@state.co.us", 
+        "name_first": " J. Paul", 
+        "name_last": "Brown", 
+        "occupation": "Rancher", 
         "party": "R", 
-        "phone": " 303-866-6360", 
-        "photo": "u-1-sonnenberg.jpg"
+        "phone": "303-866-2914", 
+        "photo": "l-59-brown.jpg"
     }, 
-    {
-        "chamber": "Senate", 
+    "Buck": {
+        "chamber": "House", 
         "committees": [
             {
-                "committee": "Education", 
-                "role": "Chair"
+                "role": "Minority Whip"
             }, 
             {
-                "committee": "Finance", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "State, Veterans, & Military Affairs", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "El Paso", 
-        "district": "10", 
-        "email": " Senatorowenhill@gmail.com", 
-        "name_first": " Owen", 
-        "name_last": "Hill", 
-        "occupation": "Construction", 
-        "party": "R", 
-        "phone": " 303-866-2737", 
-        "photo": "u-10-hill.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Education", 
+                "committee": "Agriculture, Livestock, & Natural Resources", 
                 "role": "Member"
             }, 
             {
-                "role": "Judiciary"
+                "role": "Legislative Council"
+            }, 
+            {
+                "role": "Transportation & Energy"
             }
         ], 
-        "counties": "El Paso", 
-        "district": "11", 
-        "email": " michael.merrifield.senate@state.co.us", 
-        "name_first": " Michael", 
-        "name_last": "Merrifield", 
-        "occupation": "Retired Teacher", 
+        "counties": [
+            "Larimer", 
+            "Weld"
+        ], 
+        "district": "49", 
+        "email": "perrybuck49@gmail.com", 
+        "name_first": " Perry", 
+        "name_last": "Buck", 
+        "occupation": "Event Planning", 
+        "party": "R", 
+        "phone": "303-866-2907", 
+        "photo": "l-49-buck.jpg"
+    }, 
+    "Buckner": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Health, Insurance, & Environment"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "40", 
+        "email": "janet.buckner.house@state.co.us", 
+        "name_first": " Janet P", 
+        "name_last": "Buckner", 
+        "occupation": "Retired Sales Executive", 
         "party": "D", 
-        "phone": " 303-866-6364", 
-        "photo": "u-11-merrifield.jpg"
+        "phone": "303-866-2944", 
+        "photo": "l-40-buckner.jpg"
     }, 
-    {
+    "Cadman": {
         "chamber": "Senate", 
         "committees": [
             {
@@ -1722,7 +256,74 @@
         "phone": " 303-866-4880", 
         "photo": "u-12-cadman.jpg"
     }, 
-    {
+    "Carroll": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Legislative Audit", 
+                "role": "Member"
+            }, 
+            {
+                "committee": "Senate Services", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "29", 
+        "email": " morgan.carroll.senate@state.co.us", 
+        "name_first": " Morgan", 
+        "name_last": "Carroll", 
+        "occupation": "Attorney, Author", 
+        "party": "D", 
+        "phone": " 303-866-4879", 
+        "photo": "u-29-carroll.jpg"
+    }, 
+    "Carver": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Judiciary", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Transportation & Energy"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "20", 
+        "email": "terri.carver.house@state.co.us", 
+        "name_first": " Terri", 
+        "name_last": "Carver", 
+        "occupation": "Legislator", 
+        "party": "R", 
+        "phone": "303-866-2191", 
+        "photo": "l-20-carver.jpg"
+    }, 
+    "Conti": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Finance", 
+                "role": "Member"
+            }, 
+            {
+                "role": "House Services"
+            }, 
+            {
+                "role": "Public Health Care & Human Services"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "38", 
+        "email": "kathleen.conti.house@state.co.us", 
+        "name_first": " Kathleen", 
+        "name_last": "Conti", 
+        "occupation": "Legislator", 
+        "party": "R", 
+        "phone": "303-866-2953", 
+        "photo": "l-38-conti.jpg"
+    }, 
+    "Cooke": {
         "chamber": "Senate", 
         "committees": [
             {
@@ -1746,590 +347,64 @@
         "phone": " 303-866-4451", 
         "photo": "u-13-cooke.jpg"
     }, 
-    {
-        "chamber": "Senate", 
+    "Coram": {
+        "chamber": "House", 
         "committees": [
             {
-                "committee": "Capital Development", 
+                "committee": "Agriculture, Livestock, & Natural Resources", 
                 "role": "Member"
             }, 
             {
-                "committee": "Local Government", 
-                "role": "Member"
+                "role": "House Services"
+            }, 
+            {
+                "role": "Transportation & Energy"
             }
         ], 
-        "counties": "Larimer", 
-        "district": "14", 
-        "email": " john.kefalas.senate@state.co.us", 
-        "name_first": " John", 
-        "name_last": "Kefalas", 
-        "occupation": "CSU Adjunct Faculty Member", 
-        "party": "D", 
-        "phone": " 303-866-4841", 
-        "photo": "u-14-kefalas.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "role": "Assistant Majority Leader"
-            }, 
-            {
-                "committee": "Health & Human Services", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Judiciary", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Legislative Council", 
-                "role": "Member"
-            }
+        "counties": [
+            "Dolores", 
+            "Montezuma", 
+            "Montrose", 
+            "San Miguel"
         ], 
-        "counties": "Larimer", 
-        "district": "15", 
-        "email": " kevin@kevinlundberg.com", 
-        "name_first": " Kevin", 
-        "name_last": "Lundberg", 
-        "occupation": "Media Production", 
+        "district": "58", 
+        "email": "don.coram.house@state.co.us", 
+        "name_first": " Don", 
+        "name_last": "Coram", 
+        "occupation": "Rancher/Mining", 
         "party": "R", 
-        "phone": " 303-866-4853", 
-        "photo": "u-15-lundberg.jpg"
+        "phone": "303-866-2955", 
+        "photo": "l-58-coram.jpg"
     }, 
-    {
-        "chamber": "Senate", 
+    "Court": {
+        "chamber": "House", 
         "committees": [
             {
                 "committee": "Finance", 
                 "role": "Chair"
             }, 
             {
-                "committee": "Business, Labor, & Technology", 
-                "role": "Member"
+                "role": "House Services"
             }, 
             {
-                "role": "Education"
-            }, 
-            {
-                "role": "Legislative Audit"
-            }
-        ], 
-        "counties": [
-            "Boulder", 
-            "Denver", 
-            "Gilpin", 
-            "Jefferson"
-        ], 
-        "district": "16", 
-        "email": " tim.neville.senate@state.co.us", 
-        "name_first": " Tim", 
-        "name_last": "Neville T.", 
-        "occupation": "Insurance Agency Owner", 
-        "party": "R", 
-        "phone": " 303-866-4873", 
-        "photo": "u-16-neville.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "role": "Minority Whip"
-            }, 
-            {
-                "committee": "Agriculture, Natural Resources, & Energy", 
+                "committee": "Judiciary", 
                 "role": "Member"
             }, 
             {
                 "role": "Legislative Council"
-            }, 
-            {
-                "role": "State, Veterans, & Military Affairs"
-            }
-        ], 
-        "counties": "Boulder", 
-        "district": "17", 
-        "email": " senatormattjones@gmail.com", 
-        "name_first": " Matt", 
-        "name_last": "Jones", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": " 303-866-5291", 
-        "photo": "u-17-jones.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "role": "Assistant Minority Leader"
-            }, 
-            {
-                "committee": "Business, Labor, & Technology", 
-                "role": "Member"
-            }, 
-            {
-                "committee": "Legislative Council", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Boulder", 
-        "district": "18", 
-        "email": " rollie.heath.senate@state.co.us", 
-        "name_first": " Rollie", 
-        "name_last": "Heath", 
-        "occupation": "Business Consultant", 
-        "party": "D", 
-        "phone": " 303-866-4872", 
-        "photo": "u-18-heath.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Business, Labor, & Technology", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Education"
-            }
-        ], 
-        "counties": "Jefferson", 
-        "district": "19", 
-        "email": " laura.woods.senate@state.co.us", 
-        "name_first": " Laura J.", 
-        "name_last": "Woods", 
-        "occupation": "Senator", 
-        "party": "R", 
-        "phone": " 303-866-4840", 
-        "photo": "u-19-woods.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Appropriations", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Joint Budget Committee", 
-                "role": "Member"
-            }
-        ], 
-        "counties": [
-            "Clear Creek", 
-            "El Paso", 
-            "Fremont", 
-            "Park", 
-            "Teller"
-        ], 
-        "district": "2", 
-        "email": " kevin.grantham.senate@state.co.us", 
-        "name_first": " Kevin", 
-        "name_last": "Grantham", 
-        "occupation": "Real Estate Appraiser", 
-        "party": "R", 
-        "phone": " 303-866-4877", 
-        "photo": "u-2-grantham.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Business, Labor, & Technology", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Audit"
-            }
-        ], 
-        "counties": "Jefferson", 
-        "district": "20", 
-        "email": " cheri.jahn.senate@state.co.us", 
-        "name_first": " Cheri", 
-        "name_last": "Jahn", 
-        "occupation": "Small Business Owner", 
-        "party": "D", 
-        "phone": " 303-866-4856", 
-        "photo": "u-20-jahn.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "role": "Minority Caucus Chair"
-            }, 
-            {
-                "committee": "Legislative Council", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Local Government"
-            }, 
-            {
-                "role": "State, Veterans, & Military Affairs"
-            }
-        ], 
-        "counties": "Adams", 
-        "district": "21", 
-        "email": " jessie.ulibarri.senate@state.co.us", 
-        "name_first": " Jessie", 
-        "name_last": "Ulibarri", 
-        "occupation": "Principal, Movement Building Project", 
-        "party": "D", 
-        "phone": " 303-866-4857", 
-        "photo": "u-21-ulibarri.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Education", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Finance"
-            }
-        ], 
-        "counties": "Jefferson", 
-        "district": "22", 
-        "email": " SenatorAndyKerr@gmail.com", 
-        "name_first": " Andy", 
-        "name_last": "Kerr", 
-        "occupation": "Teacher", 
-        "party": "D", 
-        "phone": " 303-866-4859", 
-        "photo": "u-22-kerr.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "role": "Majority Caucus Chair"
-            }, 
-            {
-                "committee": "Local Government", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Education", 
-                "role": "Vice-Chair"
-            }, 
-            {
-                "committee": "Legislative Council", 
-                "role": "Member"
-            }
-        ], 
-        "counties": [
-            "Broomfield", 
-            "Larimer", 
-            "Weld"
-        ], 
-        "district": "23", 
-        "email": " vicki.marble.senate@state.co.us", 
-        "name_first": " Vicki", 
-        "name_last": "Marble", 
-        "occupation": "Business Owner", 
-        "party": "R", 
-        "phone": " 303-866-4876", 
-        "photo": "u-23-marble.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Health & Human Services", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Joint Technology Committee"
-            }, 
-            {
-                "role": "Local Government"
-            }
-        ], 
-        "counties": "Adams", 
-        "district": "24", 
-        "email": " beth.martinezhumenik.senate@state.co.us", 
-        "name_first": " Beth", 
-        "name_last": "Martinez Humenik", 
-        "occupation": "Educator", 
-        "party": "R", 
-        "phone": " 303-866-4863", 
-        "photo": "u-24-martinez.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Agriculture, Natural Resources, & Energy", 
-                "role": "Member"
-            }, 
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "committee": "Business, Labor, & Technology", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Adams", 
-        "district": "25", 
-        "email": " mary.hodge.senate@state.co.us", 
-        "name_first": " Mary", 
-        "name_last": "Hodge", 
-        "occupation": "Senator/Rental Property Management", 
-        "party": "D", 
-        "phone": " 303-866-4855", 
-        "photo": "u-25-hodge.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Business, Labor, & Technology", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Health & Human Services"
-            }, 
-            {
-                "role": "Joint Technology Committee"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "26", 
-        "email": " linda.newell.senate@gmail.com", 
-        "name_first": " Linda", 
-        "name_last": "Newell", 
-        "occupation": "HR and Conflict Resolution Consultant", 
-        "party": "D", 
-        "phone": " 303-866-4846", 
-        "photo": "u-26-newell.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Business, Labor, & Technology", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Joint Technology Committee"
-            }, 
-            {
-                "role": "Local Government"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "27", 
-        "email": " jack.tate.senate@state.co.us", 
-        "name_first": " Jack", 
-        "name_last": "Tate", 
-        "occupation": "Small Business Owner", 
-        "party": "R", 
-        "phone": " 303-866-4883", 
-        "photo": "u-27-tate.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Education", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Transportation"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "28", 
-        "email": " nancy.todd.senate@state.co.us", 
-        "name_first": " Nancy", 
-        "name_last": "Todd", 
-        "occupation": "Retired Teacher", 
-        "party": "D", 
-        "phone": " 303-866-3432", 
-        "photo": "u-28-todd.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Legislative Audit", 
-                "role": "Member"
-            }, 
-            {
-                "committee": "Senate Services", 
-                "role": "Member"
-            }
-        ], 
-        "counties": "Arapahoe", 
-        "district": "29", 
-        "email": " morgan.carroll.senate@state.co.us", 
-        "name_first": " Morgan", 
-        "name_last": "Carroll", 
-        "occupation": "Attorney, Author", 
-        "party": "D", 
-        "phone": " 303-866-4879", 
-        "photo": "u-29-carroll.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Agriculture, Natural Resources, & Energy", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Appropriations"
-            }, 
-            {
-                "role": "Transportation"
-            }
-        ], 
-        "counties": "Pueblo", 
-        "district": "3", 
-        "email": " leroy.garcia.senate@state.co.us", 
-        "name_first": " Leroy M.", 
-        "name_last": "Garcia", 
-        "occupation": "Faculty Member", 
-        "party": "D", 
-        "phone": " 303-866-4878", 
-        "photo": "u-3-garcia.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Business, Labor, & Technology", 
-                "role": "Chair"
-            }, 
-            {
-                "committee": "Education", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Finance"
-            }, 
-            {
-                "role": "Legislative Audit"
-            }
-        ], 
-        "counties": "Douglas", 
-        "district": "30", 
-        "email": " chris.holbert.senate@state.co.us", 
-        "name_first": " Chris", 
-        "name_last": "Holbert", 
-        "occupation": "Consultant", 
-        "party": "R", 
-        "phone": " 303-866-4881", 
-        "photo": "u-30-holbert.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Appropriations", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Joint Budget Committee"
-            }, 
-            {
-                "role": "Legal Services"
-            }
-        ], 
-        "counties": [
-            "Arapahoe", 
-            "Denver"
-        ], 
-        "district": "31", 
-        "email": " pat.steadman.senate@state.co.us", 
-        "name_first": " Pat", 
-        "name_last": "Steadman", 
-        "occupation": "Legislator", 
-        "party": "D", 
-        "phone": " 303-866-4861", 
-        "photo": "u-31-steadman.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Health & Human Services", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Judiciary"
             }
         ], 
         "counties": "Denver", 
-        "district": "32", 
-        "email": " irene.aguilar.senate@state.co.us", 
-        "name_first": " Irene", 
-        "name_last": "Aguilar", 
-        "occupation": "Physician", 
+        "district": "6", 
+        "email": "lois.court.house@state.co.us", 
+        "name_first": " Lois", 
+        "name_last": "Court", 
+        "occupation": "Community College Instructor/Legislator", 
         "party": "D", 
-        "phone": " 303-866-4852", 
-        "photo": "u-32-aguilar.jpg"
+        "phone": "303-866-2967", 
+        "photo": "l-6-court.jpg"
     }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "committee": "Education", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Finance"
-            }, 
-            {
-                "role": "Legal Services"
-            }
-        ], 
-        "counties": "Denver", 
-        "district": "33", 
-        "email": " mike.johnston.senate@state.co.us", 
-        "name_first": " Michael", 
-        "name_last": "Johnston", 
-        "occupation": "Education Nonprofit Consultant", 
-        "party": "D", 
-        "phone": " 303-866-4864", 
-        "photo": "u-33-johnston.jpg"
-    }, 
-    {
-        "chamber": "Senate", 
-        "committees": [
-            {
-                "role": "Minority Leader"
-            }, 
-            {
-                "committee": "Executive Committee of the Legislative Council", 
-                "role": "Member"
-            }, 
-            {
-                "role": "Legislative Council"
-            }, 
-            {
-                "role": "Senate Services"
-            }
-        ], 
-        "counties": "Denver", 
-        "district": "34", 
-        "email": " lucia.guzman.senate@state.co.us", 
-        "name_first": " Lucia", 
-        "name_last": "Guzman", 
-        "occupation": "Senator, District 34", 
-        "party": "D", 
-        "phone": " 303-866-4862", 
-        "photo": "u-34-guzman.jpg"
-    }, 
-    {
+    "Crowder": {
         "chamber": "Senate", 
         "committees": [
             {
@@ -2374,18 +449,35 @@
         "phone": " 303-866-4875", 
         "photo": "u-35-crowder.jpg"
     }, 
-    {
-        "chamber": "Senate", 
+    "Danielson": {
+        "chamber": "House", 
         "committees": [
             {
-                "role": "Majority Leader"
+                "committee": "Agriculture, Livestock, & Natural Resources", 
+                "role": "Member"
             }, 
             {
-                "committee": "Legal Services", 
-                "role": "Vice-Chair"
+                "role": "Local Government"
             }, 
             {
-                "role": "Senate Services"
+                "role": "Public Health Care & Human Services"
+            }
+        ], 
+        "counties": "Jefferson", 
+        "district": "24", 
+        "email": "jessie.danielson.house@state.co.us", 
+        "name_first": " Jessie", 
+        "name_last": "Danielson", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-5522", 
+        "photo": "l-24-danielson.jpg"
+    }, 
+    "DelGrosso": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "role": "Minority Leader"
             }, 
             {
                 "committee": "Executive Committee of the Legislative Council", 
@@ -2395,17 +487,17 @@
                 "role": "Legislative Council"
             }
         ], 
-        "counties": "Douglas", 
-        "district": "4", 
-        "email": " mark.scheffel.senate@state.co.us", 
-        "name_first": " Mark", 
-        "name_last": "Scheffel", 
-        "occupation": "Attorney", 
+        "counties": "Larimer", 
+        "district": "51", 
+        "email": "brian@bdelgrosso.com", 
+        "name_first": " Brian", 
+        "name_last": "DelGrosso", 
+        "occupation": "Small Business Owner", 
         "party": "R", 
-        "phone": " 303-866-4869", 
-        "photo": "u-4-scheffel.jpg"
+        "phone": "303-866-5523", 
+        "photo": "l-51-delgrosso.jpg"
     }, 
-    {
+    "Donovan": {
         "chamber": "Senate", 
         "committees": [
             {
@@ -2434,7 +526,1366 @@
         "phone": " 303-866-4871", 
         "photo": "u-5-donovan.jpg"
     }, 
-    {
+    "Dore": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Agriculture, Livestock, & Natural Resources", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Appropriations"
+            }, 
+            {
+                "role": "Judiciary"
+            }, 
+            {
+                "role": "Legal Services"
+            }
+        ], 
+        "counties": [
+            "Baca", 
+            "Bent", 
+            "Crowley", 
+            "Elbert", 
+            "Kiowa", 
+            "Las Animas", 
+            "Lincoln", 
+            "Prowers", 
+            "Washington"
+        ], 
+        "district": "64", 
+        "email": "tim.dore.house@state.co.us", 
+        "name_first": " Timothy", 
+        "name_last": "Dore", 
+        "occupation": "Legislator", 
+        "party": "R", 
+        "phone": "303-866-2398", 
+        "photo": "l-64-dore.jpg"
+    }, 
+    "Duran": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "role": "Majority Leader"
+            }, 
+            {
+                "committee": "Executive Committee of the Legislative Council", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legislative Council"
+            }
+        ], 
+        "counties": "Denver", 
+        "district": "5", 
+        "email": "crisanta.duran.house@state.co.us", 
+        "name_first": " Crisanta", 
+        "name_last": "Duran", 
+        "occupation": "Attorney", 
+        "party": "D", 
+        "phone": "303-866-2348", 
+        "photo": "l-5-duran.jpg"
+    }, 
+    "Esgar": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Health, Insurance, & Environment", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Transportation & Energy"
+            }
+        ], 
+        "counties": "Pueblo", 
+        "district": "46", 
+        "email": "daneya.esgar.house@state.co.us", 
+        "name_first": " Daneya", 
+        "name_last": "Esgar", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2968", 
+        "photo": "l-46-esgar.jpg"
+    }, 
+    "Everett": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Education"
+            }, 
+            {
+                "role": "Public Health Care & Human Services"
+            }
+        ], 
+        "counties": "Jefferson", 
+        "district": "22", 
+        "email": "justin.everett.house@state.co.us", 
+        "name_first": " Justin", 
+        "name_last": "Everett", 
+        "occupation": "Mediator/Arbitrator", 
+        "party": "R", 
+        "phone": "303-866-2927", 
+        "photo": "l-22-everett.jpg"
+    }, 
+    "Fields": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Local Government", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "42", 
+        "email": "rhonda.fields.house@state.co.us", 
+        "name_first": " Rhonda", 
+        "name_last": "Fields", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-3911", 
+        "photo": "l-42-fields.jpg"
+    }, 
+    "Foote": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Legal Services", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Finance", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Judiciary", 
+                "role": "Member"
+            }, 
+            {
+                "role": "State, Veterans, & Military Affairs"
+            }
+        ], 
+        "counties": "Boulder", 
+        "district": "12", 
+        "email": "mike.foote.house@state.co.us", 
+        "name_first": " Mike", 
+        "name_last": "Foote", 
+        "occupation": "Attorney", 
+        "party": "D", 
+        "phone": "303-866-2920", 
+        "photo": "l-12-foote.jpg"
+    }, 
+    "Garcia": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Agriculture, Natural Resources, & Energy", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Appropriations"
+            }, 
+            {
+                "role": "Transportation"
+            }
+        ], 
+        "counties": "Pueblo", 
+        "district": "3", 
+        "email": " leroy.garcia.senate@state.co.us", 
+        "name_first": " Leroy M.", 
+        "name_last": "Garcia", 
+        "occupation": "Faculty Member", 
+        "party": "D", 
+        "phone": " 303-866-4878", 
+        "photo": "u-3-garcia.jpg"
+    }, 
+    "Garnett": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Business Affairs and Labor", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Education"
+            }, 
+            {
+                "role": "Finance"
+            }
+        ], 
+        "counties": "Denver", 
+        "district": "2", 
+        "email": "alec.garnett.house@state.co.us", 
+        "name_first": " Alec", 
+        "name_last": "Garnett", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2911", 
+        "photo": "l-2-garnett.jpg"
+    }, 
+    "Ginal": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Health, Insurance, & Environment", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Agriculture, Livestock, & Natural Resources", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Public Health Care & Human Services"
+            }
+        ], 
+        "counties": "Larimer", 
+        "district": "52", 
+        "email": "joann.ginal.house@state.co.us", 
+        "name_first": " Joann", 
+        "name_last": "Ginal", 
+        "occupation": "Reproductive Endocrinologist, Ph.D.", 
+        "party": "D", 
+        "phone": "303-866-4569", 
+        "photo": "l-52-ginal.jpg"
+    }, 
+    "Grantham": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Appropriations", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Joint Budget Committee", 
+                "role": "Member"
+            }
+        ], 
+        "counties": [
+            "Clear Creek", 
+            "El Paso", 
+            "Fremont", 
+            "Park", 
+            "Teller"
+        ], 
+        "district": "2", 
+        "email": " kevin.grantham.senate@state.co.us", 
+        "name_first": " Kevin", 
+        "name_last": "Grantham", 
+        "occupation": "Real Estate Appraiser", 
+        "party": "R", 
+        "phone": " 303-866-4877", 
+        "photo": "u-2-grantham.jpg"
+    }, 
+    "Guzman": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "role": "Minority Leader"
+            }, 
+            {
+                "committee": "Executive Committee of the Legislative Council", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legislative Council"
+            }, 
+            {
+                "role": "Senate Services"
+            }
+        ], 
+        "counties": "Denver", 
+        "district": "34", 
+        "email": " lucia.guzman.senate@state.co.us", 
+        "name_first": " Lucia", 
+        "name_last": "Guzman", 
+        "occupation": "Senator, District 34", 
+        "party": "D", 
+        "phone": " 303-866-4862", 
+        "photo": "u-34-guzman.jpg"
+    }, 
+    "Hamner": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Joint Budget Committee", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Appropriations", 
+                "role": "Vice-Chair"
+            }
+        ], 
+        "counties": [
+            "Delta", 
+            "Gunnison", 
+            "Lake", 
+            "Pitkin", 
+            "Summit"
+        ], 
+        "district": "61", 
+        "email": "rephamner@gmail.com", 
+        "name_first": " Millie", 
+        "name_last": "Hamner", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2952", 
+        "photo": "l-61-hamner.jpg"
+    }, 
+    "Heath": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "role": "Assistant Minority Leader"
+            }, 
+            {
+                "committee": "Business, Labor, & Technology", 
+                "role": "Member"
+            }, 
+            {
+                "committee": "Legislative Council", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Boulder", 
+        "district": "18", 
+        "email": " rollie.heath.senate@state.co.us", 
+        "name_first": " Rollie", 
+        "name_last": "Heath", 
+        "occupation": "Business Consultant", 
+        "party": "D", 
+        "phone": " 303-866-4872", 
+        "photo": "u-18-heath.jpg"
+    }, 
+    "Hill": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Education", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Finance", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "State, Veterans, & Military Affairs", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "10", 
+        "email": " Senatorowenhill@gmail.com", 
+        "name_first": " Owen", 
+        "name_last": "Hill", 
+        "occupation": "Construction", 
+        "party": "R", 
+        "phone": " 303-866-2737", 
+        "photo": "u-10-hill.jpg"
+    }, 
+    "Hodge": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Agriculture, Natural Resources, & Energy", 
+                "role": "Member"
+            }, 
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "committee": "Business, Labor, & Technology", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Adams", 
+        "district": "25", 
+        "email": " mary.hodge.senate@state.co.us", 
+        "name_first": " Mary", 
+        "name_last": "Hodge", 
+        "occupation": "Senator/Rental Property Management", 
+        "party": "D", 
+        "phone": " 303-866-4855", 
+        "photo": "u-25-hodge.jpg"
+    }, 
+    "Holbert": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Business, Labor, & Technology", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Finance"
+            }, 
+            {
+                "role": "Legislative Audit"
+            }
+        ], 
+        "counties": "Douglas", 
+        "district": "30", 
+        "email": " chris.holbert.senate@state.co.us", 
+        "name_first": " Chris", 
+        "name_last": "Holbert", 
+        "occupation": "Consultant", 
+        "party": "R", 
+        "phone": " 303-866-4881", 
+        "photo": "u-30-holbert.jpg"
+    }, 
+    "Hullinghorst": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "the House", 
+                "role": "Speaker"
+            }, 
+            {
+                "committee": "Executive Committee of the Legislative Council", 
+                "role": "Chair"
+            }, 
+            {
+                "role": "Legislative Council"
+            }
+        ], 
+        "counties": "Boulder", 
+        "district": "10", 
+        "email": "dl.hullinghorst.house@state.co.us", 
+        "name_first": " Dickey Lee", 
+        "name_last": "Hullinghorst", 
+        "occupation": "Retired Gov. Affairs", 
+        "party": "D", 
+        "phone": "303-866-2346", 
+        "photo": "l-10-hullinghorst.jpg"
+    }, 
+    "Humphrey": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Health, Insurance, & Environment", 
+                "role": "Member"
+            }, 
+            {
+                "role": "State, Veterans, & Military Affairs"
+            }
+        ], 
+        "counties": "Weld", 
+        "district": "48", 
+        "email": "rephumphrey48@yahoo.com", 
+        "name_first": " Stephen", 
+        "name_last": "Humphrey", 
+        "occupation": "Therapist and Marriage Counselor", 
+        "party": "R", 
+        "phone": "303-866-2943", 
+        "photo": "l-48-humphrey.jpg"
+    }, 
+    "Jahn": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Business, Labor, & Technology", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legislative Audit"
+            }
+        ], 
+        "counties": "Jefferson", 
+        "district": "20", 
+        "email": " cheri.jahn.senate@state.co.us", 
+        "name_first": " Cheri", 
+        "name_last": "Jahn", 
+        "occupation": "Small Business Owner", 
+        "party": "D", 
+        "phone": " 303-866-4856", 
+        "photo": "u-20-jahn.jpg"
+    }, 
+    "Johnston": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Finance"
+            }, 
+            {
+                "role": "Legal Services"
+            }
+        ], 
+        "counties": "Denver", 
+        "district": "33", 
+        "email": " mike.johnston.senate@state.co.us", 
+        "name_first": " Michael", 
+        "name_last": "Johnston", 
+        "occupation": "Education Nonprofit Consultant", 
+        "party": "D", 
+        "phone": " 303-866-4864", 
+        "photo": "u-33-johnston.jpg"
+    }, 
+    "Jones": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "role": "Minority Whip"
+            }, 
+            {
+                "committee": "Agriculture, Natural Resources, & Energy", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legislative Council"
+            }, 
+            {
+                "role": "State, Veterans, & Military Affairs"
+            }
+        ], 
+        "counties": "Boulder", 
+        "district": "17", 
+        "email": " senatormattjones@gmail.com", 
+        "name_first": " Matt", 
+        "name_last": "Jones", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": " 303-866-5291", 
+        "photo": "u-17-jones.jpg"
+    }, 
+    "Joshi": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Health, Insurance, & Environment"
+            }, 
+            {
+                "role": "Public Health Care & Human Services"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "16", 
+        "email": "janak.joshi.house@state.co.us", 
+        "name_first": " Janak", 
+        "name_last": "Joshi", 
+        "occupation": "Physician, Retired", 
+        "party": "R", 
+        "phone": "303-866-2937", 
+        "photo": "l-16-joshi.jpg"
+    }, 
+    "Kagan": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Judiciary", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Finance", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legal Services"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "3", 
+        "email": "repkagan@gmail.com", 
+        "name_first": " Daniel", 
+        "name_last": "Kagan", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2921", 
+        "photo": "l-3-kagan.jpg"
+    }, 
+    "Kefalas": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Capital Development", 
+                "role": "Member"
+            }, 
+            {
+                "committee": "Local Government", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Larimer", 
+        "district": "14", 
+        "email": " john.kefalas.senate@state.co.us", 
+        "name_first": " John", 
+        "name_last": "Kefalas", 
+        "occupation": "CSU Adjunct Faculty Member", 
+        "party": "D", 
+        "phone": " 303-866-4841", 
+        "photo": "u-14-kefalas.jpg"
+    }, 
+    "Kerr": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Finance"
+            }
+        ], 
+        "counties": "Jefferson", 
+        "district": "22", 
+        "email": " SenatorAndyKerr@gmail.com", 
+        "name_first": " Andy", 
+        "name_last": "Kerr", 
+        "occupation": "Teacher", 
+        "party": "D", 
+        "phone": " 303-866-4859", 
+        "photo": "u-22-kerr.jpg"
+    }, 
+    "Klingenschmitt": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Health, Insurance, & Environment", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Local Government"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "15", 
+        "email": "klingenschmitt.house@state.co.us", 
+        "name_first": " Gordon Ph.D.", 
+        "name_last": "Klingenschmitt", 
+        "occupation": "Legislator", 
+        "party": "R", 
+        "phone": "303-866-5525", 
+        "photo": "l-15-klingenschmitt.jpg"
+    }, 
+    "Kraft-Tharp": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Business Affairs and Labor", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Transportation & Energy", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Jefferson", 
+        "district": "29", 
+        "email": "reptracy29@gmail.com", 
+        "name_first": " Tracy", 
+        "name_last": "Kraft-Tharp", 
+        "occupation": "Small Business Owner", 
+        "party": "D", 
+        "phone": "303-866-2950", 
+        "photo": "l-29-kraft-tharp.jpg"
+    }, 
+    "Lambert": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Legislative Emergency Preparedness, Response, and Recovery", 
+                "role": "Chair"
+            }, 
+            {
+                "role": "Committee"
+            }, 
+            {
+                "committee": "Appropriations", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "role": "Joint Budget Committee"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "9", 
+        "email": " senatorlambert@comcast.net", 
+        "name_first": " Kent D.", 
+        "name_last": "Lambert", 
+        "occupation": "Colonel, USAF (Retired)", 
+        "party": "R", 
+        "phone": " 303-866-4835", 
+        "photo": "u-9-lambert.jpg"
+    }, 
+    "Landgraf": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "role": "Minority Caucus Chair"
+            }, 
+            {
+                "committee": "Health, Insurance, & Environment", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legislative Council"
+            }, 
+            {
+                "role": "Public Health Care & Human Services"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "21", 
+        "email": "lois.landgraf.house@state.co.us", 
+        "name_first": " Lois", 
+        "name_last": "Landgraf", 
+        "occupation": "Legislator", 
+        "party": "R", 
+        "phone": "303-866-2946", 
+        "photo": "l-21-landgraf.jpg"
+    }, 
+    "Lawrence": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "role": "Assistant Minority Leader"
+            }, 
+            {
+                "committee": "Judiciary", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legislative Council"
+            }
+        ], 
+        "counties": [
+            "Douglas", 
+            "Teller"
+        ], 
+        "district": "39", 
+        "email": "polly.lawrence.house@state.co.us", 
+        "name_first": " Polly", 
+        "name_last": "Lawrence", 
+        "occupation": "Construction", 
+        "party": "R", 
+        "phone": "303-866-2935", 
+        "photo": "l-39-lawrence.jpg"
+    }, 
+    "Lebsock": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Local Government", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Agriculture, Livestock, & Natural Resources", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Adams", 
+        "district": "34", 
+        "email": "steve.lebsock.house@state.co.us", 
+        "name_first": " Steve", 
+        "name_last": "Lebsock", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2931", 
+        "photo": "l-34-lebsock.jpg"
+    }, 
+    "Lee": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Education", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "role": "Judiciary"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "18", 
+        "email": "pete.lee.house@state.co.us", 
+        "name_first": " Pete", 
+        "name_last": "Lee", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2932", 
+        "photo": "l-18-lee.jpg"
+    }, 
+    "Leonard": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Public Health Care & Human Services", 
+                "role": "Member"
+            }, 
+            {
+                "role": "State, Veterans, & Military Affairs"
+            }
+        ], 
+        "counties": "Jefferson", 
+        "district": "25", 
+        "email": "tim.leonard.house@state.co.us", 
+        "name_first": " Timothy", 
+        "name_last": "Leonard", 
+        "occupation": "Commercial Real Estate Business Owner", 
+        "party": "R", 
+        "phone": "303-866-2582", 
+        "photo": "l-25-leonard.jpg"
+    }, 
+    "Lontine": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "State, Veterans, & Military Affairs", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Health, Insurance, & Environment", 
+                "role": "Member"
+            }
+        ], 
+        "counties": [
+            "Denver", 
+            "Jefferson"
+        ], 
+        "district": "1", 
+        "email": "susan.lontine.house@state.co.us", 
+        "name_first": " Susan", 
+        "name_last": "Lontine", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2966", 
+        "photo": "l-1-lontine.jpg"
+    }, 
+    "Lundberg": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "role": "Assistant Majority Leader"
+            }, 
+            {
+                "committee": "Health & Human Services", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Judiciary", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Legislative Council", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Larimer", 
+        "district": "15", 
+        "email": " kevin@kevinlundberg.com", 
+        "name_first": " Kevin", 
+        "name_last": "Lundberg", 
+        "occupation": "Media Production", 
+        "party": "R", 
+        "phone": " 303-866-4853", 
+        "photo": "u-15-lundberg.jpg"
+    }, 
+    "Lundeen": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Judiciary"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "19", 
+        "email": "paul.lundeen.house@state.co.us", 
+        "name_first": " Paul", 
+        "name_last": "Lundeen", 
+        "occupation": "Entreprenuer", 
+        "party": "R", 
+        "phone": "303-866-2924", 
+        "photo": "l-19-lundeen.jpg"
+    }, 
+    "Marble": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "role": "Majority Caucus Chair"
+            }, 
+            {
+                "committee": "Local Government", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Education", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Legislative Council", 
+                "role": "Member"
+            }
+        ], 
+        "counties": [
+            "Broomfield", 
+            "Larimer", 
+            "Weld"
+        ], 
+        "district": "23", 
+        "email": " vicki.marble.senate@state.co.us", 
+        "name_first": " Vicki", 
+        "name_last": "Marble", 
+        "occupation": "Business Owner", 
+        "party": "R", 
+        "phone": " 303-866-4876", 
+        "photo": "u-23-marble.jpg"
+    }, 
+    "Martinez Humenik": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Health & Human Services", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Joint Technology Committee"
+            }, 
+            {
+                "role": "Local Government"
+            }
+        ], 
+        "counties": "Adams", 
+        "district": "24", 
+        "email": " beth.martinezhumenik.senate@state.co.us", 
+        "name_first": " Beth", 
+        "name_last": "Martinez Humenik", 
+        "occupation": "Educator", 
+        "party": "R", 
+        "phone": " 303-866-4863", 
+        "photo": "u-24-martinez.jpg"
+    }, 
+    "McCann": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Health, Insurance, & Environment", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legal Services"
+            }
+        ], 
+        "counties": "Denver", 
+        "district": "8", 
+        "email": "beth.mccann.house@state.co.us", 
+        "name_first": " Elizabeth \"Beth\"", 
+        "name_last": "McCann", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2959", 
+        "photo": "l-8-mccann.jpg"
+    }, 
+    "Melton": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Judiciary", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legislative Council"
+            }, 
+            {
+                "role": "Transportation & Energy"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "41", 
+        "email": "jovan.melton.house@state.co.us", 
+        "name_first": " Jovan", 
+        "name_last": "Melton", 
+        "occupation": "Consultant", 
+        "party": "D", 
+        "phone": "303-866-2919", 
+        "photo": "l-41-melton.jpg"
+    }, 
+    "Merrifield": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Judiciary"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "11", 
+        "email": " michael.merrifield.senate@state.co.us", 
+        "name_first": " Michael", 
+        "name_last": "Merrifield", 
+        "occupation": "Retired Teacher", 
+        "party": "D", 
+        "phone": " 303-866-6364", 
+        "photo": "u-11-merrifield.jpg"
+    }, 
+    "Mitsch Bush": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Transportation & Energy", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Agriculture, Livestock, & Natural Resources", 
+                "role": "Member"
+            }
+        ], 
+        "counties": [
+            "Eagle", 
+            "Routt"
+        ], 
+        "district": "26", 
+        "email": "diane.mitschbush.house@state.co.us", 
+        "name_first": " Diane", 
+        "name_last": "Mitsch Bush", 
+        "occupation": "Retired College Professor", 
+        "party": "D", 
+        "phone": "303-866-2923", 
+        "photo": "l-26-mitschbush.jpg"
+    }, 
+    "Moreno": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "role": "Assistant Majority Leader"
+            }, 
+            {
+                "committee": "House Services", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Public Health Care & Human Services"
+            }, 
+            {
+                "role": "Transportation & Energy"
+            }
+        ], 
+        "counties": "Adams", 
+        "district": "32", 
+        "email": "dominick.moreno.house@state.co.us", 
+        "name_first": " Dominick", 
+        "name_last": "Moreno", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2964", 
+        "photo": "l-32-moreno.jpg"
+    }, 
+    "Navarro": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Business Affairs and Labor", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Local Government"
+            }
+        ], 
+        "counties": [
+            "Fremont", 
+            "Otero", 
+            "Pueblo"
+        ], 
+        "district": "47", 
+        "email": "clarice.navarro.house@state.co.us", 
+        "name_first": " Clarice", 
+        "name_last": "Navarro", 
+        "occupation": "Small Business Owner", 
+        "party": "R", 
+        "phone": "303-866-2905", 
+        "photo": "l-47-navarro.jpg"
+    }, 
+    "Neville P.": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "State, Veterans, & Military Affairs", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Transportation & Energy"
+            }
+        ], 
+        "counties": "Douglas", 
+        "district": "45", 
+        "email": "patrick.neville.house@state.co.us", 
+        "name_first": " Patrick", 
+        "name_last": "Neville P.", 
+        "occupation": "Business Owner", 
+        "party": "R", 
+        "phone": "303-866-2948", 
+        "photo": "l-45-neville.jpg"
+    }, 
+    "Neville T.": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Finance", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Business, Labor, & Technology", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Education"
+            }, 
+            {
+                "role": "Legislative Audit"
+            }
+        ], 
+        "counties": [
+            "Boulder", 
+            "Denver", 
+            "Gilpin", 
+            "Jefferson"
+        ], 
+        "district": "16", 
+        "email": " tim.neville.senate@state.co.us", 
+        "name_first": " Tim", 
+        "name_last": "Neville T.", 
+        "occupation": "Insurance Agency Owner", 
+        "party": "R", 
+        "phone": " 303-866-4873", 
+        "photo": "u-16-neville.jpg"
+    }, 
+    "Newell": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Business, Labor, & Technology", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Health & Human Services"
+            }, 
+            {
+                "role": "Joint Technology Committee"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "26", 
+        "email": " linda.newell.senate@gmail.com", 
+        "name_first": " Linda", 
+        "name_last": "Newell", 
+        "occupation": "HR and Conflict Resolution Consultant", 
+        "party": "D", 
+        "phone": " 303-866-4846", 
+        "photo": "u-26-newell.jpg"
+    }, 
+    "Nordberg": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Legislative Audit", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Business Affairs and Labor", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Transportation & Energy"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "14", 
+        "email": "dan.nordberg.house@state.co.us", 
+        "name_first": " Dan", 
+        "name_last": "Nordberg", 
+        "occupation": "Legislator", 
+        "party": "R", 
+        "phone": "303-866-2965", 
+        "photo": "l-14-nordberg.jpg"
+    }, 
+    "Pabon": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "role": "Speaker Pro Tempore"
+            }, 
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Business Affairs and Labor"
+            }, 
+            {
+                "role": "Finance"
+            }
+        ], 
+        "counties": "Denver", 
+        "district": "4", 
+        "email": "dan.pabon.house@state.co.us", 
+        "name_first": " Dan", 
+        "name_last": "Pabon", 
+        "occupation": "Engineer", 
+        "party": "D", 
+        "phone": "303-866-2954", 
+        "photo": "l-4-pabon.jpg"
+    }, 
+    "Pettersen": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "role": "Majority Deputy Whip"
+            }, 
+            {
+                "committee": "Education", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Public Health Care & Human Services"
+            }
+        ], 
+        "counties": "Jefferson", 
+        "district": "28", 
+        "email": "brittany.pettersen.house@state.co.us", 
+        "name_first": " Brittany", 
+        "name_last": "Pettersen", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2939", 
+        "photo": "l-28-pettersen.jpg"
+    }, 
+    "Primavera": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Public Health Care & Human Services", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Health, Insurance, & Environment", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legislative Audit"
+            }, 
+            {
+                "role": "State, Veterans, & Military Affairs"
+            }
+        ], 
+        "counties": [
+            "Boulder", 
+            "Broomfield"
+        ], 
+        "district": "33", 
+        "email": "dianne.primavera.house@state.co.us", 
+        "name_first": " Dianne", 
+        "name_last": "Primavera", 
+        "occupation": "Retired", 
+        "party": "D", 
+        "phone": "303-866-4667", 
+        "photo": "l-33-primavera.jpg"
+    }, 
+    "Priola": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Finance"
+            }
+        ], 
+        "counties": [
+            "Adams", 
+            "Arapahoe"
+        ], 
+        "district": "56", 
+        "email": "kpriola@gmail.com", 
+        "name_first": " Kevin", 
+        "name_last": "Priola", 
+        "occupation": "Small Business Owner", 
+        "party": "R", 
+        "phone": "303-866-2912", 
+        "photo": "l-56-priola.jpg"
+    }, 
+    "Rankin": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Joint Budget Committee"
+            }
+        ], 
+        "counties": [
+            "Garfield", 
+            "Moffat", 
+            "Rio Blanco"
+        ], 
+        "district": "57", 
+        "email": "bob.rankin.house@state.co.us", 
+        "name_first": " Bob", 
+        "name_last": "Rankin", 
+        "occupation": "Legislator", 
+        "party": "R", 
+        "phone": "303-866-2949", 
+        "photo": "l-57-rankin.jpg"
+    }, 
+    "Ransom": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Health, Insurance, & Environment", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Local Government"
+            }
+        ], 
+        "counties": "Douglas", 
+        "district": "44", 
+        "email": "kim.ransom.house@state.co.us", 
+        "name_first": " Kim", 
+        "name_last": "Ransom", 
+        "occupation": "Legislator", 
+        "party": "R", 
+        "phone": "303-866-2933", 
+        "photo": "l-44-ransom.jpg"
+    }, 
+    "Roberts": {
         "chamber": "Senate", 
         "committees": [
             {
@@ -2475,7 +1926,154 @@
         "phone": " 303-866-4884", 
         "photo": "u-6-roberts.jpg"
     }, 
-    {
+    "Rosenthal": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Business Affairs and Labor", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Local Government"
+            }
+        ], 
+        "counties": [
+            "Arapahoe", 
+            "Denver"
+        ], 
+        "district": "9", 
+        "email": "paulrosenthal5280@gmail.com", 
+        "name_first": " Paul", 
+        "name_last": "Rosenthal", 
+        "occupation": "Teacher", 
+        "party": "D", 
+        "phone": "303-866-2910", 
+        "photo": "l-9-rosenthal.jpg"
+    }, 
+    "Roupe": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Business Affairs and Labor", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Finance"
+            }
+        ], 
+        "counties": "El Paso", 
+        "district": "17", 
+        "email": "catherineroupe@yahoo.com", 
+        "name_first": " Catherine \"Kit\"", 
+        "name_last": "Roupe", 
+        "occupation": "Small business, land use planner", 
+        "party": "R", 
+        "phone": "303-866-3069", 
+        "photo": "l-17-roupe.jpg"
+    }, 
+    "Ryden": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "role": "Majority Whip"
+            }, 
+            {
+                "committee": "State, Veterans, & Military Affairs", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Legislative Audit", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Health, Insurance, & Environment", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "36", 
+        "email": "su.ryden.house@state.co.us", 
+        "name_first": " Su", 
+        "name_last": "Ryden", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2942", 
+        "photo": "l-36-ryden.jpg"
+    }, 
+    "Saine": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Agriculture, Livestock, & Natural Resources", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legislative Audit"
+            }, 
+            {
+                "role": "Local Government"
+            }
+        ], 
+        "counties": "Weld", 
+        "district": "63", 
+        "email": "lori.saine.house@state.co.us", 
+        "name_first": " Lori", 
+        "name_last": "Saine", 
+        "occupation": "Sales Director", 
+        "party": "R", 
+        "phone": "303-866-2906", 
+        "photo": "l-63-saine.jpg"
+    }, 
+    "Salazar": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Judiciary", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Adams", 
+        "district": "31", 
+        "email": "joseph.salazar.house@state.co.us", 
+        "name_first": " Joseph A", 
+        "name_last": "Salazar", 
+        "occupation": "Civil Rights Attorney / Professor", 
+        "party": "D", 
+        "phone": "303-866-2918", 
+        "photo": "l-31-salazar.jpg"
+    }, 
+    "Scheffel": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "role": "Majority Leader"
+            }, 
+            {
+                "committee": "Legal Services", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "role": "Senate Services"
+            }, 
+            {
+                "committee": "Executive Committee of the Legislative Council", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legislative Council"
+            }
+        ], 
+        "counties": "Douglas", 
+        "district": "4", 
+        "email": " mark.scheffel.senate@state.co.us", 
+        "name_first": " Mark", 
+        "name_last": "Scheffel", 
+        "occupation": "Attorney", 
+        "party": "R", 
+        "phone": " 303-866-4869", 
+        "photo": "u-4-scheffel.jpg"
+    }, 
+    "Scott": {
         "chamber": "Senate", 
         "committees": [
             {
@@ -2504,71 +2102,473 @@
         "phone": " 303-866-3077", 
         "photo": "u-7-scott.jpg"
     }, 
-    {
-        "chamber": "Senate", 
+    "Sias": {
+        "chamber": "House", 
         "committees": [
             {
-                "role": "Majority Whip"
-            }, 
-            {
-                "committee": "Capital Development", 
-                "role": "Chair"
-            }, 
-            {
-                "role": "Transportation"
-            }, 
-            {
-                "committee": "Agriculture, Natural Resources, & Energy", 
+                "committee": "Business Affairs and Labor", 
                 "role": "Member"
-            }, 
-            {
-                "role": "Business, Labor, & Technology"
             }
         ], 
-        "counties": [
-            "Garfield", 
-            "Grand", 
-            "Jackson", 
-            "Moffat", 
-            "Rio Blanco", 
-            "Routt", 
-            "Summit"
-        ], 
-        "district": "8", 
-        "email": " randy.baumgardner.senate@state.co.us", 
-        "name_first": " Randy L.", 
-        "name_last": "Baumgardner", 
-        "occupation": "Rancher/Citizen Legislator", 
+        "counties": "Jefferson", 
+        "district": "27", 
+        "email": "lang.sias.house@state.co.us", 
+        "name_first": " Lang", 
+        "name_last": "Sias", 
+        "occupation": "Commercial Pilot", 
         "party": "R", 
-        "phone": " 303-866-5292", 
-        "photo": "u-8-baumgardner.jpg"
+        "phone": "303-866-2962", 
+        "photo": "l-27-sias.jpg"
     }, 
-    {
-        "chamber": "Senate", 
+    "Singer": {
+        "chamber": "House", 
         "committees": [
             {
-                "committee": "Legislative Emergency Preparedness, Response, and Recovery", 
-                "role": "Chair"
-            }, 
-            {
-                "role": "Committee"
-            }, 
-            {
-                "committee": "Appropriations", 
+                "committee": "Public Health Care & Human Services", 
                 "role": "Vice-Chair"
             }, 
             {
-                "role": "Joint Budget Committee"
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Local Government"
             }
         ], 
-        "counties": "El Paso", 
-        "district": "9", 
-        "email": " senatorlambert@comcast.net", 
-        "name_first": " Kent D.", 
-        "name_last": "Lambert", 
-        "occupation": "Colonel, USAF (Retired)", 
+        "counties": "Boulder", 
+        "district": "11", 
+        "email": "jonathan.singer.house@state.co.us", 
+        "name_first": " Jonathan", 
+        "name_last": "Singer", 
+        "occupation": "Social Worker", 
+        "party": "D", 
+        "phone": "303-866-2780", 
+        "photo": "l-11-singer.jpg"
+    }, 
+    "Sonnenberg": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Agriculture, Natural Resources, & Energy", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "State, Veterans, & Military Affairs", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Capital Development"
+            }
+        ], 
+        "counties": [
+            "Cheyenne", 
+            "Elbert", 
+            "Kit Carson", 
+            "Lincoln", 
+            "Logan", 
+            "Morgan", 
+            "Phillips", 
+            "Sedgwick", 
+            "Washington", 
+            "Weld", 
+            "Yuma"
+        ], 
+        "district": "1", 
+        "email": " senatorsonnenberg@gmail.com", 
+        "name_first": " Jerry", 
+        "name_last": "Sonnenberg", 
+        "occupation": "Farmer/Rancher", 
         "party": "R", 
-        "phone": " 303-866-4835", 
-        "photo": "u-9-lambert.jpg"
+        "phone": " 303-866-6360", 
+        "photo": "u-1-sonnenberg.jpg"
+    }, 
+    "Steadman": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Joint Budget Committee"
+            }, 
+            {
+                "role": "Legal Services"
+            }
+        ], 
+        "counties": [
+            "Arapahoe", 
+            "Denver"
+        ], 
+        "district": "31", 
+        "email": " pat.steadman.senate@state.co.us", 
+        "name_first": " Pat", 
+        "name_last": "Steadman", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": " 303-866-4861", 
+        "photo": "u-31-steadman.jpg"
+    }, 
+    "Tate": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Business, Labor, & Technology", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Joint Technology Committee"
+            }, 
+            {
+                "role": "Local Government"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "27", 
+        "email": " jack.tate.senate@state.co.us", 
+        "name_first": " Jack", 
+        "name_last": "Tate", 
+        "occupation": "Small Business Owner", 
+        "party": "R", 
+        "phone": " 303-866-4883", 
+        "photo": "u-27-tate.jpg"
+    }, 
+    "Thurlow": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Business Affairs and Labor", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Local Government"
+            }
+        ], 
+        "counties": "Mesa", 
+        "district": "55", 
+        "email": "danthurlow55@gmail.com", 
+        "name_first": " Dan", 
+        "name_last": "Thurlow", 
+        "occupation": "Business Owner", 
+        "party": "R", 
+        "phone": "303-866-3068", 
+        "photo": "l-55-thurlow.jpg"
+    }, 
+    "Todd": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Transportation"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "28", 
+        "email": " nancy.todd.senate@state.co.us", 
+        "name_first": " Nancy", 
+        "name_last": "Todd", 
+        "occupation": "Retired Teacher", 
+        "party": "D", 
+        "phone": " 303-866-3432", 
+        "photo": "u-28-todd.jpg"
+    }, 
+    "Tyler": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Transportation & Energy", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Public Health Care & Human Services", 
+                "role": "Member"
+            }, 
+            {
+                "role": "State, Veterans, & Military Affairs"
+            }
+        ], 
+        "counties": "Jefferson", 
+        "district": "23", 
+        "email": "max@maxtyler.us", 
+        "name_first": " Max", 
+        "name_last": "Tyler", 
+        "occupation": "Legislator", 
+        "party": "D", 
+        "phone": "303-866-2951", 
+        "photo": "l-23-tyler.jpg"
+    }, 
+    "Ulibarri": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "role": "Minority Caucus Chair"
+            }, 
+            {
+                "committee": "Legislative Council", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Local Government"
+            }, 
+            {
+                "role": "State, Veterans, & Military Affairs"
+            }
+        ], 
+        "counties": "Adams", 
+        "district": "21", 
+        "email": " jessie.ulibarri.senate@state.co.us", 
+        "name_first": " Jessie", 
+        "name_last": "Ulibarri", 
+        "occupation": "Principal, Movement Building Project", 
+        "party": "D", 
+        "phone": " 303-866-4857", 
+        "photo": "u-21-ulibarri.jpg"
+    }, 
+    "Van Winkle": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Finance", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Douglas", 
+        "district": "43", 
+        "email": "kevin.vanwinkle.house@state.co.us", 
+        "name_first": " Kevin", 
+        "name_last": "Van Winkle", 
+        "occupation": "Small Business Owner", 
+        "party": "R", 
+        "phone": "303-866-2936", 
+        "photo": "l-43-vanwinkle.jpg"
+    }, 
+    "Vigil": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Agriculture, Livestock, & Natural Resources", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Capital Development", 
+                "role": "Vice-Chair"
+            }
+        ], 
+        "counties": [
+            "Alamosa", 
+            "Conejos", 
+            "Costilla", 
+            "Huerfano", 
+            "Mineral", 
+            "Pueblo", 
+            "Rio Grande", 
+            "Saguache"
+        ], 
+        "district": "62", 
+        "email": "edvigil1@gmail.com", 
+        "name_first": " Edward", 
+        "name_last": "Vigil", 
+        "occupation": "Small Business Owner", 
+        "party": "D", 
+        "phone": "303-866-2916", 
+        "photo": "l-62-vigil.jpg"
+    }, 
+    "Willett": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Judiciary", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Legal Services"
+            }
+        ], 
+        "counties": [
+            "Delta", 
+            "Mesa"
+        ], 
+        "district": "54", 
+        "email": "yeulin.willett.house@state.co.us", 
+        "name_first": " Yeulin", 
+        "name_last": "Willett", 
+        "occupation": "Attorney", 
+        "party": "R", 
+        "phone": "303-866-2583", 
+        "photo": "l-54-willett.jpg"
+    }, 
+    "Williams": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "role": "Majority Caucus Chair"
+            }, 
+            {
+                "committee": "Business Affairs and Labor", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Legislative Council", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Denver", 
+        "district": "7", 
+        "email": "angela.williams.house@state.co.us", 
+        "name_first": " Angela", 
+        "name_last": "Williams", 
+        "occupation": "Self-Employed", 
+        "party": "D", 
+        "phone": "303-866-2909", 
+        "photo": "l-7-williams.jpg"
+    }, 
+    "Wilson": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Education"
+            }, 
+            {
+                "role": "Finance"
+            }
+        ], 
+        "counties": [
+            "Chaffee", 
+            "Custer", 
+            "Fremont", 
+            "Park"
+        ], 
+        "district": "60", 
+        "email": "james.wilson.house@state.co.us", 
+        "name_first": " James D \"Jim\"", 
+        "name_last": "Wilson", 
+        "occupation": "Retired", 
+        "party": "R", 
+        "phone": "303-866-2747", 
+        "photo": "l-60-wilson.jpg"
+    }, 
+    "Windholz": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Education", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Public Health Care & Human Services"
+            }
+        ], 
+        "counties": "Adams", 
+        "district": "30", 
+        "email": "joann.windholz.house@state.co.us", 
+        "name_first": " JoAnn", 
+        "name_last": "Windholz", 
+        "occupation": "Business Owner", 
+        "party": "R", 
+        "phone": "303-866-2945", 
+        "photo": "l-30-windholz.jpg"
+    }, 
+    "Winter": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Business Affairs and Labor"
+            }, 
+            {
+                "role": "Transportation & Energy"
+            }
+        ], 
+        "counties": "Adams", 
+        "district": "35", 
+        "email": "faith.winter.house@state.co.us", 
+        "name_first": " Faith", 
+        "name_last": "Winter", 
+        "occupation": "Non-profit Director", 
+        "party": "D", 
+        "phone": "303-866-2843", 
+        "photo": "l-35-winter.jpg"
+    }, 
+    "Wist": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Business Affairs and Labor", 
+                "role": "Member"
+            }, 
+            {
+                "role": "State, Veterans, & Military Affairs"
+            }
+        ], 
+        "counties": "Arapahoe", 
+        "district": "37", 
+        "email": "cole.wist.house@state.co.us", 
+        "name_first": " Cole", 
+        "name_last": "Wist", 
+        "occupation": "Attorney", 
+        "party": "R", 
+        "phone": "303-866-5510", 
+        "photo": "l-37-wist.jpg"
+    }, 
+    "Woods": {
+        "chamber": "Senate", 
+        "committees": [
+            {
+                "committee": "Business, Labor, & Technology", 
+                "role": "Vice-Chair"
+            }, 
+            {
+                "committee": "Appropriations", 
+                "role": "Member"
+            }, 
+            {
+                "role": "Education"
+            }
+        ], 
+        "counties": "Jefferson", 
+        "district": "19", 
+        "email": " laura.woods.senate@state.co.us", 
+        "name_first": " Laura J.", 
+        "name_last": "Woods", 
+        "occupation": "Senator", 
+        "party": "R", 
+        "phone": " 303-866-4840", 
+        "photo": "u-19-woods.jpg"
+    }, 
+    "Young": {
+        "chamber": "House", 
+        "committees": [
+            {
+                "committee": "Appropriations", 
+                "role": "Chair"
+            }, 
+            {
+                "committee": "Joint Budget Committee", 
+                "role": "Member"
+            }
+        ], 
+        "counties": "Weld", 
+        "district": "50", 
+        "email": "dave.young.house@state.co.us", 
+        "name_first": " Dave", 
+        "name_last": "Young", 
+        "occupation": "College Instructor", 
+        "party": "D", 
+        "phone": "303-866-2929", 
+        "photo": "l-50-young.jpg"
     }
-]
+}

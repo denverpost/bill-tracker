@@ -24,7 +24,7 @@ def main(args):
     if args.verbose:
         print args
     for item in args.files[0]:
-        c = []
+        c = {}
         f = open('%s' % item, 'rt')
         reader = csv.reader(f)
 
@@ -59,7 +59,7 @@ def main(args):
                 the_row['counties'] = counties_list
                     
 
-            c.append(the_row)
+            c[the_row['name_last']] = the_row
 
         print json.dumps(c, sort_keys=True, indent=4)
 
