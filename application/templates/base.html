@@ -101,7 +101,29 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
             color: #aaa;
             text-align: center;
             width: 100%;
+            line-height: 0.5;
+        }
+        .stamp span {
+            display: inline-block;
+            position: relative;  
+        }
+        .stamp span:before,
+        .stamp span:after {
+            content: "";
+            position: absolute;
+            height: 5px;
             border-bottom: 1px dotted #ccc;
+            border-top: 1px dotted #ccc;
+            top: 0;
+            width: 600px;
+        }
+        .stamp span:before {
+            right: 100%;
+            margin-right: 15px;
+        }
+        .stamp span:after {
+            left: 100%;
+            margin-left: 15px;
         }
 
     @media only screen and (min-width: 769px) {
@@ -227,6 +249,7 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
 
     <div id="wrapper">
 
+        <p id="datestamp" class="stamp"><span>Colorado Bill Tracker, last updated {{''|next_update('this')}}</span></p>
         <div id="breadcrumbs">
             {% block breadcrumbs %}
             <a href="http://www.denverpost.com/">Home</a>
@@ -234,7 +257,6 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
             &rsaquo; <a href="http://www.denverpost.com/legislature">Legislature</a>
             {% endblock breadcrumbs %}
         </div>
-        <p id="datestamp" class="stamp">Colorado Bill Tracker, last updated {{''|next_update('this')}}</p>
 
         <div class="row">
 
