@@ -33,6 +33,24 @@ def main(args):
                 keys = row
                 continue
             the_row = dict(zip(keys, row))
+
+            # Separate committees into concomant parts
+            committees_list = []
+            comm = [the_row['committees']]
+            if ';' in the_row['committees']:
+                comm = the_row['committees'].split(';')
+            for item in comm:
+                comm_dict = {}
+                if 'of' in item:
+                    parts = item.split(' of ', 1)
+                    comm_dict['role'] = parts[0].strip()
+                    comm_dict['committee'] = parts[1].strip()
+                else:
+                    comm_dict['role'] = item.strip()
+
+                committees_list.append(comm_dict)
+            the_row['committees'] = committees_list
+
             c.append(the_row)
 
         print json.dumps(c)
