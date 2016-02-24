@@ -96,8 +96,6 @@ def next_update(blank, value, delta=0):
         i = 0 
     while i < 7:
         new_day = today + timedelta(i)
-        if value == 'this':
-            new_day = today + timedelta(i - 1)
         wd = new_day.weekday()
         if wd in [1,2,3,4,5]:
             return new_day.strftime('%A %b. %d')

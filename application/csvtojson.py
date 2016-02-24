@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-# Turn a two-column CSV into a javascript object.
-import os, sys, csv
+# Turn a multi-column CSV into a json object.
+import os, sys, csv, json
 import argparse
 import doctest
 import string
@@ -24,23 +24,18 @@ def main(args):
     if args.verbose:
         print args
     for item in args.files[0]:
-        c = "matcher.lookup = {"
+        c = []
         f = open('%s' % item, 'rt')
         reader = csv.reader(f)
 
         for row in reader:
-            # Skip the keys
             if reader.line_num == 1:
+                keys = row
                 continue
-            c += '"%s": "%s",' % (escape(row[0]), escape(row[1]))
+            the_row = dict(zip(keys, row))
+            c.append(the_row)
 
-        # Delete the comma, which will be the last character
-        c = c[:-1]
-
-        c += "};"
-
-        # Send to STDOUT
-        print c
+        print json.dumps(c)
 
 
 def build_parser(args):
