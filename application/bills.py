@@ -9,6 +9,7 @@ import string
 from application import app
 import filters
 from datetime import date, datetime, timedelta
+# import legislators
 
 
 datetimeformat = '%Y-%m-%d %H:%M:%S'
@@ -207,7 +208,6 @@ def week_index():
         weeks.append(current_issue)
         current_issue = current_issue + timedelta(7)
 
-    print weeks
     response = {
         'app': app,
         'weeks': weeks
@@ -358,26 +358,29 @@ def session_passed_detail(session, passfail, chamber):
 
 # === NOT DEPLOYED YET === #
 
-@app.route('/bills/<session>/legislators/')
-def legislator_index(session):
-    if session not in app.sessions:
-        abort(404)
-    app.page['title'] = 'Legislators'
-    app.page['description'] = 'An index of Colorado statehouse legislators and which bills they sponsored.'
+@app.route('/senate/')
+@app.route('/house/')
+def chamber_index():
+    chamber = 'senate'
+    if 'house' in request.path:
+        chamber = 'house'
+    app.page['title'] = 'Colorado State %s legislators' % chamber.title()
+    app.page['description'] = 'An index of Colorado legislators in the state %s' % chamber
     response = {
         'app': app,
     }
-    return render_template('legislator_index.html', response=response)
+    return render_template('chambe_index.html', response=response)
 
-@app.route('/bills/<session>/legislators/<legislator>/')
-def legislator_detail(session, legislator):
-    if session not in app.sessions:
-        abort(404)
-    app.page['title'] = 'Legislator'
+@app.route('/senate/<district>/')
+@app.route('/house/<district>/')
+def district_detail(district):
+    chamber = 'senate'
+    if 'house' in request.path:
+        chamber = 'house'
+    app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
     app.page['description'] = ''
     response = {
         'app': app,
     }
-    return render_template('legislator_detail.html', response=response)
+    return render_template('district_detail.html', response=response)
 
-#url_for('static', filename='css/datatables.css')
