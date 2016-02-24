@@ -51,6 +51,14 @@ def main(args):
                 committees_list.append(comm_dict)
             the_row['committees'] = committees_list
 
+            # Separate the counties into its parts
+            counties_list = []
+            if ',' in the_row['counties']:
+                for item in the_row['counties'].split(','):
+                    counties_list.append(item.strip())
+                the_row['counties'] = counties_list
+                    
+
             c.append(the_row)
 
         print json.dumps(c)
