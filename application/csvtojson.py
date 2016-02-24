@@ -61,7 +61,7 @@ def main(args):
 
             c.append(the_row)
 
-        print json.dumps(c)
+        print json.dumps(c, sort_keys=True, indent=4)
 
 
 def build_parser(args):
