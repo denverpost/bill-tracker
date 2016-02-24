@@ -110,3 +110,14 @@ def timestamp(blank):
         """
     today = datetime.today()
     return today.strftime("%A %b. %d, %-I:%M %p")
+
+@app.template_filter(name='legislator_lookup')
+def legislator_lookup(value):
+    """ Return a dict of the legislator data.
+        """
+    # import legislators
+    try:
+        return legislators.data[value.lower()]
+    except:
+        return None
+app.add_template_filter(legislator_lookup)

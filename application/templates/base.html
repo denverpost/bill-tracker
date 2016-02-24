@@ -99,6 +99,9 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
         .stamp {
             font-style: italic;
             color: #aaa;
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px dotted #ccc;
         }
 
     @media only screen and (min-width: 769px) {
@@ -231,7 +234,7 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
             &rsaquo; <a href="http://www.denverpost.com/legislature">Legislature</a>
             {% endblock breadcrumbs %}
         </div>
-        <p id="datestamp" class="stamp">Last Updated {{''|next_update('this')}}</p>
+        <p id="datestamp" class="stamp">Colorado Bill Tracker, last updated {{''|next_update('this')}}</p>
 
         <div class="row">
 
