@@ -35,7 +35,7 @@ class BillQuery:
         """
             """
         self.bills = json.load(json_check('_input/co-bills.json'))
-        self.legislators = json.load('application/static/data/legislators.json')
+        self.legislators = json.load(open('application/static/data/legislators.json'))
         self.unfiltered = self.bills
         self.session = app.session.upper()
 
@@ -368,7 +368,7 @@ def chamber_index():
         chamber = 'house'
     app.page['title'] = 'Colorado State %s legislators' % chamber.title()
     app.page['description'] = 'An index of Colorado legislators in the state %s' % chamber
-    legislators = json.load('application/static/data/legislators.json')
+    legislators = json.load(open('application/static/data/legislators.json'))
     response = {
         'app': app,
     }
@@ -382,7 +382,7 @@ def district_detail(district):
         chamber = 'house'
     app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
     app.page['description'] = ''
-    legislators = json.load('application/static/data/legislators.json')
+    legislators = json.load(open('application/static/data/legislators.json'))
     response = {
         'app': app,
     }
@@ -398,7 +398,7 @@ def legislator_detail(district, last_name):
     leg = {}
     app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
     app.page['description'] = ''
-    legislators = json.load('application/static/data/legislators.json')
+    legislators = json.load(open('application/static/data/legislators.json'))
     response = {
         'app': app,
         'legislator': leg
