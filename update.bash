@@ -3,6 +3,7 @@
 
 # See if the data has changed since the last time we checked.
 # The latest timestamp's on the site is saved in a file called... log_timestamp.
+workon BILL
 LATEST=`cat log_timestamp`
 # The current timestamp of Sunlight data is gathered here:
 CURRENT=`python legquery.py --updated`
