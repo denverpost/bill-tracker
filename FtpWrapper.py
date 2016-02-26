@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # FTP files with python.
-import os
+import os, sys
 from ftplib import FTP
 
 class FtpWrapper():
@@ -77,7 +77,8 @@ class FtpWrapper():
             self.ftp.storbinary('STOR %s' % fn, file_h, blocksize, self.ftp_callback)
             print 'SUCCESS: FTP\'d %s to %s' % (fn, self.config['host'])
         except:
-            print 'ERROR: Could not FTP-->STOR %s%s' % (dirpath, fn)
+            e = sys.exc_info()[0]
+            print 'ERROR: %s\nCould not FTP-->STOR %s/%s' % (e, dirpath, fn)
 
         if dirpath != '':
             self.ftp.cwd(self.config['upload_dir'])
