@@ -1,11 +1,265 @@
 {% extends "base.html" %}
-{% block style %}{% endblock style %}
+{% block style %}
+#map-house, #map-senate {
+	width: 100%;
+	height: 500px;
+}
+.info {
+	padding: 6px 8px;
+	font: 14px/16px Arial, Helvetica, sans-serif;
+	background: white;
+	background: rgba(255,255,255,0.8);
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border-radius: 5px;
+}
+.info h4 {
+	margin: 0 0 5px;
+	color: #777;
+}
+.info {
+	color: #777;
+}
+img.headshot {
+	width: 65px; 
+	height: 90px; 
+	padding: 5px 5px 0 10px;
+}
+#legislator-info {
+	float: left;
+}
+div#headshot {
+	float: right;
+}
+#district {
+	font-size: 12px; 
+	font-style: italic;
+}
+{% endblock style %}
 {% block breadcrumbs %}{{ super() }}
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>{% endblock breadcrumbs %}
+{% block head %}
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<script src="touchhover.js"></script>
+<script src="../static/js/co-house-geojson.js"></script>
+<script src="../static/js/co-senate-geojson.js"></script>
+{% endblock head %}
 {% block content %}
 <h2></h2>
 <p></p>
+{% if response.chamber == 'house' %}
+<div id="map-house"></div>
+<!-- HOUSE MAP -->
+<script>
 
+window.onload = function() {
+	loadHouseMap();
+};
+
+function loadHouseMap() {
+
+	var map = L.map('map-house').setView([39.0, -105.5], 7);
+
+	L.tileLayer('http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/{type}/{mapID}/reduced.day/{z}/{x}/{y}/{size}/{format}?app_id={app_id}&app_code={app_code}&lg={language}', {
+        attribution: 'Map &copy; 1987-2014 <a href="http://developer.here.com">HERE</a>',
+        subdomains: '1234',
+        mapID: 'newest',
+        app_id: '2K8wqfYF2CuD5D67HdQx',
+        app_code: '5PforzMWCWQoYPBUP-0p_A',
+        base: 'base',
+        maxZoom: 18,
+        type: 'maptile',
+        language: 'eng',
+        format: 'png8',
+        size: '256'
+    }).addTo(map);
+
+	if (L.Browser.touch) {
+	    L.control.touchHover().addTo(map);
+	}
+
+	// control that shows district info on hover
+	var infoHouse = L.control();
+
+	infoHouse.onAdd = function (map) {
+		this._div = L.DomUtil.create('div', 'info');
+		this.update();
+		return this._div;
+	};
+
+	infoHouse.update = function (props) {
+		this._div.innerHTML = '<div><div id="legislator-info"><h4>' + (props ?
+			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '</span></h4></div>' + '<div id="headshot"><img class="headshot" src="http://extras.denverpost.com/app/bill-tracker/static/img/l-' + props.district + '-' + props.leg_last + '.jpg"></div>'
+			: 'Hover over a district');
+	};
+
+	infoHouse.addTo(map);
+
+	// get color depending on party
+	function getColor(d) {
+		return d == 'R' ? '#d67676' :
+		                  '#7aa0d5';
+	}
+
+	function style(feature) {
+		return {
+			weight: 1,
+			opacity: 1,
+			color: 'gray',
+			dashArray: '',
+			fillOpacity: 0.4,
+			fillColor: getColor(feature.properties.party)
+		};
+	}
+
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 3,
+			color: 'gray',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		infoHouse.update(layer.feature.properties);
+	}
+
+	var geojson;
+
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		infoHouse.update();
+	}
+
+	/* function zoomToFeature(e) {
+		//map.fitBounds(e.target.getBounds());
+	} */
+
+	function openURL(e) {
+		window.open('http://extras.denverpost.com/app/bill-tracker/house/' + (e.target.feature.properties.district) + '/' + (e.target.feature.properties.leg_last), '_self');
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: openURL
+		});
+	}
+
+	geojson = L.geoJson(coHouseData, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+};
+
+</script>
+{% else %}
+<!-- SENATE MAP -->
+<script>
+window.onload = function() {
+	loadSenateMap();
+};
+
+function loadSenateMap() {
+	var map = L.map('map-senate').setView([39.0, -105.5], 7);
+
+	L.tileLayer('http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/{type}/{mapID}/reduced.day/{z}/{x}/{y}/{size}/{format}?app_id={app_id}&app_code={app_code}&lg={language}', {
+        attribution: 'Map &copy; 1987-2014 <a href="http://developer.here.com">HERE</a>',
+        subdomains: '1234',
+        mapID: 'newest',
+        app_id: '2K8wqfYF2CuD5D67HdQx',
+        app_code: '5PforzMWCWQoYPBUP-0p_A',
+        base: 'base',
+        maxZoom: 18,
+        type: 'maptile',
+        language: 'eng',
+        format: 'png8',
+        size: '256'
+    }).addTo(map);
+
+	if (L.Browser.touch) {
+	    L.control.touchHover().addTo(map);
+	}
+
+	// control that shows district infoHouse on hover
+	var infoSenate = L.control();
+
+	infoSenate.onAdd = function (map) {
+		this._div = L.DomUtil.create('div', 'info');
+		this.update();
+		return this._div;
+	};
+
+	infoSenate.update = function (props) {
+		this._div.innerHTML = '<div><div id="legislator-info"><h4>' + (props ?
+			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '</span></h4></div>' + '<div id="headshot"><img class="headshot" src="http://extras.denverpost.com/app/bill-tracker/static/img/u-' + props.district + '-' + props.leg_last + '.jpg"></div>'
+			: 'Hover over a district');
+	};
+
+	infoSenate.addTo(map);
+
+	// get color depending on party
+	function getColor(d) {
+		return d == 'R' ? '#d67676' :
+		                  '#7aa0d5';
+	}
+
+	function style(feature) {
+		return {
+			weight: 1,
+			opacity: 1,
+			color: 'gray',
+			dashArray: '',
+			fillOpacity: 0.4,
+			fillColor: getColor(feature.properties.party)
+		};
+	}
+
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 3,
+			color: 'gray',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		infoSenate.update(layer.feature.properties);
+	}
+
+	var geojson;
+
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		infoSenate.update();
+	}
+
+	/* function zoomToFeature(e) {
+		//map.fitBounds(e.target.getBounds());
+	} */
+
+	function openURL(e) {
+		window.open('http://extras.denverpost.com/app/bill-tracker/senate/' + (e.target.feature.properties.district) + '/' + (e.target.feature.properties.leg_last), '_self');
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: openURL
+		});
+	}
+
+	geojson = L.geoJson(coSenateData, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+};
+
+</script>
+{% endif %}
 {#
 <ul>
 {% for item in response.app -%}

@@ -371,6 +371,7 @@ def chamber_index():
     legislators = json.load(open('application/static/data/legislators.json'))
     response = {
         'app': app,
+        'chamber': chamber,
     }
     return render_template('chamber_index.html', response=response)
 
