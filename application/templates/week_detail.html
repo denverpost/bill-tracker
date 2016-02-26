@@ -22,7 +22,7 @@ li span.date { color: #999; }
 {% if response.signed %}
 <ul>
 {% for item in response.signed %}
-    <li><span>{{item.bill_id}}</span>: <a href="../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
+    <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         signed {{item.action_dates.signed|datetime_raw|datetime_filter}}
     </li>
 {% endfor %}
@@ -35,7 +35,7 @@ li span.date { color: #999; }
 {% if response.passed_lower %}
 <ul>
 {% for item in response.passed_lower %}
-    <li><span>{{item.bill_id}}</span>: <a href="../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
+    <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {% endif %}
@@ -44,7 +44,7 @@ li span.date { color: #999; }
 {% endfor %}
 </ul>
 <p><strong>
-    <a href="../bills/{{response.app.session}}/passed/lower/">See a list of all the legislation that passed the Colorado State House in session {{response.app.session|upper}}</a>
+    <a href="../../bills/{{response.app.session}}/passed/lower/">See a list of all the legislation that passed the Colorado State House in session {{response.app.session|upper}}</a>
 </strong></p>
 {% else %}
 <p>No legislation passed the Colorado State House yet this session.</p>
@@ -54,7 +54,7 @@ li span.date { color: #999; }
 {% if response.passed_upper %}
 <ul>
 {% for item in response.passed_upper %}
-    <li><span>{{item.bill_id}}</span>: <a href="../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
+    <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {% endif %}
@@ -63,7 +63,7 @@ li span.date { color: #999; }
 {% endfor %}
 </ul>
 <p><strong>
-    <a href="../bills/{{response.app.session}}/passed/upper/">See a list of all the legislation that passed the Colorado State Senate in session {{response.app.session|upper}}</a></p>
+    <a href="../../bills/{{response.app.session}}/passed/upper/">See a list of all the legislation that passed the Colorado State Senate in session {{response.app.session|upper}}</a></p>
 </strong></p>
 {% else %}
 <p>No legislation passed the Colorado State Senate yet this session.</p>
@@ -73,20 +73,20 @@ li span.date { color: #999; }
 {% if response.introduced %}
 <ul>
 {% for item in response.introduced %}
-    <li><span>{{item.bill_id}}</span>: <a href="../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
+    <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         <span class="date">({{item.action_dates.first|datetime_raw|datetime_filter}})</span>
     </li>
 {% endfor %}
 </ul>
 <p><strong>
-    <a href="../bills/{{response.app.session}}/">See all the legislation that have been introduced this session</a></p>
+    <a href="../../bills/{{response.app.session}}/">See all the legislation that have been introduced this session</a></p>
 </strong></p>
 {% else %}
 <p>No legislation introduced yet this session.</p>
 {% endif %}
 
 <p><strong>
-    <a href="../bills/{{response.app.session}}/">See all of the current session's bills</a>.</p>
+    <a href="../../bills/{{response.app.session}}/">See all of the current session's bills</a>.</p>
 </strong></p>
 
 {# {u'title': u'Sentencing For Certain 2nd Degree Assaults', u'created_at': u'2015-03-24 21:28:11', u'updated_at': u'2015-10-07 12:07:47', u'id': u'COB00003396', u'chamber': u'lower', u'state': u'co', u'session': u'2015A', u'type': [u'bill'], u'subjects': [], u'bill_id': u'HB 15-1303'} #}
