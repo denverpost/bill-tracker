@@ -6,23 +6,19 @@
 }
 .info {
 	padding: 6px 8px;
-	font: 14px/16px Arial, Helvetica, sans-serif;
+	font: 16px Helvetica, sans-serif;
 	background: white;
 	background: rgba(255,255,255,0.8);
 	box-shadow: 0 0 15px rgba(0,0,0,0.2);
 	border-radius: 5px;
-}
-.info h4 {
+	font-weight: bold;
 	margin: 0 0 5px;
 	color: #777;
 }
-.info {
-	color: #777;
-}
 img.headshot {
-	width: 65px; 
+	width: 60px; 
 	height: 90px; 
-	padding: 5px 5px 0 10px;
+	padding: 5px 5px 5px 10px;
 }
 #legislator-info {
 	float: left;
@@ -88,9 +84,9 @@ function loadHouseMap() {
 	};
 
 	infoHouse.update = function (props) {
-		this._div.innerHTML = '<div><div id="legislator-info"><h4>' + (props ?
-			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '</span></h4></div>' + '<div id="headshot"><img class="headshot" src="http://extras.denverpost.com/app/bill-tracker/static/img/l-' + props.district + '-' + props.leg_last + '.jpg"></div>'
-			: 'Hover over a district');
+		this._div.innerHTML = '<div><div id="legislator-info">' + (props ?
+			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '<br><span style="font-weight: normal;">click map to go<br>to legislator page</span></span></div>' + '<div id="headshot"><img class="headshot" src="http://extras.denverpost.com/app/bill-tracker/static/img/l-' + props.district + '-' + props.leg_last + '.jpg"></div>'
+			: 'Hover over a district</div>');
 	};
 
 	infoHouse.addTo(map);
@@ -107,7 +103,7 @@ function loadHouseMap() {
 			opacity: 1,
 			color: 'gray',
 			dashArray: '',
-			fillOpacity: 0.4,
+			fillOpacity: 0.3,
 			fillColor: getColor(feature.properties.party)
 		};
 	}
@@ -157,6 +153,7 @@ function loadHouseMap() {
 </script>
 {% else %}
 <!-- SENATE MAP -->
+<div id="map-senate"></div>
 <script>
 window.onload = function() {
 	loadSenateMap();
@@ -193,9 +190,9 @@ function loadSenateMap() {
 	};
 
 	infoSenate.update = function (props) {
-		this._div.innerHTML = '<div><div id="legislator-info"><h4>' + (props ?
-			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '</span></h4></div>' + '<div id="headshot"><img class="headshot" src="http://extras.denverpost.com/app/bill-tracker/static/img/u-' + props.district + '-' + props.leg_last + '.jpg"></div>'
-			: 'Hover over a district');
+		this._div.innerHTML = '<div><div id="legislator-info">' + (props ?
+			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '<br><span style="font-weight: normal;">click map to go<br>to legislator page</span></span></div>' + '<div id="headshot"><img class="headshot" src="http://extras.denverpost.com/app/bill-tracker/static/img/u-' + props.district + '-' + props.leg_last + '.jpg"></div>'
+			: 'Hover over a district</div>');
 	};
 
 	infoSenate.addTo(map);
@@ -212,7 +209,7 @@ function loadSenateMap() {
 			opacity: 1,
 			color: 'gray',
 			dashArray: '',
-			fillOpacity: 0.4,
+			fillOpacity: 0.3,
 			fillColor: getColor(feature.properties.party)
 		};
 	}
