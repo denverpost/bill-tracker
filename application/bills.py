@@ -206,7 +206,7 @@ def week_index():
     current_issue = app.theweek[app.session]
     today = date.today()
     weeks = []
-    while current_issue < today:
+    while current_issue <= today:
         weeks.append(current_issue)
         current_issue = current_issue + timedelta(7)
 
@@ -225,7 +225,7 @@ def week_detail(issue_date):
     current_issue = app.theweek[app.session]
     today = date.today()
     weeks = []
-    while current_issue < today:
+    while current_issue <= today:
         weeks.append(current_issue.__str__())
         current_issue = current_issue + timedelta(7)
 
@@ -239,10 +239,11 @@ def week_detail(issue_date):
         abort(404)
 
     # Get a json file of the recent legislative news
+    news = []
     try:
         news = json.load(open('_input/news/articles_%s_8.json' % issue_date))
     except:
-        news = []
+        news = json.load(open('_input/news/articles_%s_7.json' % issue_date))
 
     q = BillQuery()
     q.filter_session()
@@ -250,7 +251,7 @@ def week_detail(issue_date):
         'app': app,
         'issue_date': issue_date,
         'news': news,
-        'signed': q.filter_action_dates('signed'),
+        'signed': q.filter_by_date(date_range, 'signed', q.filter_action_dates('signed')),
         'introduced': q.filter_by_date(date_range, 'first', q.filter_action_dates('first')),
         'passed_upper': q.filter_by_date(date_range, 'passed_upper', q.filter_action_dates('passed_upper')),
         'passed_lower': q.filter_by_date(date_range, 'passed_lower', q.filter_action_dates('passed_lower')),
