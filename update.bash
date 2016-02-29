@@ -13,7 +13,7 @@ touch RUNNING
 if [ "$LATEST" = "$CURRENT" ]; then rm RUNNING; exit 0; fi
 
 echo $CURRENT > log_timestamp
-echo $CURRENT >> log_update
+echo $CURRENT `date` >> log_update
 
 # Update the data
 python legquery.py --session 2016a --details
@@ -22,5 +22,6 @@ python legquery.py
 # Update the site and FTP it.
 python deploy.py --news
 python deploy.py --freeze --ftp --nosession
-python deploy.py --freeze --ftp --session 2016a
+python deploy.py --ftp --theweek
+python deploy.py --ftp --session 2016a
 rm RUNNING
