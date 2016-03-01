@@ -100,6 +100,8 @@ def main(args):
             ftp.mkdir(os.path.join(dirname, subdirname))
 
         for filename in filenames:
+            if 'jpg' in filename:
+                continue
             if args.verbose:
                 print(os.path.join(dirname, filename))
             try:
