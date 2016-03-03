@@ -300,15 +300,15 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
         <p>The latest in <a href="http://www.denverpost.com/legislature">Colorado state legislature news</a>: <script src="http://extras.denverpost.com/cache/politics_legislature_1.js"></script></p>
     </section>
 
-    <div id="dfmFooter" style="border-top:1px solid #ddd;"><!--Footer Goes Here--></div>
-    
+    <div id="dfmFooter" style="border-top:1px solid #ddd;"><!--CORPORATE FOOTER--></div>
     <script type="text/javascript" src="http://local.denverpost.com/common/dfm/dfm-nav/dfm-nav-core.js"></script>
     <script>
-        var waitingforGodot = setTimeout(function(){dfmNav.initParams("mode|article", "site|denverpost", "pageTitle|Legislature", "leaderboard|true", "thirdParty|false")},5);
+        window.setTimeout(function(){dfmNav.initParams("mode|article", "site|denverpost", "pageTitle|Legislature", "leaderboard|true", "thirdParty|false")},5);
     </script>
+
     <footer>
-    <script type="text/javascript">
-        //Chartbeat stuff
+    <script>
+        // VENDOR: CHARTBEAT
         _sf_async_config.uid = 2671;
         _sf_async_config.domain = 'denverpost.com';
         _sf_async_config.sections = 'politics,legislature,data';
@@ -317,7 +317,6 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
             function loadChartbeat() {
                 window._sf_endpt=(new Date()).getTime();
                 var e = document.createElement('script');
-                e.setAttribute('type', 'text/javascript');
                 e.setAttribute('src','//static.chartbeat.com/js/chartbeat.js');
                 document.body.appendChild(e);
             }
