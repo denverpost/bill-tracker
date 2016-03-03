@@ -3,10 +3,17 @@
 {% block breadcrumbs %}{{ super() }}
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>{% endblock breadcrumbs %}
 {% block content %}
-<h2></h2>
-<p></p>
-
-{{legistlator}}
+{% with leg = response.legislator %}
+<p>
+    {{leg.name_first}} {{leg.name_last}} is a {{response.title}} in district {{leg.district}} in the Colorado state {{leg.chamber}}.
+    District {{leg.district}} covers 
+    {%- for item in leg.counties %} {{item}}, {% endfor %} counties.
+</p>
+{% if leg.occupation %}
+<p>{{leg.name_first}} {{leg.name_last}} is a {{leg.occupation}}.</p>
+{% endif %}
+{{response.legislator}}
+{% endwith %}
 {#
 <ul>
 {% for item in response.app -%}

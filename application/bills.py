@@ -391,6 +391,7 @@ def district_detail(district):
     for item in legislators_all:
         if legislators_all[item]['chamber'].lower() == chamber and legislators_all[item]['district'] == district:
             legislators.append(legislators_all[item])
+
     response = {
         'app': app,
         'legislators': legislators,
@@ -401,16 +402,28 @@ def district_detail(district):
 @app.route('/house/<district>/<last_name>/')
 def legislator_detail(district, last_name):
     chamber = 'senate'
+    title = 'senator'
     if 'house' in request.path[:10]:
         chamber = 'house'
-    # Get the legislator data
-    leg = {}
-    app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
-    app.page['description'] = ''
-    legislators = json.load(open('application/static/data/legislators.json'))
+        title = 'representative'
+    legislators_all = json.load(open('application/static/data/legislators.json'))
+
+    legislator = []
+    # Figure out which legislator we're looking for
+    last_name = last_name.replace('_', ' ').title()
+    if ' ' in last_name:
+        last_name += '.'
+    for item in legislators_all:
+        if item == last_name:
+            legislator = legislators_all[item]
+            print legislator
+    app.page['title'] = '%s %s, Colorado state %s' % (legislator['name_first'], legislator['name_last'], title)
+    app.page['description'] = '%s %s contact and legislation information for this Colorado state %s' % (legislator['name_first'], legislator['name_last'], title)
+
     response = {
         'app': app,
-        'legislator': leg
+        'title': title,
+        'legislator': legislator
     }
     return render_template('legislator_detail.html', response=response)
 
