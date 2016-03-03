@@ -69,6 +69,8 @@ def datetime_filter(value, format='datefull'):
         format = "%A, %I:%M %p"
     elif format == 'datefull':
         format = "%b. %d"
+    elif format == 'yeardatefull':
+        format = "%b. %d %Y"
     elif format == 'weekday':
         format = "%a"
     try:

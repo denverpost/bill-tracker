@@ -213,9 +213,13 @@ $('#bill-table').dataTable( {
 
 <h3>All legislation</h3>
 <ol>
-{% for item in response.data.bills %}
+{% for item in response.data.bills|sort(attribute='action_dates.first') %}
     <li><span>{{item.bill_id}}</span>: <a href="{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
+    {% if response.session == response.app.session %}
         ({{item.action_dates.first|datetime_raw|datetime_filter}})
+    {% else %}
+        ({{item.action_dates.first|datetime_raw|datetime_filter('yeardatefull')}})
+    {% endif %}
     </li>
 {% endfor %}
 </ol>
