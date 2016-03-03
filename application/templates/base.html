@@ -102,19 +102,28 @@
         }
         .ad { margin-bottom: 10px; }
         .row { margin-left: 0; }
-        .stamp {
+        nav {
+            clear: both;
+        }
+        nav ul li {
+            float: left;
+        }
+        .stamp, nav {
+            font-family: Georgia, serif;
             font-style: italic;
             color: #aaa;
             text-align: center;
             width: 100%;
             line-height: 0.5;
         }
-        .stamp span {
+        .stamp span, nav ul span {
             display: inline-block;
             position: relative;  
         }
         .stamp span:before,
-        .stamp span:after {
+        .stamp span:after,
+        nav ul:before,
+        nav ul:after {
             content: "";
             position: absolute;
             height: 5px;
@@ -123,11 +132,13 @@
             top: 0;
             width: 600px;
         }
-        .stamp span:before {
+        .stamp span:before,
+        nav ul:before {
             right: 100%;
             margin-right: 15px;
         }
-        .stamp span:after {
+        .stamp span:after,
+        nav ul:after {
             left: 100%;
             margin-left: 15px;
         }
@@ -257,6 +268,15 @@
     <div id="wrapper">
 
         <p id="datestamp" class="stamp"><span>Colorado Bill Tracker, last updated {{''|next_update('this')}}</span></p>
+{#
+        <nav>
+            <ul>
+                <li><a href="/app/bill-tracker/the-week/">The Week</a></li>
+                <li><a href="/app/bill-tracker/bills/">Legislation</a></li>
+                <li><a href="/app/bill-tracker/legislators/">Legislators</a></li>
+            </ul>
+        </nav>
+#}
         <div id="breadcrumbs">
             {% block breadcrumbs %}
             <a href="http://www.denverpost.com/">Home</a>
