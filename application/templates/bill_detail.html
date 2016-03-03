@@ -6,14 +6,20 @@
 &rsaquo; <a href="../">{{response.session}}</a>{% endblock breadcrumbs %}
 {% block content %}
 {% set type = response.data.bill.type.0 %}
+
+{# We want date/months with the years in them if we're on a non-current session. #}
+{% set date_format='yeardatefull' %}
+{% if response.session == response.app.session %}
+{% set date_format='datefull' %}
+{% endif %}
 <p>
-    This {{type}} was created {{response.data.bill.action_dates.first|datetime_raw|datetime_filter}}
-    and last touched {{response.data.bill.action_dates.last|datetime_raw|datetime_filter}}.
+    This {{type}} was created {{response.data.bill.action_dates.first|datetime_raw|datetime_filter(date_format)}}
+    and last touched {{response.data.bill.action_dates.last|datetime_raw|datetime_filter(date_format)}}.
 </p>
 
 <dl>
     <dt>Introduced</dt>
-        <dd>{{response.data.bill.action_dates.first|datetime_raw|datetime_filter}}</dd>
+        <dd>{{response.data.bill.action_dates.first|datetime_raw|datetime_filter(date_format)}}</dd>
 {% if response.data.bill.chamber == 'lower' %}
     <dt>Passed House</dt>
         <dd>{{response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter}}</dd>
