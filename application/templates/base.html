@@ -106,7 +106,13 @@
             clear: both;
         }
         nav ul li {
-            float: left;
+            display: inline;
+        }
+        nav ul li:after {
+            content: " ~ ";
+        }
+        nav ul li:last-child:after {
+            content: "";
         }
         .stamp, nav {
             font-family: Georgia, serif;
@@ -268,15 +274,15 @@
     <div id="wrapper">
 
         <p id="datestamp" class="stamp"><span>Colorado Bill Tracker, last updated {{''|next_update('this')}}</span></p>
-{#
         <nav>
             <ul>
                 <li><a href="/app/bill-tracker/the-week/">The Week</a></li>
+<!--
                 <li><a href="/app/bill-tracker/bills/">Legislation</a></li>
+-->
                 <li><a href="/app/bill-tracker/legislators/">Legislators</a></li>
             </ul>
         </nav>
-#}
         <div id="breadcrumbs">
             {% block breadcrumbs %}
             <a href="http://www.denverpost.com/">Home</a>
