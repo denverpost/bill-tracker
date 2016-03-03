@@ -141,26 +141,27 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
     </style>
 
     
-    <script type="text/javascript" src="http://extras.denverpost.com/media/js/jquery-min.js"></script>
-    <script type="text/javascript" src="http://extras.denverpost.com/media/js/dputils-min.js?v=3"></script>
+    <script src="http://extras.denverpost.com/media/js/jquery-min.js"></script>
+    <script src="http://extras.denverpost.com/media/js/dputils-min.js?v=3"></script>
 
-    <script type="text/javascript">
+    <script>
         var iframe = '', kiosk = '';
         if ( document.location.hash === '#iframe' ) { iframe = 1 }
         if ( window.top !== window.self ) { iframe = 1; }
         if ( iframe === '' ) {
-        //Chartbeat startup
-        var _sf_startpt=(new Date()).getTime();
-        var _sf_async_config={};
+            //Chartbeat startup
+            var _sf_startpt=(new Date()).getTime();
+            var _sf_async_config={};
         }
-        else { googletag = {}; }
     </script>
     <script>
+        if ( iframe === '' ) {
         (function() {
           var useSSL = "https:" == document.location.protocol;
           var src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
           document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
          })();
+        }
     </script>
     <script>
       if ( typeof googletag !== "undefined" )
