@@ -268,6 +268,7 @@ def session_index():
     return render_template('session_index.html', response=response)
 
 @app.route('/bills/<session>/')
+@app.route('/bills/<session>.js')
 def session_detail(session):
     if session not in app.sessions:
         abort(404)
@@ -290,13 +291,25 @@ def session_detail(session):
         if 'sources' not in item:
             item['sources'] = []
         bills.append(item)
+
+    # We return a lighter version of the bills dict for generating the javascript.
+    data['bills_light'] = []
+    for item in data['bills']:
+        url = 'http://extra.denverpost.com/app/bill-tracker/bills/%s/%s/' % (item['session'].lower(), item['bill_id'].replace(' ', '_').lower())
+        d = { 'title': item['title'], 'url': url }
+        data['bills_light'].append(d)
+
     response = {
         'app': app,
         'session': session,
         'json': json.dumps(bills),
         'data': data
     }
-    return render_template('session_detail.html', response=response)
+
+    fn = 'session_detail.html'
+    if '.js' in request.path:
+        fn = fn.replace('.html', '.js')
+    return render_template(fn, response=response)
 
 @app.route('/bills/<session>/<bill_id>/')
 def bill_detail(session, bill_id):
