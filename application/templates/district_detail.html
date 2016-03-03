@@ -5,12 +5,12 @@
 {% block content %}
 <h2></h2>
 <p></p>
-
 {#
+{{response.legislators}}
+#}
 <ul>
-{% for item in response.app -%}
-    <li><a href="{{item}}/">{{item|datetime_filter}}</a></li>
+{% for item in response.legislators -%}
+    <li><a href="{{item.name_last|lower}}/">{{item.name_first}} {{item.name_last}}</a></li>
 {% endfor %}
 </ul>
-#}
 {% endblock content %}

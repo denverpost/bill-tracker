@@ -384,9 +384,16 @@ def district_detail(district):
         chamber = 'house'
     app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
     app.page['description'] = ''
-    legislators = json.load(open('application/static/data/legislators.json'))
+    legislators_all = json.load(open('application/static/data/legislators.json'))
+
+    # Figure out which legislators are in the district we're looking at.
+    legislators = []
+    for item in legislators_all:
+        if legislators_all[item]['chamber'].lower() == chamber and legislators_all[item]['district'] == district:
+            legislators.append(legislators_all[item])
     response = {
         'app': app,
+        'legislators': legislators,
     }
     return render_template('district_detail.html', response=response)
 
