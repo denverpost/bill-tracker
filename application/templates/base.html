@@ -59,33 +59,39 @@ if ( window.screen.availWidth < 769 || window.innerWidth < 769 )
 
     <link rel="stylesheet" type="text/css" href="http://extras.mnginteractive.com/live/css/site67/bartertown.css">
     <style type="text/css">
-        body { margin:0; }
-        #wrapper { width:1008px; margin:0 auto; margin-top:10px; margin-bottom:10px; }
-        #dfmEndFooterLinks ul li { list-style-type:none; margin-left:15px!important; }
+            body { margin:0; }
+            #wrapper {
+                width:1008px;
+                margin:10px auto;
+            }
+            #dfmEndFooterLinks ul li {
+                list-style-type:none;
+                margin-left:15px!important;
+            }
 
-    @media only screen and (max-width: 768px) {
-    /* Kill the nav */
-    #dfmEndFooterLinks, #dfmHeader div.foot, #dfmHeader div.sub-navigation, #dfmHeader #dfmMasthead #dfmPageTitle, #dfmHeader #dfmMasthead #dfmSearch, #dfmHeader #dfmMasthead #weatherBoxReal, #dfmHeader iframe, #leaderBoardAd { display:none!important; }
-    #dfmMasthead { height:40px!important; }
-    #dfmHeader #dfmMasthead h3 { margin-left:.5em; }
-    #dfmHeader div.page-head div.body { background:none; border:none; }
-    #dfmHeader div.page-head div.body div.margin { width:100%; }
-    #wrapper { width:100%; overflow:hidden; margin: .5em; }
-    #top_leaderboard_wrap { display: none; }
+        @media only screen and (max-width: 768px) {
+            /* Kill the nav */
+            #dfmEndFooterLinks, #dfmHeader div.foot, #dfmHeader div.sub-navigation, #dfmHeader #dfmMasthead #dfmPageTitle, #dfmHeader #dfmMasthead #dfmSearch, #dfmHeader #dfmMasthead #weatherBoxReal, #dfmHeader iframe, #leaderBoardAd { display:none!important; }
+            #dfmMasthead { height:40px!important; }
+            #dfmHeader #dfmMasthead h3 { margin-left:.5em; }
+            #dfmHeader div.page-head div.body { background:none; border:none; }
+            #dfmHeader div.page-head div.body div.margin { width:100%; }
+            #wrapper { width:100%; overflow:hidden; margin: .5em; }
+            #top_leaderboard_wrap { display: none; }
 
-    /* Adjust the layout */
-    .adElement { width: 100%!important; }
-    body h1, body h2, body h3, body h4, body h5, body h6 { line-height: 1; }
-    body h1 { 
-        width: 100%!important; 
-        font-size: 2em!important;
-    }
+            /* Adjust the layout */
+            .adElement { width: 100%!important; }
+            body h1, body h2, body h3, body h4, body h5, body h6 { line-height: 1; }
+            body h1 { 
+                width: 100%!important; 
+                font-size: 2em!important;
+            }
 
-    /* Tweaks to align rows and make things clickable */
-    div.body { height: 30px; }
-    body dl dt { margin-bottom: 0.75rem; }
-    .maincol, .sidebarcol { clear: both; }
-    }
+            /* Tweaks to align rows and make things clickable */
+            div.body { height: 30px; }
+            body dl dt { margin-bottom: 0.75rem; }
+            .maincol, .sidebarcol { clear: both; }
+        }
 
         footer { clear: both; }
         footer p, #content-footer p { text-align: center; }
