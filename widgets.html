@@ -11,13 +11,19 @@
 <h2>In-article</h2>
 <p><a href="">Here's one article you can find it</a>. In NGPS it's  in-article bill tracker widget (29537676) </p>
 
+<style type="text/css">
+.tracker_widget {
+    width: 250px;
+}
+</style>
 <div id="tracker_widget" class="tracker_widget">
     <h2><a href="http://www.denverpost.com/bill-tracker" title="Colorado Bill Tracker">Bill Tracker</a></h2>
-    <p>New legislation</p>
+    <p>
+        <a href="/bill-tracker">Get details on Colorado state legislation</a>.
+    </p>
+    <h3><a href="http://extras.denverpost.com/app/bill-tracker/bills/2016a/">New legislation</a></h3>
     <ul id="new-leg"></ul>
-<p>
-    <a href="/bill-tracker">Get details on Colorado state legislation</a>.
-</p>
+    <p>&rsaquo; <a href="javascript:billt.clear_list('new-leg'); billt.get_new_leg();">More new legislation</a></p>
 </div>
 <script>
 var billt = {
