@@ -3,20 +3,30 @@
 <head>
     <title>Widgets</title>
     <meta charset="utf-8">
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 <body>
 <h1>Widgets!</h1>
 
 <h2>In-article</h2>
 <p><a href="">Here's one article you can find it</a>. In NGPS it's  in-article bill tracker widget (29537676) </p>
+
 <div id="tracker_widget" class="tracker_widget">
     <h2><a href="http://www.denverpost.com/bill-tracker" title="Colorado Bill Tracker">Bill Tracker</a></h2>
-
+    
 <p>
-<a href="/bill-tracker">Get details on Colorado state legislation</a>.
+    <a href="/bill-tracker">Get details on Colorado state legislation</a>.
 </p>
 </div>
+<script>
+jQuery.getScript('http://extras.denverpost.com/app/bill-tracker/bills/2016a.js', function() {
+    var max = bills.length;
+    var rando = Math.floor(Math.random() * max) + 1;
+
+    console.log(bills[rando], rando)
+    });
+
+</script>
 
 <h2>NGPS Section Front</h2>
 <p>Used in the left column on <a href="http://denverpost.com/legislature">denverpost.com/legislature</a>.</p>

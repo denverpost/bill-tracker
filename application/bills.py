@@ -295,7 +295,7 @@ def session_detail(session):
     # We return a lighter version of the bills dict for generating the javascript.
     data['bills_light'] = []
     for item in data['bills']:
-        url = 'http://extra.denverpost.com/app/bill-tracker/bills/%s/%s/' % (item['session'].lower(), item['bill_id'].replace(' ', '_').lower())
+        url = 'http://extras.denverpost.com/app/bill-tracker/bills/%s/%s/' % (item['session'].lower(), item['bill_id'].replace(' ', '_').lower())
         d = { 'title': item['title'], 'url': url }
         data['bills_light'].append(d)
 
