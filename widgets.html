@@ -13,19 +13,36 @@
 
 <div id="tracker_widget" class="tracker_widget">
     <h2><a href="http://www.denverpost.com/bill-tracker" title="Colorado Bill Tracker">Bill Tracker</a></h2>
-    
+    <p>New legislation</p>
+    <ul id="new-leg"></ul>
 <p>
     <a href="/bill-tracker">Get details on Colorado state legislation</a>.
 </p>
 </div>
 <script>
-jQuery.getScript('http://extras.denverpost.com/app/bill-tracker/bills/2016a.js', function() {
-    var max = bills.length;
-    var rando = Math.floor(Math.random() * max) + 1;
-
-    console.log(bills[rando], rando)
+var billt = {
+    rand: function(max) { return Math.floor(Math.random() * max) + 1; },
+    clear_list: function(id) { jQuery('#' + id).html(''); },
+    bill_markup: function(bill) {
+        return '<li><a href="' + bill['url'] + '">' + bill['title'] + '</a></li>';
+    },
+    add_item: function(id, markup) { jQuery('#' + id).append(markup); },
+    get_new_leg: function() {
+        var newleg = [this.rand(15), this.rand(15)];
+        // Make sure we're not pulling the same recent bill.
+        while ( newleg[0] == newleg[1] ) {
+            newleg[1] = this.rand(15);
+        }
+        this.add_item('new-leg', this.bill_markup(bills[newleg[0]]));
+        this.add_item('new-leg', this.bill_markup(bills[newleg[1]]));
+    },
+    init: function() {
+        jQuery.getScript('http://extras.denverpost.com/app/bill-tracker/bills/2016a.js', function() {
+            billt.get_new_leg();
     });
-
+    }
+}
+billt.init();
 </script>
 
 <h2>NGPS Section Front</h2>
