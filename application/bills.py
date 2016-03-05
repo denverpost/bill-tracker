@@ -144,7 +144,9 @@ class BillQuery:
         filtered = []
         for item in bills:
             detail = self.get_bill_detail(item['session'], item['bill_id'])
-            if 'action_dates' in detail:
+            if 'action_dates' in detail and field in detail['action_dates'] and datetimeformat:
+                if not detail['action_dates'][field]:
+                    continue
                 dt = datetime.strptime(detail['action_dates'][field], datetimeformat)
                 if date_range[0] <= dt.date() <= date_range[1]:
                     filtered.append(item)
