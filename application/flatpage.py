@@ -14,6 +14,7 @@ class FlatPageView(View):
 
     def __init__(self, page_name):
         self.page_name = page_name
+        self.page = pages.get_or_404(self.page_name)
 
     def get_template(self):
         return self.page.meta.get('template', 'flatpage.html')
@@ -25,9 +26,8 @@ class FlatPageView(View):
         app.page['title'] = ''
         app.page['description'] = ''
         response = {
-            app: app
+            'app': app
         }
-        self.page = pages.get_or_404(self.page_name)
         context = { 'response': response, 'page': self.page }
         return self.render_template(context)
 

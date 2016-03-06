@@ -9,6 +9,7 @@ import string
 from application import app
 import filters
 from datetime import date, datetime, timedelta
+from werkzeug.contrib.atom import AtomFeed
 # import legislators
 
 
@@ -329,6 +330,25 @@ def bill_detail(session, bill_id):
         'data': data
     }
     return render_template('bill_detail.html', response=response)
+
+@app.route('/bills/<session>/<bill_id>/updates.atom')
+def recent_feed(session, bill_id):
+    if session not in app.sessions:
+        abort(404)
+    bill = json.load(open('_input/%s/%s.json' % (session, bill_id.lower())))
+    print request
+    feed = AtomFeed('%s - %s' % (bill['title'], bill['bill_id']),
+                    feed_url=request.url, url=request.url_root)
+    permalink = request.path.replace('updates.atom', '')
+    print bill['actions'][0]['date']
+    print filters.datetime_raw_filter(bill['actions'][0]['date'])
+    for item in bill['actions']:
+        feed.add(item['action'], '',
+                 content_type='html',
+                 url=permalink,
+                 updated=filters.datetime_raw_filter(item['date']),
+                 published=filters.datetime_raw_filter(item['date']))
+    return feed.get_response()
 
 @app.route('/bills/<session>/passed/')
 @app.route('/bills/<session>/failed/')
