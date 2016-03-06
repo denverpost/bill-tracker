@@ -81,5 +81,11 @@ def bill_detail():
     for item in bills:
         yield { 'session': item['session'].lower(), 'bill_id': item['bill_id'].lower().replace(' ', '_') }
 
+@freezer.register_generator
+def bill_detail_feed():
+    bills = json.load(open('_input/co-bills.json'))
+    for item in bills:
+        yield { 'session': item['session'].lower(), 'bill_id': item['bill_id'].lower().replace(' ', '_') }
+
 if __name__ == '__main__':
     freezer.freeze()
