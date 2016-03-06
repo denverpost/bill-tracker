@@ -336,14 +336,11 @@ def recent_feed(session, bill_id):
     if session not in app.sessions:
         abort(404)
     bill = json.load(open('_input/%s/%s.json' % (session, bill_id.lower())))
-    print request
     feed = AtomFeed('%s - %s' % (bill['title'], bill['bill_id']),
-                    feed_url=request.url, url=request.url_root)
-    permalink = request.path.replace('updates.atom', '')
-    print bill['actions'][0]['date']
-    print filters.datetime_raw_filter(bill['actions'][0]['date'])
+                    feed_url=request.url.replace(request.url_root, app.url_root), url=app.url_root)
+    permalink = '%s%s' % (app.url_root[:-1], request.path.replace('updates.atom', ''))
     for item in bill['actions']:
-        feed.add(item['action'], '',
+        feed.add('%s: %s' % (bill['bill_id'], item['action']), '',
                  content_type='html',
                  url=permalink,
                  updated=filters.datetime_raw_filter(item['date']),
