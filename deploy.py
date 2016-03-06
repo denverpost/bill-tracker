@@ -93,6 +93,9 @@ def main(args):
             if args.verbose:
                 print dirname, subdirname
 
+            if args.theweek and 'the-week' not in dirname:
+                continue
+
             # Skip the endless directory creation on previous years.
             if current_session not in dirname:
                 if args.verbose:
@@ -102,6 +105,8 @@ def main(args):
 
         for filename in filenames:
             if 'jpg' in filename:
+                continue
+            if args.theweek and 'the-week' not in dirname:
                 continue
             if args.verbose:
                 print(os.path.join(dirname, filename))
@@ -144,6 +149,8 @@ def build_parser(args):
                         help="FTP the site to the production server.")
     parser.add_argument("--nosession", dest="no_session", default=False, action="store_true",
                         help="Only upload top-level indexes & homepage.")
+    parser.add_argument("--theweek", dest="theweek", default=False, action="store_true",
+                        help="Only upload the week in review-section files.")
     parser.add_argument("--news", dest="get_news", default=False, action="store_true",
                         help="Download and cache the recent legislative news.")
     parser.add_argument("-s", "--session", dest="session", default=False)
