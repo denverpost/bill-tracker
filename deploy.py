@@ -52,6 +52,7 @@ def main(args):
     if not args.do_ftp:
         return False
 
+    urls_updated = []
     basedir = 'application/build/'
     os.chdir(basedir)
     ftp_path = '/DenverPost/app/bill-tracker/'
@@ -119,10 +120,12 @@ def main(args):
                 print "PURGE:", url
             try:
                 response, content = h.request('%s/' % url, 'PURGE', headers={}, body='')
+                urls_updated.append(url)
             except:
                 print "ERROR: Could not bust cache on %s" % url
 
     ftp.disconnect()
+    print "Updated: %s" % urls.iteritems()
     return True
 
 def build_parser(args):
@@ -140,7 +143,7 @@ def build_parser(args):
     parser.add_argument("--ftp", dest="do_ftp", default=False, action="store_true",
                         help="FTP the site to the production server.")
     parser.add_argument("--nosession", dest="no_session", default=False, action="store_true",
-                        help="Only upload basic indexes & homepage.")
+                        help="Only upload top-level indexes & homepage.")
     parser.add_argument("--news", dest="get_news", default=False, action="store_true",
                         help="Download and cache the recent legislative news.")
     parser.add_argument("-s", "--session", dest="session", default=False)
