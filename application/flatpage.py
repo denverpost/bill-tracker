@@ -22,15 +22,17 @@ class FlatPageView(View):
         return render_template(self.get_template(), **context)
 
     def dispatch_request(self):
+        app.page['title'] = ''
+        app.page['description'] = ''
         response = {
-            'dicts': app.dicts
+            app: app
         }
         self.page = pages.get_or_404(self.page_name)
         context = { 'response': response, 'page': self.page }
         return self.render_template(context)
 
 #app.add_url_rule('/about/updates/', view_func=FlatPageView.as_view('update', page_name='update'))
-#app.add_url_rule('/about/', view_func=FlatPageView.as_view('about', page_name='about'))
+app.add_url_rule('/about/', view_func=FlatPageView.as_view('about', page_name='about'))
 #app.add_url_rule('/about/notifications/', view_func=FlatPageView.as_view('notifications', page_name='notifications'))
 #app.add_url_rule('/about/notifications/unsubscribe/', view_func=FlatPageView.as_view('unsubscribe', page_name='unsubscribe'))
 #app.add_url_rule('', view_func=FlatPageView.as_view('', page_name=''))
