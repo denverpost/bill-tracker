@@ -130,7 +130,7 @@ def main(args):
                 print "ERROR: Could not bust cache on %s" % url
 
     ftp.disconnect()
-    print "Updated: %s" % urls.iteritems()
+    print "Updated: %s" % "\n".join(urls_updated)
     return True
 
 def build_parser(args):
