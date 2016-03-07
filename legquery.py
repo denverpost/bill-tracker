@@ -27,10 +27,22 @@ class Sunlight:
             >>> s.get_committee_list()
             True
             """
-        self.bills = sunlight.openstates.committees(state=self.state)
+        self.committees = sunlight.openstates.committees(state=self.state)
         filename = '_input/%s-committees.json' % (self.state)
         fh = open(filename, 'wb')
-        json.dump(self.bills, fh)
+        json.dump(self.committees, fh)
+        return True
+
+    def get_legislator_list(self):
+        """ Get list of legislators.
+            >>> s = Sunlight()
+            >>> s.get_legislator_list()
+            True
+            """
+        self.legislators = sunlight.openstates.legislators(state=self.state)
+        filename = '_input/%s-legislators.json' % (self.state)
+        fh = open(filename, 'wb')
+        json.dump(self.legislators, fh)
         return True
 
     def get_event_list(self):
@@ -39,10 +51,10 @@ class Sunlight:
             >>> s.get_event_list()
             True
             """
-        self.bills = sunlight.openstates.events(state=self.state)
+        self.events = sunlight.openstates.events(state=self.state)
         filename = '_input/%s-events.json' % (self.state)
         fh = open(filename, 'wb')
-        json.dump(self.bills, fh)
+        json.dump(self.events, fh)
         return True
 
     def get_bill_list(self, session=None):
@@ -132,7 +144,7 @@ def main(args):
     s = Sunlight(args)
     s.get_bill_list(args.session)
     s.get_committee_list()
-    #s.get_event_list()
+    s.get_legislator_list()
 
     if 'updated' in args and args.updated:
         print s.bills[0]['updated_at']
