@@ -21,6 +21,18 @@ class Sunlight:
         if not os.path.isdir('%s/_input' % self.directory):
             os.mkdir('%s/_input' % self.directory)
 
+    def get_committee_list(self):
+        """ Get list of committees.
+            >>> s = Sunlight()
+            >>> s.get_commitee_list()
+            True
+            """
+        self.bills = sunlight.openstates.committees(state=self.state)
+        filename = '_input/%s-committees.json' % (self.state)
+        fh = open(filename, 'wb')
+        json.dump(self.bills, fh)
+        return True
+
     def get_bill_list(self, session=None):
         """ Get list of bills, sometimes from a particular session.
             >>> s = Sunlight()
@@ -107,6 +119,7 @@ def main(args):
 
     s = Sunlight(args)
     s.get_bill_list(args.session)
+    s.get_committee_list()
 
     if 'updated' in args and args.updated:
         print s.bills[0]['updated_at']
