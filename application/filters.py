@@ -100,6 +100,52 @@ def lowerfirst_filter(value):
     return '%s%s' % (first, value[1:])
 app.add_template_filter(lowerfirst_filter)
 
+@app.template_filter(name='actiontosentence')
+def actiontosentence_filter(value):
+    """ Turn bill actions into something closer to a sentence.
+        Examples of actions:
+            In House - Assigned to Transportation & Energy
+            Committee on Transportation & Energy Refer Amended to House Committee of the Whole
+            Second Reading Passed with Amendments - Committee
+            Third Reading Laid Over Daily - No Amendments
+            Third Reading Passed - No Amendments
+            In Senate - Assigned to Transportation
+            House Second Reading Passed - No Amendments
+            House Third Reading Passed - No Amendments
+            Signed by the President of the Senate
+            Signed by the Speaker of the House
+            Sent to the Governor
+            Introduced In Senate - Assigned to Transportation
+        """
+    # There are certain words we're always going to lowercase
+    value = value.replace('Assigned ', 'assigned ')
+    value = value.replace('In ', 'in ')
+    value = value.replace('Introduced ', 'introduced ')
+
+    # Also, add a the to Senate / House references
+    value = value.replace('in Senate', 'in the Senate')
+    value = value.replace('in House', 'in the House')
+
+    # This one doesn't work for some reason
+    if 'Postpone Indefinitely' in value:
+        value = value.rstrip(' Postpone Indefinitely')
+        return 'postponed indefinitely by the %s' % value
+
+    elif 'Amendments' in value:
+        parts = value.split(' - ')
+
+    elif 'introduced in ' in value:
+        return value.replace('-', 'and')
+
+    elif value[0:2] == 'in':
+        parts = value.split(' - ')
+        return '%s%s' % (parts[1], lowerfirst_filter(parts[0]))
+
+    elif 'Signed by' or 'Sent to' in value:
+        return lowerfirst_filter(value)
+    return value
+app.add_template_filter(actiontosentence_filter)
+
 @app.template_filter(name='next_update')
 def next_update(blank, value, delta=0):
     """ When is this / the next Tuesday, Wednesday, Thursday, Friday or Saturday?
