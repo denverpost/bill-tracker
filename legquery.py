@@ -24,11 +24,23 @@ class Sunlight:
     def get_committee_list(self):
         """ Get list of committees.
             >>> s = Sunlight()
-            >>> s.get_commitee_list()
+            >>> s.get_committee_list()
             True
             """
         self.bills = sunlight.openstates.committees(state=self.state)
         filename = '_input/%s-committees.json' % (self.state)
+        fh = open(filename, 'wb')
+        json.dump(self.bills, fh)
+        return True
+
+    def get_event_list(self):
+        """ Get list of events.
+            >>> s = Sunlight()
+            >>> s.get_event_list()
+            True
+            """
+        self.bills = sunlight.openstates.events(state=self.state)
+        filename = '_input/%s-events.json' % (self.state)
         fh = open(filename, 'wb')
         json.dump(self.bills, fh)
         return True
@@ -120,6 +132,7 @@ def main(args):
     s = Sunlight(args)
     s.get_bill_list(args.session)
     s.get_committee_list()
+    #s.get_event_list()
 
     if 'updated' in args and args.updated:
         print s.bills[0]['updated_at']
