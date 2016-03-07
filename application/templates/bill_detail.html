@@ -80,18 +80,16 @@
 {% else %}
 <p>Nobody voted yes on {{response.data.bill.title}}.</p>
 {% endif %}
+#}
 
-<h3>No Votes</h3>
 {% if vote.no_count > 0 %}
+<h4>No Votes</h4>
 <ol>
 {% for item in vote.no_votes %}
     <li>{{item.name}}</li>
 {% endfor %}
 </ol>
-{% else %}
-<p>Nobody voted no on {{response.data.bill.title}}.</p>
 {% endif %}
-#}
 {% endfor %}
 
 <!--
