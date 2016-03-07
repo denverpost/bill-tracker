@@ -15,7 +15,7 @@
 <p>
     This {{type}} was introduced {{response.data.bill.action_dates.first|datetime_raw|datetime_filter(date_format)}}
     and last acted on {{response.data.bill.action_dates.last|datetime_raw|datetime_filter(date_format)}},
-    when it was {{response.data.bill.actions[-1].action|actiontosentence}}.
+    when it was {{response.data.bill.actions[-1].action}}.
 </p>
 
 <dl>
