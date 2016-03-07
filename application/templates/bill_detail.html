@@ -13,8 +13,9 @@
 {% set date_format='datefull' %}
 {% endif %}
 <p>
-    This {{type}} was created {{response.data.bill.action_dates.first|datetime_raw|datetime_filter(date_format)}}
-    and last touched {{response.data.bill.action_dates.last|datetime_raw|datetime_filter(date_format)}}.
+    This {{type}} was introduced {{response.data.bill.action_dates.first|datetime_raw|datetime_filter(date_format)}}
+    and last touched {{response.data.bill.action_dates.last|datetime_raw|datetime_filter(date_format)}},
+    when it was {{response.data.bill.actions[-1].action|lowerfirst}}.
 </p>
 
 <dl>

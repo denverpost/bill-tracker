@@ -93,6 +93,13 @@ def chamber_filter(value):
     return 'Senate'
 app.add_template_filter(chamber_filter)
 
+@app.template_filter(name='lowerfirst')
+def lowerfirst_filter(value):
+    # Decapitalize the first letter in the string.
+    first = value[0].lower()
+    return '%s%s' % (first, value[1:])
+app.add_template_filter(lowerfirst_filter)
+
 @app.template_filter(name='next_update')
 def next_update(blank, value, delta=0):
     """ When is this / the next Tuesday, Wednesday, Thursday, Friday or Saturday?
