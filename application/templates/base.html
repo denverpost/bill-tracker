@@ -274,16 +274,7 @@
     <div id="wrapper">
 
         <p id="datestamp" class="stamp"><span>Colorado Bill Tracker, last updated {{''|next_update('this')}}</span></p>
-        <nav>
-            <ul>
-                <li><a href="/app/bill-tracker/the-week/">The Week</a></li>
-                <li><a href="/app/bill-tracker/bills/">Legislation</a></li>
-                <li><a href="/app/bill-tracker/about/">About</a></li>
-<!--
-                <li><a href="/app/bill-tracker/legislators/">Legislators</a></li>
--->
-            </ul>
-        </nav>
+        {% include 'inc_nav.html' %}
         <div id="breadcrumbs">
             {% block breadcrumbs %}
             <a href="http://www.denverpost.com/">Home</a>
@@ -332,6 +323,7 @@
     <section id="content-footer">
         <hr noshade>
         <p>The latest in <a href="http://www.denverpost.com/legislature">Colorado state legislature news</a>: <script src="http://extras.denverpost.com/cache/politics_legislature_1.js"></script></p>
+        {% include 'inc_nav.html' %}
     </section>
 
     <div id="dfmFooter" style="border-top:1px solid #ddd;"><!--CORPORATE FOOTER--></div>
