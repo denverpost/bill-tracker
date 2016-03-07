@@ -86,6 +86,13 @@ def bill_details_filter(value, session):
     return bill
 app.add_template_filter(bill_details_filter)
 
+@app.template_filter(name='chamber')
+def chamber_filter(value):
+    if value.lower() == 'lower':
+        return 'House'
+    return 'Senate'
+app.add_template_filter(chamber_filter)
+
 @app.template_filter(name='next_update')
 def next_update(blank, value, delta=0):
     """ When is this / the next Tuesday, Wednesday, Thursday, Friday or Saturday?

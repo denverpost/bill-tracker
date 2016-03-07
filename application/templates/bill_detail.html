@@ -55,19 +55,25 @@
 </ol>
 
 <h2 id="votes">Votes</h2>
+{#
+{{response.data.bill.votes.2}}
+#}
 {% if response.data.bill.votes %}
-<p>{{response.data.bill.votes.0.motion}}</p>
+{% for vote in response.data.bill.votes %}
+<h3>{{vote.chamber|chamber}} vote on {{vote.date|datetime_raw|datetime_filter}}</h3>
+<p>{{vote.motion}}</p>
 <dl>
     <dt>Yes</dt>
-    <dd>{{response.data.bill.votes.0.yes_count}}</dd>
+    <dd>{{vote.yes_count}}</dd>
     <dt>No</dt>
-    <dd>{{response.data.bill.votes.0.no_count}}</dd>
+    <dd>{{vote.no_count}}</dd>
 </dl>
 
+{#
 <h3>Yes Votes</h3>
-{% if response.data.bill.votes.0.yes_count > 0 %}
+{% if vote.yes_count > 0 %}
 <ol>
-{% for item in response.data.bill.votes.0.yes_votes %}
+{% for item in vote.yes_votes %}
     <li>{{item.name}}<span class="dev" style="display:none;">{{item}}</span></li>
 {% endfor %}
 </ol>
@@ -76,15 +82,17 @@
 {% endif %}
 
 <h3>No Votes</h3>
-{% if response.data.bill.votes.0.no_count > 0 %}
+{% if vote.no_count > 0 %}
 <ol>
-{% for item in response.data.bill.votes.0.no_votes %}
+{% for item in vote.no_votes %}
     <li>{{item.name}}</li>
 {% endfor %}
 </ol>
 {% else %}
 <p>Nobody voted no on {{response.data.bill.title}}.</p>
 {% endif %}
+#}
+{% endfor %}
 
 <!--
 u'bill_chamber': u'lower', u'id': u'COV00013095', u'motion': u'On motion of Majority Leader Scheffel, the resolution was adopted by the following rollcall vote:call vote:', u'chamber': u'upper', u'state': u'co', u'session': u'2015A', u'sources': [{u'url': u'http://www.leg.state.co.us/CLICS/CLICS2015A/csljournals.nsf/(jousen)/846CA59657C151EA87257DC7005207A6/$FILE/jour_002.pdf'}], u'passed': True, u'date': u'2015-01-08 00:00:00', u'vote_id': u'COV00013095', u'type': u'other', u'no_count': 0, u'bill_id': u'COB00002830', u'no_votes': []}]
