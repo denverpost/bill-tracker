@@ -119,6 +119,8 @@ def main(args):
             # Bust the cache on extras
             h = httplib2.Http('')
             url = '%s/' % dirname
+            if filename != 'index.html':
+                url += filename
             url = string.replace(url, '//', '/')
             url = string.replace(url, '.', 'http://extras.denverpost.com/app/bill-tracker', 1)
             if args.verbose:
