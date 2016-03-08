@@ -130,6 +130,18 @@ class BillQuery:
                 filtered.append(item)
         return filtered
 
+    def filter_sponsored_by(self, legislator):
+        """ Return bills that have been sponsored by a particular legislator.
+            """
+        filtered = []
+        for item in self.bills:
+            detail = self.get_bill_detail(self.session, item['bill_id'])
+            for sponsor in detail['sponsors']:
+                # *** this probably isn't how it will really work.
+                if sponsor.lower() == legislator:
+                    filtered.append(item)
+        return filtered
+
     def filter_by_date(self, date_range, field='last', bills=[]):
         """ Return bills that have an action date within the date_range.
             This is more accurate than the filter_updated_at because this date
