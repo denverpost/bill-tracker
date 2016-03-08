@@ -413,10 +413,11 @@ def session_passed_detail(session, passfail, chamber):
 
 @app.route('/senate/')
 @app.route('/house/')
-def chamber_index():
-    chamber = 'senate'
-    if 'house' in request.path:
-        chamber = 'house'
+def chamber_index(chamber=''):
+    if chamber == '':
+        chamber = 'senate'
+        if 'house' in request.path:
+            chamber = 'house'
     app.page['title'] = 'Colorado State %s legislators' % chamber.title()
     app.page['description'] = 'An index of Colorado legislators in the state %s' % chamber
     legislators = json.load(open('application/static/data/legislators.json'))
