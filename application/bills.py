@@ -270,9 +270,9 @@ def session_index():
     }
     return render_template('session_index.html', response=response)
 
+@app.route('/bills/<session>.<js>')
 @app.route('/bills/<session>/')
-@app.route('/bills/<session>.js')
-def session_detail(session):
+def session_detail(session, js=''):
     if session not in app.sessions:
         abort(404)
     app.page['title'] = 'Session %s' % session
@@ -310,7 +310,7 @@ def session_detail(session):
     }
 
     fn = 'session_detail.html'
-    if '.js' in request.path:
+    if js == 'js':
         fn = fn.replace('.html', '.js')
     return render_template(fn, response=response)
 

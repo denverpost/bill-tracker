@@ -58,6 +58,7 @@ def session_index():
 def session_detail():
     for item in app.sessions:
         yield { 'session': item }
+        yield { 'session': item, 'js': 'js' }
 
 @freezer.register_generator
 def session_passed_index():
