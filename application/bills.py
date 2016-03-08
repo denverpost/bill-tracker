@@ -138,7 +138,7 @@ class BillQuery:
             detail = self.get_bill_detail(self.session, item['bill_id'])
             for sponsor in detail['sponsors']:
                 # *** this probably isn't how it will really work.
-                if sponsor.lower() == legislator:
+                if sponsor['name'].lower() == legislator:
                     filtered.append(item)
         return filtered
 
@@ -450,12 +450,20 @@ def district_detail(district):
 
 @app.route('/senate/<district>/<last_name>/')
 @app.route('/house/<district>/<last_name>/')
-def legislator_detail(district, last_name):
-    chamber = 'senate'
+def legislator_detail(district, last_name, chamber=''):
     title = 'senator'
-    if 'house' in request.path[:10]:
-        chamber = 'house'
+
+    # Allow us to override the request.path with a passed argument.
+    # This is used in freeze.py in our deploy.
+    if chamber == '':
+        chamber = 'senate'
+        if 'house' in request.path[:10]:
+            chamber = 'house'
+            title = 'representative'
+    elif chamber == 'house':
+        # A little bit of repetition, sorry.
         title = 'representative'
+
     legislators_all = json.load(open('application/static/data/legislators.json'))
 
     legislator = []
