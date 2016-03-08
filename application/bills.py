@@ -273,6 +273,15 @@ def week_detail(issue_date):
     }
     return render_template('week_detail.html', response=response)
 
+@app.route('/committees/')
+def committee_index():
+    app.page['title'] = 'Colorado legislative committees'
+    app.page['description'] = 'An index of the committees in Colorado legislature.'
+    response = {
+        'app': app,
+    }
+    return render_template('committee_index.html', response=response)
+
 @app.route('/bills/')
 def session_index():
     app.page['title'] = 'Legislative Sessions'
