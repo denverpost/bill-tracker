@@ -428,10 +428,11 @@ def chamber_index():
 
 @app.route('/senate/<district>/')
 @app.route('/house/<district>/')
-def district_detail(district):
-    chamber = 'senate'
-    if 'house' in request.path:
-        chamber = 'house'
+def district_detail(district, chamber=''):
+    if chamber == '':
+        chamber = 'senate'
+        if 'house' in request.path:
+            chamber = 'house'
     app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
     app.page['description'] = ''
     legislators_all = json.load(open('application/static/data/legislators.json'))
