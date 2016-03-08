@@ -351,12 +351,16 @@ def bill_detail_feed(session, bill_id):
 
 @app.route('/bills/<session>/passed/')
 @app.route('/bills/<session>/failed/')
-def session_passed_index(session):
+def session_passed_index(session, passfail=''):
     if session not in app.sessions:
         abort(404)
-    passfail = 'passed'
-    if 'failed' in request.path:
-        passfail = 'failed'
+
+    # This logic allows us to override the view if we need to,
+    # like we need to when we're deploying automatically from freeze.py
+    if passfail == '':
+        passfail = 'passed'
+        if 'failed' in request.path:
+            passfail = 'failed'
     app.page['title'] = 'Legislation that %s in the %s session' % (passfail, session)
     app.page['description'] = ''
     response = {
