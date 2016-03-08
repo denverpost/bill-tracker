@@ -15,6 +15,42 @@ from werkzeug.contrib.atom import AtomFeed
 
 datetimeformat = '%Y-%m-%d %H:%M:%S'
 
+class GenericQuery:
+    """ Boilerplate Query object.
+        """
+
+    def get_detail(self, session, item_id):
+        """ To load the detail json for the object.
+            """
+        fn = '_input/%s/%s.json' % (session.lower(), string.replace(item_id.lower(), ' ', '_'))
+        return json.load(json_check(fn))
+
+    def filter_session(self, session=None):
+        """ Take a session, and, if valid, return the items from that session.
+            """
+        # If we don't pass it a session it defaults to the current session.
+        if not session:
+            session = self.session
+        filtered = []
+
+        for item in self.items:
+            if item['session'] == session:
+                filtered.append(item)
+        self.items = filtered
+        return filtered
+
+class CommitteeQuery(GenericQuery):
+    """ A means of querying the list of committees.
+        """
+
+    def __init__(self):
+        """
+            """
+        self.committees = json.load(json_check('_input/co-committees.json'))
+        self.legislators = json.load(open('application/static/data/legislators.json'))
+        self.unfiltered = self.committees
+        self.session = app.session.upper()
+
 class BillQuery:
     """ A means of querying the list of bills.
         A bill record looks something like this:
@@ -274,7 +310,8 @@ def week_detail(issue_date):
     return render_template('week_detail.html', response=response)
 
 @app.route('/committees/')
-def committee_index():
+@app.route('/committees/<session>/')
+def committee_index(session='2016a'):
     app.page['title'] = 'Colorado legislative committees'
     app.page['description'] = 'An index of the committees in Colorado legislature.'
     response = {
