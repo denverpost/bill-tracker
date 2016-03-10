@@ -17,7 +17,7 @@
 <p>
     This {{type}} was introduced {{response.data.bill.action_dates.first|datetime_raw|datetime_filter(date_format)}}
     and last acted on {{response.data.bill.action_dates.last|datetime_raw|datetime_filter(date_format)}},
-    when it was {{response.data.bill.actions[-1].action}}.
+    when it was {{response.data.bill.actions[-1].action|actiontosentence}}.
 </p>
 {% endif %}
 
@@ -47,7 +47,7 @@
 <h2 id="timeline">{{type|title}} Timeline</h2>
 <ul>
 {% for item in response.data.bill.actions %}
-    <li>{{item.date|datetime_raw|datetime_filter}}: {{item.action}}<span class="dev" style="display:none;">{{item}}</span></li>
+    <li>{{item.date|datetime_raw|datetime_filter}}: {{item.action|actiontosentence|capfirst}}</li>
 {% endfor %}
 </ul>
 

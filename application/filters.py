@@ -100,6 +100,16 @@ def lowerfirst_filter(value):
     return '%s%s' % (first, value[1:])
 app.add_template_filter(lowerfirst_filter)
 
+@app.template_filter(name='capfirst')
+def capfirst_filter(value):
+    """ Capitalize the first letter in the string.
+        We can't use the capitalize filter because that one capitalizes the
+        first letter and decapitalizes all the other ones (wut).
+        """
+    first = value[0].upper()
+    return '%s%s' % (first, value[1:])
+app.add_template_filter(capfirst_filter)
+
 @app.template_filter(name='actiontosentence')
 def actiontosentence_filter(value):
     """ Turn bill actions into something closer to a sentence.
@@ -107,11 +117,8 @@ def actiontosentence_filter(value):
             In House - Assigned to Transportation & Energy
             Committee on Transportation & Energy Refer Amended to House Committee of the Whole
             Second Reading Passed with Amendments - Committee
-            Third Reading Laid Over Daily - No Amendments
-            Third Reading Passed - No Amendments
             In Senate - Assigned to Transportation
-            House Second Reading Passed - No Amendments
-            House Third Reading Passed - No Amendments
+            
             Signed by the President of the Senate
             Signed by the Speaker of the House
             Sent to the Governor
@@ -131,8 +138,35 @@ def actiontosentence_filter(value):
         value = value.rstrip(' Postpone Indefinitely')
         return 'postponed indefinitely by the %s' % value
 
+    elif 'Refer Amended' in value or 'Refer Unamended' in value:
+        value = 'the %s' % value
+        value = value.replace('Refer Amended', 'committee referred an amended version')
+        value = value.replace('Refer Unamended', 'committee referred an unamended version')
+        value = value.replace('to House', 'to the House')
+        value = value.replace('to Senate', 'to the Senate')
+        return value
+
     elif 'Amendments' in value:
+        """
+            Third Reading Laid Over Daily - No Amendments
+            Third Reading Passed - No Amendments
+            Senate Third Reading Laid Over to 03/08/2016 - No Amendments
+            Senate Third Reading Passed - No Amendments
+            House Second Reading Passed - No Amendments
+            House Third Reading Passed - No Amendments
+            House Second Reading Passed with Amendments - Committee
+        """
         parts = value.split(' - ')
+        # We separate the verb, which is Laid Over / Passed until the hyphen.
+        verb = 'Passed'
+        if 'Laid Over' in parts[0]:
+            verb = 'Laid Over'
+        verb_bits = parts[0].split(verb)
+        verb_phrase = '%s %s' % (verb, verb_bits[1])
+        remainder = verb_bits[0].lower()
+        remainder = remainder.replace('house', 'House\'s')
+        remainder = remainder.replace('senate', 'Senate\'s')
+        return '%s on the %s with %s' % (verb_phrase.lower(), remainder, parts[1].lower())
 
     elif 'introduced in ' in value:
         return value.replace('-', 'and')
