@@ -22,7 +22,7 @@
     <meta name="twitter:url" value="{{response.app.page.url}}" />
     <meta name="twitter:title" value="{{response.app.page.title}}" />
     <meta name="twitter:description" value="{{response.app.page.description}}" />
-    <meta name="twitter:image" value="http://local.denverpost.com/common/dfm/assets/logos/1200x627/denverpost.png" />
+    <meta name="twitter:image" value="http://extras.denverpost.com/app/bill-tracker/static/img/bill-tracker-logo.gif" />
     <meta name="twitter:site" value="@denverpost" />
     <meta name="twitter:domain" value="denverpost.com" />
     <meta name="twitter:creator" value="@joemurph">
@@ -37,7 +37,7 @@
     <meta property="og:title" content="{{response.app.page.title}}" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{{response.app.page.url}}" />
-    <meta property="og:image" content="http://local.denverpost.com/common/dfm/assets/logos/1200x627/denverpost.png" />
+    <meta property="og:image" content="http://extras.denverpost.com/app/bill-tracker/static/img/bill-tracker-logo.gif" />
     <meta property="og:site_name" content="The Denver Post" />
     <meta property="og:description" content="{{response.app.page.description}}" />
     <meta property="article:publisher" content="https://www.facebook.com/denverpost" />
@@ -58,108 +58,8 @@
     </script>
 
     <link rel="stylesheet" type="text/css" href="http://extras.mnginteractive.com/live/css/site67/bartertown.css">
+    <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/app/bill-tracker/statics/css/site.css">
     <style type="text/css">
-            body { margin:0; }
-            #wrapper {
-                width:1008px;
-                margin:10px auto;
-            }
-            #dfmEndFooterLinks ul li {
-                list-style-type:none;
-                margin-left:15px!important;
-            }
-
-        @media only screen and (max-width: 768px) {
-            /* Kill the nav */
-            #dfmEndFooterLinks, #dfmHeader div.foot, #dfmHeader div.sub-navigation, #dfmHeader #dfmMasthead #dfmPageTitle, #dfmHeader #dfmMasthead #dfmSearch, #dfmHeader #dfmMasthead #weatherBoxReal, #dfmHeader iframe, #leaderBoardAd { display:none!important; }
-            #dfmMasthead { height:40px!important; }
-            #dfmHeader #dfmMasthead h3 { margin-left:.5em; }
-            #dfmHeader div.page-head div.body { background:none; border:none; }
-            #dfmHeader div.page-head div.body div.margin { width:100%; }
-            #wrapper { width:100%; overflow:hidden; margin: .5em; }
-            #top_leaderboard_wrap { display: none; }
-
-            /* Adjust the layout */
-            .adElement { width: 100%!important; }
-            body h1, body h2, body h3, body h4, body h5, body h6 { line-height: 1; }
-            body h1 { 
-                width: 100%!important; 
-                font-size: 2em!important;
-            }
-
-            /* Tweaks to align rows and make things clickable */
-            div.body { height: 30px; }
-            body dl dt { margin-bottom: 0.75rem; }
-            .maincol, .sidebarcol { clear: both; }
-        }
-
-        footer { clear: both; }
-        footer p, #content-footer p { text-align: center; }
-        h3 { margin-top: 15px; }
-        hr {
-            width: 80%;
-            margin: 8px auto;
-        }
-        .ad { margin-bottom: 10px; }
-        .row { margin-left: 0; }
-        nav {
-            clear: both;
-        }
-        nav ul li {
-            display: inline;
-        }
-        nav ul li:after {
-            content: " ~ ";
-        }
-        nav ul li:last-child:after {
-            content: "";
-        }
-        .stamp, nav {
-            font-family: Georgia, serif;
-            font-style: italic;
-            color: #aaa;
-            text-align: center;
-            width: 100%;
-            line-height: 0.5;
-        }
-        .stamp span, nav ul span {
-            display: inline-block;
-            position: relative;  
-        }
-        .stamp span:before,
-        .stamp span:after,
-        nav ul:before,
-        nav ul:after {
-            content: "";
-            position: absolute;
-            height: 5px;
-            border-bottom: 1px dotted #ccc;
-            border-top: 1px dotted #ccc;
-            top: 0;
-            width: 600px;
-        }
-        .stamp span:before,
-        nav ul:before {
-            right: 100%;
-            margin-right: 15px;
-        }
-        .stamp span:after,
-        nav ul:after {
-            left: 100%;
-            margin-left: 15px;
-        }
-
-    @media only screen and (min-width: 769px) {
-        .maincol {
-            width: 650px;
-            float: left;
-        }
-        .sidebarcol {
-            width: 300px;
-            float: right;
-            margin-left: 15px;
-        }
-    }
 {% block style %}{% endblock style %}
     </style>
 
