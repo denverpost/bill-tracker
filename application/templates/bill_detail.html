@@ -7,7 +7,8 @@
         margin-left: 2px;
     }
     dl#process dd:last-child { float: none; }
-    .red { color: grey; }
+    .red { color: red; }
+    .grey { color: grey; }
     .green { color: green; }
     h2#bill { clear: both; }
 {% endblock style %}
@@ -38,7 +39,7 @@
 {# This macro is to simplify the left-arrow icon should we want to change it ever #}
 {%- macro render_timeline_item(datething, islast) -%}
     {{caller()}}
-        <dd>{{datething}} <i class="{% if datething == '~' %}red{% else %}green{% endif %} fa fa-arrow-circle-right"></i></dd>
+        <dd>{% if datething == '~' %}<i class="grey fa fa-ellipsis-h"></i>{% else %}{{datething}}{% endif %} <i class="{% if datething == '~' %}grey{% else %}green{% endif %} fa fa-arrow-circle-right"></i></dd>
 {%- endmacro -%}
 
 {# These items used to look like this until they got complex and needed to be stuffed into a macro.
