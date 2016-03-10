@@ -127,7 +127,7 @@ class BillQuery:
         filtered = []
         for item in self.bills:
             detail = self.get_bill_detail(self.session, item['bill_id'])
-            if detail:
+            if detail and 'votes' in detail:
                 if len(detail['votes']) == 0:
                     continue
                 if detail['votes'][0]['yes_count'] < detail['votes'][0]['no_count']:
@@ -380,8 +380,11 @@ def bill_detail(session, bill_id):
     data = {
         'bill': billdata
     }
-    app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
-    app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )
+    try:
+        app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
+        app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )
+    except:
+        abort(404)
     response = {
         'app': app,
         'session': session,
@@ -535,11 +538,12 @@ def legislator_detail(district, last_name, chamber=''):
 
 @app.route('/updates.atom')
 def recent_feed():
+    url='http://extras.denverpost.com/app/bill-tracker/'
     feed = AtomFeed('Colorado Bill Tracker Updates',
-                    feed_url=request.url, url=request.url_root)
+                    feed_url=url, url=url)
     feed.add('Bill Tracker updated with the most-recent legislation information.', '',
              content_type='html',
-             url='http://extras.denverpost.com/app/bill-tracker/',
+             url=url,
              updated=datetime.today(),
              published=datetime.today())
     return feed.get_response()
