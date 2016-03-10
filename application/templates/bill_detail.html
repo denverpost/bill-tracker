@@ -26,17 +26,17 @@
         <dd>{{response.data.bill.action_dates.first|datetime_raw|datetime_filter(date_format)}}</dd>
 {% if response.data.bill.chamber == 'lower' %}
     <dt>Passed House</dt>
-        <dd>{{response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter}}</dd>
+        <dd>{{response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter|ifnone}}</dd>
     <dt>Passed Senate</dt>
-        <dd>{{response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter}}</dd>
+        <dd>{{response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter|ifnone}}</dd>
 {% else %}
     <dt>Passed Senate</dt>
-        <dd>{{response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter}}</dd>
+        <dd>{{response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter|ifnone}}</dd>
     <dt>Passed House</dt>
-        <dd>{{response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter}}</dd>
+        <dd>{{response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter|ifnone}}</dd>
 {% endif %}
     <dt>Signed</dt>
-        <dd>{{response.data.bill.action_dates.signed|datetime_raw|datetime_filter}}</dd>
+        <dd>{{response.data.bill.action_dates.signed|datetime_raw|datetime_filter|ifnone}}</dd>
 </dl>
 
 {% if response.data.bill.versions.0 %}

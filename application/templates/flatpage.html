@@ -2,7 +2,8 @@
 {% block title %}{{ page.meta.title }}:{% endblock title %}
 {% block description %}{% endblock description %}
 {% block subhead %}{{ page.meta.title }}{% endblock subhead %}
-{% block breadcrumbs %}{% endblock breadcrumbs %}
+{% block breadcrumbs %}{{ super() }}
+&rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>{% endblock breadcrumbs %}
 {% block style %}{% endblock style %}
 
 {% block timestamp %}{% endblock timestamp %}
