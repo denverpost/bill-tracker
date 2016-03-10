@@ -206,7 +206,7 @@ def timestamp(blank):
     return today.strftime("%A %b. %d, %-I:%M %p")
 
 @app.template_filter(name='ifnone')
-def ifnone(value, ifnone='~~'):
+def ifnone(value, ifnone='~'):
     """ Pass a string other than "None" back if the value is None.
         Used in datestamp handling.
         """

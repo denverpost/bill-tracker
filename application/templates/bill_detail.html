@@ -1,5 +1,19 @@
 {% extends "base.html" %}
-{% block style %}{% endblock style %}
+{% block style %}
+    dt { float: left; }
+    dd:after { content: '\00a0\00a0'; }
+    dl#process dd { 
+        float: left;
+        margin-left: 2px;
+    }
+    dl#process dd:last-child { float: none; }
+    .red { color: grey; }
+    .green { color: green; }
+    h2#bill { clear: both; }
+{% endblock style %}
+{% block head %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+{% endblock head %}
 {% block breadcrumbs %}{{ super() }}
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
 &rsaquo; <a href="../../">Sessions</a>
@@ -21,19 +35,32 @@
 </p>
 {% endif %}
 
-<dl>
-    <dt>Introduced</dt>
-        <dd>{{response.data.bill.action_dates.first|datetime_raw|datetime_filter(date_format)}}</dd>
+{# This macro is to simplify the left-arrow icon should we want to change it ever #}
+{%- macro render_timeline_item(datething, islast) -%}
+    {{caller()}}
+        <dd>{{datething}} <i class="{% if datething == '~' %}red{% else %}green{% endif %} fa fa-arrow-circle-right"></i></dd>
+{%- endmacro -%}
+
+{# These items used to look like this until they got complex and needed to be stuffed into a macro.
+    <dt>Passed Senate</dt>
+        <dd>{{response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter|ifnone}}</dd>
+    <dt>Passed House</dt>
+        <dd>{{response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter|ifnone}}</dd>
+#}
+
+<dl id="process">
+    {% set datething = response.data.bill.action_dates.first|datetime_raw|datetime_filter %}
+    {% call render_timeline_item(datething, '') %}<dt>Introduced</dt>{% endcall %}
 {% if response.data.bill.chamber == 'lower' %}
-    <dt>Passed House</dt>
-        <dd>{{response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter|ifnone}}</dd>
-    <dt>Passed Senate</dt>
-        <dd>{{response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter|ifnone}}</dd>
+    {% set datething = response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter|ifnone %}
+    {% call render_timeline_item(datething, '') %}<dt>Passed House</dt>{% endcall %}
+    {% set datething = response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter|ifnone %}
+    {% call render_timeline_item(datething, '') %}<dt>Passed Senate</dt>{% endcall %}
 {% else %}
-    <dt>Passed Senate</dt>
-        <dd>{{response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter|ifnone}}</dd>
-    <dt>Passed House</dt>
-        <dd>{{response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter|ifnone}}</dd>
+    {% set datething = response.data.bill.action_dates.passed_upper|datetime_raw|datetime_filter|ifnone %}
+    {% call render_timeline_item(datething, '') %}<dt>Passed Senate</dt>{% endcall %}
+    {% set datething = response.data.bill.action_dates.passed_lower|datetime_raw|datetime_filter|ifnone %}
+    {% call render_timeline_item(datething, '') %}<dt>Passed House</dt>{% endcall %}
 {% endif %}
     <dt>Signed</dt>
         <dd>{{response.data.bill.action_dates.signed|datetime_raw|datetime_filter|ifnone}}</dd>
