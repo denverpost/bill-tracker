@@ -533,3 +533,13 @@ def legislator_detail(district, last_name, chamber=''):
     }
     return render_template('legislator_detail.html', response=response)
 
+@app.route('/updates.atom')
+def recent_feed():
+    feed = AtomFeed('Colorado Bill Tracker Updates',
+                    feed_url=request.url, url=request.url_root)
+    feed.add('Bill Tracker updated with the most-recent legislation information.', '',
+             content_type='html',
+             url='http://extras.denverpost.com/app/bill-tracker/',
+             updated=datetime.today(),
+             published=datetime.today())
+    return feed.get_response()
