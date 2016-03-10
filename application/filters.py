@@ -157,14 +157,28 @@ def actiontosentence_filter(value):
             House Second Reading Passed with Amendments - Committee
             Senate Second Reading Referred to Appropriations - No Amendments
         """
+        if '-' not in value:
+            value = value.replace(' with Amendments', ' - Amendments')
+
         parts = value.split(' - ')
         # We separate the verb, which is Laid Over / Passed until the hyphen.
-        verb = 'Passed'
+        if 'Passed' in parts[0]:
+            verb = 'Passed'
         if 'Laid Over' in parts[0]:
             verb = 'Laid Over'
         elif 'Referred' in parts[0]:
             verb = 'Referred'
+        elif 'Considered' in parts[0]:
+            # This is likely some confusing stuff such as
+            # House Considered Senate Amendments - Result was to Laid Over Daily
+            # we're not touching that for now
+            return value
+        else:
+            # Who knows what this is
+            #print '***', value, '*part 0:', parts[0]
+            return value
         verb_bits = parts[0].split(verb)
+        #print value, verb_bits, parts[0]
         verb_phrase = '%s %s' % (verb, verb_bits[1])
         remainder = verb_bits[0].lower()
         remainder = remainder.replace('house', 'House\'s')
