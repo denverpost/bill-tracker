@@ -138,6 +138,9 @@ def actiontosentence_filter(value):
         value = value.rstrip(' Postpone Indefinitely')
         return 'postponed indefinitely by the %s' % value
 
+    elif value == 'Governor Signed':
+        return 'signed by the Governor'
+
     elif 'Refer Amended' in value or 'Refer Unamended' in value:
         value = 'the %s' % value
         value = value.replace('Refer Amended', 'committee referred an amended version')
