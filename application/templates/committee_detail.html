@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block style %}{% endblock style %}
+{% block breadcrumbs %}{{ super() }}
+&rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
+&rsaquo; <a href="../../">Committees</a>
+&rsaquo; <a href="../">{{response.chamber}}</a>{% endblock breadcrumbs %}
+{% block content %}
+<h2></h2>
+<p></p>
+{% endblock content %}
