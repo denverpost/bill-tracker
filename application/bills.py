@@ -26,7 +26,7 @@ class GenericQuery:
         fn = '_input/%s/%s.json' % (session.lower(), string.replace(item_id.lower(), ' ', '_'))
         return json.load(json_check(fn))
 
-    def filter_session(self, session):
+    def filter_session(self, session=None):
         """ Take a session, and, if valid, return the items from that session.
             """
         # If we don't pass it a session it defaults to the current session.
@@ -35,7 +35,7 @@ class GenericQuery:
         filtered = []
 
         for item in self.items:
-            if item['session'] == session:
+            if item['session'].lower() == session.lower():
                 filtered.append(item)
         self.items = filtered
         return filtered
@@ -64,6 +64,7 @@ class GenericQuery:
             for item in self.items:
                 d = datetime.strptime(item['updated_at'], datetimeformat)
                 if d.year > kwargs['year']:
+                    print d.year
                     filtered.append(item)
         return filtered
 
@@ -99,9 +100,9 @@ class BillQuery(GenericQuery):
     def __init__(self):
         """
             """
-        self.bills = json.load(json_check('_input/co-bills.json'))
+        self.items = json.load(json_check('_input/co-bills.json'))
         self.legislators = json.load(open('application/static/data/legislators.json'))
-        self.unfiltered = self.bills
+        self.unfiltered = self.items
         self.session = app.session.upper()
 
     def filter_action_dates(self, action_date=None, value=None):
@@ -111,7 +112,7 @@ class BillQuery(GenericQuery):
             return false
 
         filtered = []
-        for item in self.bills:
+        for item in self.items:
             detail = self.get_detail(item['session'], item['bill_id'])
             if detail:
                 # Append the action dates to the item so we don't have
@@ -133,7 +134,7 @@ class BillQuery(GenericQuery):
         """ Return bills that have failed in the house and / or senate.
             """
         filtered = []
-        for item in self.bills:
+        for item in self.items:
             detail = self.get_detail(self.session, item['bill_id'])
             if detail and 'votes' in detail:
                 if len(detail['votes']) == 0:
@@ -152,7 +153,7 @@ class BillQuery(GenericQuery):
             threshold = 3
 
         filtered = []
-        for item in self.bills:
+        for item in self.items:
             detail = self.get_detail(self.session, item['bill_id'])
             if not detail['action_dates']['passed_%s' % chamber]:
                 continue
@@ -169,7 +170,7 @@ class BillQuery(GenericQuery):
         filtered = []
         delta = timedelta(day)
         today = datetime.combine(date.today(), datetime.min.time())
-        for item in self.bills:
+        for item in self.items:
             if datetime.strptime(item['updated_at'], datetimeformat) > ( today - delta ):
                 filtered.append(item)
         return filtered
@@ -178,7 +179,7 @@ class BillQuery(GenericQuery):
         """ Return bills that have been sponsored by a particular legislator.
             """
         filtered = []
-        for item in self.bills:
+        for item in self.items:
             detail = self.get_detail(self.session, item['bill_id'])
             for sponsor in detail['sponsors']:
                 # *** this probably isn't how it will really work.
@@ -196,7 +197,7 @@ class BillQuery(GenericQuery):
             'passed_upper', 'passed_lower', 'last', 'signed', 'first'
             """
         if len(bills) == 0:
-            bills = self.bills
+            bills = self.items
 
         filtered = []
         for item in bills:
@@ -223,12 +224,16 @@ def json_check(fn):
     fh = open(fn)
     return fh
 
+# =========================================================
+# HOMEPAGE VIEW
+# =========================================================
+
 @app.route('/')
 def index():
     app.page['title'] = 'Colorado Bill Tracker'
     app.page['description'] = 'Tracking legislation in Colorado\'s state senate and house.'
     q = BillQuery()
-    q.filter_session()
+    q.items = q.filter_session(app.session)
 
     days_back = 0
     bills = []
@@ -306,10 +311,13 @@ def week_detail(issue_date):
     try:
         news = json.load(open('_input/news/articles_%s_8.json' % issue_date))
     except:
-        news = json.load(open('_input/news/articles_%s_7.json' % issue_date))
+        try:
+            news = json.load(open('_input/news/articles_%s_7.json' % issue_date))
+        except:
+            news = []
 
     q = BillQuery()
-    q.filter_session()
+    q.filter_session(app.session)
     response = {
         'app': app,
         'issue_date': issue_date,
@@ -451,6 +459,7 @@ def bill_detail(session, bill_id):
     data = {
         'bill': json.load(open('_input/%s/%s.json' % (session, bill_id.lower())))
     }
+    print data['bill']
     app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
     app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )
     response = {
