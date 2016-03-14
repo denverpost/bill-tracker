@@ -253,7 +253,7 @@ def slugify(value):
     """
     value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
     value = re.sub('[^\w\s-]', '', value).strip().lower()
-    return re.sub('[-\s]+', '_', value)
+    return re.sub('[-\s]+', '-', value)
 
 def chamber_lookup(value):
     """ Shortcut so we don't have all these if/else's all over the place.
@@ -272,9 +272,13 @@ def chamber_lookup(value):
 def get_committee_url(value, chamber, session=''):
     """ Return a URL for a committee. 
         Valid values for chamber: joint / lower / upper
+        Sometimes the name of the chamber is in the committe name. If it is,
+        we strip that from the url.
         """
     slug = slugify(value)
     chamber = chamber_lookup(chamber)
+    if chamber in slug:
+        slug = slug.replace('%s_' % chamber, '')
     url = '%s/%s/' % (chamber, slug)
     if session == '':
         return url

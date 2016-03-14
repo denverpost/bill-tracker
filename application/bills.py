@@ -26,7 +26,7 @@ class GenericQuery:
         fn = '_input/%s/%s.json' % (session.lower(), string.replace(item_id.lower(), ' ', '_'))
         return json.load(json_check(fn))
 
-    def filter_session(self, session=None):
+    def filter_session(self, session):
         """ Take a session, and, if valid, return the items from that session.
             """
         # If we don't pass it a session it defaults to the current session.
@@ -40,6 +40,15 @@ class GenericQuery:
         self.items = filtered
         return filtered
 
+    def filter_chamber(self, chamber):
+        """ Return items from that chamber.
+            """
+        filtered = []
+        for item in self.items:
+            if item['chamber'].lower() == chamber:
+                filtered.append(item)
+        return filtered
+
 class CommitteeQuery(GenericQuery):
     """ A means of querying the list of committees.
         """
@@ -47,9 +56,9 @@ class CommitteeQuery(GenericQuery):
     def __init__(self):
         """
             """
-        self.committees = json.load(json_check('_input/co-committees.json'))
+        self.items = json.load(json_check('_input/co-committees.json'))
         self.legislators = json.load(open('application/static/data/legislators.json'))
-        self.unfiltered = self.committees
+        self.unfiltered = self.items
         self.session = app.session.upper()
 
 class BillQuery(GenericQuery):
@@ -291,18 +300,32 @@ def week_detail(issue_date):
     return render_template('week_detail.html', response=response)
 
 @app.route('/committees/')
-@app.route('/committees/<session>/')
-def committee_index(session='2016a'):
+def committee_index(chamber=''):
     app.page['title'] = 'Colorado legislative committees'
     app.page['description'] = 'An index of the committees in Colorado legislature.'
     q = CommitteeQuery()
-    #q.filter_session(session.upper())
     data = {
-        'committees': q.committees
+        'committees': q.items
     }
     response = {
         'app': app,
-        'session': session,
+        #'json': json.dumps(bills),
+        'data': data
+    }
+    return render_template('committee_index.html', response=response)
+
+@app.route('/committees/<chamber>/')
+def committee_chamber_index(chamber):
+    chamber_pretty = filters.chamber_lookup(chamber).capitalize()
+    app.page['title'] = 'Colorado %s committees' % chamber_pretty
+    app.page['description'] = 'An index of the committees in Colorado state %s.' % chamber_pretty
+    q = CommitteeQuery()
+    q.items = q.filter_chamber(chamber)
+    data = {
+        'committees': q.items
+    }
+    response = {
+        'app': app,
         #'json': json.dumps(bills),
         'data': data
     }
