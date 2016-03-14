@@ -255,13 +255,28 @@ def slugify(value):
     value = re.sub('[^\w\s-]', '', value).strip().lower()
     return re.sub('[-\s]+', '_', value)
 
+def chamber_lookup(value):
+    """ Shortcut so we don't have all these if/else's all over the place.
+        If it doesn't match any of these it just returns what it got.
+        """
+    chamber = value
+    if value == 'lower':
+        chamber = 'house'
+    elif value == 'upper':
+        chamber = 'senate'
+    elif value == 'joint':
+        chamber = 'joint'
+    return chamber
+
 @app.template_filter(name='get_url')
-def get_url(value, obj_type, session=''):
-    """ Return a URL for a committee or legislator-type object.
-        Valid values for obj_type: committee or legislator
+def get_committee_url(value, chamber, session=''):
+    """ Return a URL for a committee. 
+        Valid values for chamber: joint / lower / upper
         """
     slug = slugify(value)
+    chamber = chamber_lookup(chamber)
+    url = '%s/%s/' % (chamber, slug)
     if session == '':
-        return '%s/' % slug
-    return '%s/%s/' % (slug, sesssion.lower())
+        return url
+    return '%s/%s/' % (url, sesssion.lower())
 
