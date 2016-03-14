@@ -6,6 +6,7 @@ import json
 import inspect
 import os
 import string
+import unicodedata, re
 from application import app
 import bills
 
@@ -244,3 +245,23 @@ def legislator_lookup(value, field):
     except:
         return None
 app.add_template_filter(legislator_lookup)
+
+def slugify(value):
+    """ Converts to lowercase, removes non-word characters (alphanumerics and
+        underscores) and converts spaces to hyphens. Also strips leading and
+        trailing whitespace.
+    """
+    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
+    value = re.sub('[^\w\s-]', '', value).strip().lower()
+    return re.sub('[-\s]+', '_', value)
+
+@app.template_filter(name='get_url')
+def get_url(value, obj_type, session=''):
+    """ Return a URL for a committee or legislator-type object.
+        Valid values for obj_type: committee or legislator
+        """
+    slug = slugify(value)
+    if session == '':
+        return '%s/' % slug
+    return '%s/%s/' % (slug, sesssion.lower())
+

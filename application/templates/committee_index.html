@@ -10,8 +10,8 @@
 {u'parent_id': None, u'+twitter': None, u'created_at': u'2013-02-06 00:49:49', u'updated_at': u'2015-06-02 23:22:25', u'all_ids': [u'COC000110'], u'chamber': u'upper', u'state': u'co', u'subcommittee': None, u'committee': u'Senate Education', u'id': u'COC000110'}
 #}
 <ul>
-{% for item in response.data.committees %}
-<li>{{item}}</li>
+{% for item in response.data.committees|sort(attribute='chamber') %}
+<li>{{item.chamber}}: <a href="{{item.committee|get_url('committee')}}">{{item.committee}}</a></li>
 {% endfor %}
 </ul>
 {% endblock content %}
