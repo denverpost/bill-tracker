@@ -11,7 +11,7 @@
 #}
 <ul>
 {% for item in response.data.committees|sort(attribute='chamber') %}
-<li>{{item.chamber}}: <a href="{{item.committee|get_url(item.chamber)}}">{{item.committee}}</a></li>
+<li>{{item.chamber}}: <a href="{{item.committee|get_url(item.chamber, item.id)}}">{{item.committee}}</a></li>
 {% endfor %}
 </ul>
 {% endblock content %}

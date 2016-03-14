@@ -342,14 +342,16 @@ def committee_chamber_index(chamber):
 @app.route('/committees/<chamber>/<slug>/')
 def committee_detail(chamber, slug):
     chamber_pretty = filters.chamber_lookup(chamber).capitalize()
-    committee = ''
-    app.page['title'] = 'Colorado %s committees' % chamber_pretty
-    app.page['description'] = 'An index of the committees in Colorado state %s.' % chamber_pretty
-    q = CommitteeQuery()
-    q.items = q.filter_chamber(chamber)
+    session = '2016a' # ***HC***
+
+    # A slug usually looks like "business-labor-and-technology-coc000109"
+    # The committee id is the string after the final hyphen.
+    c_id = slug.split('-')[-1]
     data = {
-        'committees': q.items
+        'committee': json.load(open('_input/%s/%s.json' % (session, c_id)))
     }
+    app.page['title'] = '%s %s' % (chamber_pretty, data['committee']['committee'])
+    app.page['description'] = 'An index of the committees in Colorado state %s.' % chamber_pretty
     response = {
         'app': app,
         #'json': json.dumps(),
@@ -421,9 +423,8 @@ def session_detail(session, js='', csv=''):
 def bill_detail(session, bill_id):
     if session not in app.sessions:
         abort(404)
-    billdata = json.load(open('_input/%s/%s.json' % (session, bill_id.lower())))
     data = {
-        'bill': billdata
+        'bill': json.load(open('_input/%s/%s.json' % (session, bill_id.lower())))
     }
     app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
     app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )

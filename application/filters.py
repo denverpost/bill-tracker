@@ -246,6 +246,7 @@ def legislator_lookup(value, field):
         return None
 app.add_template_filter(legislator_lookup)
 
+@app.template_filter(name='chamber_lookup')
 def chamber_lookup(value):
     """ Shortcut so we don't have all these if/else's all over the place.
         If it doesn't match any of these it just returns what it got.
@@ -258,18 +259,19 @@ def chamber_lookup(value):
     elif value == 'joint':
         chamber = 'joint'
     return chamber
+app.add_template_filter(chamber_lookup)
 
 @app.template_filter(name='get_url')
-def get_committee_url(value, chamber, session=''):
+def get_committee_url(value, chamber, c_id, session=''):
     """ Return a URL for a committee. 
         Valid values for chamber: joint / lower / upper
         Sometimes the name of the chamber is in the committe name. If it is,
         we strip that from the url.
         """
-    slug = slugify(value)
+    slug = slugify('%s-%s' % (value, c_id))
     chamber = chamber_lookup(chamber)
     if chamber in slug:
-        slug = slug.replace('%s_' % chamber, '')
+        slug = slug.replace('%s-' % chamber, '')
     url = '%s/%s/' % (chamber, slug)
     if session == '':
         return url
