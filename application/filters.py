@@ -6,7 +6,7 @@ import json
 import inspect
 import os
 import string
-import unicodedata, re
+from slugify import slugify
 from application import app
 import bills
 
@@ -245,15 +245,6 @@ def legislator_lookup(value, field):
     except:
         return None
 app.add_template_filter(legislator_lookup)
-
-def slugify(value):
-    """ Converts to lowercase, removes non-word characters (alphanumerics and
-        underscores) and converts spaces to hyphens. Also strips leading and
-        trailing whitespace.
-    """
-    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
-    value = re.sub('[^\w\s-]', '', value).strip().lower()
-    return re.sub('[-\s]+', '-', value)
 
 def chamber_lookup(value):
     """ Shortcut so we don't have all these if/else's all over the place.

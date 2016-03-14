@@ -7,6 +7,7 @@ import string
 import argparse
 import httplib2
 import types
+from slugify import slugify
 
 class Sunlight:
 
@@ -106,16 +107,28 @@ class Sunlight:
             >>> print bill_detail['bill_id']
             SB 11-173
             """
-        bill_slug = string.replace(bill_id.lower(), ' ', '_')
+        slug = string.replace(bill_id.lower(), ' ', '_')
         if not os.path.isdir('%s/_input/%s' % (self.directory, self.session)):
             os.mkdir('%s/_input/%s' % (self.directory, self.session))
-        bill_details = sunlight.openstates.bill_detail(self.state, self.session.upper(), bill_id)
-        fh = open('_input/%s/%s.json' % (self.session, bill_slug), 'wb')
-        json.dump(bill_details, fh)
+        details = sunlight.openstates.bill_detail(self.state, self.session.upper(), bill_id)
+        fh = open('_input/%s/%s.json' % (self.session, slug), 'wb')
+        json.dump(details, fh)
         fh.close()
 
         #self.get_bill_pdf(bill_slug, bill_details)
-        return bill_details 
+        return details 
+
+    def get_committee_detail(self, c_id):
+        """ Get committee details.
+            """
+        slug = c_id.lower()
+        if not os.path.isdir('%s/_input/%s' % (self.directory, self.session)):
+            os.mkdir('%s/_input/%s' % (self.directory, self.session))
+        details = sunlight.openstates.committee_detail(c_id)
+        fh = open('_input/%s/%s.json' % (self.session, slug), 'wb')
+        json.dump(details, fh)
+        fh.close()
+        return details 
 
     def get_bill_pdf(self, bill_slug, details):
         """ Request and save the current version of the bill's PDF.
@@ -144,7 +157,7 @@ def main(args):
     s = Sunlight(args)
     s.get_bill_list(args.session)
     s.get_committee_list()
-    s.get_legislator_list()
+    #s.get_legislator_list()
 
     if 'updated' in args and args.updated:
         print s.bills[0]['updated_at']
@@ -163,6 +176,9 @@ def main(args):
 
     if args.details:
         i = 0
+        for item in s.committees:
+            details = s.get_committee_detail(item['id'])
+
         if args.verbose:
             print "Downloading bill details for %d bills" % len(bills)
         for item in bills:
