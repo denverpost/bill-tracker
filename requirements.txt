@@ -5,6 +5,7 @@ Jinja2==2.7.2
 Markdown==2.4
 MarkupSafe==0.23
 PyYAML==3.11
+Unidecode==0.04.19
 Werkzeug==0.9.4
 args==0.1.0
 autoenv==1.0.0
@@ -15,6 +16,7 @@ itsdangerous==0.24
 pep8==1.5.7
 py==1.4.26
 pytest==2.6.4
+python-slugify==1.2.0
 slugify==0.0.1
 sunlight==1.2.8
 wsgiref==0.1.2
