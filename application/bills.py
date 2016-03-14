@@ -17,6 +17,7 @@ datetimeformat = '%Y-%m-%d %H:%M:%S'
 
 class GenericQuery:
     """ Boilerplate Query object.
+        Will be used for Committees, Legislators and eventually Bills.
         """
 
     def get_detail(self, session, item_id):
@@ -51,7 +52,7 @@ class CommitteeQuery(GenericQuery):
         self.unfiltered = self.committees
         self.session = app.session.upper()
 
-class BillQuery:
+class BillQuery(GenericQuery):
     """ A means of querying the list of bills.
         A bill record looks something like this:
         {
@@ -76,26 +77,6 @@ class BillQuery:
         self.unfiltered = self.bills
         self.session = app.session.upper()
 
-    def get_bill_detail(self, session, bill_id):
-        """ For when we need to query a field in the bill details.
-            """
-        fn = '_input/%s/%s.json' % (session.lower(), string.replace(bill_id.lower(), ' ', '_'))
-        return json.load(json_check(fn))
-
-    def filter_session(self, session=None):
-        """ Take a session, and, if valid, return the bills form that session.
-            """
-        # If we don't pass it a session it defaults to the current session.
-        if not session:
-            session = self.session
-        filtered = []
-
-        for item in self.bills:
-            if item['session'] == session:
-                filtered.append(item)
-        self.bills = filtered
-        return filtered
-
     def filter_action_dates(self, action_date=None, value=None):
         """ Return bills that have been signed.
             """
@@ -104,7 +85,7 @@ class BillQuery:
 
         filtered = []
         for item in self.bills:
-            detail = self.get_bill_detail(item['session'], item['bill_id'])
+            detail = self.get_detail(item['session'], item['bill_id'])
             if detail:
                 # Append the action dates to the item so we don't have
                 # to look them up again later.
@@ -126,7 +107,7 @@ class BillQuery:
             """
         filtered = []
         for item in self.bills:
-            detail = self.get_bill_detail(self.session, item['bill_id'])
+            detail = self.get_detail(self.session, item['bill_id'])
             if detail and 'votes' in detail:
                 if len(detail['votes']) == 0:
                     continue
@@ -145,7 +126,7 @@ class BillQuery:
 
         filtered = []
         for item in self.bills:
-            detail = self.get_bill_detail(self.session, item['bill_id'])
+            detail = self.get_detail(self.session, item['bill_id'])
             if not detail['action_dates']['passed_%s' % chamber]:
                 continue
             if detail:
@@ -171,7 +152,7 @@ class BillQuery:
             """
         filtered = []
         for item in self.bills:
-            detail = self.get_bill_detail(self.session, item['bill_id'])
+            detail = self.get_detail(self.session, item['bill_id'])
             for sponsor in detail['sponsors']:
                 # *** this probably isn't how it will really work.
                 if sponsor['name'].lower() == legislator:
@@ -192,7 +173,7 @@ class BillQuery:
 
         filtered = []
         for item in bills:
-            detail = self.get_bill_detail(item['session'], item['bill_id'])
+            detail = self.get_detail(item['session'], item['bill_id'])
             if 'action_dates' in detail and field in detail['action_dates'] and datetimeformat:
                 if not detail['action_dates'][field]:
                     continue
