@@ -49,6 +49,24 @@ class GenericQuery:
                 filtered.append(item)
         return filtered
 
+    def filter_updated_at(self, **kwargs):
+        """ Return bills that have been updated since 2015 or earlier
+            Keyword arguments include day=0 and year=2015 <-- EXPLAIN THIS BETTER
+            """
+        filtered = []
+        if 'day' in kwargs:
+            delta = timedelta(kwargs['day'])
+            today = datetime.combine(date.today(), datetime.min.time())
+            for item in self.items:
+                if datetime.strptime(item['updated_at'], datetimeformat) > ( today - delta ):
+                    filtered.append(item)
+        elif 'year' in kwargs:
+            for item in self.items:
+                d = datetime.strptime(item['updated_at'], datetimeformat)
+                if d.year > kwargs['year']:
+                    filtered.append(item)
+        return filtered
+
 class CommitteeQuery(GenericQuery):
     """ A means of querying the list of committees.
         """
@@ -312,6 +330,7 @@ def committee_index(chamber=''):
     app.page['title'] = 'Colorado legislative committees'
     app.page['description'] = 'An index of the committees in Colorado legislature.'
     q = CommitteeQuery()
+    q.items = q.filter_updated_at(year=2015)
     data = {
         'committees': q.items
     }
@@ -329,9 +348,13 @@ def committee_chamber_index(chamber):
     app.page['description'] = 'An index of the committees in Colorado state %s.' % chamber_pretty
     q = CommitteeQuery()
     q.items = q.filter_chamber(chamber)
+    #q.items = q.filter_updated_at(year=2015)
     data = {
         'committees': q.items
     }
+    # *** WE HAVE TO FILTER OUT ALL COMMITTEES NOT UPDATED IN 2016,
+    # *** WE HAVE NOTHING TO SHOW FOR THOSE COMMITTEES.
+    # *** ARCHIVING STARTS IN 2016 THAT'S THE WAY IT GOES.
     response = {
         'app': app,
         #'json': json.dumps(),
@@ -339,10 +362,10 @@ def committee_chamber_index(chamber):
     }
     return render_template('committee_index.html', response=response)
 
+@app.route('/committees/<chamber>/<slug>/<session>/')
 @app.route('/committees/<chamber>/<slug>/')
-def committee_detail(chamber, slug):
+def committee_detail(chamber, slug, session='2016a'):
     chamber_pretty = filters.chamber_lookup(chamber).capitalize()
-    session = '2016a' # ***HC***
 
     # A slug usually looks like "business-labor-and-technology-coc000109"
     # The committee id is the string after the final hyphen.
@@ -351,7 +374,9 @@ def committee_detail(chamber, slug):
         'committee': json.load(open('_input/%s/%s.json' % (session, c_id)))
     }
     app.page['title'] = '%s %s' % (chamber_pretty, data['committee']['committee'])
-    app.page['description'] = 'An index of the committees in Colorado state %s.' % chamber_pretty
+    if chamber_pretty in data['committee']['committee']:
+        app.page['title'] = data['committee']['committee']
+    app.page['description'] = '%s' % chamber_pretty
     response = {
         'app': app,
         #'json': json.dumps(),
