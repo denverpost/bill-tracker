@@ -329,8 +329,9 @@ def session_index():
     return render_template('session_index.html', response=response)
 
 @app.route('/bills/<session>.<js>')
+@app.route('/bills/<session>.<csv>')
 @app.route('/bills/<session>/')
-def session_detail(session, js=''):
+def session_detail(session, js='', csv=''):
     if session not in app.sessions:
         abort(404)
     app.page['title'] = 'Session %s' % session
@@ -370,6 +371,8 @@ def session_detail(session, js=''):
     fn = 'session_detail.html'
     if js == 'js':
         fn = fn.replace('.html', '.js')
+    elif csv == 'csv':
+        fn = fn.replace('.html', '.csv')
     return render_template(fn, response=response)
 
 @app.route('/bills/<session>/<bill_id>/')

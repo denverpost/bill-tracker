@@ -1,0 +1,4 @@
+title
+{% for item in response.data.bills_light -%}
+{{item.title}}
+{% endfor %}
