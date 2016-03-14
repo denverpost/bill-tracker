@@ -500,7 +500,9 @@ def session_passed_detail(session, passfail, chamber):
     }
     return render_template('session_passed_detail.html', response=response)
 
+# =========================================================
 # === NOT DEPLOYED YET === #
+# =========================================================
 
 @app.route('/senate/')
 @app.route('/house/')
