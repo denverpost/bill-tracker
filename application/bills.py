@@ -295,8 +295,16 @@ def week_detail(issue_date):
 def committee_index(session='2016a'):
     app.page['title'] = 'Colorado legislative committees'
     app.page['description'] = 'An index of the committees in Colorado legislature.'
+    q = CommitteeQuery()
+    #q.filter_session(session.upper())
+    data = {
+        'committees': q.committees
+    }
     response = {
         'app': app,
+        'session': session,
+        #'json': json.dumps(bills),
+        'data': data
     }
     return render_template('committee_index.html', response=response)
 
