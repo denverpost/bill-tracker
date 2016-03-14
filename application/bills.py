@@ -339,6 +339,24 @@ def committee_chamber_index(chamber):
     }
     return render_template('committee_index.html', response=response)
 
+@app.route('/committees/<chamber>/<slug>/')
+def committee_detail(chamber, slug):
+    chamber_pretty = filters.chamber_lookup(chamber).capitalize()
+    committee = ''
+    app.page['title'] = 'Colorado %s committees' % chamber_pretty
+    app.page['description'] = 'An index of the committees in Colorado state %s.' % chamber_pretty
+    q = CommitteeQuery()
+    q.items = q.filter_chamber(chamber)
+    data = {
+        'committees': q.items
+    }
+    response = {
+        'app': app,
+        #'json': json.dumps(),
+        'data': data
+    }
+    return render_template('committee_detail.html', response=response)
+
 # =========================================================
 # LEGISLATION VIEWS
 # =========================================================
