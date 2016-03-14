@@ -237,6 +237,10 @@ def index():
     }
     return render_template('home.html', response=response)
 
+# =========================================================
+# WEEK IN REVIEW VIEWS
+# =========================================================
+
 @app.route('/the-week/')
 def week_index():
     from recentfeed import RecentFeed
@@ -299,6 +303,10 @@ def week_detail(issue_date):
     }
     return render_template('week_detail.html', response=response)
 
+# =========================================================
+# COMMITTEE VIEWS
+# =========================================================
+
 @app.route('/committees/')
 def committee_index(chamber=''):
     app.page['title'] = 'Colorado legislative committees'
@@ -309,7 +317,7 @@ def committee_index(chamber=''):
     }
     response = {
         'app': app,
-        #'json': json.dumps(bills),
+        #'json': json.dumps(),
         'data': data
     }
     return render_template('committee_index.html', response=response)
@@ -326,10 +334,14 @@ def committee_chamber_index(chamber):
     }
     response = {
         'app': app,
-        #'json': json.dumps(bills),
+        #'json': json.dumps(),
         'data': data
     }
     return render_template('committee_index.html', response=response)
+
+# =========================================================
+# LEGISLATION VIEWS
+# =========================================================
 
 @app.route('/bills/')
 def session_index():
