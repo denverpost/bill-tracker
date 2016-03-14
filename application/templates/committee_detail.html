@@ -3,10 +3,35 @@
 {% block breadcrumbs %}{{ super() }}
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
 &rsaquo; <a href="../../">Committees</a>
-&rsaquo; <a href="../">{{response.chamber}}</a>{% endblock breadcrumbs %}
+&rsaquo; <a href="../">{{response.chamber|capitalize}}</a>{% endblock breadcrumbs %}
 {% block content %}
 {# A committee detail looks like this:
-{u'members': [{u'leg_id': u'COL000114', u'role': u'chair', u'name': u'Brittany Pettersen'}, {u'leg_id': u'COL000088', u'role': u'member', u'name': u'Pete Lee'}, {u'leg_id': None, u'role': u'member', u'name': u'Janet Buckner'}, {u'leg_id': u'COL000164', u'role': u'member', u'name': u'Alec Garnett'}, {u'leg_id': u'COL000036', u'role': u'member', u'name': u'Kevin Priola'}, {u'leg_id': u'COL000125', u'role': u'member', u'name': u'Justin Everett'}, {u'leg_id': u'COL000189', u'role': u'member', u'name': u'Paul Lundeen'}, {u'leg_id': u'COL000116', u'role': u'member', u'name': u'Jim Wilson'}, {u'leg_id': u'COL000059', u'role': u'member', u'name': u'Rhonda Fields'}, {u'leg_id': u'COL000120', u'role': u'member', u'name': u'Dominick Moreno'}, {u'leg_id': u'COL000193', u'role': u'member', u'name': u'JoAnn Windholz'}], u'parent_id': None, u'+twitter': None, u'created_at': u'2015-06-04 22:54:18', u'updated_at': u'2016-03-13 09:55:02', u'all_ids': [u'COC000127'], u'sources': [{u'url': u'https://www.colorado.gov/pacific/cga-legislativecouncil/house-education'}], u'state': u'co', u'subcommittee': None, u'committee': u'Education', u'chamber': u'lower', u'id': u'COC000127'} 
+{
+    u 'members': [{
+        u 'leg_id': u 'COL000114',
+        u 'role': u 'chair',
+        u 'name': u 'Brittany Pettersen'
+    }, {
+        u 'leg_id': u 'COL000059',
+        u 'role': u 'member',
+        u 'name': u 'Rhonda Fields'
+    }, {
+        u 'leg_id': u 'COL000120',
+        u 'role': u 'member',
+        u 'name': u 'Dominick Moreno'
+    }, {
+        u 'leg_id': u 'COL000193',
+        u 'role': u 'member',
+        u 'name': u 'JoAnn Windholz'
+    }], u 'parent_id': None, u '+twitter': None, u 'created_at': u '2015-06-04 22:54:18', u 'updated_at': u '2016-03-13 09:55:02', u 'all_ids': [u 'COC000127'], u 'sources': [{
+        u 'url': u 'https://www.colorado.gov/pacific/cga-legislativecouncil/house-education'
+    }], u 'state': u 'co', u 'subcommittee': None, u 'committee': u 'Education', u 'chamber': u 'lower', u 'id': u 'COC000127'
+}
 #}
-{{response.data.committee}}
+<h2 id="members">{{response.data.committee.committee}} members</h2>
+<ul>
+{% for item in response.data.committee.members %}
+    <li>{{item.name}}: {{item.role}}</li>
+{% endfor %}
+</ul>
 {% endblock content %}

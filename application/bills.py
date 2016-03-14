@@ -381,12 +381,13 @@ def committee_detail(chamber, slug, session='2016a'):
     data = {
         'committee': json.load(open('_input/%s/%s.json' % (session, c_id)))
     }
-    app.page['title'] = '%s %s' % (chamber_pretty, data['committee']['committee'])
+    app.page['title'] = '%s %s committee' % (chamber_pretty, data['committee']['committee'])
     if chamber_pretty in data['committee']['committee']:
-        app.page['title'] = data['committee']['committee']
-    app.page['description'] = '%s' % chamber_pretty
+        app.page['title'] = '%s committee' % data['committee']['committee']
+    app.page['description'] = 'Details on the %s, including legislation, leadership and members' % app.page['title']
     response = {
         'app': app,
+        'chamber': chamber,
         #'json': json.dumps(),
         'data': data
     }
@@ -459,7 +460,6 @@ def bill_detail(session, bill_id):
     data = {
         'bill': json.load(open('_input/%s/%s.json' % (session, bill_id.lower())))
     }
-    print data['bill']
     app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
     app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )
     response = {
