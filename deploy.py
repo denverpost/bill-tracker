@@ -95,18 +95,27 @@ def main(args):
 
             if args.theweek and 'the-week' not in dirname:
                 continue
+            if args.committee and 'committee' not in dirname:
+                continue
+            if args.legislator and 'legislator' not in dirname:
+                continue
 
             # Skip the endless directory creation on previous years.
-            if current_session not in dirname:
+            if args.session and current_session not in dirname:
                 if args.verbose:
                     print "SKIPPING mkdir on %s" % subdirname
                 continue
+
             ftp.mkdir(os.path.join(dirname, subdirname))
 
         for filename in filenames:
             if 'jpg' in filename:
                 continue
             if args.theweek and 'the-week' not in dirname:
+                continue
+            if args.committee and 'committee' not in dirname:
+                continue
+            if args.legislator and 'legislator' not in dirname:
                 continue
             if args.verbose:
                 print(os.path.join(dirname, filename))
@@ -153,6 +162,10 @@ def build_parser(args):
                         help="Only upload top-level indexes & homepage.")
     parser.add_argument("--theweek", dest="theweek", default=False, action="store_true",
                         help="Only upload the week in review-section files.")
+    parser.add_argument("--committee", dest="committee", default=False, action="store_true",
+                        help="Upload the committee files and directories")
+    parser.add_argument("--legislator", dest="legislator", default=False, action="store_true",
+                        help="Upload the legislator files and directories")
     parser.add_argument("--news", dest="get_news", default=False, action="store_true",
                         help="Download and cache the recent legislative news.")
     parser.add_argument("-s", "--session", dest="session", default=False)
