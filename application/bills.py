@@ -40,11 +40,13 @@ class GenericQuery:
         self.items = filtered
         return filtered
 
-    def filter_chamber(self, chamber):
+    def filter_chamber(self, chamber, items=[]):
         """ Return items from that chamber.
             """
+        if len(items) == 0:
+            items = self.items
         filtered = []
-        for item in self.items:
+        for item in items:
             if item['chamber'].lower() == chamber:
                 filtered.append(item)
         return filtered
@@ -340,7 +342,12 @@ def committee_index(chamber=''):
     q = CommitteeQuery()
     q.items = q.filter_updated_at(year=2015)
     data = {
-        'committees': q.items
+        'committees': {
+            'all': q.items,
+            'joint': q.filter_chamber('joint'),
+            'senate': q.filter_chamber('upper'),
+            'house': q.filter_chamber('lower')
+        }
     }
     response = {
         'app': app,

@@ -9,9 +9,22 @@
 {# a committee item looks like
 {u'parent_id': None, u'+twitter': None, u'created_at': u'2013-02-06 00:49:49', u'updated_at': u'2015-06-02 23:22:25', u'all_ids': [u'COC000110'], u'chamber': u'upper', u'state': u'co', u'subcommittee': None, u'committee': u'Senate Education', u'id': u'COC000110'}
 #}
+<h2><a href="joint/">Joint Committees</a></h2>
 <ul>
-{% for item in response.data.committees|sort(attribute='chamber') %}
-<li>{{item.chamber}}: <a href="{{item.committee|get_url(item.chamber, item.id)}}">{{item.committee}}</a></li>
-{% endfor %}
+{% for item in response.data.committees.joint|sort(attribute='committee') %}
+    <li><a href="{{item.committee|get_url(item.chamber, item.id)}}">{{item.committee}}</a></li>
+{%- endfor %}
+</ul>
+<h2><a href="senate/">Senate Committees</a></h2>
+<ul>
+{% for item in response.data.committees.senate|sort(attribute='committee') %}
+    <li><a href="{{item.committee|get_url(item.chamber, item.id)}}">{{item.committee}}</a></li>
+{%- endfor %}
+</ul>
+<h2><a href="house/">House Committees</a></h2>
+<ul>
+{% for item in response.data.committees.house|sort(attribute='committee') %}
+    <li><a href="{{item.committee|get_url(item.chamber, item.id)}}">{{item.committee}}</a></li>
+{%- endfor %}
 </ul>
 {% endblock content %}
