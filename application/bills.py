@@ -53,7 +53,7 @@ class GenericQuery:
 
     def filter_updated_at(self, **kwargs):
         """ Return bills that have been updated since 2015 or earlier
-            Keyword arguments include day=0 and year=2015 <-- EXPLAIN THIS BETTER
+            Keyword arguments include day=0 and year=2015 <-- EXPLAIN THIS BETTER***
             """
         filtered = []
         if 'day' in kwargs:
@@ -626,7 +626,8 @@ def legislator_detail(district, last_name, chamber=''):
 
 @app.route('/updates.atom')
 def recent_feed():
-    url='http://extras.denverpost.com/app/bill-tracker/'
+    stamp = datetime.today().strftime('%Y%m%d')
+    url='http://extras.denverpost.com/app/bill-tracker/?date%s' % stamp
     feed = AtomFeed('Colorado Bill Tracker Updates',
                     feed_url=url, url=url)
     feed.add('Bill Tracker updated with the most-recent legislation information.', '',
