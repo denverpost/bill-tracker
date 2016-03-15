@@ -359,11 +359,16 @@ def committee_index(chamber=''):
 @app.route('/committees/<chamber>/')
 def committee_chamber_index(chamber):
     chamber_pretty = filters.chamber_lookup(chamber).capitalize()
+    chamber_for_query = 'joint'
+    if chamber == 'senate':
+        chamber_for_query = 'upper'
+    elif chamber == 'house':
+        chamber_for_query = 'lower'
     app.page['title'] = 'Colorado %s committees' % chamber_pretty
     app.page['description'] = 'An index of the committees in Colorado state %s.' % chamber_pretty
     q = CommitteeQuery()
-    q.items = q.filter_chamber(chamber)
-    #q.items = q.filter_updated_at(year=2015)
+    q.items = q.filter_chamber(chamber_for_query)
+    q.items = q.filter_updated_at(year=2015)
     data = {
         'committees': q.items
     }
@@ -372,7 +377,7 @@ def committee_chamber_index(chamber):
     # *** ARCHIVING STARTS IN 2016 THAT'S THE WAY IT GOES.
     response = {
         'app': app,
-        'chamber': chamber,
+        'chamber': chamber_pretty,
         #'json': json.dumps(),
         'data': data
     }
