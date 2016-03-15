@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block style %}{% endblock style %}
+{% block breadcrumbs %}{{ super() }}
+&rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
+&rsaquo; <a href="../">Committees</a>{% endblock breadcrumbs %}
+{% block content %}
+<ul>
+{% for item in response.data.committees|sort(attribute='committee') %}
+    <li><a href="{{item.committee|get_url(item.chamber, item.id)}}">{{item.committee}}</a></li>
+{%- endfor %}
+</ul>
+{% endblock content %}

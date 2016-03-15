@@ -372,10 +372,11 @@ def committee_chamber_index(chamber):
     # *** ARCHIVING STARTS IN 2016 THAT'S THE WAY IT GOES.
     response = {
         'app': app,
+        'chamber': chamber,
         #'json': json.dumps(),
         'data': data
     }
-    return render_template('committee_index.html', response=response)
+    return render_template('committee_chamber_index.html', response=response)
 
 @app.route('/committees/<chamber>/<slug>/<session>/')
 @app.route('/committees/<chamber>/<slug>/')
@@ -388,7 +389,7 @@ def committee_detail(chamber, slug, session='2016a'):
     data = {
         'committee': json.load(open('_input/%s/%s.json' % (session, c_id)))
     }
-    app.page['title'] = '%s %s committee' % (chamber_pretty, data['committee']['committee'])
+    app.page['title'] = 'Colorado %s %s committee' % (chamber_pretty, data['committee']['committee'])
     if chamber_pretty in data['committee']['committee']:
         app.page['title'] = '%s committee' % data['committee']['committee']
     app.page['description'] = 'Details on the %s, including legislation, leadership and members' % app.page['title']
