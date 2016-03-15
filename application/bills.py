@@ -66,7 +66,6 @@ class GenericQuery:
             for item in self.items:
                 d = datetime.strptime(item['updated_at'], datetimeformat)
                 if d.year > kwargs['year']:
-                    print d.year
                     filtered.append(item)
         return filtered
 
@@ -372,9 +371,6 @@ def committee_chamber_index(chamber):
     data = {
         'committees': q.items
     }
-    # *** WE HAVE TO FILTER OUT ALL COMMITTEES NOT UPDATED IN 2016,
-    # *** WE HAVE NOTHING TO SHOW FOR THOSE COMMITTEES.
-    # *** ARCHIVING STARTS IN 2016 THAT'S THE WAY IT GOES.
     response = {
         'app': app,
         'chamber': chamber_pretty,

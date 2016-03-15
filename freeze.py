@@ -77,6 +77,20 @@ def session_passed_detail():
                       }
 
 @freezer.register_generator
+def committee_chamber_index():
+    for chamber in ['lower', 'upper', 'joint']:
+        yield { 'chamber': chamber }
+
+@freezer.register_generator
+def committee_detail():
+    items = json.load(open('_input/co-committees.json'))
+    for item in items:
+        slug = 'dummy-%s' % item['id'].lower()
+        yield { 'chamber': item['chamber'],
+                'slug': slug
+              }
+
+@freezer.register_generator
 def bill_detail():
     bills = json.load(open('_input/co-bills.json'))
     for item in bills:
