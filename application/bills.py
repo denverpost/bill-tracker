@@ -96,7 +96,7 @@ class CommitteeQuery(GenericQuery):
                 for entity in item['related_entities']:
                     #print committee, entity['name'], c_id, entity['id']
                     if entity['id'] == c_id:
-                        bills.append(item)
+                        bills.append({'bill': detail, 'action': item})
         return bills
 
 class BillQuery(GenericQuery):
@@ -405,6 +405,7 @@ def committee_detail(chamber, slug, session='2016a'):
     # A slug usually looks like "business-labor-and-technology-coc000109"
     # The committee id is the string after the final hyphen.
     c_id = slug.split('-')[-1]
+    print c_id, slug, 'HEY'
     data = {
         'committee': json.load(open('_input/%s/%s.json' % (session, c_id)))
     }

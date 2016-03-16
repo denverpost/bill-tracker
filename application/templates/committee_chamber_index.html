@@ -7,7 +7,7 @@
 <p>Here's a list of the {{response.chamber|capitalize}} committees in the Colorado legislature.</p>
 <ul>
 {% for item in response.data.committees|sort(attribute='committee') %}
-    <li><a href="{{item.committee|get_url(item.chamber, item.id)}}">{{item.committee}}</a></li>
+    <li><a href="../{{item.committee|get_url(item.chamber, item.id)}}">{{item.committee}}</a></li>
 {%- endfor %}
 </ul>
 {% endblock content %}
