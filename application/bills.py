@@ -77,9 +77,27 @@ class CommitteeQuery(GenericQuery):
         """
             """
         self.items = json.load(json_check('_input/co-committees.json'))
+        self.bills = json.load(json_check('_input/co-bills-%s.json' % app.session))
         self.legislators = json.load(open('application/static/data/legislators.json'))
         self.unfiltered = self.items
         self.session = app.session.upper()
+
+    def get_bills(self, committee, c_id, session):
+        """ Get a list of bills that were touched by this committee.
+            Returns a bill object as well as the most-recent item on
+            the bill timeline that the committee was involved in.
+            """
+        bills = []
+        for bill in self.bills:
+            if bill['session'].lower() != session.lower():
+                continue
+            detail = self.get_detail(bill['session'], bill['bill_id'])
+            for item in detail['actions']:
+                for entity in item['related_entities']:
+                    #print committee, entity['name'], c_id, entity['id']
+                    if entity['id'] == c_id:
+                        bills.append(item)
+        return bills
 
 class BillQuery(GenericQuery):
     """ A means of querying the list of bills.
@@ -390,6 +408,11 @@ def committee_detail(chamber, slug, session='2016a'):
     data = {
         'committee': json.load(open('_input/%s/%s.json' % (session, c_id)))
     }
+
+    # Get the bills the committee has touched.
+    q = CommitteeQuery()
+    data['bills'] = q.get_bills(data['committee']['committee'], c_id.upper(), session)
+
     app.page['title'] = 'Colorado %s %s committee' % (chamber_pretty, data['committee']['committee'])
     if chamber_pretty in data['committee']['committee']:
         app.page['title'] = '%s committee' % data['committee']['committee']
@@ -416,7 +439,6 @@ def session_index():
     return render_template('session_index.html', response=response)
 
 @app.route('/bills/<session>.<js>')
-@app.route('/bills/<session>.<csv>')
 @app.route('/bills/<session>/')
 def session_detail(session, js='', csv=''):
     if session not in app.sessions:
