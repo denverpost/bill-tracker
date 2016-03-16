@@ -492,10 +492,14 @@ def bill_detail(session, bill_id):
     data = {
         'bill': json.load(open('_input/%s/%s.json' % (session, bill_id.lower())))
     }
+    chamber = 'Senate'
+    if data['bill']['bill_id'][0] == 'H':
+        chamber = 'House'
     app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
-    app.page['description'] = 'Details on %s, %s' % ( data['bill']['bill_id'], data['bill']['title'] )
+    app.page['description'] = 'Details on Colorado %s %s %s, %s' % ( chamber, data['bill']['type'][0], data['bill']['bill_id'], data['bill']['title'] )
     response = {
         'app': app,
+        'chamber': chamber,
         'session': session,
         'data': data
     }
