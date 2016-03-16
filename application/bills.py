@@ -524,7 +524,7 @@ def bill_detail_feed(session, bill_id):
     return feed.get_response()
 
 @app.route('/bills/<session>/signed/')
-def session_signed_index(session):
+def session_signed_detail(session):
     if session not in app.sessions:
         abort(404)
 

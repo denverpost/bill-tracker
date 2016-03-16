@@ -47,8 +47,6 @@ def session_passed_index():
 @freezer.register_generator
 def session_signed_detail():
     for item in app.sessions:
-        if item == '2011a':
-            continue
         yield { 'session': item }
 
 @freezer.register_generator
