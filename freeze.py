@@ -8,28 +8,6 @@ app.debug = False
 freezer = Freezer(app)
 
 
-"""
-@freezer.register_generator
-def freezeit():
-    for year in ['', 2014]:
-        for item in app.crime_children:
-            for crime in app.crime_children[item]:
-                if year == '':
-                    yield {'crimeparent': item, 'crime': crime }
-                else:
-                    yield {'crimeparent': item, 'crime': crime, 'year': year}
-        for item in app.crime_launched:
-            if item == 'violent-crime':
-                item = 'violent'
-            try:
-                if year == '':
-                    yield {'crime': item}
-                else:
-                    yield {'crime': item, 'year': year}
-            except:
-                pass
-"""
-
 @freezer.register_generator
 def index():
     yield {}
@@ -67,6 +45,11 @@ def session_passed_index():
             yield { 'session': item, 'passfail': passfail }
 
 @freezer.register_generator
+def session_signed_detail():
+    for item in app.sessions:
+        yield { 'session': item }
+
+@freezer.register_generator
 def session_passed_detail():
     for item in app.sessions:
         for chamber in ['lower', 'upper']:
@@ -86,6 +69,7 @@ def committee_detail():
     items = json.load(open('_input/co-committees.json'))
     for item in items:
         slug = 'dummy-%s' % item['id'].lower()
+        #print item['chamber']
         yield { 'chamber': item['chamber'],
                 'slug': slug
               }
