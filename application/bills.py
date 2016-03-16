@@ -519,6 +519,26 @@ def bill_detail_feed(session, bill_id):
                  published=filters.datetime_raw_filter(item['date']))
     return feed.get_response()
 
+@app.route('/bills/<session>/signed/')
+def session_signed_index(session):
+    if session not in app.sessions:
+        abort(404)
+
+    app.page['title'] = 'Legislation Colorado\'s governor signed into law in the %s session' % session
+    app.page['description'] = 'A list of legislation passed into law in the %s session' % session
+    q = BillQuery()
+    q.session = session.upper()
+    q.filter_session()
+    data = {
+        'bills': q.filter_action_dates('signed'),
+    }
+    response = {
+        'app': app,
+        'data': data,
+        'session': session,
+    }
+    return render_template('session_signed_detail.html', response=response)
+
 @app.route('/bills/<session>/passed/')
 @app.route('/bills/<session>/failed/')
 def session_passed_index(session, passfail=''):

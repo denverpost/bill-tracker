@@ -14,7 +14,7 @@
    {% set bills = response.data.upper %}
 {% endif %}
 <ol>
-{% for item in bills %}
+{% for item in response.data.bills %}
     <li><span>{{item.bill_id}}</span>: <a href="../../../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {% if item.votes %}
         {{response.passfail}} {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
@@ -28,10 +28,6 @@
         {% endif %}
         {% endif %}
     </li>
-{% endfor %}
-</ul>
-{% for item in response.data.bills %}
-    <li><a href="{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a></li>
 {% endfor %}
 </ol>
 {% endblock content %}

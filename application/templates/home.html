@@ -28,12 +28,15 @@
 <h3 id="signed">Recently signed into law</h3>
 {% if response.signed %}
 <ul>
-{% for item in response.signed %}
+{% for item in response.signed[:10] %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         signed {{item.action_dates.signed|datetime_raw|datetime_filter}}
     </li>
 {% endfor %}
 </ul>
+<p><strong>
+    <a href="./bills/{{response.app.session}}/signed/">See a list of all the legislation signed into law in session {{response.app.session|upper}}</a>
+</strong></p>
 {% else %}
 <p>No legislation signed yet this session.</p>
 {% endif %}
