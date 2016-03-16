@@ -2,11 +2,10 @@
 from datetime import date, timedelta
 from optparse import OptionParser
 from flask_frozen import Freezer
-from application import app
+from application import app, filters
 import json
 app.debug = False
 freezer = Freezer(app)
-
 
 @freezer.register_generator
 def index():
@@ -68,8 +67,9 @@ def committee_chamber_index():
 def committee_detail():
     items = json.load(open('_input/co-committees.json'))
     for item in items:
-        slug = 'dummy-%s' % item['id'].lower()
-        yield { 'chamber': item['chamber'],
+        slug = filters.get_committee_slug(item['committee'], item['id'].lower())
+        chamber = filters.chamber_lookup(item['chamber'])
+        yield { 'chamber': chamber,
                 'slug': slug
               }
 

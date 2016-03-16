@@ -405,7 +405,6 @@ def committee_detail(chamber, slug, session='2016a'):
     # A slug usually looks like "business-labor-and-technology-coc000109"
     # The committee id is the string after the final hyphen.
     c_id = slug.split('-')[-1]
-    print c_id, slug, 'HEY'
     data = {
         'committee': json.load(open('_input/%s/%s.json' % (session, c_id)))
     }

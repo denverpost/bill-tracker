@@ -261,6 +261,11 @@ def chamber_lookup(value):
     return chamber
 app.add_template_filter(chamber_lookup)
 
+def get_committee_slug(value, c_id):
+    """ Return the slug part of the committee URL.
+        """
+    return slugify('%s-%s' % (value, c_id))
+
 @app.template_filter(name='get_url')
 def get_committee_url(value, chamber, c_id, session=''):
     """ Return a URL for a committee. 
@@ -268,7 +273,7 @@ def get_committee_url(value, chamber, c_id, session=''):
         Sometimes the name of the chamber is in the committe name. If it is,
         we strip that from the url.
         """
-    slug = slugify('%s-%s' % (value, c_id))
+    slug = get_committee_slug(value, c_id)
     chamber = chamber_lookup(chamber)
     if chamber in slug:
         slug = slug.replace('%s-' % chamber, '')
