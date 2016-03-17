@@ -33,7 +33,7 @@
 <h3 id="leadership">Committee Leadership</h3>
 <ul>
 {% for item in response.data.committee.members|sort(attribute='role') %}
-    {% if 'chair' in item.role or 'Vice-chair' in item.name %}
+    {% if 'chair' in item.role or 'Vice' in item.name %}
     <li>{{item.name}}{% if 'chair' in item.role %}, {{item.role}}{% endif %}</li>
     {% endif %}
 {% endfor %}
@@ -41,16 +41,23 @@
 <h3 id="members">Committee Members</h3>
 <ul>
 {% for item in response.data.committee.members|sort(attribute='role') %}
-    {% if 'chair' not in item.role and 'Vice-chair' not in item.name %}
+    {% if 'chair' not in item.role and 'Vice' not in item.name %}
     <li>{{item.name}}</li>
     {% endif %}
 {% endfor %}
 </ul>
 
 <h2 id="legislation">{{response.data.committee.committee}} legislation</h2>
+{% set prev_date = '' %}
 <ul>
-{% for item in response.data.bills %}
-    <li><span>{{item.bill.bill_id}}</span>: <a href="../../../bills/{{item.bill.session|lower}}/{{item.bill.bill_id|replace(" ", "_")|lower}}/">{{item.bill.title}}</a>: {{item.action.action}} on {{item.action.date|datetime_raw|datetime_filter}}
+{% for item in response.data.bills|sort(attribute='action.date')|reverse %}
+    {% if item.action.date|datetime_raw|datetime_filter != prev_date %}
+</ul>
+    <h3 id="{{item.action.date|datetime_raw|datetime_filter('dateslug')}}">{{item.action.date|datetime_raw|datetime_filter}}</h3>
+<ul>
+    {% endif %}
+    <li><span>{{item.bill.bill_id}}</span>: <a href="../../../bills/{{item.bill.session|lower}}/{{item.bill.bill_id|replace(" ", "_")|lower}}/">{{item.bill.title}}</a>: {{item.action.action}}
+    {%- set prev_date = item.action.date|datetime_raw|datetime_filter -%}
     </li>
 {% endfor %}
 </ul>
