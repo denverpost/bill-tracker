@@ -60,7 +60,7 @@ def session_passed_detail():
 
 @freezer.register_generator
 def committee_chamber_index():
-    for chamber in ['lower', 'upper', 'joint']:
+    for chamber in ['senate', 'house', 'joint']:
         yield { 'chamber': chamber }
 
 @freezer.register_generator
