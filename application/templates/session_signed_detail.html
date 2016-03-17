@@ -9,7 +9,7 @@
 <p>Legislation signed into law in the {{response.session}} Colorado legislative session.</p>
 <ol>
 {% for item in response.data.bills %}
-    <li><span>{{item.bill_id}}</span>: <a href="../../../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a> signed
+    <li><span>{{item.bill_id}}</span>: <a href="../../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a> signed
            {{item.action_dates.signed|datetime_raw|datetime_filter}}
     </li>
 {% endfor %}
