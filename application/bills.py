@@ -320,7 +320,7 @@ def week_detail(issue_date):
     the_date = datetime.strptime(issue_date, '%Y-%m-%d')
     start, finish = the_date - timedelta(7), the_date
     date_range = [start.date(), finish.date()]
-    print start, finish
+    #print start, finish
 
     if issue_date not in weeks:
         abort(404)

@@ -28,10 +28,22 @@
     }], u 'state': u 'co', u 'subcommittee': None, u 'committee': u 'Education', u 'chamber': u 'lower', u 'id': u 'COC000127'
 }
 #}
-<h2 id="members">{{response.data.committee.committee}} members</h2>
+<p>{{response.app.page.description}}</p>
+<h2 id="legislators">{{response.data.committee.committee}} legislators</h2>
+<h3 id="leadership">Committee Leadership</h3>
 <ul>
-{% for item in response.data.committee.members %}
-    <li>{{item.name}}: {{item.role}}</li>
+{% for item in response.data.committee.members|sort(attribute='role') %}
+    {% if 'chair' in item.role or 'Vice-chair' in item.name %}
+    <li>{{item.name}}{% if 'chair' in item.role %}, {{item.role}}{% endif %}</li>
+    {% endif %}
+{% endfor %}
+</ul>
+<h3 id="members">Committee Members</h3>
+<ul>
+{% for item in response.data.committee.members|sort(attribute='role') %}
+    {% if 'chair' not in item.role and 'Vice-chair' not in item.name %}
+    <li>{{item.name}}</li>
+    {% endif %}
 {% endfor %}
 </ul>
 
