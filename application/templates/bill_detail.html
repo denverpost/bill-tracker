@@ -76,7 +76,7 @@
 <h2 id="timeline">{{type|title}} Timeline</h2>
 <ul>
 {% for item in response.data.bill.actions %}
-    <li>{{item.date|datetime_raw|datetime_filter}}: {{item.action|actiontosentence|capfirst}}</li>
+    <li>{{item.date|datetime_raw|datetime_filter}}: {{item.action|actiontosentence|link_committees(response.data.bill.chamber,item.related_entities)|capfirst|safe}}</li>
 {% endfor %}
 </ul>
 
