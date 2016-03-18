@@ -243,6 +243,11 @@ def json_check(fn):
     fh = open(fn)
     return fh
 
+def build_url(app, request):
+    """ Return a URL for the current view.
+        """
+    return '%s%s' % (app.url_root, request.path[1:])
+
 # =========================================================
 # HOMEPAGE VIEW
 # =========================================================
@@ -251,6 +256,8 @@ def json_check(fn):
 def index():
     app.page['title'] = 'Colorado Bill Tracker'
     app.page['description'] = 'Tracking legislation in Colorado\'s state senate and house.'
+    app.page['url'] = build_url(app, request)
+
     q = BillQuery()
     q.items = q.filter_session(app.session)
 
@@ -288,6 +295,7 @@ def week_index():
     from recentfeed import RecentFeed
     app.page['title'] = 'Colorado state legislature weekly round-ups'
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
+    app.page['url'] = build_url(app, request)
 
     # Get the weeks we have the weeks for
     current_issue = app.theweek[app.session]
@@ -307,6 +315,7 @@ def week_index():
 def week_detail(issue_date):
     app.page['title'] = 'The Week in the Colorado legislature'
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
+    app.page['url'] = build_url(app, request)
 
     # Make sure it's a valid week
     current_issue = app.theweek[app.session]
@@ -356,6 +365,8 @@ def week_detail(issue_date):
 def committee_index(chamber=''):
     app.page['title'] = 'Colorado legislative committees'
     app.page['description'] = 'An index of the committees in Colorado legislature.'
+    app.page['url'] = build_url(app, request)
+
     q = CommitteeQuery()
     q.items = q.filter_updated_at(year=2015)
     data = {
@@ -383,6 +394,8 @@ def committee_chamber_index(chamber):
         chamber_for_query = 'lower'
     app.page['title'] = 'Colorado %s committees' % chamber_pretty
     app.page['description'] = 'An index of the committees in Colorado state %s.' % chamber_pretty
+    app.page['url'] = build_url(app, request)
+
     q = CommitteeQuery()
     q.items = q.filter_chamber(chamber_for_query)
     q.items = q.filter_updated_at(year=2015)
@@ -417,6 +430,8 @@ def committee_detail(chamber, slug, session='2016a'):
     if chamber_pretty in data['committee']['committee']:
         app.page['title'] = '%s committee' % data['committee']['committee']
     app.page['description'] = 'Details on the %s, including legislation, leadership and members' % app.page['title']
+    app.page['url'] = build_url(app, request)
+
     response = {
         'app': app,
         'chamber': chamber,
@@ -433,6 +448,7 @@ def committee_detail(chamber, slug, session='2016a'):
 def session_index():
     app.page['title'] = 'Legislative Sessions'
     app.page['description'] = 'An index of Colorado legislative sessions we have bills for.'
+    app.page['url'] = build_url(app, request)
     response = {
         'app': app,
     }
@@ -445,6 +461,8 @@ def session_detail(session, js='', csv=''):
         abort(404)
     app.page['title'] = 'Session %s' % session
     app.page['description'] = ''
+    app.page['url'] = build_url(app, request)
+
     q = BillQuery()
     q.filter_session(session.upper())
     data = {
@@ -496,6 +514,7 @@ def bill_detail(session, bill_id):
         chamber = 'House'
     app.page['title'] = '%s - %s' % (data['bill']['title'], data['bill']['bill_id'])
     app.page['description'] = 'Details on Colorado %s %s %s, %s' % ( chamber, data['bill']['type'][0], data['bill']['bill_id'], data['bill']['title'] )
+    app.page['url'] = build_url(app, request)
     response = {
         'app': app,
         'chamber': chamber,
@@ -529,6 +548,8 @@ def session_signed_detail(session):
 
     app.page['title'] = 'Legislation Colorado\'s governor signed into law in the %s session' % session
     app.page['description'] = 'A list of legislation passed into law in the %s session' % session
+    app.page['url'] = build_url(app, request)
+
     q = BillQuery()
     q.session = session.upper()
     q.filter_session()
@@ -556,6 +577,8 @@ def session_passed_index(session, passfail=''):
             passfail = 'failed'
     app.page['title'] = 'Legislation that %s in the %s session' % (passfail, session)
     app.page['description'] = ''
+    app.page['url'] = build_url(app, request)
+
     response = {
         'app': app,
         'session': session,
@@ -569,6 +592,8 @@ def session_passed_detail(session, passfail, chamber):
         abort(404)
     app.page['title'] = 'Legislation that %s the %s chamber in the %s session' % (passfail, chamber, session)
     app.page['description'] = ''
+    app.page['url'] = build_url(app, request)
+
     q = BillQuery()
     q.session = session.upper()
     q.filter_session()
@@ -603,6 +628,7 @@ def chamber_index(chamber=''):
             chamber = 'house'
     app.page['title'] = 'Colorado State %s legislators' % chamber.title()
     app.page['description'] = 'An index of Colorado legislators in the state %s' % chamber
+    app.page['url'] = build_url(app, request)
     legislators = json.load(open('application/static/data/legislators.json'))
     response = {
         'app': app,
@@ -619,6 +645,7 @@ def district_detail(district, chamber=''):
             chamber = 'house'
     app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
     app.page['description'] = ''
+    app.page['url'] = build_url(app, request)
     legislators_all = json.load(open('application/static/data/legislators.json'))
 
     # Figure out which legislators are in the district we're looking at.
@@ -662,6 +689,7 @@ def legislator_detail(district, last_name, chamber=''):
             print legislator
     app.page['title'] = '%s %s, Colorado state %s' % (legislator['name_first'], legislator['name_last'], title)
     app.page['description'] = '%s %s contact and legislation information for this Colorado state %s' % (legislator['name_first'], legislator['name_last'], title)
+    app.page['url'] = build_url(app, request)
 
     response = {
         'app': app,

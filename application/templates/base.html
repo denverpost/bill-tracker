@@ -171,6 +171,15 @@
 (window,document,'script','dataLayer','GTM-TLFP4R');
 }
 </script><!-- End Google Tag Manager -->
+<div id="fb-root"></div>
+<!-- VENDOR: FACEBOOK -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=197097673694469";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="dfmHeader"><!--Header Goes Here--></div>
 
     <div id="wrapper">
@@ -195,6 +204,10 @@
             </div>
 
             <div class="rightRail sidebarcol small-12 large-3 columns" id="rightRail">
+
+                {% if response.app.page.url %}
+                <div class="fb-like" data-href="{{response.app.page.url}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+                {% endif %}
 
                 <h3>Colorado legislature news</h3>
                 <script src="http://extras.denverpost.com/cache/politics_legislature.js"></script>

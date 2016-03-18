@@ -282,3 +282,12 @@ def get_committee_url(value, chamber, c_id, session=''):
         return url
     return '%s/%s/' % (url, sesssion.lower())
 
+
+@app.template_filter(name='link_committees')
+def link_committees(value, chamber, entities):
+    """ Loop through the list of entities and return the string (value)
+        with relevant committees linked.
+        Entities looks like:
+            [{u'type': u'committee', u'name': u'Business Affairs and Labor', u'id': u'COC000126'}, {u'type': u'committee', u'name': u'Appropriations', u'id': u'COC000137'}]
+        """
+    pass
