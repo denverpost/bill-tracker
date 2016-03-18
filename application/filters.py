@@ -264,7 +264,7 @@ app.add_template_filter(chamber_lookup)
 def get_committee_slug(value, c_id):
     """ Return the slug part of the committee URL.
         """
-    return slugify('%s-%s' % (value, c_id))
+    return slugify('%s-%s' % (value, c_id.lower()))
 
 @app.template_filter(name='get_url')
 def get_committee_url(value, chamber, c_id, session=''):
@@ -290,4 +290,10 @@ def link_committees(value, chamber, entities):
         Entities looks like:
             [{u'type': u'committee', u'name': u'Business Affairs and Labor', u'id': u'COC000126'}, {u'type': u'committee', u'name': u'Appropriations', u'id': u'COC000137'}]
         """
-    pass
+    for item in entities:
+        if item['type'] == 'committee':
+            if item['name'] in value:
+                url = get_committee_url(item['name'], chamber, item['id'])
+                link = "<a href='%s'>%s</a>" % (url, item['name'])
+                value = value.replace(item['name'], link)
+    return value

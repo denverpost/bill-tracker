@@ -88,9 +88,6 @@
 </ol>
 
 <h2 id="votes">Votes</h2>
-{#
-{{response.data.bill.votes.2}}
-#}
 {% if response.data.bill.votes %}
 {% for vote in response.data.bill.votes %}
 <h3>{{vote.chamber|chamber}} vote on {{vote.date|datetime_raw|datetime_filter}}</h3>
