@@ -77,7 +77,6 @@
 <ul>
 {% for item in response.data.bill.actions %}
     <li>{{item.date|datetime_raw|datetime_filter}}: {{item.action|actiontosentence|capfirst}}</li>
-{{item}}
 {% endfor %}
 </ul>
 
