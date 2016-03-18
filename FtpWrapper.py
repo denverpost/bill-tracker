@@ -24,7 +24,7 @@ class FtpWrapper():
         self.connect()
 
     def ftp_callback(self, data):
-        print ''
+        print ' . ', 
  
     def connect(self):
         """ Connect to a server.

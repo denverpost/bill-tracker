@@ -9,6 +9,7 @@ import httplib2
 from FtpWrapper import FtpWrapper
 import freeze
 from application.recentfeed import RecentFeed
+from application import app
 from datetime import date
 import json
 
@@ -117,6 +118,10 @@ def main(args):
                 continue
             if args.legislator and 'legislator' not in dirname:
                 continue
+            # Skip atom file upload on previous years
+            if args.session and app.session not in dirname and 'atom' in filename:
+                continue
+
             if args.verbose:
                 print(os.path.join(dirname, filename))
             try:
