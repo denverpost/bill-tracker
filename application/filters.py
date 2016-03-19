@@ -293,13 +293,17 @@ def link_committees(value, chamber, entities):
         with relevant committees linked.
         Entities looks like:
             [{u'type': u'committee', u'name': u'Business Affairs and Labor', u'id': u'COC000126'}, {u'type': u'committee', u'name': u'Appropriations', u'id': u'COC000137'}]
+        But some older bills don't have entities. That means, if we've gone
+        through the string and found nothing to link, that we can loop through
+        existing committees for that chamber and see if we can find one
+        that matches in the string.
         """
     for item in entities:
         if item['type'] == 'committee':
             if item['name'] in value and 'id' in item:
                 url = get_committee_url(item['name'], chamber, item['id'])
                 if not url:
-                    return value
+                    continue
                 link = "<a href='%scommittees/%s'>%s</a>" % (app.url_root, url, item['name'])
                 value = value.replace(item['name'], link)
     return value
