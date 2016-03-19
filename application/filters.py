@@ -9,6 +9,7 @@ import string
 from slugify import slugify
 from application import app
 import bills
+import query
 
 @app.template_filter(name='ordinal')
 def ordinal_filter(value):
@@ -83,7 +84,7 @@ app.add_template_filter(datetime_filter)
 @app.template_filter(name='bill_details')
 def bill_details_filter(value, session):
     bill_id = string.replace(value['bill_id'].lower(), ' ', '_', )
-    bill = json.load(bills.json_check('_input/%s/%s.json' % (session, bill_id)))
+    bill = json.load(query.json_check('_input/%s/%s.json' % (session, bill_id)))
     return bill
 app.add_template_filter(bill_details_filter)
 
