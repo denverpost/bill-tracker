@@ -19,7 +19,7 @@ page = {
 pages = FlatPages(app)
 # SITE CONFIG
 with app.app_context():
-    app.url_root = 'http://extras.denverpost.com/app/bill-tracker/'
+    app.url_root = '/'
     app.page = page
     app.sessions = ['2011a', '2012a', '2012b', '2013a', '2014a', '2015a', '2016a'] #***HC
     app.session = '2016a' #***HC CURRENT SESSION

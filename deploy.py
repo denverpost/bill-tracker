@@ -13,7 +13,8 @@ from application import app
 from datetime import date
 import json
 
-current_session = '2016a' #HARD-CODED HC
+current_session = app.session
+app.url_root = 'http://extras.denverpost.com/app/bill-tracker/'
 
 def get_news(slug, url, days=7):
     """ Download and cache items from the RSS feeds we track.
