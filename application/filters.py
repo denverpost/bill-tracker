@@ -306,4 +306,7 @@ def link_committees(value, chamber, entities):
                     continue
                 link = "<a href='%scommittees/%s'>%s</a>" % (app.url_root, url, item['name'])
                 value = value.replace(item['name'], link)
+    if 'href' not in value:
+        # Loop through the committees for the chamber we've got.
+        pass
     return value
