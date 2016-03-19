@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block style %}{% endblock style %}
 {% block breadcrumbs %}{{ super() }}
-&rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
+&rsaquo; <a href="{{response.app.url_root}}">Bill Tracker</a>
 &rsaquo; <a href="../">Sessions</a>{% endblock breadcrumbs %}
 {% block head %}
 <!-- DATATABLES STYLES -->
-<link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/app/bill-tracker/static/css/datatables.css"/>
+<link rel="stylesheet" type="text/css" href="{{response.app.url_root}}static/css/datatables.css"/>
 <link href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css"/>
 <!-- DATATABLES SCRIPTS -->
 <script type="text/javascript" src="https://cdn.datatables.net/r/zf-5.5.2/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>

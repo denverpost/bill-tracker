@@ -32,7 +32,7 @@ div#headshot {
 }
 {% endblock style %}
 {% block breadcrumbs %}{{ super() }}
-&rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>{% endblock breadcrumbs %}
+&rsaquo; <a href="{{response.app.url_root}}">Bill Tracker</a>{% endblock breadcrumbs %}
 {% block head %}
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -85,7 +85,7 @@ function loadHouseMap() {
 
 	infoHouse.update = function (props) {
 		this._div.innerHTML = '<div><div id="legislator-info">' + (props ?
-			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '<br><span style="font-weight: normal;">click map to go<br>to legislator page</span></span></div>' + '<div id="headshot"><img class="headshot" src="http://extras.denverpost.com/app/bill-tracker/static/img/l-' + props.district + '-' + props.leg_last + '.jpg"></div>'
+			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '<br><span style="font-weight: normal;">click map to go<br>to legislator page</span></span></div>' + '<div id="headshot"><img class="headshot" src="{{response.app.url_root}}static/img/l-' + props.district + '-' + props.leg_last + '.jpg"></div>'
 			: 'Hover over a district</div>');
 	};
 
@@ -191,7 +191,7 @@ function loadSenateMap() {
 
 	infoSenate.update = function (props) {
 		this._div.innerHTML = '<div><div id="legislator-info">' + (props ?
-			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '<br><span style="font-weight: normal;">click map to go<br>to legislator page</span></span></div>' + '<div id="headshot"><img class="headshot" src="http://extras.denverpost.com/app/bill-tracker/static/img/u-' + props.district + '-' + props.leg_last + '.jpg"></div>'
+			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '<br><span style="font-weight: normal;">click map to go<br>to legislator page</span></span></div>' + '<div id="headshot"><img class="headshot" src="{{response.app.url_root}}static/img/u-' + props.district + '-' + props.leg_last + '.jpg"></div>'
 			: 'Hover over a district</div>');
 	};
 

@@ -75,6 +75,7 @@ class GenericQuery:
                     filtered.append(item)
         return filtered
 
+
 class CommitteeQuery(GenericQuery):
     """ A means of querying the list of committees.
         """
@@ -104,6 +105,7 @@ class CommitteeQuery(GenericQuery):
                     if entity['id'] == c_id:
                         bills.append({'bill': detail, 'action': item})
         return bills
+
 
 class BillQuery(GenericQuery):
     """ A means of querying the list of bills.

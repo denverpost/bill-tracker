@@ -22,7 +22,7 @@
     <meta name="twitter:url" value="{{response.app.page.url}}" />
     <meta name="twitter:title" value="{{response.app.page.title}}" />
     <meta name="twitter:description" value="{{response.app.page.description}}" />
-    <meta name="twitter:image" value="http://extras.denverpost.com/app/bill-tracker/static/img/bill-tracker-logo.gif" />
+    <meta name="twitter:image" value="{{response.app.url_root}}static/img/bill-tracker-logo.gif" />
     <meta name="twitter:site" value="@denverpost" />
     <meta name="twitter:domain" value="denverpost.com" />
     <meta name="twitter:creator" value="@joemurph">
@@ -37,7 +37,7 @@
     <meta property="og:title" content="{{response.app.page.title}}" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{{response.app.page.url}}" />
-    <meta property="og:image" content="http://extras.denverpost.com/app/bill-tracker/static/img/bill-tracker-logo.gif" />
+    <meta property="og:image" content="{{response.app.url_root}}static/img/bill-tracker-logo.gif" />
     <meta property="og:site_name" content="The Denver Post" />
     <meta property="og:description" content="{{response.app.page.description}}" />
     <meta property="article:publisher" content="https://www.facebook.com/denverpost" />
@@ -58,7 +58,7 @@
     </script>
 
     <link rel="stylesheet" type="text/css" href="http://extras.mnginteractive.com/live/css/site67/bartertown.css">
-    <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/app/bill-tracker/static/css/site.css">
+    <link rel="stylesheet" type="text/css" href="{{response.app.url_root}}static/css/site.css">
     <style type="text/css">
     dt { float: left; }
     dt:after { content: ':\00a0'; }
@@ -268,7 +268,7 @@
     <p>Copyright &copy; 2015-2016 <a href="http://www.denverpost.com/">The Denver Post</a></p>
     <p>
         <a href="http://www.denverpost.com/weather#denver">Denver Weather</a> 
-        &bull; <a href="http://www.denverpost.com/broncos">Broncos</a>
+        &bull; <a href="http://www.denverpost.com/rockies">Rockies</a>
         &bull; <a href="http://www.denverpost.com/nuggets">Denver Nuggets</a>
         &bull; <a href="http://www.denverpost.com/sudoku">Sudoku</a>
         &bull; <a href="http://www.denverpost.com/headlines">Today's News</a>
