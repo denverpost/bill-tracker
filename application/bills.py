@@ -27,7 +27,7 @@ def build_url(app, request):
 @app.route('/')
 def index():
     app.page['title'] = 'Colorado Bill Tracker'
-    app.page['description'] = 'Tracking legislation in Colorado\'s state senate and house.'
+    app.page['description'] = 'Tracking legislation in the Colorado General Assembly.'
     app.page['url'] = build_url(app, request)
 
     q = BillQuery()
@@ -66,7 +66,7 @@ def index():
 def week_index():
     from recentfeed import RecentFeed
     app.page['title'] = 'Colorado state legislature weekly round-ups'
-    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
+    app.page['description'] = 'A round-up of what happened to which legislation in the Colorado General Assembly.'
     app.page['url'] = build_url(app, request)
 
     # Get the weeks we have the weeks for
@@ -86,7 +86,7 @@ def week_index():
 @app.route('/the-week/<issue_date>/')
 def week_detail(issue_date):
     app.page['title'] = 'The Week in the Colorado legislature'
-    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature.'
+    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature for the week ending '
     app.page['url'] = build_url(app, request)
 
     # Make sure it's a valid week
@@ -101,6 +101,8 @@ def week_detail(issue_date):
     the_date = datetime.strptime(issue_date, '%Y-%m-%d')
     start, finish = the_date - timedelta(7), the_date
     date_range = [start.date(), finish.date()]
+
+    app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
     #print start, finish
 
     if issue_date not in weeks:

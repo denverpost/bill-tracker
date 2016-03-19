@@ -289,7 +289,7 @@ def get_committee_url(value, chamber, c_id, session=''):
 
 
 @app.template_filter(name='link_committees')
-def link_committees(value, chamber, entities):
+def link_committees(value, chamber, entities, session=app.session):
     """ Loop through the list of entities and return the string (value)
         with relevant committees linked.
         Entities looks like:
