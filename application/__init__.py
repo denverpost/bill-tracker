@@ -17,11 +17,13 @@ page = {
 }
 
 pages = FlatPages(app)
+# SITE CONFIG
 with app.app_context():
     app.url_root = 'http://extras.denverpost.com/app/bill-tracker/'
     app.page = page
     app.sessions = ['2011a', '2012a', '2012b', '2013a', '2014a', '2015a', '2016a'] #***HC
     app.session = '2016a' #***HC CURRENT SESSION
+    # THE WEEK WE START PUBLISHING THE WEEK... need to figure out how we know when to end it.
     app.theweek = { '2016a': date(2016,2,20) }
 
 import application.flatpage
