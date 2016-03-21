@@ -36,7 +36,6 @@ python deploy.py --freeze
 if [ $TEST == 0 ]; then
     python deploy.py --ftp --nosession
     python deploy.py --ftp --theweek
-    python deploy.py --ftp --committee
     python deploy.py --ftp --session 2016a
 fi
 

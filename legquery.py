@@ -157,7 +157,7 @@ def main(args):
     s = Sunlight(args)
     s.get_bill_list(args.session)
     s.get_committee_list()
-    #s.get_legislator_list()
+    s.get_legislator_list()
 
     if 'updated' in args and args.updated:
         print s.bills[0]['updated_at']
@@ -214,6 +214,10 @@ def build_parser(args):
                         help="Query only one session, i.e. 2016a, 2015a, 2014a etc.")
     parser.add_argument("-l", "--limit", dest="limit", default=0,
                         help="Truncate the number of bills we handle. Ignored if a session param is passed.")
+    parser.add_argument("-a", "--archive", dest="archive", default=False, action="store_true",
+                        help="Save legislator, committee and bill data in a file named for that session.\n\
+                              We do this at or near the end of a session so we can look back on prior session's data.\n\
+                              This is most important for committee and legislator data, which isn't otherwise archived.")
     args = parser.parse_args(args)
     return args
 
@@ -222,4 +226,7 @@ if __name__ == '__main__':
 
     if args.verbose == True:
         doctest.testmod(verbose=args.verbose)
-    main(args)
+    if args.archive == True:
+        archive(args)
+    else:
+        main(args)
