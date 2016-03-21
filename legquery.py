@@ -170,7 +170,7 @@ def archive(args):
     directory = os.path.dirname(os.path.realpath(__file__))
     if not os.path.isdir('%s/_input' % directory):
         os.mkdir('%s/_input' % directory)
-    session = app.current_session
+    session = app.session
     for item in s.committees:
         details = s.get_committee_detail(item['id'])
     for item in s.bills:
