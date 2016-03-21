@@ -119,12 +119,24 @@ class Sunlight:
         return details 
 
     def get_committee_detail(self, c_id):
-        """ Get committee details.
+        """ Get committee details. Save it as a json file.
             """
         slug = c_id.lower()
         if not os.path.isdir('%s/_input/%s' % (self.directory, self.session)):
             os.mkdir('%s/_input/%s' % (self.directory, self.session))
         details = sunlight.openstates.committee_detail(c_id)
+        fh = open('_input/%s/%s.json' % (self.session, slug), 'wb')
+        json.dump(details, fh)
+        fh.close()
+        return details 
+
+    def get_legislator_detail(self, l_id):
+        """ Get legislator details. Save it as a json file.
+            """
+        slug = l_id.lower()
+        if not os.path.isdir('%s/_input/%s' % (self.directory, self.session)):
+            os.mkdir('%s/_input/%s' % (self.directory, self.session))
+        details = sunlight.openstates.legislator_detail(l_id)
         fh = open('_input/%s/%s.json' % (self.session, slug), 'wb')
         json.dump(details, fh)
         fh.close()
@@ -144,6 +156,28 @@ class Sunlight:
         fn.write(content)
         fn.close
         return True
+
+def archive(args):
+    """ Archive committee, legislator and bill data.
+        """
+    # We do this to get the hard-coded config data, such as which session it is.
+    from application import app
+
+    s = Sunlight(args)
+    s.get_bill_list(args.session)
+    s.get_committee_list()
+    s.get_legislator_list()
+    directory = os.path.dirname(os.path.realpath(__file__))
+    if not os.path.isdir('%s/_input' % directory):
+        os.mkdir('%s/_input' % directory)
+    session = app.current_session
+    for item in s.committees:
+        details = s.get_committee_detail(item['id'])
+    for item in s.bills:
+        s.session = item['session'].lower()
+        details = s.get_bill_detail(item['bill_id'])
+    for item in s.legislators:
+        details = s.get_legislator_detail(item['id'])
 
 
 def main(args):
