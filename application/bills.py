@@ -399,17 +399,13 @@ def session_passed_detail(session, passfail, chamber):
 
 @app.route('/legislators/')
 def leg_index():
-    if chamber == '':
-        chamber = 'senate'
-        if 'house' in request.path:
-            chamber = 'house'
-    app.page['title'] = 'Colorado State %s legislators' % chamber.title()
-    app.page['description'] = 'An index of Colorado legislators in the state %s' % chamber
+    app.page['title'] = 'Colorado legislators'
+    app.page['description'] = 'An index of Colorado legislators'
     app.page['url'] = build_url(app, request)
-    legislators = json.load(open('application/static/data/legislators.json'))
+    legislators = json.load(open('_input/co-legislators.json'))
     response = {
         'app': app,
-        'chamber': chamber,
+        'legislators': legislators
     }
     return render_template('leg_index.html', response=response)
 
@@ -423,10 +419,11 @@ def leg_chamber_index(chamber=''):
     app.page['title'] = 'Colorado State %s legislators' % chamber.title()
     app.page['description'] = 'An index of Colorado legislators in the state %s' % chamber
     app.page['url'] = build_url(app, request)
-    legislators = json.load(open('application/static/data/legislators.json'))
+    legislators = json.load(open('_input/co-legislators.json'))
     response = {
         'app': app,
         'chamber': chamber,
+        'legislators': legislators
     }
     return render_template('leg_chamber_index.html', response=response)
 
@@ -440,7 +437,7 @@ def leg_district_detail(district, chamber=''):
     app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
     app.page['description'] = ''
     app.page['url'] = build_url(app, request)
-    legislators_all = json.load(open('application/static/data/legislators.json'))
+    legislators_all = json.load(open('_input/co-legislators.json'))
 
     # Figure out which legislators are in the district we're looking at.
     legislators = []
@@ -470,7 +467,7 @@ def legislator_detail(district, last_name, chamber=''):
         # A little bit of repetition, sorry.
         title = 'representative'
 
-    legislators_all = json.load(open('application/static/data/legislators.json'))
+    legislators_all = json.load(open('_input/co-legislators.json'))
 
     legislator = []
     # Figure out which legislator we're looking for
