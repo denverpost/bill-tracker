@@ -415,7 +415,7 @@ def leg_index():
 
 @app.route('/legislator/senate/')
 @app.route('/legislator/house/')
-def chamber_index(chamber=''):
+def leg_chamber_index(chamber=''):
     if chamber == '':
         chamber = 'senate'
         if 'house' in request.path:
@@ -428,11 +428,11 @@ def chamber_index(chamber=''):
         'app': app,
         'chamber': chamber,
     }
-    return render_template('chamber_index.html', response=response)
+    return render_template('leg_chamber_index.html', response=response)
 
 @app.route('/legislator/senate/<district>/')
 @app.route('/legislator/house/<district>/')
-def district_detail(district, chamber=''):
+def leg_district_detail(district, chamber=''):
     if chamber == '':
         chamber = 'senate'
         if 'house' in request.path:
@@ -452,7 +452,7 @@ def district_detail(district, chamber=''):
         'app': app,
         'legislators': legislators,
     }
-    return render_template('district_detail.html', response=response)
+    return render_template('leg_district_detail.html', response=response)
 
 @app.route('/legislator/senate/<district>/<last_name>/')
 @app.route('/legislator/house/<district>/<last_name>/')
