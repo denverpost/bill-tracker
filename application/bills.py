@@ -397,7 +397,7 @@ def session_passed_detail(session, passfail, chamber):
 # LEGISLATOR VIEWS
 # =========================================================
 
-@app.route('/legislator/')
+@app.route('/legislators/')
 def leg_index():
     if chamber == '':
         chamber = 'senate'
@@ -413,8 +413,8 @@ def leg_index():
     }
     return render_template('leg_index.html', response=response)
 
-@app.route('/legislator/senate/')
-@app.route('/legislator/house/')
+@app.route('/legislators/senate/')
+@app.route('/legislators/house/')
 def leg_chamber_index(chamber=''):
     if chamber == '':
         chamber = 'senate'
@@ -430,8 +430,8 @@ def leg_chamber_index(chamber=''):
     }
     return render_template('leg_chamber_index.html', response=response)
 
-@app.route('/legislator/senate/<district>/')
-@app.route('/legislator/house/<district>/')
+@app.route('/legislators/senate/<district>/')
+@app.route('/legislators/house/<district>/')
 def leg_district_detail(district, chamber=''):
     if chamber == '':
         chamber = 'senate'
@@ -454,8 +454,8 @@ def leg_district_detail(district, chamber=''):
     }
     return render_template('leg_district_detail.html', response=response)
 
-@app.route('/legislator/senate/<district>/<last_name>/')
-@app.route('/legislator/house/<district>/<last_name>/')
+@app.route('/legislators/senate/<district>/<last_name>/')
+@app.route('/legislators/house/<district>/<last_name>/')
 def legislator_detail(district, last_name, chamber=''):
     title = 'senator'
 
