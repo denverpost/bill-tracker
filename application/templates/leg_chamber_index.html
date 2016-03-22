@@ -86,7 +86,7 @@ function loadHouseMap() {
 
 	infoHouse.update = function (props) {
 		this._div.innerHTML = '<div><div id="legislator-info">' + (props ?
-			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '<br><span style="font-weight: normal;">click map to go<br>to legislator page</span></span></div>' + '<div id="headshot"><img class="headshot" src="{{response.app.url_root}}static/img/l-' + props.district + '-' + props.leg_last + '.jpg"></div>'
+			'<span id="district">District ' + props.district + '<br><span style="font-weight: normal;">click map to go<br>to the district page</span></span></div></div>'
 			: 'Hover over a district</div>');
 	};
 
@@ -134,7 +134,7 @@ function loadHouseMap() {
 	} */
 
 	function openURL(e) {
-		window.open('./' + (e.target.feature.properties.district) + '/' + (e.target.feature.properties.leg_last), '_self');
+		window.open('./' + (e.target.feature.properties.district) + '/', '_self');
 	}
 
 	function onEachFeature(feature, layer) {
@@ -192,7 +192,7 @@ function loadSenateMap() {
 
 	infoSenate.update = function (props) {
 		this._div.innerHTML = '<div><div id="legislator-info">' + (props ?
-			props.leg_first + '<br>' + props.leg_last + ' (' + props.party + ') <hr><span id="district">District ' + props.district + '<br><span style="font-weight: normal;">click map to go<br>to legislator page</span></span></div>' + '<div id="headshot"><img class="headshot" src="{{response.app.url_root}}static/img/u-' + props.district + '-' + props.leg_last + '.jpg"></div>'
+			'<span id="district">District ' + props.district + '<br><span style="font-weight: normal;">click map to go<br>to the district page</span></span></div></div>'
 			: 'Hover over a district</div>');
 	};
 
@@ -240,7 +240,7 @@ function loadSenateMap() {
 	} */
 
 	function openURL(e) {
-		window.open('./' + (e.target.feature.properties.district) + '/' + (e.target.feature.properties.leg_last), '_self');
+		window.open('./' + (e.target.feature.properties.district) + '/', '_self');
 	}
 
 	function onEachFeature(feature, layer) {
