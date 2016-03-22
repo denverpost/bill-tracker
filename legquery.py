@@ -22,26 +22,34 @@ class Sunlight:
         if not os.path.isdir('%s/_input' % self.directory):
             os.mkdir('%s/_input' % self.directory)
 
-    def get_committee_list(self):
-        """ Get list of committees.
+    def get_committee_list(self, session=None):
+        """ Get list of committees. The session var isn't necessary for the 
+            Sunlight API, the session var is added to the filename if the
+            session var is passed.
             >>> s = Sunlight()
             >>> s.get_committee_list()
             True
             """
         self.committees = sunlight.openstates.committees(state=self.state)
         filename = '_input/%s-committees.json' % (self.state)
+        if session:
+            filename = '_input/%s-committees-%s.json' % (self.state, session.lower())
         fh = open(filename, 'wb')
         json.dump(self.committees, fh)
         return True
 
-    def get_legislator_list(self):
-        """ Get list of legislators.
+    def get_legislator_list(self, session=None):
+        """ Get list of legislators. The session var isn't necessary for the 
+            Sunlight API, the session var is added to the filename if the
+            session var is passed.
             >>> s = Sunlight()
             >>> s.get_legislator_list()
             True
             """
         self.legislators = sunlight.openstates.legislators(state=self.state)
         filename = '_input/%s-legislators.json' % (self.state)
+        if session:
+            filename = '_input/%s-legislators-%s.json' % (self.state, session.lower())
         fh = open(filename, 'wb')
         json.dump(self.legislators, fh)
         return True
@@ -162,15 +170,15 @@ def archive(args):
         """
     # We do this to get the hard-coded config data, such as which session it is.
     from application import app
+    session = app.session
 
     s = Sunlight(args)
-    s.get_bill_list(args.session)
-    s.get_committee_list()
-    s.get_legislator_list()
+    s.get_bill_list(session)
+    s.get_committee_list(session)
+    s.get_legislator_list(session)
     directory = os.path.dirname(os.path.realpath(__file__))
     if not os.path.isdir('%s/_input' % directory):
         os.mkdir('%s/_input' % directory)
-    session = app.session
     for item in s.committees:
         details = s.get_committee_detail(item['id'])
     for item in s.bills:
