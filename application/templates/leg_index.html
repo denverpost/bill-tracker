@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block style %}
+{% endblock style %}
+{% block breadcrumbs %}{{ super() }}
+&rsaquo; <a href="{{response.app.url_root}}">Bill Tracker</a>{% endblock breadcrumbs %}
+{% block head %}{% endblock head %}
+{% block content %}
+<p>Colorado legislators serving in the <a href="{{response.app.url_root}}bills/{{response.app.session}}/">{{response.app.session}} session</a>.</p>
+<p>Find <a href="senate/">legislators serving in the senate</a>, and <a href="house/">legislators in Colorado's House</a>.</p>
+{#
+<h2></h2>
+<p></p>
+<ul>
+{% for item in response.legislators -%}
+    <li><a href="{{item}}/">{{item}}</a></li>
+{% endfor %}
+</ul>
+#}
+{% endblock content %}
