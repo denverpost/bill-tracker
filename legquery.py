@@ -38,7 +38,7 @@ class Sunlight:
         json.dump(self.committees, fh)
         return True
 
-    def get_legislator_list(self, session=None):
+    def get_legislator_list(self, session=None, **kwargs):
         """ Get list of legislators. The session var isn't necessary for the 
             Sunlight API, the session var is added to the filename if the
             session var is passed.

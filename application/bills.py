@@ -393,8 +393,28 @@ def session_passed_detail(session, passfail, chamber):
 # === NOT DEPLOYED YET === #
 # =========================================================
 
-@app.route('/senate/')
-@app.route('/house/')
+# =========================================================
+# LEGISLATOR VIEWS
+# =========================================================
+
+@app.route('/legislator/')
+def leg_index():
+    if chamber == '':
+        chamber = 'senate'
+        if 'house' in request.path:
+            chamber = 'house'
+    app.page['title'] = 'Colorado State %s legislators' % chamber.title()
+    app.page['description'] = 'An index of Colorado legislators in the state %s' % chamber
+    app.page['url'] = build_url(app, request)
+    legislators = json.load(open('application/static/data/legislators.json'))
+    response = {
+        'app': app,
+        'chamber': chamber,
+    }
+    return render_template('leg_index.html', response=response)
+
+@app.route('/legislator/senate/')
+@app.route('/legislator/house/')
 def chamber_index(chamber=''):
     if chamber == '':
         chamber = 'senate'
@@ -410,8 +430,8 @@ def chamber_index(chamber=''):
     }
     return render_template('chamber_index.html', response=response)
 
-@app.route('/senate/<district>/')
-@app.route('/house/<district>/')
+@app.route('/legislator/senate/<district>/')
+@app.route('/legislator/house/<district>/')
 def district_detail(district, chamber=''):
     if chamber == '':
         chamber = 'senate'
@@ -434,8 +454,8 @@ def district_detail(district, chamber=''):
     }
     return render_template('district_detail.html', response=response)
 
-@app.route('/senate/<district>/<last_name>/')
-@app.route('/house/<district>/<last_name>/')
+@app.route('/legislator/senate/<district>/<last_name>/')
+@app.route('/legislator/house/<district>/<last_name>/')
 def legislator_detail(district, last_name, chamber=''):
     title = 'senator'
 
