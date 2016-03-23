@@ -42,7 +42,7 @@ div#headshot {
     <script src="{{response.app.url_root}}static/js/co-senate-geojson.js"></script>
 {% endblock head %}
 {% block content %}
-<h2></h2>
+<h2 id="map">Map</h2>
 <p></p>
 {% if response.chamber == 'house' %}
 <div id="map-house"></div>
@@ -259,11 +259,14 @@ function loadSenateMap() {
 
 </script>
 {% endif %}
-{#
+<h2 id="list">List</h2>
 <ul>
-{% for item in response.app -%}
-    <li><a href="{{item}}/">{{item|datetime_filter}}</a></li>
+{% for item in response.legislators|sort(attribute='last_name') -%}
+    {% if response.chamber == 'house' and item.chamber == 'lower' or response.chamber=='senate' and item.chamber == 'upper' %}
+    <li><a href="{{item.district}}/{{item.last_name|lower}}-{{item.leg_id|lower}}/">{{item.first_name}} {{item.last_name}}</a></li>
+    {% endif %}
 {% endfor %}
 </ul>
+{# {u'last_name': u'Baumgardner', u'updated_at': u'2016-03-22 09:26:59', u'full_name': u'Randy Baumgardner', u'id': u'COL000099', u'first_name': u'Randy L.', u'middle_name': u'', u'district': u'8', u'chamber': u'upper', u'state': u'co', u'votesmart_id': u'106641', u'party': u'Republican', u'email': u'randy.baumgardner.senate@state.co.us', u'all_ids': [u'COL000099', u'COL000106'], u'leg_id': u'COL000099', u'active': True, u'transparencydata_id': u'61629bb92ddb49608b091fbde4ba9ce4', u'photo_url': u'http://www.leg.state.co.us//clics/clics2016A/directory.nsf/0/D7B22F186368E3A587257C55006BD453/$FILE/S-Baumgardner, Randy.jpg', u'level': u'state', u'url': u'http://www.leg.state.co.us//clics/clics2016A/directory.nsf/MemberDetailPage?OpenForm&district=8&chamber=senate', u'country': u'us', u'created_at': u'2012-01-19 01:01:49', u'+occupation': u'Rancher/Citizen Legislator', u'offices': [{u'fax': None, u'name': u'Capitol Office', u'phone': u'303-866-5292', u'address': u'200 E. Colfax\nDenver, CO 80203', u'type': u'capitol', u'email': u'randy.baumgardner.senate@state.co.us'}], u'suffixes': u'', u'+phone': u'303 866 2949'}
 #}
 {% endblock content %}
