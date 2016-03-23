@@ -451,10 +451,10 @@ def leg_district_detail(district, chamber=''):
     }
     return render_template('leg_district_detail.html', response=response)
 
-@app.route('/legislators/senate/<district>/<last_name>/')
-@app.route('/legislators/house/<district>/<last_name>/')
-def legislator_detail(district, last_name, chamber=''):
-    title = 'senator'
+@app.route('/legislators/senate/<district>/<slug>/')
+@app.route('/legislators/house/<district>/<slug>/')
+def legislator_detail(district, slug, chamber=''):
+    title = 'Senator'
 
     # Allow us to override the request.path with a passed argument.
     # This is used in freeze.py in our deploy.
@@ -462,24 +462,18 @@ def legislator_detail(district, last_name, chamber=''):
         chamber = 'senate'
         if 'house' in request.path[:10]:
             chamber = 'house'
-            title = 'representative'
+            title = 'Representative'
     elif chamber == 'house':
         # A little bit of repetition, sorry.
-        title = 'representative'
+        title = 'Representative'
 
-    legislators_all = json.load(open('_input/co-legislators.json'))
-
-    legislator = []
     # Figure out which legislator we're looking for
-    last_name = last_name.replace('_', ' ').title()
-    if ' ' in last_name:
-        last_name += '.'
-    for item in legislators_all:
-        if item == last_name:
-            legislator = legislators_all[item]
-            print legislator
-    app.page['title'] = '%s %s, Colorado state %s' % (legislator['name_first'], legislator['name_last'], title)
-    app.page['description'] = '%s %s contact and legislation information for this Colorado state %s' % (legislator['name_first'], legislator['name_last'], title)
+    # A slug usually looks like "hammajamma-col000109"
+    # The legislator id is the string after the final hyphen.
+    l_id = slug.split('-')[-1]
+    legislator = json.load(open('_input/2016a/%s.json' % l_id.lower()))
+    app.page['title'] = '%s %s, Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
+    app.page['description'] = '%s %s contact and legislation information for this Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
     app.page['url'] = build_url(app, request)
 
     response = {
