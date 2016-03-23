@@ -472,7 +472,9 @@ def legislator_detail(district, slug, chamber=''):
     # The legislator id is the string after the final hyphen.
     l_id = slug.split('-')[-1]
     legislator = json.load(open('_input/2016a/%s.json' % l_id.lower()))
-    app.page['title'] = '%s %s, Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
+    legislator['occupation'] = legislator['+occupation']
+
+    app.page['title'] = '%s %s is a Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
     app.page['description'] = '%s %s contact and legislation information for this Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
     app.page['url'] = build_url(app, request)
 

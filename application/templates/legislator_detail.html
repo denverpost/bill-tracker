@@ -5,15 +5,77 @@
 &rsaquo; <a href="{{response.app.url_root}}legislators">Legislators</a>{% endblock breadcrumbs %}
 {% block content %}
 {% with leg = response.legislator %}
+{#
+{
+    u 'last_name': u 'Tate', u 'updated_at': u '2016-03-22 09:26:59', u 'sources': [{
+        u 'url': u 'http://www.leg.state.co.us//clics/clics2016A/directory.nsf/d2ba3eab4e53242807256634004df526/59b06ef479251e7287257c55006bce36?OpenDocument'
+    }], u 'full_name': u 'Tate, Jack', u 'old_roles': {
+        u '2015-2016': [{
+            u 'term': u '2015-2016',
+            u 'end_date': None,
+            u 'district': u '37',
+            u 'chamber': u 'lower',
+            u 'state': u 'co',
+            u 'party': u 'Republican',
+            u 'type': u 'member',
+            u 'start_date': None
+        }]
+    }, u 'id': u 'COL000165', u 'first_name': u 'Jack', u 'middle_name': u '', u 'district': u '27', u 'chamber': u 'upper', u 'state': u 'co', u 'party': u 'Republican', u 'email': u 'jack.tate.house@state.co.us', u 'all_ids': [u 'COL000165', u 'COL000203'], u 'leg_id': u 'COL000165', u 'active': True, u 'photo_url': u 'http://www.leg.state.co.us//clics/clics2016A/directory.nsf/0/59B06EF479251E7287257C55006BCE36/$FILE/R-Tate, John A.jpg', u 'roles': [{
+        u 'term': u '2015-2016',
+        u 'end_date': None,
+        u 'district': u '27',
+        u 'chamber': u 'upper',
+        u 'state': u 'co',
+        u 'party': u 'Republican',
+        u 'type': u 'member',
+        u 'start_date': None
+    }, {
+        u 'term': u '2015-2016',
+        u 'committee_id': u 'COC000128',
+        u 'chamber': u 'upper',
+        u 'state': u 'co',
+        u 'subcommittee': None,
+        u 'committee': u 'Local Government',
+        u 'position': u 'member',
+        u 'type': u 'committee member'
+    }, {
+        u 'term': u '2015-2016',
+        u 'committee_id': u 'COC000132',
+        u 'chamber': u 'upper',
+        u 'state': u 'co',
+        u 'subcommittee': None,
+        u 'committee': u 'Business, Labor and Technology',
+        u 'position': u 'member',
+        u 'type': u 'committee member'
+    }, {
+        u 'term': u '2015-2016',
+        u 'committee_id': u 'COC000144',
+        u 'chamber': u 'joint',
+        u 'state': u 'co',
+        u 'subcommittee': None,
+        u 'committee': u 'Joint Technology Committee',
+        u 'position': u 'member',
+        u 'type': u 'committee member'
+    }], u 'url': u 'http://www.leg.state.co.us//clics/clics2016A/directory.nsf/MemberDetailPage?OpenForm&district=27&chamber=senate', u 'created_at': u '2015-01-06 19:05:33', u '+occupation': u 'Small Business Owner', u 'offices': [{
+        u 'fax': None,
+        u 'name': u 'Capitol Office',
+        u 'phone': u '303-866-4883',
+        u 'address': u '200 E. Colfax\nDenver, CO 80203',
+        u 'type': u 'capitol',
+        u 'email': u 'jack.tate.senate@state.co.us'
+    }], u 'suffixes': u ''
+}
+#}
+<img src="{{leg.photo_url}}" alt="{{leg.first_name}} {{leg.last_name}}" style="float:left; margin-right:10px;">
 <p>
-    {{leg.name_first}} {{leg.name_last}} is a {{response.title}} in district {{leg.district}} in the Colorado state {{leg.chamber}}.
+    {{leg.first_name}} {{leg.last_name}} is a {{leg.party}} Colorado state {{response.title}} in district {{leg.district}}.
+    {% if leg.occupation %}{{leg.last_name}} also works as a {{leg.occupation}}.{% endif %}
+    {% if leg.url %}<a href="{{leg.url}}">Visit {{leg.last_name}}'s profile page on leg.state.co.us</a>, and <a href="mailto:{{leg.email}}">email {{leg.last_name}} at {{leg.email}}.{% endif %}
+{#
     District {{leg.district}} covers 
     {%- for item in leg.counties %} {{item}}, {% endfor %} counties.
+#}
 </p>
-{% if leg.occupation %}
-<p>{{leg.name_first}} {{leg.name_last}} is a {{leg.occupation}}.</p>
-{% endif %}
-{{response.legislator}}
 {% endwith %}
 {#
 <ul>
