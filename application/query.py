@@ -76,6 +76,34 @@ class GenericQuery:
         return filtered
 
 
+class LegislatorQuery(GenericQuery):
+    """ A means of querying the list of legislators.
+        """
+
+    def __init__(self):
+        """
+            """
+        self.items = json.load(json_check('_input/co-legislators.json'))
+        self.bills = json.load(json_check('_input/co-bills-%s.json' % app.session))
+        self.committees = json.load(json_check('_input/co-committees.json'))
+        self.unfiltered = self.items
+        self.session = app.session.upper()
+
+    def get_bills(self, the_id, session):
+        """ Get a list of bills that were touched by this legislator.
+            Returns a bill object as well as the role the legislator
+            had with the bill.
+            """
+        bills = []
+        for bill in self.bills:
+            if bill['session'].lower() != session.lower():
+                continue
+            detail = self.get_detail(bill['session'], bill['bill_id'])
+            for item in detail['sponsors']:
+                if item['leg_id'].lower() == the_id:
+                    bills.append({'bill': detail, 'action': 'sponsor'})
+        return bills
+
 class CommitteeQuery(GenericQuery):
     """ A means of querying the list of committees.
         """
@@ -89,7 +117,7 @@ class CommitteeQuery(GenericQuery):
         self.unfiltered = self.items
         self.session = app.session.upper()
 
-    def get_bills(self, committee, c_id, session):
+    def get_bills(self, committee, the_id, session):
         """ Get a list of bills that were touched by this committee.
             Returns a bill object as well as the most-recent item on
             the bill timeline that the committee was involved in.
@@ -101,8 +129,8 @@ class CommitteeQuery(GenericQuery):
             detail = self.get_detail(bill['session'], bill['bill_id'])
             for item in detail['actions']:
                 for entity in item['related_entities']:
-                    #print committee, entity['name'], c_id, entity['id']
-                    if entity['id'] == c_id:
+                    #print committee, entity['name'], the_id, entity['id']
+                    if entity['id'] == the_id:
                         bills.append({'bill': detail, 'action': item})
         return bills
 

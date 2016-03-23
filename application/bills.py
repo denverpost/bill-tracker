@@ -474,6 +474,10 @@ def legislator_detail(district, slug, chamber=''):
     legislator = json.load(open('_input/2016a/%s.json' % l_id.lower()))
     legislator['occupation'] = legislator['+occupation']
 
+    # Get the bills the legislator has touched.
+    q = LegislatorQuery()
+    legislator['bills'] = q.get_bills(legislator['committee']['committee'], l_id.upper(), app.session)
+
     app.page['title'] = '%s %s is a Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
     app.page['description'] = '%s %s contact and legislation information for this Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
     app.page['url'] = build_url(app, request)
@@ -481,6 +485,7 @@ def legislator_detail(district, slug, chamber=''):
     response = {
         'app': app,
         'title': title,
+        'chamber': chamber,
         'legislator': legislator
     }
     return render_template('legislator_detail.html', response=response)
