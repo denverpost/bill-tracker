@@ -128,11 +128,12 @@ class CommitteeQuery(GenericQuery):
             if bill['session'].lower() != session.lower():
                 continue
             detail = self.get_detail(bill['session'], bill['bill_id'])
-            for item in detail['actions']:
-                for entity in item['related_entities']:
-                    #print committee, entity['name'], the_id, entity['id']
-                    if entity['id'] == the_id:
-                        bills.append({'bill': detail, 'action': item})
+            if 'actions' in detail:
+                for item in detail['actions']:
+                    for entity in item['related_entities']:
+                        #print committee, entity['name'], the_id, entity['id']
+                        if entity['id'] == the_id:
+                            bills.append({'bill': detail, 'action': item})
         return bills
 
 
