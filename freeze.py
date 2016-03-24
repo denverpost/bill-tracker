@@ -109,7 +109,9 @@ def bill_detail():
 def bill_detail_feed():
     bills = json.load(open('_input/co-bills.json'))
     for item in bills:
-        yield { 'session': item['session'].lower(), 'bill_id': item['bill_id'].lower().replace(' ', '_') }
+        # No point in publishing RSS feeds for bills from prior sessions.
+        if item['session'].lower() == app.session:
+            yield { 'session': item['session'].lower(), 'bill_id': item['bill_id'].lower().replace(' ', '_') }
 
 if __name__ == '__main__':
     freezer.freeze()
