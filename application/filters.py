@@ -311,3 +311,28 @@ def link_committees(value, chamber, entities, session=app.session):
         # Loop through the committees for the chamber we've got.
         pass
     return value
+
+@app.template_filter(name='link_legislator')
+def link_legislator(value, l_id, session=app.session):
+    """ Take a legislator name and l_id and return markup for a link to that
+        legislator's profile page.
+        """
+    if not l_id:
+        return value
+    try:
+        leg = json.load(open('_input/%s/%s.json' % (session, l_id.lower())))
+    except:
+        try:
+            leg = json.load(open('_input/%s/%s.json' % ('2016a', l_id.lower())))
+        except:
+            return value
+
+    slug = '%s-%s' % (leg['last_name'].lower(), l_id.lower())
+    chamber = chamber_lookup(leg['chamber'])
+    link = "<a href='%slegislators/%s/%s/%s/'>%s</a>" % (app.url_root, chamber.lower(), leg['district'], slug, value)
+    if 'href' not in link:
+        # Loop through the committees for the chamber we've got.
+        pass
+    else:
+        value = link
+    return value

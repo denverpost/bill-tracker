@@ -34,7 +34,7 @@
 <ul>
 {% for item in response.data.committee.members|sort(attribute='role') %}
     {% if 'chair' in item.role or 'Vice' in item.name %}
-    <li>{{item.name}}{% if 'chair' in item.role %}, {{item.role}}{% endif %}</li>
+    <li>{{item.name|link_legislator(item.leg_id)|safe}}{% if 'chair' in item.role %}, {{item.role}}{% endif %}</li>
     {% endif %}
 {% endfor %}
 </ul>
@@ -42,7 +42,7 @@
 <ul>
 {% for item in response.data.committee.members|sort(attribute='role') %}
     {% if 'chair' not in item.role and 'Vice' not in item.name %}
-    <li>{{item.name}}</li>
+    <li>{{item.name|link_legislator(item.leg_id)|safe}}</li>
     {% endif %}
 {% endfor %}
 </ul>

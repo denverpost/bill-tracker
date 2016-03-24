@@ -83,7 +83,7 @@
 <h2 id="sponsors">Sponsors</h2>
 <ol>
 {% for item in response.data.bill.sponsors %}
-    <li>{{item.name|title}}'s a {{item.type}} sponsor <span class="dev" style="display:none;">{{item.leg_id}}</span></li>
+    <li>{{item.name|title|link_legislator(item.leg_id, response.session)|safe}}'s a {{item.type}} sponsor <span class="dev" style="display:none;">{{item.leg_id}}</span></li>
 {% endfor %}
 </ol>
 
@@ -104,7 +104,7 @@
 {% if vote.yes_count > 0 %}
 <ol>
 {% for item in vote.yes_votes %}
-    <li>{{item.name}}<span class="dev" style="display:none;">{{item}}</span></li>
+    <li>{{item.name|link_legislator(item.leg_id, response.session)|safe}}<span class="dev" style="display:none;">{{item}}</span></li>
 {% endfor %}
 </ol>
 {% else %}
@@ -116,7 +116,7 @@
 <h4>No Votes</h4>
 <ol>
 {% for item in vote.no_votes %}
-    <li>{{item.name}}</li>
+    <li>{{item.name|link_legislator(item.leg_id, response.session)|safe}}</li>
 {% endfor %}
 </ol>
 {% endif %}

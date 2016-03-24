@@ -442,7 +442,7 @@ def leg_district_detail(district, chamber):
     response = {
         'app': app,
         'chamber': chamber,
-        'chamber': chamber,
+        'district': district,
         'legislators': legislators,
     }
     return render_template('leg_district_detail.html', response=response)
