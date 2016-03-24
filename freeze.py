@@ -78,10 +78,11 @@ def legislator_detail():
     for item in legislators_all:
         chamber = filters.chamber_lookup(item['chamber'])
         slug = '%s-%s' % (item['last_name'].lower(), item['id'].lower())
-        yield { 'chamber': chamber,
+        d = { 'chamber': chamber,
                 'district': item['district'],
                 'slug': slug
               }
+        yield d
 
 @freezer.register_generator
 def committee_chamber_index():

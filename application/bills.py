@@ -455,20 +455,11 @@ def leg_district_detail(district, chamber=''):
     }
     return render_template('leg_district_detail.html', response=response)
 
-@app.route('/legislators/senate/<district>/<slug>/')
-@app.route('/legislators/house/<district>/<slug>/')
-def legislator_detail(district, slug, chamber=''):
+@app.route('/legislators/<chamber>/<district>/<slug>/')
+def legislator_detail(district, slug, chamber):
     title = 'Senator'
 
-    # Allow us to override the request.path with a passed argument.
-    # This is used in freeze.py in our deploy.
-    if chamber == '':
-        chamber = 'senate'
-        if 'house' in request.path[:20]:
-            chamber = 'house'
-            title = 'Representative'
-    elif chamber == 'house':
-        # A little bit of repetition, sorry.
+    if chamber == 'house':
         title = 'Representative'
 
     # Figure out which legislator we're looking for
@@ -485,6 +476,7 @@ def legislator_detail(district, slug, chamber=''):
     app.page['title'] = '%s %s is a Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
     app.page['description'] = '%s %s contact and legislation information for this Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
     app.page['url'] = build_url(app, request)
+    print app.page['url']
 
     response = {
         'app': app,
