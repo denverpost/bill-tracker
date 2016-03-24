@@ -450,7 +450,7 @@ def leg_district_detail(district, chamber=''):
     response = {
         'app': app,
         'chamber': chamber,
-        'district': district,
+        'chamber': chamber,
         'legislators': legislators,
     }
     return render_template('leg_district_detail.html', response=response)
@@ -464,7 +464,7 @@ def legislator_detail(district, slug, chamber=''):
     # This is used in freeze.py in our deploy.
     if chamber == '':
         chamber = 'senate'
-        if 'house' in request.path[:10]:
+        if 'house' in request.path[:20]:
             chamber = 'house'
             title = 'Representative'
     elif chamber == 'house':

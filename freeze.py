@@ -64,11 +64,6 @@ def leg_chamber_index():
         yield { 'chamber': chamber }
 
 @freezer.register_generator
-def committee_chamber_index():
-    for chamber in ['senate', 'house', 'joint']:
-        yield { 'chamber': chamber }
-
-@freezer.register_generator
 def leg_district_detail():
     legislators_all = json.load(open('_input/co-legislators.json'))
     for item in legislators_all:
@@ -87,6 +82,11 @@ def legislator_detail():
                 'district': item['district'],
                 'slug': slug
               }
+
+@freezer.register_generator
+def committee_chamber_index():
+    for chamber in ['senate', 'house', 'joint']:
+        yield { 'chamber': chamber }
 
 @freezer.register_generator
 def committee_detail():
