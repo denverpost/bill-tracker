@@ -409,13 +409,8 @@ def leg_index():
     }
     return render_template('leg_index.html', response=response)
 
-@app.route('/legislators/senate/')
-@app.route('/legislators/house/')
-def leg_chamber_index(chamber=''):
-    if chamber == '':
-        chamber = 'senate'
-        if 'house' in request.path:
-            chamber = 'house'
+@app.route('/legislators/<chamber>/')
+def leg_chamber_index(chamber):
     app.page['title'] = 'Colorado State %s legislators' % chamber.title()
     app.page['description'] = 'An index of Colorado legislators in the state %s' % chamber
     app.page['url'] = build_url(app, request)
@@ -427,15 +422,12 @@ def leg_chamber_index(chamber=''):
     }
     return render_template('leg_chamber_index.html', response=response)
 
-@app.route('/legislators/senate/<district>/')
-@app.route('/legislators/house/<district>/')
-def leg_district_detail(district, chamber=''):
-    if chamber == '':
-        chamber = 'senate'
-        chamber_query = 'upper'
-        if 'house' in request.path:
-            chamber = 'house'
-            chamber_query = 'lower'
+@app.route('/legislators/<chamber>/<district>/')
+def leg_district_detail(district, chamber):
+    chamber_query = 'upper'
+    if chamber == 'house':
+        chamber_query = 'lower'
+
     app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
     app.page['description'] = ''
     app.page['url'] = build_url(app, request)
