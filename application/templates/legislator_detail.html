@@ -71,12 +71,21 @@
 <p>
     {{leg.first_name}} {{leg.last_name}} is a {{leg.party}} Colorado state {{response.title}} in district {{leg.district}}.
     {% if leg.occupation %}{{leg.last_name}} also works as a {{leg.occupation}}.{% endif %}
-    {% if leg.url %}<a href="{{leg.url}}">Visit {{leg.last_name}}'s profile page on leg.state.co.us</a>, and <a href="mailto:{{leg.email}}">email {{leg.last_name}} at {{leg.email}}.{% endif %}
+    {% if leg.url %}<a href="{{leg.url}}">Visit {{leg.last_name}}'s profile page on leg.state.co.us</a>, and <a href="mailto:{{leg.email}}">email {{leg.last_name}} at {{leg.email}}</a>.{% endif %}
 {#
     District {{leg.district}} covers 
     {%- for item in leg.counties %} {{item}}, {% endfor %} counties.
 #}
 </p>
+
+{% if leg.sponsored %}
+<h2 id="sponsored">Sponsored Legislation</h2>
+<ul>
+{% for item in leg.sponsored %}
+    <li><a href="{{response.app.url_root}}bills/{{item.session|lower}}/{{item.bill_id|lower|replace(' ', '_')}}/">{{item.title}}</a></li>
+{%- endfor %}
+</ul>
+{% endif %}
 
 {#
 {% for item in leg.roles %}

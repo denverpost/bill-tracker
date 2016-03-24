@@ -9,7 +9,7 @@ import string
 from application import app
 import filters
 from werkzeug.contrib.atom import AtomFeed
-from query import CommitteeQuery, BillQuery
+from query import CommitteeQuery, BillQuery, LegislatorQuery
 # import legislators
 
 
@@ -476,7 +476,7 @@ def legislator_detail(district, slug, chamber=''):
 
     # Get the bills the legislator has touched.
     q = LegislatorQuery()
-    legislator['bills'] = q.get_bills(legislator['committee']['committee'], l_id.upper(), app.session)
+    legislator['sponsored'] = q.get_bills(l_id.upper(), app.session)
 
     app.page['title'] = '%s %s is a Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
     app.page['description'] = '%s %s contact and legislation information for this Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
