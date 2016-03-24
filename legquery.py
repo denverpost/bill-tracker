@@ -138,7 +138,7 @@ class Sunlight:
         fh.close()
         return details 
 
-    def get_legislator_detail(self, l_id):
+    def get_legislator_detail(self, l_id, **kwargs):
         """ Get legislator details. Save it as a json file.
             """
         slug = l_id.lower()
