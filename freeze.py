@@ -59,9 +59,34 @@ def session_passed_detail():
                       }
 
 @freezer.register_generator
+def leg_chamber_index():
+    for chamber in ['senate', 'house']:
+        yield { 'chamber': chamber }
+
+@freezer.register_generator
 def committee_chamber_index():
     for chamber in ['senate', 'house', 'joint']:
         yield { 'chamber': chamber }
+
+@freezer.register_generator
+def leg_district_detail():
+    legislators_all = json.load(open('_input/co-legislators.json'))
+    for item in legislators_all:
+        chamber = filters.chamber_lookup(item['chamber'])
+        yield { 'chamber': chamber,
+                'district': item['district']
+              }
+
+@freezer.register_generator
+def legislator_detail():
+    legislators_all = json.load(open('_input/co-legislators.json'))
+    for item in legislators_all:
+        chamber = filters.chamber_lookup(item['chamber'])
+        slug = '%s-%s' % (item['last_name'].lower(), item['id'].lower())
+        yield { 'chamber': chamber,
+                'district': item['district'],
+                'slug': slug
+              }
 
 @freezer.register_generator
 def committee_detail():

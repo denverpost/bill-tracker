@@ -225,7 +225,6 @@ def main(args):
                 # we need to redirect them to the current profile.
                 if extra_id != item['id']:
                     details = s.get_legislator_detail(extra_id, redirect=item['id'])
-        sys.exit(1)
         for item in s.committees:
             details = s.get_committee_detail(item['id'])
 

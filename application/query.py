@@ -99,9 +99,10 @@ class LegislatorQuery(GenericQuery):
             if bill['session'].lower() != session.lower():
                 continue
             detail = self.get_detail(bill['session'], bill['bill_id'])
-            for item in detail['sponsors']:
-                if item['leg_id'] and item['leg_id'].lower() == the_id.lower():
-                    bills.append(detail)
+            if 'sponsors' in detail:
+                for item in detail['sponsors']:
+                    if item['leg_id'] and item['leg_id'].lower() == the_id.lower():
+                        bills.append(detail)
         return bills
 
 class CommitteeQuery(GenericQuery):
