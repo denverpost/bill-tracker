@@ -411,8 +411,12 @@ def leg_index():
 
 @app.route('/legislators/<chamber>/')
 def leg_chamber_index(chamber):
-    app.page['title'] = 'Colorado State %s legislators' % chamber.title()
-    app.page['description'] = 'An index of Colorado legislators in the state %s' % chamber
+    title = 'Senator'
+    if chamber == 'house':
+        title = 'Representative'
+
+    app.page['title'] = 'Colorado State %ss' % title
+    app.page['description'] = 'An index of Colorado %ss in the state General Assembly' % title
     app.page['url'] = build_url(app, request)
     legislators = json.load(open('_input/co-legislators.json'))
     response = {
@@ -450,7 +454,6 @@ def leg_district_detail(district, chamber):
 @app.route('/legislators/<chamber>/<district>/<slug>/')
 def legislator_detail(district, slug, chamber):
     title = 'Senator'
-
     if chamber == 'house':
         title = 'Representative'
 
