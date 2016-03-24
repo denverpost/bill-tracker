@@ -2,16 +2,13 @@
 {% block style %}{% endblock style %}
 {% block breadcrumbs %}{{ super() }}
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
-&rsaquo; <a href="{{response.app.url_root}}legislators">Legislators</a>{% endblock breadcrumbs %}
+&rsaquo; <a href="{{response.app.url_root}}legislators/">Legislators</a>
+&rsaquo; <a href="{{response.app.url_root}}legislators/{{response.chamber}}/">{{response.chamber|capfirst}}</a>{% endblock breadcrumbs %}
 {% block content %}
-<h2></h2>
-<p></p>
-{#
-{{response.legislators}}
-#}
+<p>Here are the legislators that have served {{response.chamber|capfirst}} district {{response.district}}.</p>
 <ul>
 {% for item in response.legislators -%}
-    <li><a href="{{item.name_last|lower}}/">{{item.name_first}} {{item.name_last}}</a></li>
+    <li><a href="{{item.last_name|lower}}-{{item.id|lower}}/">{{item.first_name}} {{item.last_name}}</a></li>
 {% endfor %}
 </ul>
 {% endblock content %}

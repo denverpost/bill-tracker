@@ -432,8 +432,10 @@ def leg_chamber_index(chamber=''):
 def leg_district_detail(district, chamber=''):
     if chamber == '':
         chamber = 'senate'
+        chamber_query = 'upper'
         if 'house' in request.path:
             chamber = 'house'
+            chamber_query = 'lower'
     app.page['title'] = 'Colorado %s district %s' % (chamber.title(), district)
     app.page['description'] = ''
     app.page['url'] = build_url(app, request)
@@ -442,11 +444,13 @@ def leg_district_detail(district, chamber=''):
     # Figure out which legislators are in the district we're looking at.
     legislators = []
     for item in legislators_all:
-        if legislators_all[item]['chamber'].lower() == chamber and legislators_all[item]['district'] == district:
-            legislators.append(legislators_all[item])
+        if item['chamber'].lower() == chamber_query and item['district'] == district:
+            legislators.append(item)
 
     response = {
         'app': app,
+        'chamber': chamber,
+        'district': district,
         'legislators': legislators,
     }
     return render_template('leg_district_detail.html', response=response)

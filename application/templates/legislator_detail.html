@@ -3,7 +3,8 @@
 {% block breadcrumbs %}{{ super() }}
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
 &rsaquo; <a href="{{response.app.url_root}}legislators">Legislators</a>
-&rsaquo; <a href="{{response.app.url_root}}legislators/{{response.chamber|lower}}/">{{response.chamber|capfirst}}</a>{% endblock breadcrumbs %}
+&rsaquo; <a href="{{response.app.url_root}}legislators/{{response.chamber|lower}}/">{{response.chamber|capfirst}}</a>
+&rsaquo; <a href="{{response.app.url_root}}legislators/{{response.chamber|lower}}/{{response.legislator.district}}/">District {{response.legislator.district}}</a>{% endblock breadcrumbs %}
 {% block content %}
 {% with leg = response.legislator %}
 {#
