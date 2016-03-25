@@ -27,7 +27,7 @@ def build_url(app, request):
 @app.route('/')
 def index():
     app.page['title'] = 'Colorado Bill Tracker'
-    app.page['description'] = 'Tracking legislation in the Colorado General Assembly.'
+    app.page['description'] = 'Tracking legislation, legislators and committees in the Colorado General Assembly. Updated daily.'
     app.page['url'] = build_url(app, request)
 
     q = BillQuery()
@@ -65,7 +65,7 @@ def index():
 @app.route('/the-week/')
 def week_index():
     from recentfeed import RecentFeed
-    app.page['title'] = 'Colorado state legislature weekly round-ups'
+    app.page['title'] = 'Colorado General Assembly weekly round-ups'
     app.page['description'] = 'A round-up of what happened to which legislation in the Colorado General Assembly.'
     app.page['url'] = build_url(app, request)
 
@@ -85,7 +85,7 @@ def week_index():
 
 @app.route('/the-week/<issue_date>/')
 def week_detail(issue_date):
-    app.page['title'] = 'The Week in the Colorado legislature'
+    app.page['title'] = 'The Week in the Colorado legislature, '
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature for the week ending '
     app.page['url'] = build_url(app, request)
 
@@ -103,6 +103,7 @@ def week_detail(issue_date):
     date_range = [start.date(), finish.date()]
 
     app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
+    app.page['title'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
     #print start, finish
 
     if issue_date not in weeks:
@@ -497,7 +498,7 @@ def recent_feed():
 @app.route('/the-day/')
 def day_index():
     from recentfeed import RecentFeed
-    app.page['title'] = 'Colorado state legislature daily round-up'
+    app.page['title'] = 'Colorado General Assembly daily round-up'
     app.page['description'] = 'A round-up of what happened to which legislation in the Colorado General Assembly.'
     app.page['url'] = build_url(app, request)
 
@@ -517,8 +518,8 @@ def day_index():
 
 @app.route('/the-day/<issue_date>/')
 def day_detail(issue_date):
-    app.page['title'] = 'The Week in the Colorado legislature'
-    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature for the week ending '
+    app.page['title'] = 'The Day in the Colorado legislature'
+    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s General Assembly'
     app.page['url'] = build_url(app, request)
 
     # Make sure it's a valid week
