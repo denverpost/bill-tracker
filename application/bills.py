@@ -390,10 +390,6 @@ def session_passed_detail(session, passfail, chamber):
     return render_template('session_passed_detail.html', response=response)
 
 # =========================================================
-# === NOT DEPLOYED YET === #
-# =========================================================
-
-# =========================================================
 # LEGISLATOR VIEWS
 # =========================================================
 
@@ -493,3 +489,74 @@ def recent_feed():
              updated=datetime.today(),
              published=datetime.today())
     return feed.get_response()
+
+# =========================================================
+# === NOT DEPLOYED YET === #
+# =========================================================
+
+@app.route('/the-day/')
+def day_index():
+    from recentfeed import RecentFeed
+    app.page['title'] = 'Colorado state legislature daily round-up'
+    app.page['description'] = 'A round-up of what happened to which legislation in the Colorado General Assembly.'
+    app.page['url'] = build_url(app, request)
+
+    # Get the weeks we have the weeks for
+    current_issue = app.theweek[app.session]
+    today = date.today()
+    weeks = []
+    while current_issue <= today:
+        weeks.append(current_issue)
+        current_issue = current_issue + timedelta(7)
+
+    response = {
+        'app': app,
+        'weeks': weeks
+    }
+    return render_template('day_index.html', response=response)
+
+@app.route('/the-day/<issue_date>/')
+def day_detail(issue_date):
+    app.page['title'] = 'The Week in the Colorado legislature'
+    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature for the week ending '
+    app.page['url'] = build_url(app, request)
+
+    # Make sure it's a valid week
+    current_issue = app.theweek[app.session]
+    today = date.today()
+    weeks = []
+    while current_issue <= today:
+        weeks.append(current_issue.__str__())
+        current_issue = current_issue + timedelta(7)
+
+    # Turn the date into a range
+    the_date = datetime.strptime(issue_date, '%Y-%m-%d')
+    start, finish = the_date - timedelta(7), the_date
+    date_range = [start.date(), finish.date()]
+
+    app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
+    #print start, finish
+
+    if issue_date not in weeks:
+        abort(404)
+
+    # Get a json file of the recent legislative news
+    news = []
+    try:
+        news = json.load(open('_input/news/articles_%s_1.json' % issue_date))
+    except:
+        pass
+
+    q = BillQuery()
+    q.filter_session(app.session)
+    response = {
+        'app': app,
+        'issue_date': issue_date,
+        'news': news,
+        'signed': q.filter_by_date(date_range, 'signed', q.filter_action_dates('signed')),
+        'introduced': q.filter_by_date(date_range, 'first', q.filter_action_dates('first')),
+        'passed_upper': q.filter_by_date(date_range, 'passed_upper', q.filter_action_dates('passed_upper')),
+        'passed_lower': q.filter_by_date(date_range, 'passed_lower', q.filter_action_dates('passed_lower')),
+    }
+    return render_template('day_detail.html', response=response)
+
