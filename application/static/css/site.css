@@ -88,6 +88,18 @@ nav ul:after {
     margin-left: 15px;
 }
 
+/*
+#content-footer nav { 
+    width:30%;
+    margin: 0;
+    padding: 0;
+}
+*/
+#content-footer nav ul:before,
+#content-footer nav ul:after 
+{
+    border: 0px none;
+}
 @media only screen and (min-width: 769px) {
 .maincol {
     width: 650px;
