@@ -25,6 +25,7 @@ with app.app_context():
     app.session = '2016a' #***HC CURRENT SESSION
     # THE WEEK WE START PUBLISHING THE WEEK... need to figure out how we know when to end it.
     app.theweek = { '2016a': date(2016,2,20) }
+    app.session_dates = { '2016a': [date(2016,1,13), date(2016,5,11)] }
 
 import application.flatpage
 import application.bills

@@ -85,7 +85,7 @@ def week_index():
 
 @app.route('/the-week/<issue_date>/')
 def week_detail(issue_date):
-    app.page['title'] = 'The Week in the Colorado legislature, '
+    app.page['title'] = 'The Week in Colorado legislature, '
     app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s state legislature for the week ending '
     app.page['url'] = build_url(app, request)
 
