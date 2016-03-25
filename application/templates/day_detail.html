@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block style %}
+li span.date { color: #999; }
+{% endblock style %}
+{% block breadcrumbs %}{{ super() }}
+&rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
+&rsaquo; <a href="../">The Week In Legislature</a>{% endblock breadcrumbs %}
+{% block content %}
+<h2>for the week ending {{response.issue_date|date_raw|datetime_filter}}</h2>
+<p>A round-up of what happened to which legislation in Colorado's state legislature.</p>
+
+{% if response.news %}
+<h3 id="news">The legislature in the news</h3>
+<ul>
+{% for item in response.news -%}
+    <li><a href="{{item.links[0].href}}">{{item.title}}</a></li>
+{%- endfor %}
+</ul>
+{% endif %}
+
+<h3 id="signed">Legislation signed into law</h3>
+{% if response.signed %}
+{% set prev_date = '' %}
+{% for item in response.signed %}
+{% set the_date = item.action_dates.signed %}
+    {% if the_date|datetime_raw|datetime_filter != prev_date %}
+</ul>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">Signed {{the_date|datetime_raw|datetime_filter}}</h3>
+<ul>
+    {% endif %}
+    <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
+    {%- set prev_date = the_date|datetime_raw|datetime_filter -%}
+    </li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No legislation signed into law this week.</p>
+{% endif %}
+
+<h3 id="passed-house"><a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/lower/">Passed Colorado State House</a></h3>
+{% if response.passed_lower %}
+{% set prev_date = '' %}
+{% for item in response.passed_lower %}
+{% set the_date = item.action_dates.passed_lower %}
+    {% if the_date|datetime_raw|datetime_filter != prev_date %}
+</ul>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">{{the_date|datetime_raw|datetime_filter}}</h3>
+<ul>
+    {% endif %}
+    <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
+        {% if item.votes -%}
+        passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
+        {%- endif %}
+    {%- set prev_date = the_date|datetime_raw|datetime_filter -%}
+    </li>
+{% endfor %}
+</ul>
+<p><strong>
+    <a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/lower/">See a list of all the legislation that passed the Colorado State House in session {{response.app.session|upper}}</a>
+</strong></p>
+{% else %}
+<p>No legislation passed the Colorado State House this week.</p>
+{% endif %}
+
+<h3 id="passed-senate"><a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/upper/">Passed Colorado State Senate</a></h3>
+{% if response.passed_upper %}
+{% set prev_date = '' %}
+{% for item in response.passed_upper %}
+{% set the_date = item.action_dates.passed_upper %}
+    {% if the_date|datetime_raw|datetime_filter != prev_date %}
+</ul>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">{{the_date|datetime_raw|datetime_filter}}</h3>
+<ul>
+    {% endif %}
+    <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
+        {% if item.votes -%}
+        passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
+        {%- endif %}
+    {%- set prev_date = the_date|datetime_raw|datetime_filter -%}
+    </li>
+{% endfor %}
+</ul>
+<p><strong>
+    <a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/upper/">See a list of all the legislation that passed the Colorado State Senate in session {{response.app.session|upper}}</a></p>
+</strong></p>
+{% else %}
+<p>No legislation passed the Colorado State Senate this week.</p>
+{% endif %}
+
+<h3 id="introduced">Introduced this week</h3>
+{% if response.introduced %}
+{% set prev_date = '' %}
+{% for item in response.introduced %}
+{% set the_date = item.action_dates.first %}
+    {% if the_date|datetime_raw|datetime_filter != prev_date %}
+</ul>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">{{the_date|datetime_raw|datetime_filter}}</h3>
+<ul>
+    {% endif %}
+    <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
+    {%- set prev_date = the_date|datetime_raw|datetime_filter -%}
+    </li>
+{% endfor %}
+</ul>
+<p><strong>
+    <a href="{{response.app.url_root}}bills/{{response.app.session}}/">See all the legislation that have been introduced this session</a></p>
+</strong></p>
+{% else %}
+<p>No legislation introduced this week.</p>
+{% endif %}
+
+<p><strong>
+    <a href="{{response.app.url_root}}bills/{{response.app.session}}/">See all of the current session's bills</a>.</p>
+</strong></p>
+
+{# {u'title': u'Sentencing For Certain 2nd Degree Assaults', u'created_at': u'2015-03-24 21:28:11', u'updated_at': u'2015-10-07 12:07:47', u'id': u'COB00003396', u'chamber': u'lower', u'state': u'co', u'session': u'2015A', u'type': [u'bill'], u'subjects': [], u'bill_id': u'HB 15-1303'} #}
+{% endblock content %}
