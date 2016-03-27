@@ -25,7 +25,7 @@ li span.date { color: #999; }
 {% set the_date = item.action_dates.signed %}
     {% if the_date|datetime_raw|datetime_filter != prev_date %}
 </ul>
-    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">Signed {{the_date|datetime_raw|datetime_filter}}</h3>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">Signed <a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter}}</a></h3>
 <ul>
     {% endif %}
     <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
@@ -44,7 +44,7 @@ li span.date { color: #999; }
 {% set the_date = item.action_dates.passed_lower %}
     {% if the_date|datetime_raw|datetime_filter != prev_date %}
 </ul>
-    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">{{the_date|datetime_raw|datetime_filter}}</h3>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}"><a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter}}</a></h3>
 <ul>
     {% endif %}
     <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
@@ -69,7 +69,7 @@ li span.date { color: #999; }
 {% set the_date = item.action_dates.passed_upper %}
     {% if the_date|datetime_raw|datetime_filter != prev_date %}
 </ul>
-    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">{{the_date|datetime_raw|datetime_filter}}</h3>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}"><a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter}}</a></h3>
 <ul>
     {% endif %}
     <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
@@ -94,7 +94,7 @@ li span.date { color: #999; }
 {% set the_date = item.action_dates.first %}
     {% if the_date|datetime_raw|datetime_filter != prev_date %}
 </ul>
-    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">{{the_date|datetime_raw|datetime_filter}}</h3>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}"><a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter}}</a></h3>
 <ul>
     {% endif %}
     <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>

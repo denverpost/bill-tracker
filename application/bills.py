@@ -573,7 +573,7 @@ def day_detail(issue_date):
     else:
         prev_next = [days[pos-1], days[pos+1]]
 
-    app.page['title'] = '%s: %s' % (datetime.strftime(the_date, '%B %-d %Y'), app.page['title'])
+    app.page['title'] = '%s %s' % (datetime.strftime(the_date, '%B %-d %Y'), app.page['title'])
     app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
 
 

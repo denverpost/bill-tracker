@@ -9,7 +9,7 @@
 <ul>
 {% for item in response.introduced[:10] %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
-        ({{item.action_dates.first|datetime_raw|datetime_filter}})
+        (<a href="{{response.app.url_root}}the-day/{{item.action_dates.first|datetime_raw|date_raw}}/">{{item.action_dates.first|datetime_raw|datetime_filter}}</a>)
 {# 
         {% with detail = item|bill_details(response.app.session) %}
         {{detail.action_dates.first}}
@@ -30,7 +30,7 @@
 <ul>
 {% for item in response.signed[:10] %}
     <li><span>{{item.bill_id}}</span>: <a href="./bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
-        signed {{item.action_dates.signed|datetime_raw|datetime_filter}}
+        signed <a href="{{response.app.url_root}}the-day/{{item.action_dates.signed|datetime_raw|date_raw}}/">{{item.action_dates.signed|datetime_raw|datetime_filter}}</a>
     </li>
 {% endfor %}
 </ul>
@@ -49,7 +49,7 @@
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {% endif %}
-        on {{item.action_dates.passed_lower|datetime_raw|datetime_filter}}
+        on <a href="{{response.app.url_root}}the-day/{{item.action_dates.passed_lower|datetime_raw|date_raw}}/">{{item.action_dates.passed_lower|datetime_raw|datetime_filter}}</a>
     </li>
 {% endfor %}
 </ul>
@@ -68,7 +68,7 @@
         {% if item.votes %}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {% endif %}
-        on {{item.action_dates.passed_upper|datetime_raw|datetime_filter}}
+        on <a href="{{response.app.url_root}}the-day/{{item.action_dates.passed_upper|datetime_raw|date_raw}}/">{{item.action_dates.passed_upper|datetime_raw|datetime_filter}}</a>
     </li>
 {% endfor %}
 </ul>
