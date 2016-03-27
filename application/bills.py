@@ -502,44 +502,48 @@ def day_index():
     app.page['description'] = 'A round-up of what happened to which legislation in the Colorado General Assembly.'
     app.page['url'] = build_url(app, request)
 
-    # Get the weeks we have the weeks for
-    current_issue = app.theweek[app.session]
+    # Get the days we plan on publishing pages for.
+    # We don't publish on Saturdays, Sundays, and Mondays if nothing happens.
+    # Also, app.session_dates is a list with two items: The first date and the
+    # last date of each session.
+    current_issue = app.session_dates[app.session][0]
     today = date.today()
-    weeks = []
+    days = []
     while current_issue <= today:
-        weeks.append(current_issue)
-        current_issue = current_issue + timedelta(7)
+        print current_issue
+        days.append(current_issue)
+        current_issue = current_issue + timedelta(1)
 
     response = {
         'app': app,
-        'weeks': weeks
+        'days': days,
+        #'weeks': weeks
     }
     return render_template('day_index.html', response=response)
 
 @app.route('/the-day/<issue_date>/')
 def day_detail(issue_date):
-    app.page['title'] = 'The Day in the Colorado legislature'
-    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s General Assembly'
+    app.page['title'] = 'The Day in the Colorado legislature: '
+    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s General Assembly: '
     app.page['url'] = build_url(app, request)
 
-    # Make sure it's a valid week
+    # Make sure it's a valid day
+    the_date = datetime.strptime(issue_date, '%Y-%m-%d')
+    date_range = [the_date.date(), the_date.date()]
+    """
     current_issue = app.theweek[app.session]
     today = date.today()
     weeks = []
     while current_issue <= today:
         weeks.append(current_issue.__str__())
         current_issue = current_issue + timedelta(7)
-
-    # Turn the date into a range
-    the_date = datetime.strptime(issue_date, '%Y-%m-%d')
-    start, finish = the_date - timedelta(7), the_date
-    date_range = [start.date(), finish.date()]
-
-    app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
-    #print start, finish
-
     if issue_date not in weeks:
         abort(404)
+    """
+
+    app.page['title'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
+    app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
+
 
     # Get a json file of the recent legislative news
     news = []
