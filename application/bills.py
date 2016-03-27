@@ -494,7 +494,8 @@ def recent_feed():
 # =========================================================
 # === NOT DEPLOYED YET === #
 # =========================================================
-def get_session_days(session=None):
+
+def get_session_days(session=None, json=False):
     """ Given the start and end date of the session, get the days there
         were actions on legislation.
         """
@@ -514,16 +515,16 @@ def get_session_days(session=None):
     days = []
     current_issue = session_dates[0]
     while current_issue <= session_dates[1]:
-        print current_issue
-
         # Make sure something happened on this day.
         date_range = [current_issue, current_issue]
         bills = q.filter_by_date(date_range, 'ALL')
         if len(bills) > 0:
-            days.append(current_issue)
+            if json == True:
+                days.append(current_issue.__str__())
+            else:
+                days.append(current_issue)
 
         current_issue = current_issue + timedelta(1)
-    print days
     return days
     
 @app.route('/the-day/')

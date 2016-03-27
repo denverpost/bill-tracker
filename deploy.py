@@ -9,7 +9,7 @@ import httplib2
 from FtpWrapper import FtpWrapper
 import freeze
 from application.recentfeed import RecentFeed
-from application import app
+from application import app, bills
 from datetime import date
 import json
 
@@ -38,6 +38,8 @@ def get_news(slug, url, days=7):
     json.dump(items, fh)
     return True
 
+
+
 def main(args):
     """ Turn every URL into flatfile, ftp it to prod.
         >>> args = build_parser(['--verbose'])
@@ -51,6 +53,12 @@ def main(args):
         get_news('articles', 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml', 1)
         #get_news('the-spot', 'http://blogs.denverpost.com/thespot/category/colorado-legislature-2/feed/')
         #get_news('the-spot', 'http://blogs.denverpost.com/thespot/category/colorado-legislature-2/feed/', 1)
+
+        # Get the list of days we have The Day reports for
+        days = bills.get_session_days(app.session, True)
+        filename = '_input/days_%s.json' % (app.session)
+        fh = open(filename, 'wb')
+        json.dump(days, fh)
     if not args.do_ftp:
         return False
 
