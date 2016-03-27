@@ -551,8 +551,8 @@ def day_index():
 
 @app.route('/the-day/<issue_date>/')
 def day_detail(issue_date):
-    app.page['title'] = 'The Day in the Colorado legislature: '
-    app.page['description'] = 'A round-up of what happened to which legislation in Colorado\'s General Assembly: '
+    app.page['title'] = 'in the Colorado legislature'
+    app.page['description'] = 'A round-up of the Colorado General Assembly on '
     app.page['url'] = build_url(app, request)
 
     # Make sure it's a valid day
@@ -573,7 +573,7 @@ def day_detail(issue_date):
     else:
         prev_next = [days[pos-1], days[pos+1]]
 
-    app.page['title'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
+    app.page['title'] = '%s: %s' % (datetime.strftime(the_date, '%B %-d %Y'), app.page['title'])
     app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
 
 

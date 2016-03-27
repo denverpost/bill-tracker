@@ -28,6 +28,12 @@ def week_detail():
         yield { 'issue_date': item }
 
 @freezer.register_generator
+def day_detail():
+    days = json.load(open('_input/days_%s.json' % app.session))
+    for item in days:
+        yield { 'issue_date': item }
+
+@freezer.register_generator
 def session_index():
     yield {}
 
