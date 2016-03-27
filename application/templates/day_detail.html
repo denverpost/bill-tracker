@@ -4,7 +4,17 @@
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
 &rsaquo; <a href="../">The Day In State Legislature</a>{% endblock breadcrumbs %}
 {% block content %}
-<p>A round-up of what happened to which legislation in Colorado's state legislature on {{response.issue_date}}.</p>
+<p>
+    A round-up of what happened to which legislation in Colorado's state legislature on {{response.issue_date|date_raw|datetimeformat}}.
+</p>
+<p>
+    {% if response.prev_next[0] %}
+    PREVIOUS: <a href="../{{response.prev_next[0]}}/">See {{response.prev_next[0]|date_raw|datetimeformat}}'s events</a>.
+    {% endif %}
+    {% if response.prev_next[1] %}
+    NEXT: <a href="../{{response.prev_next[1]}}/">See {{response.prev_next[1]|date_raw|datetimeformat}}'s events</a>.
+    {% endif %}
+</p>
 
 {% if response.news %}
 <h3 id="news">The legislature in the news</h3>
@@ -82,5 +92,12 @@
     <a href="{{response.app.url_root}}bills/{{response.app.session}}/">See all of the current session's bills</a>.</p>
 </strong></p>
 
-{# {u'title': u'Sentencing For Certain 2nd Degree Assaults', u'created_at': u'2015-03-24 21:28:11', u'updated_at': u'2015-10-07 12:07:47', u'id': u'COB00003396', u'chamber': u'lower', u'state': u'co', u'session': u'2015A', u'type': [u'bill'], u'subjects': [], u'bill_id': u'HB 15-1303'} #}
+<p>
+    {% if response.prev_next[0] %}
+    PREVIOUS: <a href="../{{response.prev_next[0]}}/">See {{response.prev_next[0]|date_raw|datetimeformat}}'s events</a>.
+    {% endif %}
+    {% if response.prev_next[1] %}
+    NEXT: <a href="../{{response.prev_next[1]}}/">See {{response.prev_next[1]|date_raw|datetimeformat}}'s events</a>.
+    {% endif %}
+</p>
 {% endblock content %}

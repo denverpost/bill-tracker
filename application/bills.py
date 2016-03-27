@@ -558,16 +558,20 @@ def day_detail(issue_date):
     # Make sure it's a valid day
     the_date = datetime.strptime(issue_date, '%Y-%m-%d')
     date_range = [the_date.date(), the_date.date()]
-    """
-    current_issue = app.theweek[app.session]
-    today = date.today()
-    weeks = []
-    while current_issue <= today:
-        weeks.append(current_issue.__str__())
-        current_issue = current_issue + timedelta(7)
-    if issue_date not in weeks:
+    days = json.load(open('_input/days_%s.json' % app.session))
+    if issue_date not in days:
         abort(404)
-    """
+
+    # Get the previous and next days.
+    # The beginning and end of the list won't have prev/nexts, so we write
+    # logic to make sure we don't throw an error over that.
+    pos = days.index(issue_date)
+    if pos == 0:
+        prev_next = [None, days[pos+1]]
+    elif pos == len(days) - 1:
+        prev_next = [days[pos-1], None]
+    else:
+        prev_next = [days[pos-1], days[pos+1]]
 
     app.page['title'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
     app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
@@ -585,6 +589,7 @@ def day_detail(issue_date):
     response = {
         'app': app,
         'issue_date': issue_date,
+        'prev_next': prev_next,
         'news': news,
         'signed': q.filter_by_date(date_range, 'signed', q.filter_action_dates('signed')),
         'introduced': q.filter_by_date(date_range, 'first', q.filter_action_dates('first')),
