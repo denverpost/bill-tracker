@@ -494,7 +494,38 @@ def recent_feed():
 # =========================================================
 # === NOT DEPLOYED YET === #
 # =========================================================
+def get_session_days(session=None):
+    """ Given the start and end date of the session, get the days there
+        were actions on legislation.
+        """
+    if not session:
+        session = app.session
+    session_dates = app.session_dates[session]
 
+    # If we're dealing with the current session, we don't want to return date
+    # in the future.
+    today = date.today()
+    if today < session_dates[1]:
+        session_dates[1] = today
+
+    q = BillQuery()
+    q.filter_session(session)
+
+    days = []
+    current_issue = session_dates[0]
+    while current_issue <= session_dates[1]:
+        print current_issue
+
+        # Make sure something happened on this day.
+        date_range = [current_issue, current_issue]
+        bills = q.filter_by_date(date_range, 'ALL')
+        if len(bills) > 0:
+            days.append(current_issue)
+
+        current_issue = current_issue + timedelta(1)
+    print days
+    return days
+    
 @app.route('/the-day/')
 def day_index():
     from recentfeed import RecentFeed
@@ -508,11 +539,7 @@ def day_index():
     # last date of each session.
     current_issue = app.session_dates[app.session][0]
     today = date.today()
-    days = []
-    while current_issue <= today:
-        print current_issue
-        days.append(current_issue)
-        current_issue = current_issue + timedelta(1)
+    days = get_session_days()
 
     response = {
         'app': app,

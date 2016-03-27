@@ -5,13 +5,12 @@ li span.date { color: #999; }
 {% block breadcrumbs %}{{ super() }}
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>{% endblock breadcrumbs %}
 {% block content %}
-<h2></h2>
-<p>A round-up of what happened to which legislation in Colorado's state legislature.</p>
+<p>A round-up of what happened to which legislation, day by day in Colorado's state legislature.</p>
 
-<h3>The weeks ending:</h3>
 <ul>
-{% for item in response.weeks|reverse -%}
-    <li><a href="{{item}}/">{{item|datetime_filter}}</a></li>
-{% endfor %}
+{% for item in response.days|reverse %}
+    <li><a href="{{item}}/">{{item|datetimeformat}}</a></li>
+{%- endfor %}
 </ul>
+
 {% endblock content %}

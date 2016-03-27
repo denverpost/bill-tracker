@@ -251,18 +251,23 @@ class BillQuery(GenericQuery):
             the timestamp when the Sunlight Foundation last modified it.
 
             Available fields:
-            'passed_upper', 'passed_lower', 'last', 'signed', 'first'
+            'passed_upper', 'passed_lower', 'last', 'signed', 'first', 'ALL'
             """
         if len(bills) == 0:
             bills = self.items
 
+        fields = [field]
+        if field == 'ALL':
+            fields = ['passed_upper', 'passed_lower', 'last', 'signed', 'first']
+
         filtered = []
         for item in bills:
             detail = self.get_detail(item['session'], item['bill_id'])
-            if 'action_dates' in detail and field in detail['action_dates'] and datetimeformat:
-                if not detail['action_dates'][field]:
-                    continue
-                dt = datetime.strptime(detail['action_dates'][field], datetimeformat)
-                if date_range[0] <= dt.date() <= date_range[1]:
-                    filtered.append(item)
+            for field in fields:
+                if 'action_dates' in detail and field in detail['action_dates'] and datetimeformat:
+                    if not detail['action_dates'][field]:
+                        continue
+                    dt = datetime.strptime(detail['action_dates'][field], datetimeformat)
+                    if date_range[0] <= dt.date() <= date_range[1]:
+                        filtered.append(item)
         return filtered
