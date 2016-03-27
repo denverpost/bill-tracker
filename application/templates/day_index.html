@@ -7,7 +7,7 @@
 
 <ul>
 {% for item in response.days|reverse %}
-    <li><a href="{{item}}/">{{item|datetimeformat}}</a></li>
+    <li><a href="{{item}}/">{{item|date_raw|datetimeformat}}</a></li>
 {%- endfor %}
 </ul>
 

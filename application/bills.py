@@ -540,7 +540,7 @@ def day_index():
     # last date of each session.
     current_issue = app.session_dates[app.session][0]
     today = date.today()
-    days = get_session_days()
+    days = json.load(open('_input/days_%s.json' % app.session))
 
     response = {
         'app': app,
