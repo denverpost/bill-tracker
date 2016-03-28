@@ -30,6 +30,23 @@ body { margin:0; }
     div.body { height: 30px; }
     body dl dt { margin-bottom: 0.75rem; }
     .maincol, .sidebarcol { clear: both; }
+
+    /* Fix line-height on breadcrumbs */
+    #breadcrumbs { line-height: 14px; 
+        margin-bottom: 10px;
+    }
+    /* Fix line-height on nav */
+    nav ul { line-height: 0; 
+        margin-bottom: 5px;
+    }
+    /* More line-height fixes */
+    .stamp { margin-top: 10px;
+    }
+    /* We want bullets on list items on mobile to make lists more readable. */
+    .row ul {
+        list-style-type: disc;
+        list-style-position: inside!important;
+    }
 }
 
 footer { clear: both; }
