@@ -117,6 +117,10 @@ nav ul:after {
 {
     border: 0px none;
 }
+
+h1 a, h2 a, h3 a, h4 a, h5 a {
+    text-decoration: underline;
+}
 @media only screen and (min-width: 769px) {
 .maincol {
     width: 650px;
