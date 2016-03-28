@@ -61,7 +61,7 @@ li span.date { color: #999; }
 <p>No legislation passed the Colorado State House this week.</p>
 {% endif %}
 
-<h3 id="passed-senate"><a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/upper/">Passed Colorado State Senate</a></h3>
+<h2 id="passed-senate"><a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/upper/">Passed Colorado State Senate</a></h2>
 {% if response.passed_upper %}
 {% set prev_date = '' %}
 {% for item in response.passed_upper %}
