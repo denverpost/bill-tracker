@@ -6,11 +6,10 @@ li span.date { color: #999; }
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>
 &rsaquo; <a href="../">The Week In Legislature</a>{% endblock breadcrumbs %}
 {% block content %}
-<h2>for the week ending {{response.issue_date|date_raw|datetime_filter}}</h2>
 <p>A round-up of what happened to which legislation in Colorado's state legislature.</p>
 
 {% if response.news %}
-<h3 id="news">The legislature in the news</h3>
+<h2 id="news">The legislature in the news</h2>
 <ul>
 {% for item in response.news -%}
     <li><a href="{{item.links[0].href}}">{{item.title}}</a></li>
@@ -18,18 +17,18 @@ li span.date { color: #999; }
 </ul>
 {% endif %}
 
-<h3 id="signed">Legislation signed into law</h3>
+<h2 id="signed">Legislation signed into law</h2>
 {% if response.signed %}
 {% set prev_date = '' %}
 {% for item in response.signed %}
 {% set the_date = item.action_dates.signed %}
-    {% if the_date|datetime_raw|datetime_filter != prev_date %}
+    {% if the_date|datetime_raw|datetime_filter('datefullweekday') != prev_date %}
 </ul>
-    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">Signed <a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter}}</a></h3>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}">Signed <a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter('datefullweekday')}}</a></h3>
 <ul>
     {% endif %}
     <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
-    {%- set prev_date = the_date|datetime_raw|datetime_filter -%}
+    {%- set prev_date = the_date|datetime_raw|datetime_filter('datefullweekday') -%}
     </li>
 {% endfor %}
 </ul>
@@ -37,21 +36,21 @@ li span.date { color: #999; }
 <p>No legislation signed into law this week.</p>
 {% endif %}
 
-<h3 id="passed-house"><a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/lower/">Passed Colorado State House</a></h3>
+<h2 id="passed-house"><a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/lower/">Passed Colorado State House</a></h2>
 {% if response.passed_lower %}
 {% set prev_date = '' %}
 {% for item in response.passed_lower %}
 {% set the_date = item.action_dates.passed_lower %}
-    {% if the_date|datetime_raw|datetime_filter != prev_date %}
+    {% if the_date|datetime_raw|datetime_filter('datefullweekday') != prev_date %}
 </ul>
-    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}"><a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter}}</a></h3>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}"><a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter('datefullweekday')}}</a></h3>
 <ul>
     {% endif %}
     <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {% if item.votes -%}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {%- endif %}
-    {%- set prev_date = the_date|datetime_raw|datetime_filter -%}
+    {%- set prev_date = the_date|datetime_raw|datetime_filter('datefullweekday') -%}
     </li>
 {% endfor %}
 </ul>
@@ -67,16 +66,16 @@ li span.date { color: #999; }
 {% set prev_date = '' %}
 {% for item in response.passed_upper %}
 {% set the_date = item.action_dates.passed_upper %}
-    {% if the_date|datetime_raw|datetime_filter != prev_date %}
+    {% if the_date|datetime_raw|datetime_filter('datefullweekday') != prev_date %}
 </ul>
-    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}"><a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter}}</a></h3>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}"><a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter('datefullweekday')}}</a></h3>
 <ul>
     {% endif %}
     <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
         {% if item.votes -%}
         passed {{item.votes.0.yes_count}} - {{item.votes.0.no_count}}
         {%- endif %}
-    {%- set prev_date = the_date|datetime_raw|datetime_filter -%}
+    {%- set prev_date = the_date|datetime_raw|datetime_filter('datefullweekday') -%}
     </li>
 {% endfor %}
 </ul>
@@ -87,18 +86,18 @@ li span.date { color: #999; }
 <p>No legislation passed the Colorado State Senate this week.</p>
 {% endif %}
 
-<h3 id="introduced">Introduced this week</h3>
+<h2 id="introduced">Introduced this week</h2>
 {% if response.introduced %}
 {% set prev_date = '' %}
 {% for item in response.introduced %}
 {% set the_date = item.action_dates.first %}
-    {% if the_date|datetime_raw|datetime_filter != prev_date %}
+    {% if the_date|datetime_raw|datetime_filter('datefullweekday') != prev_date %}
 </ul>
-    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}"><a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter}}</a></h3>
+    <h3 id="{{the_date|datetime_raw|datetime_filter('dateslug')}}"><a href="{{response.app.url_root}}the-day/{{the_date|datetime_raw|date_raw}}/">{{the_date|datetime_raw|datetime_filter('datefullweekday')}}</a></h3>
 <ul>
     {% endif %}
     <li><span>{{item.bill_id}}</span>: <a href="../../bills/{{item.session|lower}}/{{item.bill_id|replace(" ", "_")|lower}}/">{{item.title}}</a>
-    {%- set prev_date = the_date|datetime_raw|datetime_filter -%}
+    {%- set prev_date = the_date|datetime_raw|datetime_filter('datefullweekday') -%}
     </li>
 {% endfor %}
 </ul>
