@@ -59,8 +59,141 @@ def index():
     return render_template('home.html', response=response)
 
 # =========================================================
+# DAY IN REVIEW VIEWS
+# =========================================================
+
+def get_session_days(session=None, json=False):
+    """ Given the start and end date of the session, get the days there
+        were actions on legislation.
+        """
+    if not session:
+        session = app.session
+    session_dates = app.session_dates[session]
+
+    # If we're dealing with the current session, we don't want to return date
+    # in the future.
+    today = date.today()
+    if today < session_dates[1]:
+        session_dates[1] = today
+
+    q = BillQuery()
+    q.filter_session(session)
+
+    days = []
+    current_issue = session_dates[0]
+    while current_issue <= session_dates[1]:
+        # Make sure something happened on this day.
+        date_range = [current_issue, current_issue]
+        bills = q.filter_by_date(date_range, 'ALL')
+        if len(bills) > 0:
+            if json == True:
+                days.append(current_issue.__str__())
+            else:
+                days.append(current_issue)
+
+        current_issue = current_issue + timedelta(1)
+    return days
+    
+@app.route('/the-day/')
+def day_index():
+    from recentfeed import RecentFeed
+    app.page['title'] = 'Colorado General Assembly daily round-up'
+    app.page['description'] = 'A round-up of what happened to which legislation in the Colorado General Assembly.'
+    app.page['url'] = build_url(app, request)
+
+    # Get the days we plan on publishing pages for.
+    # We don't publish on Saturdays, Sundays, and Mondays if nothing happens.
+    # Also, app.session_dates is a list with two items: The first date and the
+    # last date of each session.
+    current_issue = app.session_dates[app.session][0]
+    today = date.today()
+    days = json.load(open('_input/days_%s.json' % app.session))
+
+    response = {
+        'app': app,
+        'days': days,
+        #'weeks': weeks
+    }
+    return render_template('day_index.html', response=response)
+
+@app.route('/the-day/<issue_date>/')
+def day_detail(issue_date):
+    app.page['title'] = 'in the Colorado legislature'
+    app.page['description'] = 'A round-up of the Colorado General Assembly on '
+    app.page['url'] = build_url(app, request)
+
+    # Make sure it's a valid day
+    the_date = datetime.strptime(issue_date, '%Y-%m-%d')
+    date_range = [the_date.date(), the_date.date()]
+    days = json.load(open('_input/days_%s.json' % app.session))
+    if issue_date not in days:
+        abort(404)
+
+    # Get the previous and next days.
+    # The beginning and end of the list won't have prev/nexts, so we write
+    # logic to make sure we don't throw an error over that.
+    pos = days.index(issue_date)
+    if pos == 0:
+        prev_next = [None, days[pos+1]]
+    elif pos == len(days) - 1:
+        prev_next = [days[pos-1], None]
+    else:
+        prev_next = [days[pos-1], days[pos+1]]
+
+    app.page['title'] = '%s %s' % (datetime.strftime(the_date, '%B %-d %Y'), app.page['title'])
+    app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
+
+
+    # Get a json file of the recent legislative news
+    news = []
+    try:
+        news = json.load(open('_input/news/articles_%s_1.json' % issue_date))
+    except:
+        pass
+
+    q = BillQuery()
+    q.filter_session(app.session)
+    response = {
+        'app': app,
+        'issue_date': issue_date,
+        'prev_next': prev_next,
+        'news': news,
+        'signed': q.filter_by_date(date_range, 'signed', q.filter_action_dates('signed')),
+        'introduced': q.filter_by_date(date_range, 'first', q.filter_action_dates('first')),
+        'passed_upper': q.filter_by_date(date_range, 'passed_upper', q.filter_action_dates('passed_upper')),
+        'passed_lower': q.filter_by_date(date_range, 'passed_lower', q.filter_action_dates('passed_lower')),
+    }
+    return render_template('day_detail.html', response=response)
+
+# =========================================================
 # WEEK IN REVIEW VIEWS
 # =========================================================
+
+def get_session_weeks(session=None, json=False):
+    """ Given the start and end date of the session, get the weeks we
+        published Week in Reviews.
+        """
+    if not session:
+        session = app.session
+    session_dates = app.session_dates[session]
+
+    # If we're dealing with the current session, we don't want to return date
+    # in the future.
+    today = date.today()
+    if today < session_dates[1]:
+        session_dates[1] = today
+
+    current_issue = app.theweek[app.session]
+    today = date.today()
+    weeks = []
+    while current_issue <= today:
+        if json == True:
+            weeks.append(current_issue.__str__())
+        else:
+            weeks.append(current_issue)
+        current_issue = current_issue + timedelta(7)
+
+    return weeks
 
 @app.route('/the-week/')
 def week_index():
@@ -70,12 +203,7 @@ def week_index():
     app.page['url'] = build_url(app, request)
 
     # Get the weeks we have the weeks for
-    current_issue = app.theweek[app.session]
-    today = date.today()
-    weeks = []
-    while current_issue <= today:
-        weeks.append(current_issue)
-        current_issue = current_issue + timedelta(7)
+    weeks = get_session_weeks()
 
     response = {
         'app': app,
@@ -494,111 +622,4 @@ def recent_feed():
 # =========================================================
 # === NOT DEPLOYED YET === #
 # =========================================================
-
-# =========================================================
-# THE DAY IN REVIEW
-# =========================================================
-
-def get_session_days(session=None, json=False):
-    """ Given the start and end date of the session, get the days there
-        were actions on legislation.
-        """
-    if not session:
-        session = app.session
-    session_dates = app.session_dates[session]
-
-    # If we're dealing with the current session, we don't want to return date
-    # in the future.
-    today = date.today()
-    if today < session_dates[1]:
-        session_dates[1] = today
-
-    q = BillQuery()
-    q.filter_session(session)
-
-    days = []
-    current_issue = session_dates[0]
-    while current_issue <= session_dates[1]:
-        # Make sure something happened on this day.
-        date_range = [current_issue, current_issue]
-        bills = q.filter_by_date(date_range, 'ALL')
-        if len(bills) > 0:
-            if json == True:
-                days.append(current_issue.__str__())
-            else:
-                days.append(current_issue)
-
-        current_issue = current_issue + timedelta(1)
-    return days
-    
-@app.route('/the-day/')
-def day_index():
-    from recentfeed import RecentFeed
-    app.page['title'] = 'Colorado General Assembly daily round-up'
-    app.page['description'] = 'A round-up of what happened to which legislation in the Colorado General Assembly.'
-    app.page['url'] = build_url(app, request)
-
-    # Get the days we plan on publishing pages for.
-    # We don't publish on Saturdays, Sundays, and Mondays if nothing happens.
-    # Also, app.session_dates is a list with two items: The first date and the
-    # last date of each session.
-    current_issue = app.session_dates[app.session][0]
-    today = date.today()
-    days = json.load(open('_input/days_%s.json' % app.session))
-
-    response = {
-        'app': app,
-        'days': days,
-        #'weeks': weeks
-    }
-    return render_template('day_index.html', response=response)
-
-@app.route('/the-day/<issue_date>/')
-def day_detail(issue_date):
-    app.page['title'] = 'in the Colorado legislature'
-    app.page['description'] = 'A round-up of the Colorado General Assembly on '
-    app.page['url'] = build_url(app, request)
-
-    # Make sure it's a valid day
-    the_date = datetime.strptime(issue_date, '%Y-%m-%d')
-    date_range = [the_date.date(), the_date.date()]
-    days = json.load(open('_input/days_%s.json' % app.session))
-    if issue_date not in days:
-        abort(404)
-
-    # Get the previous and next days.
-    # The beginning and end of the list won't have prev/nexts, so we write
-    # logic to make sure we don't throw an error over that.
-    pos = days.index(issue_date)
-    if pos == 0:
-        prev_next = [None, days[pos+1]]
-    elif pos == len(days) - 1:
-        prev_next = [days[pos-1], None]
-    else:
-        prev_next = [days[pos-1], days[pos+1]]
-
-    app.page['title'] = '%s %s' % (datetime.strftime(the_date, '%B %-d %Y'), app.page['title'])
-    app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
-
-
-    # Get a json file of the recent legislative news
-    news = []
-    try:
-        news = json.load(open('_input/news/articles_%s_1.json' % issue_date))
-    except:
-        pass
-
-    q = BillQuery()
-    q.filter_session(app.session)
-    response = {
-        'app': app,
-        'issue_date': issue_date,
-        'prev_next': prev_next,
-        'news': news,
-        'signed': q.filter_by_date(date_range, 'signed', q.filter_action_dates('signed')),
-        'introduced': q.filter_by_date(date_range, 'first', q.filter_action_dates('first')),
-        'passed_upper': q.filter_by_date(date_range, 'passed_upper', q.filter_action_dates('passed_upper')),
-        'passed_lower': q.filter_by_date(date_range, 'passed_lower', q.filter_action_dates('passed_lower')),
-    }
-    return render_template('day_detail.html', response=response)
 
