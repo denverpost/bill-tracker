@@ -119,7 +119,7 @@ def day_index():
 @app.route('/the-day/<issue_date>/')
 def day_detail(issue_date):
     app.page['title'] = 'in the Colorado legislature'
-    app.page['description'] = 'A round-up of the Colorado General Assembly on '
+    app.page['description'] = 'A round-up of the bills passed, signed and introduced in the Colorado General Assembly on '
     app.page['url'] = build_url(app, request)
 
     # Make sure it's a valid day
@@ -142,7 +142,6 @@ def day_detail(issue_date):
 
     app.page['title'] = '%s %s' % (datetime.strftime(the_date, '%B %-d %Y'), app.page['title'])
     app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
-
 
     # Get a json file of the recent legislative news
     news = []
@@ -232,7 +231,6 @@ def week_detail(issue_date):
 
     app.page['description'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
     app.page['title'] += '%s' % datetime.strftime(the_date, '%B %-d %Y')
-    #print start, finish
 
     if issue_date not in weeks:
         abort(404)
