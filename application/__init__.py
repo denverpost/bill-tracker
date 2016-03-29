@@ -30,12 +30,15 @@ with app.app_context():
     # THE WEEK WE START PUBLISHING THE WEEK... need to figure out how we know when to end it.
     app.theweek = { '2016a': date(2016,2,20) }
     app.session_dates = { '2016a': [date(2016,1,13), date(2016,5,11)] }
-    days = json.load(open('_input/days_%s.json' % app.session))
-    weeks = json.load(open('_input/weeks_%s.json' % app.session))
-    app.recent = {
-                    'week': weeks[-1],
-                    'day': days[-1]
-                 }                   
+    try:
+        days = json.load(open('_input/days_%s.json' % app.session))
+        weeks = json.load(open('_input/weeks_%s.json' % app.session))
+        app.recent = {
+                        'week': weeks[-1],
+                        'day': days[-1]
+                     }                   
+    except:
+        pass
 
 import application.flatpage
 import application.bills
