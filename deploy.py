@@ -194,8 +194,8 @@ def build_parser(args):
                         help="Upload the legislator files and directories")
     parser.add_argument("--news", dest="get_news", default=False, action="store_true",
                         help="Download and cache the recent legislative news.")
-    parser.add_argument("-b", "--bill", dest="bill", default=None
-                        help="Deploy one bill, one bill only. Requires a session argument.")
+    parser.add_argument("-b", "--bill", dest="bill", default=None,
+                        help="Deploy one bill, one bill only. Also pass a session if you need a prior-session bill flushed.")
     parser.add_argument("-s", "--session", dest="session", default=False)
     args = parser.parse_args(args)
     return args
