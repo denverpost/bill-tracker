@@ -17,7 +17,10 @@ page = {
 }
 
 pages = FlatPages(app)
+
 # SITE CONFIG
+# Most of these vars are used on the site in some way.
+# We store them here and then pass them to the template (you see them as response.app....)
 with app.app_context():
     app.url_root = '/'
     app.page = page
@@ -26,6 +29,11 @@ with app.app_context():
     # THE WEEK WE START PUBLISHING THE WEEK... need to figure out how we know when to end it.
     app.theweek = { '2016a': date(2016,2,20) }
     app.session_dates = { '2016a': [date(2016,1,13), date(2016,5,11)] }
+    days = json.load(open('_input/days_%s.json' % app.session))
+    app.recent = {
+                    'week': '',
+                    'day': days[-1]
+                 }                   
 
 import application.flatpage
 import application.bills

@@ -495,6 +495,10 @@ def recent_feed():
 # === NOT DEPLOYED YET === #
 # =========================================================
 
+# =========================================================
+# THE DAY IN REVIEW
+# =========================================================
+
 def get_session_days(session=None, json=False):
     """ Given the start and end date of the session, get the days there
         were actions on legislation.

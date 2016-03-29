@@ -207,7 +207,12 @@
                 {% if response.app.page.url %}
                 <div class="fb-like" data-href="{{response.app.page.url}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
                 {% endif %}
-
+{#
+                <h3>Recently in Colorado legislature</h3>
+                <p>
+                    The <a href="{{response.app.url_root}}the-week/{{response.app.recent.week}}/">latest week in review (for the week ending {{response.app.recent.week}})</a>, and the most-recent day in review, {{response.app.recent.day}}.
+                </p>
+#}
                 <h3>Colorado legislature news</h3>
                 <script src="http://extras.denverpost.com/cache/politics_legislature.js"></script>
                 <noscript><p><a href="http://www.denverpost.com/legislature">Recent Colorado legislature headlines</a></p></noscript>

@@ -2,6 +2,7 @@
 {% block style %}{% endblock style %}
 {% block breadcrumbs %}{{ super() }}{% endblock breadcrumbs %}
 {% block content %}
+
 <h2>Current Legislation (<a href="./bills/{{response.app.session}}/">Session {{response.app.session|upper}}</a>)</h2>
 
 <h3 id="introduced">Recently introduced</h3>
