@@ -84,6 +84,14 @@ def main(args):
     # Always FTP the homepage.
     ftp.send_file('index.html', '.')
 
+    if args.bill:
+        session = app.session
+        if args.session:
+            session = args.session
+        #ftp.mkdir(os.path.join(dirname, subdirname))
+
+        
+
     for dirname, dirnames, filenames in os.walk('.'):
 
         # Sometimes we only want to upload files for a particular session.
@@ -186,6 +194,8 @@ def build_parser(args):
                         help="Upload the legislator files and directories")
     parser.add_argument("--news", dest="get_news", default=False, action="store_true",
                         help="Download and cache the recent legislative news.")
+    parser.add_argument("-b", "--bill", dest="bill", default=None
+                        help="Deploy one bill, one bill only. Requires a session argument.")
     parser.add_argument("-s", "--session", dest="session", default=False)
     args = parser.parse_args(args)
     return args
