@@ -124,6 +124,7 @@ def day_detail(issue_date):
 
     # Make sure it's a valid day
     the_date = datetime.strptime(issue_date, '%Y-%m-%d')
+    the_news_date = the_date + timedelta(1)
     date_range = [the_date.date(), the_date.date()]
     days = json.load(open('_input/days_%s.json' % app.session))
     if issue_date not in days:
@@ -146,7 +147,7 @@ def day_detail(issue_date):
     # Get a json file of the recent legislative news
     news = []
     try:
-        news = json.load(open('_input/news/articles_%s_1.json' % issue_date))
+        news = json.load(open('_input/news/articles_%s_1.json' % the_news_date.__str__()))
     except:
         pass
 
