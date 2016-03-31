@@ -254,20 +254,22 @@
     <footer>
     <script>
         // VENDOR: CHARTBEAT
-        _sf_async_config.uid = 2671;
-        _sf_async_config.domain = 'denverpost.com';
-        _sf_async_config.sections = 'politics,legislature,data,';
-        _sf_async_config.useCanonical = true;
-        (function(){
-            function loadChartbeat() {
-                window._sf_endpt=(new Date()).getTime();
-                var e = document.createElement('script');
-                e.setAttribute('src','//static.chartbeat.com/js/chartbeat.js');
-                document.body.appendChild(e);
-            }
-            var oldonload = window.onload;
-            window.onload = (typeof window.onload != 'function') ? loadChartbeat : function() { oldonload(); loadChartbeat(); };
-        })();
+        if ( iframe === '' ) {
+            _sf_async_config.uid = 2671;
+            _sf_async_config.domain = 'denverpost.com';
+            _sf_async_config.sections = 'politics,legislature,data,';
+            _sf_async_config.useCanonical = true;
+            (function(){
+                function loadChartbeat() {
+                    window._sf_endpt=(new Date()).getTime();
+                    var e = document.createElement('script');
+                    e.setAttribute('src','//static.chartbeat.com/js/chartbeat.js');
+                    document.body.appendChild(e);
+                }
+                var oldonload = window.onload;
+                window.onload = (typeof window.onload != 'function') ? loadChartbeat : function() { oldonload(); loadChartbeat(); };
+            })();
+        }
     </script>
     <p>Copyright &copy; 2015-2016 <a href="http://www.denverpost.com/">The Denver Post</a></p>
     <p>
