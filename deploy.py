@@ -115,7 +115,7 @@ def main(args):
             if args.verbose:
                 print dirname, subdirname
 
-            if args.theweek and 'the-week' or 'the-day' not in dirname:
+            if args.theweek and 'the-week' not in dirname and 'the-day' not in dirname:
                 continue
             if args.committee and 'committee' not in dirname:
                 continue
@@ -133,7 +133,7 @@ def main(args):
         for filename in filenames:
             if 'jpg' in filename:
                 continue
-            if args.theweek and 'the-week' or 'the-day' not in dirname:
+            if args.theweek and 'the-week' not in dirname and 'the-day' not in dirname:
                 continue
             if args.committee and 'committee' not in dirname:
                 continue
