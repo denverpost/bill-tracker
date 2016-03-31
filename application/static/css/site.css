@@ -140,3 +140,24 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     margin-left: 15px;
 }
 }
+
+
+/* In-page permalink styles */
+h1 .intralink,
+h2 .intralink,
+h3 .intralink,
+h4 .intralink,
+h5 .intralink,
+h6 .intralink {color:#000;vertical-align:middle;visibility:hidden; margin-left:-20px;}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {text-decoration:none;}
+h1:hover .anchor .intralink,
+h2:hover .anchor .intralink,
+h3:hover .anchor .intralink,
+h4:hover .anchor .intralink,
+h5:hover .anchor .intralink,
+h6:hover .anchor .intralink {visibility:visible;}

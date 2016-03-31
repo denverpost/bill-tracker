@@ -17,7 +17,7 @@
 </p>
 
 {% if response.news %}
-<h2 id="news">The legislature in the news</h2>
+<h2 id="news">{% call add_intralink('news') %}{% endcall %}The legislature in the news</h2>
 <ul>
 {% for item in response.news -%}
     <li><a href="{{item.links[0].href}}">{{item.title}}</a></li>
@@ -25,7 +25,7 @@
 </ul>
 {% endif %}
 
-<h2 id="signed">Legislation signed into law</h2>
+<h2 id="signed">{% call add_intralink('signed') %}{% endcall %}Legislation signed into law</h2>
 {% if response.signed %}
 <ul>
 {% for item in response.signed %}
@@ -37,7 +37,7 @@
 <p>No legislation signed into law on this day.</p>
 {% endif %}
 
-<h2 id="passed-house"><a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/lower/">Passed Colorado State House</a></h2>
+<h2 id="passed-house">{% call add_intralink('passed-house') %}{% endcall %}<a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/lower/">Passed Colorado State House</a></h2>
 {% if response.passed_lower %}
 <ul>
 {% for item in response.passed_lower %}
@@ -55,7 +55,7 @@
 <p>No legislation passed the Colorado State House on this day.</p>
 {% endif %}
 
-<h2 id="passed-senate"><a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/upper/">Passed Colorado State Senate</a></h2>
+<h2 id="passed-senate">{% call add_intralink('passed-senate') %}{% endcall %}<a href="{{response.app.url_root}}bills/{{response.app.session}}/passed/upper/">Passed Colorado State Senate</a></h2>
 {% if response.passed_upper %}
 <ul>
 {% for item in response.passed_upper %}
@@ -73,7 +73,7 @@
 <p>No legislation passed the Colorado State Senate on this day.</p>
 {% endif %}
 
-<h2 id="introduced">Introduced on this day</h2>
+<h2 id="introduced">{% call add_intralink('introduced') %}{% endcall %}Introduced on this day</h2>
 {% if response.introduced %}
 <ul>
 {% for item in response.introduced %}

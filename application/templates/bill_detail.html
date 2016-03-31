@@ -69,25 +69,25 @@
 </dl>
 
 {% if response.data.bill.versions.0 %}
-<h2 id="bill">The {{type|title}}</h2>
+<h2 id="bill">{% call add_intralink('bill') %}{% endcall %}The {{type|title}}</h2>
 <iframe src="{{response.data.bill.versions.0.url}}" seamless style="width:100%; height:600px; max-width:650px;"></iframe>
 {% endif %}
 
-<h2 id="timeline">{{type|title}} Timeline</h2>
+<h2 id="timeline">{% call add_intralink('timeline') %}{% endcall %}{{type|title}} Timeline</h2>
 <ul>
 {% for item in response.data.bill.actions %}
     <li>{{item.date|datetime_raw|datetime_filter}}: {{item.action|actiontosentence|link_committees(item.actor,item.related_entities)|capfirst|safe}}</li>
 {% endfor %}
 </ul>
 
-<h2 id="sponsors">Sponsors</h2>
+<h2 id="sponsors">{% call add_intralink('sponsors') %}{% endcall %}Sponsors</h2>
 <ol>
 {% for item in response.data.bill.sponsors %}
     <li>{{item.name|title|link_legislator(item.leg_id, response.session)|safe}}'s a {{item.type}} sponsor <span class="dev" style="display:none;">{{item.leg_id}}</span></li>
 {% endfor %}
 </ol>
 
-<h2 id="votes">Votes</h2>
+<h2 id="votes">{% call add_intralink('votes') %}{% endcall %}Votes</h2>
 {% if response.data.bill.votes %}
 {% for vote in response.data.bill.votes %}
 <h3>{{vote.chamber|chamber}} vote on {{vote.date|datetime_raw|datetime_filter}}</h3>
@@ -122,21 +122,21 @@
 {% endif %}
 {% endfor %}
 
-<!--
+{#
 u'bill_chamber': u'lower', u'id': u'COV00013095', u'motion': u'On motion of Majority Leader Scheffel, the resolution was adopted by the following rollcall vote:call vote:', u'chamber': u'upper', u'state': u'co', u'session': u'2015A', u'sources': [{u'url': u'http://www.leg.state.co.us/CLICS/CLICS2015A/csljournals.nsf/(jousen)/846CA59657C151EA87257DC7005207A6/$FILE/jour_002.pdf'}], u'passed': True, u'date': u'2015-01-08 00:00:00', u'vote_id': u'COV00013095', u'type': u'other', u'no_count': 0, u'bill_id': u'COB00002830', u'no_votes': []}]
--->
+#}
 {% else %}
 <p>No votes recorded on the {{response.data.bill.title}} {{type}}.</p>
 {% endif %}
 
-<h2 id="revisions">Revision History</h2>
+<h2 id="revisions">{% call add_intralink('revisions') %}{% endcall %}Revision History</h2>
 <ol>
 {% for item in response.data.bill.versions %}
     <li><a href="{{item.url}}">{{item.doc_id}}: {{item.name}}</a></li>
 {% endfor %}
 </ol>
 
-<h2 id="sources">Sources</h2>
+<h2 id="sources">{% call add_intralink('sources') %}{% endcall %}Sources</h2>
 <ol>
 {% for item in response.data.bill.sources %}
     <li><a href="{{item.url}}">{{item.url|truncate(80, True)}}</a></li>
