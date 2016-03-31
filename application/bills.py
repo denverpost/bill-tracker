@@ -595,7 +595,6 @@ def legislator_detail(district, slug, chamber):
     app.page['title'] = '%s %s is a Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
     app.page['description'] = '%s %s contact and legislation information for this Colorado state %s' % (legislator['first_name'], legislator['last_name'], title)
     app.page['url'] = build_url(app, request)
-    print app.page['url']
 
     response = {
         'app': app,
