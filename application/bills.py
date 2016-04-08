@@ -147,7 +147,8 @@ def day_detail(issue_date):
     # Get a json file of the recent legislative news
     news = []
     try:
-        news = json.load(open('_input/news/articles_%s_1.json' % the_date.__str__()))
+        #news = json.load(open('_input/news/articles_%s_1.json' % the_date.__str__()))
+        news = json.load(open('_input/news/articles_%s_1.json' % issue_date))
     except:
         pass
 
