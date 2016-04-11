@@ -237,8 +237,12 @@
             <div class="rightRail sidebarcol small-12 large-3 columns" id="rightRail">
 
                 {% if response.app.page.url %}
-                <div class="fb-like" data-href="{{response.app.page.url}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
-                {% endif %}
+                <div style="margin-bottom:10px;" class="fb-like" data-href="{{response.app.page.url}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="denverpolitics" data-size="large" data-related="thespot" data-hashtags="coleg" data-dnt="true">Tweet this page</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                {%- endif %}
+
                 <h3>Recently in Colorado legislature</h3>
                 <p>
                     Check out Colorado Bill Tracker's
