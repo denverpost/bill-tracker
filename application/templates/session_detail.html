@@ -4,11 +4,10 @@
 &rsaquo; <a href="{{response.app.url_root}}">Bill Tracker</a>
 &rsaquo; <a href="../">Sessions</a>{% endblock breadcrumbs %}
 {% block head %}
-<!-- DATATABLES STYLES -->
+<!-- DATATABLES -->
 <link rel="stylesheet" type="text/css" href="{{response.app.url_root}}static/css/datatables.css"/>
 <link href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css"/>
-<!-- DATATABLES SCRIPTS -->
-<script type="text/javascript" src="https://cdn.datatables.net/r/zf-5.5.2/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/r/zf-5.5.2/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.0.1/js/dataTables.responsive.js"></script>
 <script src="http://extras.denverpost.com/summercamps/2016/ColumnFilterWidgets.js"></script>
 <style>
@@ -72,7 +71,6 @@ function changeDate(data) {
     }
 };
 
-// DataTables
 $('#bill-table').dataTable( { 
     data: data,
     order: [ 11, "des" ],
@@ -133,11 +131,6 @@ $('#bill-table').dataTable( {
         aiExclude: [ 0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
         // sSeparator: ',  ',
         bGroupTerms: false,
-        /* aoColumnDefs: [
-            //{ bSort: false, sSeparator: ' / ', aiTargets: [ 5, 13 ] },
-            { bSort: false, aiTargets: [ 5, 13 ] },
-            { fnSort: function( a, b ) { return a-b; }, aiTargets: [ 5, 13 ] }
-        ] */
     }
 } );
 

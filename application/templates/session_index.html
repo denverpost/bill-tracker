@@ -2,12 +2,78 @@
 {% block style %}{% endblock style %}
 {% block breadcrumbs %}{{ super() }}
 &rsaquo; <a href="http://www.denverpost.com/bill-tracker">Bill Tracker</a>{% endblock breadcrumbs %}
+{% block head %}
+<!-- DATATABLES -->
+<link rel="stylesheet" type="text/css" href="{{response.app.url_root}}static/css/datatables.css"/>
+<link href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css"/>
+<script src="https://cdn.datatables.net/r/zf-5.5.2/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.0.1/js/dataTables.responsive.js"></script>
+<script src="http://extras.denverpost.com/summercamps/2016/ColumnFilterWidgets.js"></script>
+<style>
+.widget-2 {
+    width: 20%;
+    float: left;
+    margin-right: 20px;
+}
+.widget-3 {
+    width: 30%;
+    float: left;
+}
+</style>
+{% endblock head %}
 {% block content %}
-<p>We're tracking bills in the Colorado state legislature for these sessions:</p>
+<p>We're tracking bills in the Colorado General Assembly for these sessions:</p>
 <ul>
 {% for item in response.app.sessions|reverse %}
     <li><a href="{{item}}/">{{item}}</a></li>
 {%- endfor %}
 </ul>
+
+<h2>Search Legislation, 2011-2016</h2>
+<div class="row">
+    <div class="large-12 columns">
+        <table id="bill-table" class="stripe table-bordered">
+            <thead>
+                <tr>
+					<th class="all">Title</th>
+					<th class="all">Session</th>
+				</tr>
+            </thead>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<script>
+var data = {{response.json|safe}};
+
+$('#bill-table').dataTable( { 
+    data: data,
+    order: [ 0, "asc" ],
+    paging: true,
+    pagingType: 'numbers',
+    pageLength: 30,
+    responsive: true,
+    columns: [ 
+        { "data": "title",
+          "render": function(data, type, full) {
+              return "<a href='" + full['url'] + "'>" + data + "</a>";
+          }
+        },
+        { "data": "session" }
+	],
+    autoWidth: false,
+    //deferRender: true,
+    dom: '<"top">Wf<"clear">tip',
+    // https://github.com/cyberhobo/ColumnFilterWidgets
+    oColumnFilterWidgets: {
+        aiExclude: [0,1],
+        // sSeparator: ',  ',
+        bGroupTerms: false,
+    }
+} );
+
+</script>
 
 {% endblock content %}

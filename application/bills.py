@@ -359,15 +359,35 @@ def committee_detail(chamber, slug, session='2016a'):
 # LEGISLATION VIEWS
 # =========================================================
 
+@app.route('/bills.<js>')
 @app.route('/bills/')
-def session_index():
+def session_index(js=''):
     app.page['title'] = 'Legislative Sessions'
-    app.page['description'] = 'An index of Colorado legislative sessions we have bills for.'
+    app.page['description'] = 'An index of Colorado legislative sessions we have bills for. Also, search all bills.'
     app.page['url'] = build_url(app, request)
+
+    q = BillQuery()
+    data = {
+        'bills': q.items
+    }
+
+    # We return a lighter version of the bills dict for generating the javascript.
+    data['bills_light'] = []
+    for item in data['bills']:
+        url = 'http://extras.denverpost.com/app/bill-tracker/bills/%s/%s/' % (item['session'].lower(), item['bill_id'].replace(' ', '_').lower())
+        d = { 'title': item['title'], 'url': url, 'session': item['session'] }
+        data['bills_light'].append(d)
+
     response = {
         'app': app,
+        'data': data,
+        'json': json.dumps(data['bills_light']),
     }
-    return render_template('session_index.html', response=response)
+
+    fn = 'session_index.html'
+    if js == 'js':
+        fn = fn.replace('.html', '.js')
+    return render_template(fn, response=response)
 
 @app.route('/bills/<session>.<js>')
 @app.route('/bills/<session>/')
