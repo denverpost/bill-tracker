@@ -87,15 +87,19 @@ var markov = {
     startwords: [],
     wordstats: {},
     init: function() {
-        for (var i = 0; i < titles.length; i++) {
-            var words = titles[i].split(' ');
-            terminals[words[words.length-1]] = true;
-            startwords.push(words[0]);
-            for (var j = 0; j < words.length - 1; j++) {
-                if (wordstats.hasOwnProperty(words[j])) {
-                    wordstats[words[j]].push(words[j+1]);
+        var len = this.titles.length;
+        for (var i = 0; i < len; i++)
+        {
+            var words = this.titles[i]['title'].split(' ');
+            this.terminals[words[words.length-1]] = true;
+            this.startwords.push(words[0]);
+            var wordlen = words.length;
+            for (var j = 0; j < wordlen - 1; j++)
+            {
+                if (this.wordstats.hasOwnProperty(words[j])) {
+                    this.wordstats[words[j]].push(words[j+1]);
                 } else {
-                    wordstats[words[j]] = [words[j+1]];
+                    this.wordstats[words[j]] = [words[j+1]];
                 }
             }
         }
@@ -105,18 +109,19 @@ var markov = {
         return a[i];
     },
     make_title: function (min_length) {
-        word = choice(startwords);
+        var word = this.choice(this.startwords);
         var title = [word];
-        while (wordstats.hasOwnProperty(word)) {
-            var next_words = wordstats[word];
-            word = choice(next_words);
+        while (this.wordstats.hasOwnProperty(word)) {
+            var next_words = this.wordstats[word];
+            word = this.choice(next_words);
             title.push(word);
-            if (title.length > min_length && terminals.hasOwnProperty(word)) break;
+            if (title.length > min_length && this.terminals.hasOwnProperty(word)) break;
         }
-        if (title.length < min_length) return make_title(min_length);
+        if (title.length < min_length) return this.make_title(min_length);
         return title.join(' ');
     }
 }
+markov.init()
 </script>
 
 {% endblock content %}
