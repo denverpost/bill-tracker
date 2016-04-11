@@ -77,10 +77,29 @@ $('#bill-table').dataTable( {
 </script>
 
 
-<h2 id="generator">Fake Bill Title Generator</h2>
-<p>Make up your own Colorado legislation: Push the button for a fake bill title.</p>
+<h2 id="generator">Colorado Bill Title Generator</h2>
+<p>Make up your own Colorado legislation: Push the button for a fake Colorado bill title, built on the words of existing Colorado legislation.</p>
+<style type="text/css">
+h3.active
+{
+    width: 100%;
+    text-align: center;
+    color: rgb(0,0,40);
+}
+h3.active:before
+{
+    border-top: 1px dotted red;
+}
+h3.active:after
+{
+    border-top: 1px dotted green;
+}
+</style>
+<div id="bill-container">
 <h3 id="bill-title"></h3>
+</div>
 <button onClick="markov.load_title('bill-title');">Generate</button>
+
 <script>
 // Adapted from http://www.soliantconsulting.com/blog/2013/02/title-generator-using-markov-chains
 
@@ -126,6 +145,7 @@ var markov = {
     load_title: function(id) {
         var title = this.make_title(3 + Math.floor(3 * Math.random()));
         $('#' + id).text(title);
+        $('#' + id).addClass('active');
     }
 }
 markov.init();

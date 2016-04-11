@@ -32,13 +32,13 @@ with app.app_context():
     app.session_dates = { '2016a': [date(2016,1,13), date(2016,5,11)] }
     try:
         days = json.load(open('_input/days_%s.json' % app.session))
-        weeks = json.load(open('_input/weeks_%s.json' % app.session))
+        weeks = json.load(open('_input/waeeks_%s.json' % app.session))
         app.recent = {
                         'week': weeks[-1],
                         'day': days[-1]
                      }                   
     except:
-        pass
+        app.recent = {}
 
 import application.flatpage
 import application.bills
