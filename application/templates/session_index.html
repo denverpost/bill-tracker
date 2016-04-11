@@ -76,11 +76,14 @@ $('#bill-table').dataTable( {
 
 </script>
 
-<div id="hide" style="display:none;">
-</div>
 
 <h2 id="generator">Fake Bill Title Generator</h2>
+<p>Make up your own Colorado legislation: Push the button for a fake bill title.</p>
+<h3 id="bill-title"></h3>
+<button onClick="markov.load_title('bill-title');">Generate</button>
 <script>
+// Adapted from http://www.soliantconsulting.com/blog/2013/02/title-generator-using-markov-chains
+
 var markov = {
     titles: data,
     terminals: {},
@@ -119,9 +122,13 @@ var markov = {
         }
         if (title.length < min_length) return this.make_title(min_length);
         return title.join(' ');
+    },
+    load_title: function(id) {
+        var title = this.make_title(3 + Math.floor(3 * Math.random()));
+        $('#' + id).text(title);
     }
 }
-markov.init()
+markov.init();
 </script>
 
 {% endblock content %}
