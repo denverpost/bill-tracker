@@ -243,12 +243,14 @@
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                 {%- endif %}
 
+                {% if 'recent' in response.app %}
                 <h3>Recently in Colorado legislature</h3>
                 <p>
                     Check out Colorado Bill Tracker's
                     <a href="{{response.app.url_root}}the-week/{{response.app.recent.week}}/">latest week in review (for the week ending {{response.app.recent.week|date_raw|datetime_filter('datefull')}})</a>,
                     and <a href="{{response.app.url_root}}the-day/{{response.app.recent.day}}/">most-recent day in review, for {{response.app.recent.day|date_raw|datetime_filter('datefullweekday')}}</a>.
                 </p>
+                {% endif %}
 
                 <div id='dfp-20' class='ad'>
                     <script>
