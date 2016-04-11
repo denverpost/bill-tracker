@@ -80,25 +80,33 @@ $('#bill-table').dataTable( {
 <h2 id="generator">Colorado Bill Title Generator</h2>
 <p>Make up your own Colorado legislation: Push the button for a fake Colorado bill title, built on the words of existing Colorado legislation.</p>
 <style type="text/css">
-h3.active
+#bill-gen, #credit { display:none; }
+.active { display:block!important; }
+
+h3
 {
     width: 100%;
     text-align: center;
     color: rgb(0,0,40);
 }
-h3.active:before
+.active > div
 {
-    border-top: 1px dotted red;
+    border-image: url("../static/img/border-top.gif") 100 10 round;
+    border-top: 50px solid transparent;
 }
-h3.active:after
+.active
 {
-    border-top: 1px dotted green;
+    border-image: url("../static/img/border-bottom.gif") 100 10 round;
+    border-bottom: 50px solid transparent;
 }
 </style>
-<div id="bill-container">
-<h3 id="bill-title"></h3>
+<div id="bill-gen">
+    <div>
+        <h3 id="title"></h3>
+        <p id="credit">Colorado Bill Tracker, http://www.denverpost.com/bill-tracker</p>
+    </div>
 </div>
-<button onClick="markov.load_title('bill-title');">Generate</button>
+<button onClick="markov.load_title('bill-gen');">Generate</button>
 
 <script>
 // Adapted from http://www.soliantconsulting.com/blog/2013/02/title-generator-using-markov-chains
@@ -144,7 +152,7 @@ var markov = {
     },
     load_title: function(id) {
         var title = this.make_title(3 + Math.floor(3 * Math.random()));
-        $('#' + id).text(title);
+        $('#' + id + ' h3').text(title);
         $('#' + id).addClass('active');
     }
 }
