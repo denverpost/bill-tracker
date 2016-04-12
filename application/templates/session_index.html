@@ -81,7 +81,7 @@ $('#bill-table').dataTable( {
 <h2 id="generator">Colorado Bill Title Generator</h2>
 <p>Make up your own Colorado legislation: Push the button for a fake Colorado bill title, built on the words of existing Colorado legislation.</p>
 <style type="text/css">
-#bill-gen, #credit { display:none; }
+#bill-gen, .hide { display:none; }
 .active { display:block!important; }
 
 h3
@@ -100,20 +100,34 @@ h3
     border-image: url("../static/img/border-bottom.gif") 100 10 round;
     border-bottom: 50px solid transparent;
 }
+#credit
+{
+    text-align: right;
+    color: #aaa;
+}
+#interface
+{
+    text-align: center;
+}
+#interface button
+{
+    padding: 20px;
+    margin: 20px;
+}
 </style>
 <script src="http://denverpostplus.com/app/quotable/js/lib/html2canvas.js"></script>
 
-<div id="bill-gen">
+<div id="bill-gen" class="hide">
     <div>
         <h3 id="title"></h3>
-        <p id="credit">Colorado Bill Tracker, http://www.denverpost.com/bill-tracker</p>
+        <p id="credit" class="hide">Colorado Bill Tracker, http://www.denverpost.com/bill-tracker</p>
     </div>
 </div>
-<button onClick="markov.load_title('bill-gen');">Generate</button>
 
-<p>
-<button onClick="save_image();">Save The Bill</button>
-</p>
+<div id="interface">
+    <button id="generate" onClick="markov.load_title('bill-gen'); $('#save-image').removeClass('hide');">Generate New Bill</button>
+    <button id="save-image" class="hide" onClick="save_image();">Save The Bill</button>
+</div>
 <script>
 function convert_to_slug(text){
     return text
@@ -124,24 +138,27 @@ function convert_to_slug(text){
 function save_image()
 {
     html2canvas($('#bill-gen'), {
-      onrendered: function(canvas) {
-        document.body.appendChild(canvas);
-        window.oCanvas = document.getElementsByTagName("canvas");
-        window.oCanvas = window.oCanvas[0];
-        var strDataURI = window.oCanvas.toDataURL();
+        allowTaint: true,
+        onrendered: function(canvas) {
+            $('#credit').removeClass('hide');
 
-        var quote = $('h3').text().split(' ', 5);
-        var filename = convert_to_slug(quote.join(' '));
+            document.body.appendChild(canvas);
+            window.oCanvas = document.getElementsByTagName("canvas");
+            window.oCanvas = window.oCanvas[0];
+            var strDataURI = window.oCanvas.toDataURL();
 
-        var a = $("<a>").attr("href", strDataURI).attr("download", "bill-" + filename + ".png").appendTo("body");
+            var quote = $('h3').text().split(' ', 5);
+            var filename = convert_to_slug(quote.join(' '));
 
-        a[0].click();
+            var a = $("<a>").attr("href", strDataURI).attr("download", "bill-" + filename + ".png").appendTo("body");
+            a[0].click();
+            a.remove();
 
-        a.remove();
+            $('#download').attr('href', strDataURI).attr('target', '_blank');
+            $('#download').trigger('click');
 
-        $('#download').attr('href', strDataURI).attr('target', '_blank');
-        $('#download').trigger('click');
-      }
+            $('#credit').addClass('hide');
+        }
     });
 }
 // Adapted from http://www.soliantconsulting.com/blog/2013/02/title-generator-using-markov-chains
