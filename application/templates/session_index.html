@@ -94,10 +94,12 @@ h3
 {
     border-image: url("../static/img/border-top.gif") 100 10 round;
     border-top: 50px solid transparent;
+    border-bottom: 0 solid;
 }
 .active
 {
     border-image: url("../static/img/border-bottom.gif") 100 10 round;
+    border-top: 0 solid;
     border-bottom: 50px solid transparent;
 }
 #credit
@@ -114,8 +116,11 @@ h3
     padding: 20px;
     margin: 20px;
 }
+.borderless
+{
+}
 </style>
-<script src="http://denverpostplus.com/app/quotable/js/lib/html2canvas.js"></script>
+<script src="{{response.app.url_root}}static/js/html2canvas.js"></script>
 
 <div id="bill-gen" class="hide">
     <div>
@@ -141,6 +146,7 @@ function save_image()
         allowTaint: true,
         onrendered: function(canvas) {
             $('#credit').removeClass('hide');
+            $('.active, .active > div').addClass('borderless');
 
             document.body.appendChild(canvas);
             window.oCanvas = document.getElementsByTagName("canvas");
@@ -157,6 +163,7 @@ function save_image()
             $('#download').attr('href', strDataURI).attr('target', '_blank');
             $('#download').trigger('click');
 
+            //$('.active, .active > div').removeClass('borderless');
             $('#credit').addClass('hide');
         }
     });
