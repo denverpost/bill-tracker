@@ -89,7 +89,7 @@ $('#bill-table').dataTable( {
     width: 90%;
     margin: 5% auto;
 }
-h3
+#bill-gen h3
 {
     width: 100%;
     text-align: center;
@@ -109,6 +109,8 @@ h3
 }
 #datestamp, .datestamp
 {
+    width: 50%;
+    margin: auto;
     font-family: Georgia;
     font-style: italic;
     text-align: center;
@@ -118,12 +120,13 @@ h3
     display: block;
     width: 100px;
     height: 100px;
-    margin: -10px auto;
-    text-align: center;
+    margin: -30px 0 0 10px;
 }
 #credit
 {
-    text-align: right;
+    margin-top: 5px;
+    text-align: left;
+    text-indent: 10px;
     color: #aaa;
 }
 #interface
@@ -168,13 +171,13 @@ h3
     <div>
         <h3 id="title"></h3>
         <p id="datestamp">Proposed on this, 
-            <span id="weekday"></span> the 
+            <span id="weekday"></span>, the 
             <span id="day"></span> of
             <span id="month"></span>, two thousand and 
             <span id="year"></span>.
         </p>
         <img src="{{response.app.url_root}}static/img/colorado-state-seal-small.png" alt="Colorado State Seal" >
-        <p id="credit" class="hide">Colorado Bill Tracker, http://www.denverpost.com/bill-tracker</p>
+        <p id="credit" class="hidse">Brought to you by the Colorado Bill Tracker, http://www.denverpost.com/bill-tracker</p>
     </div>
 </div>
 
@@ -217,6 +220,24 @@ function save_image()
         }
     });
 }
+
+// An object for managing the writing of full dates,
+// i.e. "On Monday, the eleventh of March two thousand and sixteen..."
+var flowery_date = {
+    weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    days: ['ZERO', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth', 'twentieth', 'twenty-first', 'twenty-second', 'twenty-third', 'twenty-fourth', 'twenty-fifth', 'twenty-sixth', 'twenty-seventh', 'twenty-eighth', 'twenty-ninth', 'thirtieth', 'thirty-first'],
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],  
+    get_weekday: function(weekday) { return this.weekdays[weekday]; },
+    get_day: function(day) { return this.days[day]; },
+    get_month: function(month) { return this.months[month]; },
+    get_year: function(year) {
+        year = year - 2000;
+        return this.days[year];
+    }
+}
+
+
+// An object for managing the markov chain creation
 // Adapted from http://www.soliantconsulting.com/blog/2013/02/title-generator-using-markov-chains
 var markov = {
     titles: data,
@@ -261,6 +282,12 @@ var markov = {
         var title = this.make_title(3 + Math.floor(3 * Math.random()));
         $('#' + id + ' h3').text(title);
         $('#' + id).addClass('active');
+        // Update the timestamp
+        d = new Date();
+        $('#weekday').text(flowery_date.get_weekday(d.getDay()));
+        $('#day').text(flowery_date.get_day(d.getDate()));
+        $('#month').text(flowery_date.get_month(d.getMonth()));
+        $('#year').text(flowery_date.get_year(d.getFullYear()));
     }
 }
 markov.init();
