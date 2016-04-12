@@ -1,0 +1,208 @@
+<p>Make up your own Colorado legislation: Push the button for a fake Colorado bill title, built on the words of existing Colorado legislation.</p>
+<style type="text/css">
+.hide { display:none; }
+.active { display:block!important; }
+
+#bill-gen
+{
+    width: 90%;
+    margin: 5% auto;
+}
+#bill-gen h3
+{
+    width: 100%;
+    text-align: center;
+    color: rgb(0,0,70);
+}
+.active > div
+{
+    border-image: url("{{response.app.url_root}}static/img/border-top.gif") 100 10 round;
+    border-top: 50px solid transparent;
+    border-bottom: 0 solid;
+}
+.active
+{
+    border-image: url("{{response.app.url_root}}static/img/border-bottom.gif") 100 10 round;
+    border-top: 0 solid;
+    border-bottom: 50px solid transparent;
+}
+#datestamp, .datestamp
+{
+    width: 50%;
+    margin: auto;
+    font-family: Georgia;
+    font-style: italic;
+    text-align: center;
+}
+#bill-gen img 
+{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: -30px 0 0 10px;
+}
+#credit
+{
+    margin-top: 5px;
+    text-align: left;
+    text-indent: 10px;
+    color: #aaa;
+}
+#interface
+{
+    text-align: center;
+}
+#interface button
+{
+    padding: 20px;
+    margin: 20px;
+}
+.borderless
+{
+}
+.multiple-borders
+{
+  -webkit-box-shadow:
+            0px 0px 0px 2px rgba(0,0,0,0.6),
+                0px 0px 0px 14px #fff,
+                0px 0px 0px 18px rgba(0,0,0,0.2),
+                6px 6px 8px 17px #555;
+  
+     -moz-box-shadow:
+            0px 0px 0px 2px rgba(0,0,0,0.6),
+                0px 0px 0px 14px #fff,
+                0px 0px 0px 18px rgba(0,0,0,0.2),
+                6px 6px 8px 17px #555;
+  
+          box-shadow:
+            0px 0px 0px 2px rgba(0,0,0,0.6),
+                0px 0px 0px 14px #fff,
+                0px 0px 0px 18px rgba(0,0,0,0.2),
+                6px 6px 8px 17px #555;
+}
+</style>
+<script src="{{response.app.url_root}}static/js/html2canvas.js"></script>
+
+<div id="bill-gen" class="hide multiple-borders">
+    <div>
+        <h3 id="title"></h3>
+        <p id="datestamp">Proposed on this, 
+            <span id="weekday"></span>, the 
+            <span id="day"></span> of
+            <span id="month"></span>, two thousand and 
+            <span id="year"></span>.
+        </p>
+        <img src="{{response.app.url_root}}static/img/colorado-state-seal-small.png" alt="Colorado State Seal" >
+        <p id="credit" class="hidse">Brought to you by the Colorado Bill Tracker, http://www.denverpost.com/bill-tracker</p>
+    </div>
+</div>
+
+<div id="interface">
+    <button id="generate" onClick="markov.load_title('bill-gen'); $('#save-image').removeClass('hide');">Generate New Bill</button>
+    <button id="save-image" class="hide" onClick="save_image();">Save The Bill</button>
+</div>
+<script>
+function convert_to_slug(text){
+    return text
+        .toLowerCase()
+        .replace(/[^\w ]+/g,'')
+        .replace(/ +/g,'-');
+}
+function save_image()
+{
+    html2canvas($('#bill-gen'), {
+        allowTaint: true,
+        onrendered: function(canvas) {
+            $('#credit').removeClass('hide');
+
+            document.body.appendChild(canvas);
+            window.oCanvas = document.getElementsByTagName("canvas");
+            window.oCanvas = window.oCanvas[0];
+            var strDataURI = window.oCanvas.toDataURL();
+
+            var quote = $('h3').text().split(' ', 5);
+            var filename = convert_to_slug(quote.join(' '));
+
+            var a = $("<a>").attr("href", strDataURI).attr("download", "bill-" + filename + ".png").appendTo("body");
+            a[0].click();
+            a.remove();
+
+            $('#download').attr('href', strDataURI).attr('target', '_blank');
+            $('#download').trigger('click');
+
+            $('#credit').addClass('hide');
+        }
+    });
+}
+
+// An object for managing the writing of full dates,
+// i.e. "On Monday, the eleventh of March two thousand and sixteen..."
+var flowery_date = {
+    weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    days: ['ZERO', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth', 'twentieth', 'twenty-first', 'twenty-second', 'twenty-third', 'twenty-fourth', 'twenty-fifth', 'twenty-sixth', 'twenty-seventh', 'twenty-eighth', 'twenty-ninth', 'thirtieth', 'thirty-first'],
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],  
+    get_weekday: function(weekday) { return this.weekdays[weekday]; },
+    get_day: function(day) { return this.days[day]; },
+    get_month: function(month) { return this.months[month]; },
+    get_year: function(year) {
+        year = year - 2000;
+        return this.days[year];
+    }
+}
+
+
+// An object for managing the markov chain creation
+// Adapted from http://www.soliantconsulting.com/blog/2013/02/title-generator-using-markov-chains
+var markov = {
+    titles: data,
+    terminals: {},
+    startwords: [],
+    wordstats: {},
+    init: function() {
+        var len = this.titles.length;
+        for (var i = 0; i < len; i++)
+        {
+            var words = this.titles[i]['title'].split(' ');
+            this.terminals[words[words.length-1]] = true;
+            this.startwords.push(words[0]);
+            var wordlen = words.length;
+            for (var j = 0; j < wordlen - 1; j++)
+            {
+                if (this.wordstats.hasOwnProperty(words[j])) {
+                    this.wordstats[words[j]].push(words[j+1]);
+                } else {
+                    this.wordstats[words[j]] = [words[j+1]];
+                }
+            }
+        }
+    },
+    choice: function (a) {
+        var i = Math.floor(a.length * Math.random());
+        return a[i];
+    },
+    make_title: function (min_length) {
+        var word = this.choice(this.startwords);
+        var title = [word];
+        while (this.wordstats.hasOwnProperty(word)) {
+            var next_words = this.wordstats[word];
+            word = this.choice(next_words);
+            title.push(word);
+            if (title.length > min_length && this.terminals.hasOwnProperty(word)) break;
+        }
+        if (title.length < min_length) return this.make_title(min_length);
+        return title.join(' ');
+    },
+    load_title: function(id) {
+        var title = this.make_title(3 + Math.floor(3 * Math.random()));
+        $('#' + id + ' h3').text(title);
+        $('#' + id).addClass('active');
+        // Update the timestamp
+        d = new Date();
+        $('#weekday').text(flowery_date.get_weekday(d.getDay()));
+        $('#day').text(flowery_date.get_day(d.getDate()));
+        $('#month').text(flowery_date.get_month(d.getMonth()));
+        $('#year').text(flowery_date.get_year(d.getFullYear()));
+    }
+}
+markov.init();
+</script>
