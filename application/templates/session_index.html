@@ -22,7 +22,6 @@
 </style>
 {% endblock head %}
 {% block content %}
-{#
 <p>We're tracking bills in the Colorado General Assembly for these sessions:</p>
 <ul>
 {% for item in response.app.sessions|reverse %}
@@ -46,7 +45,6 @@
     </div>
 </div>
 
-#}
 <script>
 var data = {{response.json|safe}};
 
