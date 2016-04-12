@@ -92,13 +92,13 @@ h3
 }
 .active > div
 {
-    border-image: url("../static/img/border-top.gif") 100 10 round;
+    border-image: url("{{response.app.url_root}}static/img/border-top.gif") 100 10 round;
     border-top: 50px solid transparent;
     border-bottom: 0 solid;
 }
 .active
 {
-    border-image: url("../static/img/border-bottom.gif") 100 10 round;
+    border-image: url("{{response.app.url_root}}static/img/border-bottom.gif") 100 10 round;
     border-top: 0 solid;
     border-bottom: 50px solid transparent;
 }
@@ -146,7 +146,7 @@ function save_image()
         allowTaint: true,
         onrendered: function(canvas) {
             $('#credit').removeClass('hide');
-            $('.active, .active > div').addClass('borderless');
+            //$('.active, .active > div').addClass('borderless');
 
             document.body.appendChild(canvas);
             window.oCanvas = document.getElementsByTagName("canvas");
