@@ -78,7 +78,7 @@ $('#bill-table').dataTable( {
 
 </script>
 
-<h2 id="generator">Colorado Bill Title Generator</h2>
+<h2 id="generator">{% call add_intralink('generator') %}{% endcall %}Colorado Bill Title Generator</h2>
 <p>Make up your own Colorado legislation: Push the button for a fake Colorado bill title, built on the words of existing Colorado legislation.</p>
 <style type="text/css">
 .hide { display:none; }
@@ -161,9 +161,6 @@ $('#bill-table').dataTable( {
                 0px 0px 0px 18px rgba(0,0,0,0.2),
                 6px 6px 8px 17px #555;
 }
-.inset
-{
-}
 </style>
 <script src="{{response.app.url_root}}static/js/html2canvas.js"></script>
 
@@ -198,7 +195,6 @@ function save_image()
         allowTaint: true,
         onrendered: function(canvas) {
             $('#credit').removeClass('hide');
-            //$('.active, .active > div').addClass('borderless');
 
             document.body.appendChild(canvas);
             window.oCanvas = document.getElementsByTagName("canvas");
@@ -215,7 +211,6 @@ function save_image()
             $('#download').attr('href', strDataURI).attr('target', '_blank');
             $('#download').trigger('click');
 
-            //$('.active, .active > div').removeClass('borderless');
             $('#credit').addClass('hide');
         }
     });
