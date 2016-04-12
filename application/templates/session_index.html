@@ -107,6 +107,20 @@ h3
     border-top: 0 solid;
     border-bottom: 50px solid transparent;
 }
+#datestamp, .datestamp
+{
+    font-family: Georgia;
+    font-style: italic;
+    text-align: center;
+}
+#bill-gen img 
+{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: -10px auto;
+    text-align: center;
+}
 #credit
 {
     text-align: right;
@@ -153,6 +167,13 @@ h3
 <div id="bill-gen" class="hide multiple-borders">
     <div>
         <h3 id="title"></h3>
+        <p id="datestamp">Proposed on this, 
+            <span id="weekday"></span> the 
+            <span id="day"></span> of
+            <span id="month"></span>, two thousand and 
+            <span id="year"></span>.
+        </p>
+        <img src="{{response.app.url_root}}static/img/colorado-state-seal-small.png" alt="Colorado State Seal" >
         <p id="credit" class="hide">Colorado Bill Tracker, http://www.denverpost.com/bill-tracker</p>
     </div>
 </div>
