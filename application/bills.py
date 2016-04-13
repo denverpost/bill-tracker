@@ -363,7 +363,7 @@ def committee_detail(chamber, slug, session='2016a'):
 @app.route('/bills/')
 def session_index(js=''):
     app.page['title'] = 'Search Colorado General Assembly legislation'
-    app.page['description'] = 'An index of Colorado legislative sessions we have bills for. Also, search all bills.'
+    app.page['description'] = 'An index of Colorado legislative sessions we have bills for. Also, search all bills. Also, use our Bill Generator.'
     app.page['url'] = build_url(app, request)
 
     q = BillQuery()
