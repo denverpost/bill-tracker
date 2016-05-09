@@ -1,11 +1,17 @@
 # Bill Tracker
 Let's publish Colorado State bills.
 
-# Relevant links:
+## How to manage the site
+
+### At the start of a legislative session
+
+### At the end of a legislative session
+
+## Relevant links:
 - List of Senate bills: http://www.leg.state.co.us/CLICS/CLICS2015A/csl.nsf/BillFoldersSenate?openFrameset
 - How they present PDFs: http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont3/BED55652BAA579B987257D9000780984?Open&file=SB002_00.pdf
 
-# How to use this code
+## How to use this code
 legquery.py expects an environment variable named `NAME_OF_VAR` set with your sunlight foundation API key in it. You can get a key at http://sunlightfoundation.com/api/accounts/register/
 
 About the Sunlight API: https://sunlightlabs.github.io/openstates-api/bills.html
@@ -14,7 +20,7 @@ About the python bindings for the Sunlight API: http://python-sunlight.readthedo
 
 See how the Sunlight foundation publishes this data: http://openstates.org/co/
 
-## Setting up a dev environment
+### Setting up a dev environment
 Here's the third draft of instructions:
 
 1. Check out / update the repo.
@@ -26,7 +32,7 @@ Here's the third draft of instructions:
 7. `python runserver.py`, then open up http://localhost:5000/
 8. To get previous legislative sessions to work, you'll need the bill details for the prior sessions. `for s in "2015a" "2014a" "2013a" "2012b" "2012a" "2011a"; do python legquery.py --session $s --details --verbose; done` should do that for you.
 
-### Deploying
+#### Deploying
 
 Note: `--freeze` takes a snapshot of the current templates. If you haven't made any template- or data-level changes since the last time you froze, you don't need to `--freeze`.
 
