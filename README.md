@@ -4,8 +4,10 @@ Let's publish Colorado State bills.
 ## How to manage the site
 
 ### At the start of a legislative session
+1 Turn on the cron jobs.
 
 ### At the end of a legislative session
+1 Turn off the cron jobs.
 
 ## Relevant links:
 - List of Senate bills: http://www.leg.state.co.us/CLICS/CLICS2015A/csl.nsf/BillFoldersSenate?openFrameset
