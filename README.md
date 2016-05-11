@@ -4,17 +4,19 @@ Let's publish Colorado State bills.
 ## How to manage the site
 
 ### At the start of a legislative session
-1 Turn on the cron jobs.
+1. Turn on the cron jobs.
+2. Update the README to reference the year of the current session.
+3. Update the lines in the repo marked with `***HC` to reference or include the current session.
 
 ### At the end of a legislative session
-1 Turn off the cron jobs.
+1. Turn off the cron jobs.
 
 ## Relevant links:
 - List of Senate bills: http://www.leg.state.co.us/CLICS/CLICS2015A/csl.nsf/BillFoldersSenate?openFrameset
 - How they present PDFs: http://www.leg.state.co.us/clics/clics2015a/csl.nsf/fsbillcont3/BED55652BAA579B987257D9000780984?Open&file=SB002_00.pdf
 
 ## How to use this code
-legquery.py expects an environment variable named `NAME_OF_VAR` set with your sunlight foundation API key in it. You can get a key at http://sunlightfoundation.com/api/accounts/register/
+legquery.py expects an environment variable named `SUNLIGHT_API_KEY` set with your sunlight foundation API key in it. You can get a key at http://sunlightfoundation.com/api/accounts/register/
 
 About the Sunlight API: https://sunlightlabs.github.io/openstates-api/bills.html
 

@@ -333,6 +333,7 @@ def link_legislator(value, l_id, session=app.session):
         leg = json.load(open('_input/%s/%s.json' % (session, l_id.lower())))
     except:
         try:
+            #***HC - replace with next session
             leg = json.load(open('_input/%s/%s.json' % ('2016a', l_id.lower())))
         except:
             return value

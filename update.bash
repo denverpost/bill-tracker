@@ -24,7 +24,7 @@ if [ "$LATEST" = "$CURRENT" ]; then rm RUNNING; exit 0; fi
 echo $CURRENT > log_timestamp
 echo $CURRENT `date` >> log_update
 
-# Update the data
+# Update the data ***HC - replace with the next session
 python legquery.py --session 2016a --details
 python legquery.py
 
