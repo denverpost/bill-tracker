@@ -61,7 +61,6 @@
         }
     </script>
 
-    <link rel="stylesheet" type="text/css" href="http://extras.mnginteractive.com/live/css/site67/bartertown.css">
     <link rel="stylesheet" type="text/css" href="{{response.app.url_root}}static/css/site.css">
     <style type="text/css">
     dt { float: left; }
@@ -186,7 +185,7 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <div id="dfmHeader"><!--Header Goes Here--></div>
 
-    <div id="wrapper">
+    <div id="wrapper" class="body-copy">
 
         <p id="datestamp" class="stamp"><span>Colorado Bill Tracker, last updated {{''|next_update('this')}}</span></p>
         {% include 'inc_nav.html' %}
@@ -278,7 +277,7 @@
 
     </div><!-- END wrapper -->
 
-    <section id="content-footer">
+    <section id="content-footer" class="body-copy">
         <hr noshade>
         <p>The latest in <a href="http://www.denverpost.com/legislature">Colorado state legislature news</a>: <script src="http://extras.denverpost.com/cache/politics_legislature_1.js"></script></p>
         {% include 'inc_nav.html' %}

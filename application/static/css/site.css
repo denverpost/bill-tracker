@@ -66,19 +66,19 @@ hr {
 }
 .ad { margin-bottom: 10px; }
 .row { margin-left: 0; }
-nav {
+#wrapper nav {
     clear: both;
 }
-nav ul li {
+#wrapper nav ul li {
     display: inline;
 }
-nav ul li:after {
+#wrapper nav ul li:after {
     content: " ~ ";
 }
-nav ul li:last-child:after {
+#wrapper nav ul li:last-child:after {
     content: "";
 }
-.stamp, nav {
+.stamp, #wrapper nav {
     font-family: Georgia, serif;
     font-style: italic;
     color: #aaa;
@@ -86,14 +86,14 @@ nav ul li:last-child:after {
     width: 100%;
     line-height: 0.5;
 }
-.stamp span, nav ul span {
+.stamp span, #wrapper nav ul span {
     display: inline-block;
     position: relative;  
 }
 .stamp span:before,
 .stamp span:after,
-nav ul:before,
-nav ul:after {
+#wrapper nav ul:before,
+#wrapper nav ul:after {
     content: "";
     position: absolute;
     height: 5px;
@@ -103,12 +103,12 @@ nav ul:after {
     width: 500px;
 }
 .stamp span:before,
-nav ul:before {
+#wrapper nav ul:before {
     right: 100%;
     margin-right: 15px;
 }
 .stamp span:after,
-nav ul:after {
+#wrapper nav ul:after {
     left: 100%;
     margin-left: 15px;
 }
@@ -161,3 +161,12 @@ h3:hover .anchor .intralink,
 h4:hover .anchor .intralink,
 h5:hover .anchor .intralink,
 h6:hover .anchor .intralink {visibility:visible;}
+
+
+/* Styles to make the mason CSS work */
+#wrapper nav ul li:after { content: " ~ "; }
+#wrapper h2,
+#wrapper h3,
+#wrapper h4 { margin-bottom: 0.1em; margin-top: 0.5em; }
+#wrapper ul,
+#wrapper ol { margin-left: 1em; }
