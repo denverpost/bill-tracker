@@ -164,7 +164,6 @@ h6:hover .anchor .intralink {visibility:visible;}
 
 
 /* Styles to make the mason CSS work */
-#wrapper nav ul li:after { content: " ~ "; }
 #wrapper h2,
 #wrapper h3,
 #wrapper h4 { margin-bottom: 0.1em; margin-top: 0.5em; }
