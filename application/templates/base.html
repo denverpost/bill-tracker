@@ -65,6 +65,12 @@
     <style type="text/css">
     dt { float: left; }
     dt:after { content: ':\00a0'; }
+    #wrapper nav ul li:after { content: " ~ "; }
+    #wrapper h2,
+    #wrapper h3,
+    #wrapper h4 { margin-bottom: 0.1em; margin-top: 0.5em; }
+    #wrapper ul,
+    #wrapper ol { margin-left: 1em; }
 {% block style %}{% endblock style %}
     </style>
 
@@ -284,7 +290,7 @@
     </section>
 
     <div id="dfmFooter" style="border-top:1px solid #ddd;"><!--CORPORATE FOOTER--></div>
-    <script src="http://local.denverpost.com/common/dfm/dfm-nav/dfm-nav-core.js"></script>
+    <script src="http://extras.denverpost.com/vendor_templates/mason/vendor-include.js"></script>
     <script>
         window.setTimeout(function(){dfmNav.initParams("mode|article", "site|denverpost", "pageTitle|Legislature", "leaderboard|true", "thirdParty|false")},5);
     </script>
