@@ -95,16 +95,22 @@
       if ( typeof googletag !== "undefined" )
       {
         googletag.defineSlot('/8013/denverpost.com/News',[[300,250],[300,600],[160,600],[300,1050]], 'dfp-20').addService(googletag.pubads()).setTargeting('pos',['Cube1_RRail_ATF']).setTargeting('kv','politics');                                          
-        googletag.pubads().enableSyncRendering();
-        googletag.enableServices();                                         
-
         googletag.defineSlot('/8013/denverpost.com/News',[[300,250]], 'dfp-21').addService(googletag.pubads()).setTargeting('pos',['Cube2_RRail_mid']).setTargeting('kv','politics');
-        googletag.pubads().enableSyncRendering();
-        googletag.enableServices();                                         
-
         googletag.defineSlot('/8013/denverpost.com/News',[[300,250]], 'dfp-22').addService(googletag.pubads()).setTargeting('pos',['Cube3_RRail_lower']).setTargeting('kv','politics');
+        var dfpBuiltMappings = {};
+        var ranNum = Math.floor(Math.random()*101);
+        var ranRPN = ranNum.toString();
+        dfpBuiltMappings["top_leaderboard"] = googletag.sizeMapping().addSize([1000,200],[[728,90],[970,90],[970,250],[970,30]]).addSize([750,200],[[728,90]]).addSize([300,400],[[300,50],[320,50],[320,100]]).build();
+        dfpBuiltMappings["Cube1_RRail_ATF"] = googletag.sizeMapping().addSize([1000,200],[[300,250],[300,600],[300,1050]]).addSize([750,200],[[300,250]]).addSize([300,400],[[300,250]]).build();
+        dfpBuiltMappings["Cube2_RRail_mid"] = googletag.sizeMapping().addSize([1000,200],[[300,250]]).addSize([750,200],[[300,250]]).addSize([300,400],[[300,250]]).build();
+        dfpBuiltMappings["Cube3_RRail_lower"] = googletag.sizeMapping().addSize([1000,200],[[300,250]]).addSize([750,200],[[300,250]]).addSize([300,400],[[300,250]]).build();
+        dfpBuiltMappings["bottom_leaderboard"] = googletag.sizeMapping().addSize([1000,200],[[728,90],[970,250],[970,90]]).addSize([750,200],[[728,90]]).addSize([300,400],[[320,100],[320,50]]).build();
+        googletag.defineSlot("\/8013\/denverpost.com\/politics\/colorado-legislature",[728,90],"div-gpt-ad-top_leaderboard").defineSizeMapping(dfpBuiltMappings["top_leaderboard"]).setTargeting("POS",["top_leaderboard"]).setTargeting("kv","colorado-legislature").setTargeting("page",["section"]).setTargeting("RPN", ranRPN).addService(googletag.pubads());
+        googletag.defineSlot("\/8013\/denverpost.com\/politics\/colorado-legislature",[300,250],"div-gpt-ad-Cube1_RRail_ATF").defineSizeMapping(dfpBuiltMappings["Cube1_RRail_ATF"]).setTargeting("POS",["Cube1_RRail_ATF"]).setTargeting("kv","colorado-legislature").setTargeting("page",["section"]).setTargeting("RPN", ranRPN).addService(googletag.pubads());
+        googletag.defineSlot("\/8013\/denverpost.com\/politics\/colorado-legislature",[300,250],"div-gpt-ad-Cube2_RRail_mid").defineSizeMapping(dfpBuiltMappings["Cube2_RRail_mid"]).setTargeting("POS",["Cube2_RRail_mid"]).setTargeting("kv","colorado-legislature").setTargeting("page",["section"]).setTargeting("RPN", ranRPN).addService(googletag.pubads());
+        googletag.defineSlot("\/8013\/denverpost.com\/politics\/colorado-legislature",[728,90],"div-gpt-ad-bottom_leaderboard").defineSizeMapping(dfpBuiltMappings["bottom_leaderboard"]).setTargeting("POS",["bottom_leaderboard"]).setTargeting("kv","colorado-legislature").setTargeting("page",["section"]).setTargeting("RPN", ranRPN).addService(googletag.pubads());
         googletag.pubads().enableSyncRendering();
-        googletag.enableServices();                                         
+        googletag.enableServices();
       }
     </script>
     {% block head %}{% endblock head %}
@@ -138,11 +144,11 @@
         'Update Hour of Day':'',
         'Behind Paywall':'NO',
         'Mobile Presentation':is_mobile(),
-        'kv':'news',
+        'kv':'Colorado Legislature',
         'Release Version':'',
         'Digital Publisher':'Denver Post',
         'Platform':'custom',
-        'Section':'Politics',
+        'Section':'Colorado Legislature',
         'Taxonomy1':'News',
         'Taxonomy2':'Politics',
         'Taxonomy3':'Legislature',
@@ -152,8 +158,8 @@
         'Canonical URL': '',
         'Slug':'',
         'Content ID':'',
-        'Page Type':'data',
-        'Publisher State':'CO',
+        'Page Type':'section',
+        'Publisher State':'COLORADO',
         'Byline':'',
         'Content Title':'',
         'URL':'',
