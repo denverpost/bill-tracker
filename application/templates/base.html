@@ -191,7 +191,7 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <div id="dfmHeader"><!--Header Goes Here--></div>
     <div id="div-gpt-ad-top_leaderboard" class="dfp-ad dfp-top_leaderboard" data-ad-unit="top_leaderboard">
-        <script type="text/javascript">
+        <script>
             if ( "undefined" !== typeof googletag ) {
                 googletag.cmd.push( function() { googletag.display("div-gpt-ad-top_leaderboard"); } );
             }
@@ -305,9 +305,6 @@
     </div>
     <div id="dfmFooter" style="border-top:1px solid #ddd;"><!--CORPORATE FOOTER--></div>
     <script src="http://extras.denverpost.com/vendor_templates/mason/vendor-include.js"></script>
-    <script>
-        window.setTimeout(function(){dfmNav.initParams("mode|article", "site|denverpost", "pageTitle|Legislature", "leaderboard|true", "thirdParty|false")},5);
-    </script>
 
     <footer>
     <script>
@@ -315,7 +312,7 @@
         if ( iframe === '' ) {
             _sf_async_config.uid = 2671;
             _sf_async_config.domain = 'denverpost.com';
-            _sf_async_config.sections = 'politics,legislature,data,';
+            _sf_async_config.sections = 'politics,legislature,data,vendor,';
             _sf_async_config.useCanonical = true;
             (function(){
                 function loadChartbeat() {
