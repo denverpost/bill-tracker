@@ -69,7 +69,7 @@ hr {
 #wrapper nav {
     clear: both;
 }
-#wrapper nav ul li {
+#wrapper nav ul li, #content-footer nav ul li {
     display: inline;
 }
 #wrapper nav ul li:after {
