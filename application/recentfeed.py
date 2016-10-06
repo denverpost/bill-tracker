@@ -14,7 +14,7 @@ from time import mktime
 class RecentFeed:
     """ Methods for ingesting and publishing RSS feeds.
         >>> rf = RecentFeed()
-        >>> rf.get('http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/213601.xml')
+        >>> rf.get('http://www.denverpost.com/news/weather/feed/')
         True
         >>> rf.parse()
         """
@@ -27,7 +27,7 @@ class RecentFeed:
 
     def get(self, url):
         """ Wrapper for API requests. Take a URL, return a json array.
-            >>> url = 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/213601.xml'
+            >>> url = 'http://www.denverpost.com/news/weather/feed/'
             >>> parser = build_parser()
             >>> args = parser.parse_args([url])
             >>> rf = RecentFeed(args)

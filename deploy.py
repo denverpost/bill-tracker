@@ -49,8 +49,8 @@ def main(args):
     if args.do_freeze:
         freeze.freezer.freeze()
     if args.get_news:
-        get_news('articles', 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml')
-        get_news('articles', 'http://rss.denverpost.com/mngi/rss/CustomRssServlet/36/324300.xml', 1)
+        get_news('articles', 'http://www.denverpost.com/politics/colorado-legislature/feed/')
+        get_news('articles', 'http://www.denverpost.com/politics/colorado-legislature/feed/', 1)
         #get_news('the-spot', 'http://blogs.denverpost.com/thespot/category/colorado-legislature-2/feed/')
         #get_news('the-spot', 'http://blogs.denverpost.com/thespot/category/colorado-legislature-2/feed/', 1)
 
