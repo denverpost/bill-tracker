@@ -46,7 +46,7 @@ Note: `--freeze` takes a snapshot of the current templates. If you haven't made 
 * Deploy a previous session's files `python deploy.py --session 2012a --freeze --ftp`
 
 # License
-Copyright © 2015-2016 The Denver Post
+Copyright © 2015-2017 The Denver Post
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy of the
