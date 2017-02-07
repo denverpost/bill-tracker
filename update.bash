@@ -35,7 +35,7 @@ python deploy.py --freeze
 # FTP it if we're not testing it.
 if [ $TEST == 0 ]; then
     python deploy.py --ftp --nosession
-    python deploy.py --ftp --session 2016a
+    python deploy.py --ftp --session 2017a
 fi
 
 rm RUNNING
