@@ -25,11 +25,15 @@ pages = FlatPages(app)
 with app.app_context():
     app.url_root = '/'
     app.page = page
-    app.sessions = ['2011a', '2012a', '2012b', '2013a', '2014a', '2015a', '2016a'] #***HC - append the next session
-    app.session = '2016a' #***HC CURRENT SESSION - replace with the next session
+    app.sessions = ['2011a', '2012a', '2012b', '2013a', '2014a', '2015a', '2016a', '2017a'] #***HC - append the next session
+    app.session = '2017a' #***HC CURRENT SESSION - replace with the next session
     # THE WEEK WE START PUBLISHING THE WEEK... need to figure out how we know when to end it.
-    app.theweek = { '2016a': date(2016,2,20) } #***HC - append
-    app.session_dates = { '2016a': [date(2016,1,13), date(2016,5,11)] } #***HC - append
+    app.theweek = { 
+        '2017a': date(2017,2,6),
+        '2016a': date(2016,2,20) } #***HC - append
+    app.session_dates = { 
+        '2017a': [date(2016,1,13), date(2016,5,11)],
+        '2016a': [date(2016,1,13), date(2016,5,11)] } #***HC - append
     try:
         days = json.load(open('_input/days_%s.json' % app.session))
         weeks = json.load(open('_input/weeks_%s.json' % app.session))

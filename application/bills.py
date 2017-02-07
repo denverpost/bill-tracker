@@ -327,7 +327,7 @@ def committee_chamber_index(chamber):
 
 @app.route('/committees/<chamber>/<slug>/<session>/')
 @app.route('/committees/<chamber>/<slug>/')
-def committee_detail(chamber, slug, session='2016a'):
+def committee_detail(chamber, slug, session='2017a'):   #***HC
     chamber_pretty = filters.chamber_lookup(chamber).capitalize()
 
     # A slug usually looks like "business-labor-and-technology-coc000109"
@@ -618,7 +618,12 @@ def legislator_detail(district, slug, chamber):
     # A slug usually looks like "hammajamma-col000109"
     # The legislator id is the string after the final hyphen.
     l_id = slug.split('-')[-1]
-    legislator = json.load(open('_input/2016a/%s.json' % l_id.lower()))
+
+    # **** Need to fix the code below come the 2019 session.
+    try:
+        legislator = json.load(open('_input/2017a/%s.json' % l_id.lower()))
+    except:
+        legislator = json.load(open('_input/2016a/%s.json' % l_id.lower()))
     legislator['occupation'] = legislator['+occupation']
 
     # Get the bills the legislator has touched.
