@@ -29,7 +29,7 @@ with app.app_context():
     app.session = '2017a' #***HC CURRENT SESSION - replace with the next session
     # THE WEEK WE START PUBLISHING THE WEEK... need to figure out how we know when to end it.
     app.theweek = { 
-        '2017a': date(2017,2,6),
+        '2017a': date(2017,1,23),
         '2016a': date(2016,2,20) } #***HC - append
     app.session_dates = { 
         '2017a': [date(2017,1,13), date(2017,5,11)],

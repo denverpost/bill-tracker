@@ -232,7 +232,10 @@ def week_detail(issue_date):
     # logic to make sure we don't throw an error over that.
     pos = weeks.index(issue_date)
     if pos == 0:
-        prev_next = [None, weeks[pos+1]]
+        if len(weeks) == 1:
+            prev_next = [None, None]
+        else:
+            prev_next = [None, weeks[pos+1]]
     elif pos == len(weeks) - 1:
         prev_next = [weeks[pos-1], None]
     else:
