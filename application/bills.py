@@ -69,8 +69,9 @@ def get_session_days(session=None, json=False):
     if not session:
         session = app.session
     session_dates = app.session_dates[session]
+    # session_dates will look something like [date(2016,1,13), date(2016,5,11)]
 
-    # If we're dealing with the current session, we don't want to return date
+    # If we're dealing with the current session, we don't want to return dates
     # in the future.
     today = date.today()
     if today < session_dates[1]:

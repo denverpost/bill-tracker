@@ -49,16 +49,15 @@ def main(args):
     if args.do_freeze:
         freeze.freezer.freeze()
     if args.get_news:
-
         get_news('articles', 'http://www.denverpost.com/politics/colorado-legislature/feed/')
         get_news('articles', 'http://www.denverpost.com/politics/colorado-legislature/feed/', 1)
+
         # Get the list of days we have The Day and The Week reports for
         days = bills.get_session_days(app.session, True)
         filename = '_input/days_%s.json' % (app.session)
         fh = open(filename, 'wb')
         json.dump(days, fh)
         weeks = bills.get_session_weeks(app.session, True)
-        print weeks
         filename = '_input/weeks_%s.json' % (app.session)
         fh = open(filename, 'wb')
         json.dump(weeks, fh)
