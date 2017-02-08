@@ -173,7 +173,6 @@ def archive(args):
     session = app.session
 
     s = Sunlight(args)
-    s.get_bill_list(session)
     s.get_committee_list(session)
     s.get_legislator_list(session)
     directory = os.path.dirname(os.path.realpath(__file__))
@@ -181,9 +180,6 @@ def archive(args):
         os.mkdir('%s/_input' % directory)
     for item in s.committees:
         details = s.get_committee_detail(item['id'])
-    for item in s.bills:
-        s.session = item['session'].lower()
-        details = s.get_bill_detail(item['bill_id'])
     for item in s.legislators:
         details = s.get_legislator_detail(item['id'])
 

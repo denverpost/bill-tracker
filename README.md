@@ -6,10 +6,11 @@ Let's publish Colorado State bills.
 ### At the start of a legislative session
 1. Turn on the cron jobs.
 2. Update the README to reference the year of the current session.
-3. Update the lines in the repo marked with `***HC` to reference or include the current session.
+3. Update the lines in the repo marked with `***HC` to reference or include the current session. You can look at commits 8bcafdaf5da58a2790fa5e1c2950681135c646b5 62cf06eee511fea4efbc605d251af8920724286f to see the changes made to ready it for 2017 (there were other changes made, but those were permanent site fixes).
 
 ### At the end of a legislative session
 1. Turn off the cron jobs.
+2. Run `python legquery.py --archive` to archive the committee and legislator data.
 
 ## Relevant links:
 - List of Senate bills: http://www.leg.state.co.us/CLICS/CLICS2015A/csl.nsf/BillFoldersSenate?openFrameset
